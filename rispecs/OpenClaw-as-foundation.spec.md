@@ -169,10 +169,13 @@ This overview spec should link to more detailed follow-up rispecs such as:
 4. `agent-delegation-and-autonomy.spec.md`  
    Defines sub-agent patterns, approval modes, bounded autonomy, and multi-agent workflows.
 
-5. `web-shell-integration-gaps.spec.md`  
+5. `human-consultation-in-autonomous-development.spec.md`  
+   Defines how autonomous development pauses for human judgment, consultation, consent, and relational alignment before resuming execution.
+
+6. `web-shell-integration-gaps.spec.md`  
    Defines what must be built outside OpenClaw for code-server embedding, live preview, pane orchestration, and browser UX.
 
-6. `creative-platform-extension-roadmap.spec.md`  
+7. `creative-platform-extension-roadmap.spec.md`  
    Defines phased implementation from foundation to full Mia Platform behavior.
 
 ---
