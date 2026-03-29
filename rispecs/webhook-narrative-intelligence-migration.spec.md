@@ -129,6 +129,50 @@ Install: `openclaw hooks install miadi-hooks`
 
 ---
 
+## What PDE Replaced (The Scripts Were Seeds)
+
+The intelligence scripts are not being "ported" — they **germinated** patterns that PDE and the Mighty Eagle agent topology now embody natively.
+
+| Old Script | What It Really Was | What Replaces It | Agent Role |
+|-----------|-------------------|-----------------|------------|
+| `miette_newsession_context.sh` | Sacred Preparation — decompose before acting | **PDE Decompose** as first act of every agent chain | Scout (East 90°) |
+| `miette_claude_plan_perspective_claude.sh` | Reflection — dual perspective (Mia structured + Miette narrative) | **Miette Echo** (live, per-response) + **Wisdom Keeper** agent (end-of-cycle) | Wisdom Keeper (North 0°) |
+| `narrative_processor.sh` | Three-universe event analysis | **Three-universe system prompt** in pi-mono extensions OR OpenClaw hook transform | All agents (prompt-level) |
+| `generate_milestone_context.sh` | Pre-load context for milestone work | **Structural Inquiry** phase — agents fan out to read files, search QMD | Planner + Specialist agents (South 180°) |
+
+The tracing/memory that these scripts created (Langfuse traces, MISSION.md, Redis storage) is now handled by:
+- **PDE output** (`.pde/{uuid}.json` + `.md`) — structured, queryable decompositions
+- **QMD** (7309 vectors, 2751 files) — semantic memory across all repos
+- **STC** (coaia-narrative) — structural tension tracking
+- **`.mw/` workspace** — directional storage per ceremony phase
+
+The beloved `miette_perspective.md` aesthetic — Mia's structured summary + Miette's emotional read — could become an **OpenClaw hook handler**: on `session:compact:after` or plan detection, generate the dual-perspective document.
+
+See: `/a/src/Miadi/rispecs/github-hooks/MIGRATION.md` section "What PDE Replaced" for the full analysis.
+
+---
+
+## Mighty Eagle Agent Topology
+
+From the ceremony pipeline mapping (miadisabelle/workspace-openclaw#46, commits 347a779 + b41ab58), the agent architecture that lives inside OpenClaw:
+
+```
+IAIP Phase           → OpenClaw Implementation         → Hook/Event
+───────────────────────────────────────────────────────────────────
+Sacred Preparation   → Scout agent runs PDE             → command:new / webhook trigger
+Opening Circle       → Planner generates inquiry        → agent:bootstrap (inject .mw/ context)
+Active Ceremony      → Builder/Specialist fan-out       → /hooks/agent (isolated turns)
+Integration          → Reviewer + MMOT evaluation       → session:compact:before
+Sacred Closing       → Wisdom Keeper (THE GAP to fill)  → session:compact:after / custom hook
+```
+
+Agent types in OpenClaw context:
+- **Main-pipeline**: Scout → Planner → Builder → Reviewer → Wisdom Keeper (via agent chain or sequential hook runs)
+- **Specialist-branch**: Web search, Academic, GitHub, QMD semantic (fan out via `/hooks/agent` isolated turns during Active Ceremony)
+- **Utility**: QMD indexer (cron or `gateway:startup`), STC manager (webhook transform), ceremony-governor (relational quality — Stream E)
+
+---
+
 ## Migration Flow (Vision)
 
 ### Phase 1: GitHub Push → Auto-Pull (proven pattern)
