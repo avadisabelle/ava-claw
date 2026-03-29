@@ -62,6 +62,13 @@ This maps well to:
 - project folder access
 - draft/spec generation
 - code and content editing
+
+### 4. Webhook narrative intelligence (NEW — 2026-03-29)
+
+OpenClaw's webhook hooks system (`POST /hooks/<name>` with `hooks.mappings` + `transform.module`) directly replaces the Miadi platform's GitHub webhook pipeline — the server-side intelligence that auto-pulls repos, runs three-universe analysis on issues, and prepares pre-session context. This was validated during a cross-pollination session between Miadi and OpenClaw rispecs.
+
+See: `rispecs/webhook-narrative-intelligence-migration.spec.md` for full mapping.
+See: `/a/src/Miadi/rispecs/github-hooks/MIGRATION.md` for the Miadi-side perspective.
 - repository-aware assistance
 
 ### 4. Multi-surface messaging and identity presence
