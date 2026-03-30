@@ -1,6 +1,6 @@
-import type { StreamFn } from "@mariozechner/pi-agent-core";
-import type { SimpleStreamOptions } from "@mariozechner/pi-ai";
-import { streamSimple } from "@mariozechner/pi-ai";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import type { SimpleStreamOptions } from "@avadisabelle/ava-pi-ai";
+import { streamSimple } from "@avadisabelle/ava-pi-ai";
 import type { ThinkLevel } from "../../auto-reply/thinking.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import {

@@ -1,4 +1,4 @@
-import type { AssistantMessage } from "@mariozechner/pi-ai";
+import type { AssistantMessage } from "@avadisabelle/ava-pi-ai";
 import { describe, expect, it } from "vitest";
 import {
   BILLING_ERROR_USER_MESSAGE,

@@ -110,9 +110,9 @@ Tip: if a non‑dev gateway is already running (launchd/systemd), stop it first:
 openclaw gateway stop
 ```
 
-## Raw stream logging (OpenClaw)
+## Raw stream logging (Ava-Claw)
 
-OpenClaw can log the **raw assistant stream** before any filtering/formatting.
+Ava-Claw can log the **raw assistant stream** before any filtering/formatting.
 This is the best way to see whether reasoning is arriving as plain text deltas
 (or as separate thinking blocks).
 
@@ -139,10 +139,10 @@ Default file:
 
 `~/.openclaw/logs/raw-stream.jsonl`
 
-## Raw chunk logging (pi-mono)
+## Raw chunk logging (ava-pi)
 
 To capture **raw OpenAI-compat chunks** before they are parsed into blocks,
-pi-mono exposes a separate logger:
+ava-pi exposes a separate logger:
 
 ```bash
 PI_RAW_STREAM=1
@@ -151,14 +151,14 @@ PI_RAW_STREAM=1
 Optional path:
 
 ```bash
-PI_RAW_STREAM_PATH=~/.pi-mono/logs/raw-openai-completions.jsonl
+PI_RAW_STREAM_PATH=~/.ava-pi/logs/raw-openai-completions.jsonl
 ```
 
 Default file:
 
-`~/.pi-mono/logs/raw-openai-completions.jsonl`
+`~/.ava-pi/logs/raw-openai-completions.jsonl`
 
-> Note: this is only emitted by processes using pi-mono’s
+> Note: this is only emitted by processes using ava-pi’s
 > `openai-completions` provider.
 
 ## Safety notes

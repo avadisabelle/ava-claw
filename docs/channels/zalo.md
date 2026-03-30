@@ -13,7 +13,7 @@ Status: experimental. DMs are supported. The [Capabilities](#capabilities) secti
 
 Zalo ships as a plugin and is not bundled with the core install.
 
-- Install via CLI: `openclaw plugins install @openclaw/zalo`
+- Install via CLI: `openclaw plugins install @avadisabelle/ava-claw-zalo`
 - Or select **Zalo** during onboarding and confirm the install prompt
 - Details: [Plugins](/tools/plugin)
 
@@ -21,7 +21,7 @@ Zalo ships as a plugin and is not bundled with the core install.
 
 1. Install the Zalo plugin:
    - From a source checkout: `openclaw plugins install ./extensions/zalo`
-   - From npm (if published): `openclaw plugins install @openclaw/zalo`
+   - From npm (if published): `openclaw plugins install @avadisabelle/ava-claw-zalo`
    - Or pick **Zalo** in onboarding and confirm the install prompt
 2. Set the token:
    - Env: `ZALO_BOT_TOKEN=...`
@@ -52,7 +52,7 @@ Minimal config:
 Zalo is a Vietnam-focused messaging app; its Bot API lets the Gateway run a bot for 1:1 conversations.
 It is a good fit for support or notifications where you want deterministic routing back to Zalo.
 
-This page reflects current OpenClaw behavior for **Zalo Bot Creator / Marketplace bots**.
+This page reflects current Ava-Claw behavior for **Zalo Bot Creator / Marketplace bots**.
 **Zalo Official Account (OA) bots** are a different Zalo product surface and may behave differently.
 
 - A Zalo Bot API channel owned by the Gateway.
@@ -167,7 +167,7 @@ For a quick support snapshot, see [Capabilities](#capabilities). The notes below
 
 ## Capabilities
 
-This table summarizes current **Zalo Bot Creator / Marketplace bot** behavior in OpenClaw.
+This table summarizes current **Zalo Bot Creator / Marketplace bot** behavior in Ava-Claw.
 
 | Feature                     | Status                                  |
 | --------------------------- | --------------------------------------- |

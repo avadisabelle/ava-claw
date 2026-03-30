@@ -1,4 +1,4 @@
-import type { AssistantMessage } from "@mariozechner/pi-ai";
+import type { AssistantMessage } from "@avadisabelle/ava-pi-ai";
 import type { OpenClawConfig } from "../../config/config.js";
 import {
   resolveAgentModelFallbackValues,

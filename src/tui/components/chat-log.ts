@@ -1,5 +1,5 @@
-import type { Component } from "@mariozechner/pi-tui";
-import { Container, Spacer, Text } from "@mariozechner/pi-tui";
+import type { Component } from "@avadisabelle/ava-pi-tui";
+import { Container, Spacer, Text } from "@avadisabelle/ava-pi-tui";
 import { theme } from "../theme/theme.js";
 import { AssistantMessageComponent } from "./assistant-message.js";
 import { BtwInlineMessage } from "./btw-inline-message.js";

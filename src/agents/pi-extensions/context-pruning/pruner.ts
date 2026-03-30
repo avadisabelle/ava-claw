@@ -1,6 +1,6 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { ImageContent, TextContent, ToolResultMessage } from "@mariozechner/pi-ai";
-import type { ExtensionContext } from "@mariozechner/pi-coding-agent";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { ImageContent, TextContent, ToolResultMessage } from "@avadisabelle/ava-pi-ai";
+import type { ExtensionContext } from "@avadisabelle/ava-pi-coding-agent";
 import type { EffectiveContextPruningSettings } from "./settings.js";
 import { makeToolPrunablePredicate } from "./tools.js";
 

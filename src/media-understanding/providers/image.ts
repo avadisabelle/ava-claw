@@ -1,5 +1,5 @@
-import type { Api, Context, Model } from "@mariozechner/pi-ai";
-import { complete } from "@mariozechner/pi-ai";
+import type { Api, Context, Model } from "@avadisabelle/ava-pi-ai";
+import { complete } from "@avadisabelle/ava-pi-ai";
 import { isMinimaxVlmModel, minimaxUnderstandImage } from "../../agents/minimax-vlm.js";
 import { getApiKeyForModel, requireApiKey } from "../../agents/model-auth.js";
 import { normalizeModelRef } from "../../agents/model-selection.js";

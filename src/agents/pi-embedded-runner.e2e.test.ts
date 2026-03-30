@@ -27,14 +27,14 @@ function createMockUsage(input: number, output: number) {
   };
 }
 
-vi.mock("@mariozechner/pi-coding-agent", async () => {
-  return await vi.importActual<typeof import("@mariozechner/pi-coding-agent")>(
-    "@mariozechner/pi-coding-agent",
+vi.mock("@avadisabelle/ava-pi-coding-agent", async () => {
+  return await vi.importActual<typeof import("@avadisabelle/ava-pi-coding-agent")>(
+    "@avadisabelle/ava-pi-coding-agent",
   );
 });
 
-vi.mock("@mariozechner/pi-ai", async () => {
-  const actual = await vi.importActual<typeof import("@mariozechner/pi-ai")>("@mariozechner/pi-ai");
+vi.mock("@avadisabelle/ava-pi-ai", async () => {
+  const actual = await vi.importActual<typeof import("@avadisabelle/ava-pi-ai")>("@avadisabelle/ava-pi-ai");
 
   const buildAssistantMessage = (model: { api: string; provider: string; id: string }) => ({
     role: "assistant" as const,
@@ -92,7 +92,7 @@ vi.mock("@mariozechner/pi-ai", async () => {
 });
 
 let runEmbeddedPiAgent: typeof import("./pi-embedded-runner/run.js").runEmbeddedPiAgent;
-let SessionManager: typeof import("@mariozechner/pi-coding-agent").SessionManager;
+let SessionManager: typeof import("@avadisabelle/ava-pi-coding-agent").SessionManager;
 let e2eWorkspace: EmbeddedPiRunnerTestWorkspace | undefined;
 let agentDir: string;
 let workspaceDir: string;
@@ -102,7 +102,7 @@ let runCounter = 0;
 beforeAll(async () => {
   vi.useRealTimers();
   ({ runEmbeddedPiAgent } = await import("./pi-embedded-runner/run.js"));
-  ({ SessionManager } = await import("@mariozechner/pi-coding-agent"));
+  ({ SessionManager } = await import("@avadisabelle/ava-pi-coding-agent"));
   e2eWorkspace = await createEmbeddedPiRunnerTestWorkspace("openclaw-embedded-agent-");
   ({ agentDir, workspaceDir } = e2eWorkspace);
 }, 180_000);

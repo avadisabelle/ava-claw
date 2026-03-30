@@ -1,5 +1,5 @@
-import type { StreamFn } from "@mariozechner/pi-agent-core";
-import { streamSimple } from "@mariozechner/pi-ai";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import { streamSimple } from "@avadisabelle/ava-pi-ai";
 import { resolveFastModeParam } from "../fast-mode.js";
 import {
   requiresOpenAiCompatibleAnthropicToolPayload,

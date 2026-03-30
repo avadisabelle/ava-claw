@@ -1,4 +1,4 @@
-import { type Context, complete } from "@mariozechner/pi-ai";
+import { type Context, complete } from "@avadisabelle/ava-pi-ai";
 import { Type } from "@sinclair/typebox";
 import { loadWebMediaRaw } from "../../../extensions/whatsapp/src/media.js";
 import type { OpenClawConfig } from "../../config/config.js";

@@ -1,9 +1,9 @@
 import type { IncomingMessage, ServerResponse } from "node:http";
 import type { TopLevelComponents } from "@buape/carbon";
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { StreamFn } from "@mariozechner/pi-agent-core";
-import type { Api, Model } from "@mariozechner/pi-ai";
-import type { ModelRegistry } from "@mariozechner/pi-coding-agent";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import type { Api, Model } from "@avadisabelle/ava-pi-ai";
+import type { ModelRegistry } from "@avadisabelle/ava-pi-coding-agent";
 import type { Command } from "commander";
 import type {
   ApiKeyCredential,

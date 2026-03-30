@@ -1,6 +1,6 @@
 # Repository Guidelines
 
-- Repo: https://github.com/openclaw/openclaw
+- Repo: https://github.com/avadisabelle/ava-claw
 - In chat replies, file references must be repo-root relative only (example: `extensions/bluebubbles/src/channel.ts:80`); never absolute paths or `~/...`.
 - GitHub issues/comments/PR comments: use literal multiline strings or `-F - <<'EOF'` (or $'...') for real newlines; never embed "\\n".
 - GitHub comment footgun: never use `gh issue/pr comment -b "..."` when body contains backticks or shell chars. Always use single-quoted heredoc (`-F - <<'EOF'`) so no command substitution/escaping corruption.
@@ -169,11 +169,11 @@
 ## GitHub Search (`gh`)
 
 - Prefer targeted keyword search before proposing new work or duplicating fixes.
-- Use `--repo openclaw/openclaw` + `--match title,body` first; add `--match comments` when triaging follow-up threads.
-- PRs: `gh search prs --repo openclaw/openclaw --match title,body --limit 50 -- "auto-update"`
-- Issues: `gh search issues --repo openclaw/openclaw --match title,body --limit 50 -- "auto-update"`
+- Use `--repo avadisabelle/ava-claw` + `--match title,body` first; add `--match comments` when triaging follow-up threads.
+- PRs: `gh search prs --repo avadisabelle/ava-claw --match title,body --limit 50 -- "auto-update"`
+- Issues: `gh search issues --repo avadisabelle/ava-claw --match title,body --limit 50 -- "auto-update"`
 - Structured output example:
-  `gh search issues --repo openclaw/openclaw --match title,body --limit 50 --json number,title,state,url,updatedAt -- "auto update" --jq '.[] | "\(.number) | \(.state) | \(.title) | \(.url)"'`
+  `gh search issues --repo avadisabelle/ava-claw --match title,body --limit 50 --json number,title,state,url,updatedAt -- "auto update" --jq '.[] | "\(.number) | \(.state) | \(.title) | \(.url)"'`
 
 ## Security & Configuration Tips
 
@@ -186,15 +186,15 @@
 ## GHSA (Repo Advisory) Patch/Publish
 
 - Before reviewing security advisories, read `SECURITY.md`.
-- Fetch: `gh api /repos/openclaw/openclaw/security-advisories/<GHSA>`
+- Fetch: `gh api /repos/avadisabelle/ava-claw/security-advisories/<GHSA>`
 - Latest npm: `npm view openclaw version --userconfig "$(mktemp)"`
 - Private fork PRs must be closed:
-  `fork=$(gh api /repos/openclaw/openclaw/security-advisories/<GHSA> | jq -r .private_fork.full_name)`
+  `fork=$(gh api /repos/avadisabelle/ava-claw/security-advisories/<GHSA> | jq -r .private_fork.full_name)`
   `gh pr list -R "$fork" --state open` (must be empty)
 - Description newline footgun: write Markdown via heredoc to `/tmp/ghsa.desc.md` (no `"\\n"` strings)
 - Build patch JSON via jq: `jq -n --rawfile desc /tmp/ghsa.desc.md '{summary,severity,description:$desc,vulnerabilities:[...]}' > /tmp/ghsa.patch.json`
 - GHSA API footgun: cannot set `severity` and `cvss_vector_string` in the same PATCH; do separate calls.
-- Patch + publish: `gh api -X PATCH /repos/openclaw/openclaw/security-advisories/<GHSA> --input /tmp/ghsa.patch.json` (publish = include `"state":"published"`; no `/publish` endpoint)
+- Patch + publish: `gh api -X PATCH /repos/avadisabelle/ava-claw/security-advisories/<GHSA> --input /tmp/ghsa.patch.json` (publish = include `"state":"published"`; no `/publish` endpoint)
 - If publish fails (HTTP 422): missing `severity`/`description`/`vulnerabilities[]`, or private fork has open PRs
 - Verify: re-fetch; ensure `state=published`, `published_at` set; `jq -r .description | rg '\\\\n'` returns nothing
 
@@ -294,8 +294,8 @@
 ## Release Auth
 
 - Core `openclaw` publish uses GitHub trusted publishing; do not use `NPM_TOKEN` or the plugin OTP flow for core releases.
-- Separate `@openclaw/*` plugin publishes use a different maintainer-only auth flow.
-- Plugin scope: only publish already-on-npm `@openclaw/*` plugins. Bundled disk-tree-only plugins stay out.
+- Separate `@avadisabelle/ava-claw-*` plugin publishes use a different maintainer-only auth flow.
+- Plugin scope: only publish already-on-npm `@avadisabelle/ava-claw-*` plugins. Bundled disk-tree-only plugins stay out.
 - Maintainers: private 1Password item names, tmux rules, plugin publish helpers, and local mac signing/notary setup live in the private [maintainer release docs](https://github.com/openclaw/maintainers/blob/main/release/README.md).
 
 ## Changelog Release Notes

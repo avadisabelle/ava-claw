@@ -8,7 +8,7 @@ title: "Doctor"
 
 # Doctor
 
-`openclaw doctor` is the repair + migration tool for OpenClaw. It fixes stale
+`openclaw doctor` is the repair + migration tool for Ava-Claw. It fixes stale
 config/state, checks health, and provides actionable repair steps.
 
 ## Quick start
@@ -53,7 +53,7 @@ Scan system services for extra gateway installs (launchd/systemd/schtasks).
 If you want to review changes before writing, open the config file first:
 
 ```bash
-cat ~/.openclaw/openclaw.json
+cat ~/.avadisabelle/ava-claw.json
 ```
 
 ## What it does (summary)
@@ -105,7 +105,7 @@ Doctor will:
 
 - Explain which legacy keys were found.
 - Show the migration it applied.
-- Rewrite `~/.openclaw/openclaw.json` with the updated schema.
+- Rewrite `~/.avadisabelle/ava-claw.json` with the updated schema.
 
 The Gateway also auto-runs doctor migrations on startup when it detects a
 legacy config format, so stale configs are repaired without manual intervention.
@@ -137,7 +137,7 @@ Doctor warnings also include account-default guidance for multi-account channels
 ### 2b) OpenCode provider overrides
 
 If you’ve added `models.providers.opencode`, `opencode-zen`, or `opencode-go`
-manually, it overrides the built-in OpenCode catalog from `@mariozechner/pi-ai`.
+manually, it overrides the built-in OpenCode catalog from `@avadisabelle/ava-pi-ai`.
 That can force models onto the wrong API or zero out costs. Doctor warns so you
 can remove the override and restore per-model API routing + costs.
 
@@ -207,7 +207,7 @@ Doctor checks:
   split between installs).
 - **Remote mode reminder**: if `gateway.mode=remote`, doctor reminds you to run
   it on the remote host (the state lives there).
-- **Config file permissions**: warns if `~/.openclaw/openclaw.json` is
+- **Config file permissions**: warns if `~/.avadisabelle/ava-claw.json` is
   group/world readable and offers to tighten to `600`.
 
 ### 5) Model auth health (OAuth expiry)
@@ -236,9 +236,9 @@ switch to legacy names if the current image is missing.
 ### 8) Gateway service migrations and cleanup hints
 
 Doctor detects legacy gateway services (launchd/systemd/schtasks) and
-offers to remove them and install the OpenClaw service using the current gateway
+offers to remove them and install the Ava-Claw service using the current gateway
 port. It can also scan for extra gateway-like services and print cleanup hints.
-Profile-named OpenClaw gateway services are considered first-class and are not
+Profile-named Ava-Claw gateway services are considered first-class and are not
 flagged as "extra."
 
 ### 9) Security warnings

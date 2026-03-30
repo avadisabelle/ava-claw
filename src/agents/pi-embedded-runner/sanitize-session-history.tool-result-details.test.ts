@@ -1,6 +1,6 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { ToolResultMessage, UserMessage } from "@mariozechner/pi-ai";
-import { SessionManager } from "@mariozechner/pi-coding-agent";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { ToolResultMessage, UserMessage } from "@avadisabelle/ava-pi-ai";
+import { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import { describe, expect, it } from "vitest";
 import { makeAgentAssistantMessage } from "../test-helpers/agent-message-fixtures.js";
 import { sanitizeSessionHistory } from "./google.js";

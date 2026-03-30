@@ -97,7 +97,7 @@ body:
     attributes:
       label: Config file / key location
       description: Optional. Relevant config source or key path if this bug depends on overrides or custom provider setup. Redact secrets.
-      placeholder: ~/.openclaw/openclaw.json ; models.providers.cloudflare-ai-gateway.baseUrl ; ~/.openclaw/agents/<agentId>/agent/models.json
+      placeholder: ~/.avadisabelle/ava-claw.json ; models.providers.cloudflare-ai-gateway.baseUrl ; ~/.openclaw/agents/<agentId>/agent/models.json
   - type: textarea
     id: provider_setup_details
     attributes:
@@ -106,7 +106,7 @@ body:
       placeholder: |
         Default route is openclaw -> cloudflare-ai-gateway -> minimax.
         Previous setup was openclaw -> cloudflare-ai-gateway -> openrouter -> minimax.
-        Relevant config lives in ~/.openclaw/openclaw.json under models.providers.minimax and models.providers.cloudflare-ai-gateway.
+        Relevant config lives in ~/.avadisabelle/ava-claw.json under models.providers.minimax and models.providers.cloudflare-ai-gateway.
   - type: textarea
     id: logs
     attributes:

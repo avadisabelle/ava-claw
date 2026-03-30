@@ -12,8 +12,8 @@ const requireApiKeyMock = vi.fn((auth: { apiKey?: string }) => auth.apiKey ?? ""
 const setRuntimeApiKeyMock = vi.fn();
 const discoverModelsMock = vi.fn();
 
-vi.mock("@mariozechner/pi-ai", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@mariozechner/pi-ai")>();
+vi.mock("@avadisabelle/ava-pi-ai", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@avadisabelle/ava-pi-ai")>();
   return {
     ...actual,
     complete: completeMock,

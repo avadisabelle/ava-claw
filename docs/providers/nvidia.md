@@ -1,7 +1,7 @@
 ---
-summary: "Use NVIDIA's OpenAI-compatible API in OpenClaw"
+summary: "Use NVIDIA's OpenAI-compatible API in Ava-Claw"
 read_when:
-  - You want to use NVIDIA models in OpenClaw
+  - You want to use NVIDIA models in Ava-Claw
   - You need NVIDIA_API_KEY setup
 title: "NVIDIA"
 ---

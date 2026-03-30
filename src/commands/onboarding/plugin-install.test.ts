@@ -81,7 +81,7 @@ const baseEntry: ChannelPluginCatalogEntry = {
     blurb: "Test",
   },
   install: {
-    npmSpec: "@openclaw/zalo",
+    npmSpec: "@avadisabelle/ava-claw-zalo",
     localPath: "extensions/zalo",
   },
 };
@@ -151,10 +151,10 @@ describe("ensureOnboardingPluginInstalled", () => {
     expect(result.cfg.plugins?.entries?.zalo?.enabled).toBe(true);
     expect(result.cfg.plugins?.allow).toContain("zalo");
     expect(result.cfg.plugins?.installs?.zalo?.source).toBe("npm");
-    expect(result.cfg.plugins?.installs?.zalo?.spec).toBe("@openclaw/zalo");
+    expect(result.cfg.plugins?.installs?.zalo?.spec).toBe("@avadisabelle/ava-claw-zalo");
     expect(result.cfg.plugins?.installs?.zalo?.installPath).toBe("/tmp/zalo");
     expect(installPluginFromNpmSpec).toHaveBeenCalledWith(
-      expect.objectContaining({ spec: "@openclaw/zalo" }),
+      expect.objectContaining({ spec: "@avadisabelle/ava-claw-zalo" }),
     );
   });
 
@@ -190,15 +190,15 @@ describe("ensureOnboardingPluginInstalled", () => {
       entry: {
         ...baseEntry,
         id: "teams",
-        pluginId: "@openclaw/msteams-plugin",
+        pluginId: "@avadisabelle/ava-claw-msteams-plugin",
       },
       prompter,
       runtime,
     });
 
     expect(result.installed).toBe(true);
-    expect(result.pluginId).toBe("@openclaw/msteams-plugin");
-    expect(result.cfg.plugins?.entries?.["@openclaw/msteams-plugin"]?.enabled).toBe(true);
+    expect(result.pluginId).toBe("@avadisabelle/ava-claw-msteams-plugin");
+    expect(result.cfg.plugins?.entries?.["@avadisabelle/ava-claw-msteams-plugin"]?.enabled).toBe(true);
   });
 
   it("defaults to local on dev channel when local path exists", async () => {
@@ -222,7 +222,7 @@ describe("ensureOnboardingPluginInstalled", () => {
           {
             pluginId: "zalo",
             localPath: "/opt/openclaw/extensions/zalo",
-            npmSpec: "@openclaw/zalo",
+            npmSpec: "@avadisabelle/ava-claw-zalo",
           },
         ],
       ]),
@@ -389,7 +389,7 @@ describe("ensureOnboardingPluginInstalled", () => {
       cfg,
       runtime,
       channel: "msteams",
-      pluginId: "@openclaw/msteams-plugin",
+      pluginId: "@avadisabelle/ava-claw-msteams-plugin",
       workspaceDir: "/tmp/openclaw-workspace",
     });
 
@@ -398,7 +398,7 @@ describe("ensureOnboardingPluginInstalled", () => {
         config: cfg,
         workspaceDir: "/tmp/openclaw-workspace",
         cache: false,
-        onlyPluginIds: ["@openclaw/msteams-plugin"],
+        onlyPluginIds: ["@avadisabelle/ava-claw-msteams-plugin"],
         activate: false,
       }),
     );

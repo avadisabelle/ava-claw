@@ -1,12 +1,12 @@
 import fs from "node:fs/promises";
 import os from "node:os";
-import type { AgentMessage, StreamFn } from "@mariozechner/pi-agent-core";
-import { streamSimple } from "@mariozechner/pi-ai";
+import type { AgentMessage, StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import { streamSimple } from "@avadisabelle/ava-pi-ai";
 import {
   createAgentSession,
   DefaultResourceLoader,
   SessionManager,
-} from "@mariozechner/pi-coding-agent";
+} from "@avadisabelle/ava-pi-coding-agent";
 import { resolveSignalReactionLevel } from "../../../../extensions/signal/src/reaction-level.js";
 import { resolveTelegramInlineButtonsScope } from "../../../../extensions/telegram/src/inline-buttons.js";
 import { resolveTelegramReactionLevel } from "../../../../extensions/telegram/src/reaction-level.js";
@@ -1912,7 +1912,7 @@ export async function runEmbeddedAttempt(
           activeSession.agent.streamFn = streamSimple;
         }
       } else {
-        // Force a stable streamFn reference so vitest can reliably mock @mariozechner/pi-ai.
+        // Force a stable streamFn reference so vitest can reliably mock @avadisabelle/ava-pi-ai.
         activeSession.agent.streamFn = streamSimple;
       }
 
@@ -2616,7 +2616,7 @@ export async function runEmbeddedAttempt(
         // Previously this was before the prompt, which caused a custom entry to be
         // inserted between compaction and the next prompt — breaking the
         // prepareCompaction() guard that checks the last entry type, leading to
-        // double-compaction. See: https://github.com/openclaw/openclaw/issues/9282
+        // double-compaction. See: https://github.com/avadisabelle/ava-claw/issues/9282
         // Skip when timed out during compaction — session state may be inconsistent.
         // Also skip when compaction ran this attempt — appending a custom entry
         // after compaction would break the guard again. See: #28491
@@ -2856,7 +2856,7 @@ export async function runEmbeddedAttempt(
       // *before* tool execution completes in the retried agent loop. Without this wait,
       // flushPendingToolResults() fires while tools are still executing, inserting
       // synthetic "missing tool result" errors and causing silent agent failures.
-      // See: https://github.com/openclaw/openclaw/issues/8643
+      // See: https://github.com/avadisabelle/ava-claw/issues/8643
       removeToolResultContextGuard?.();
       await flushPendingToolResultsAfterIdle({
         agent: session?.agent,

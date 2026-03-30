@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/github-copilot-provider",
+  "name": "@avadisabelle/ava-claw-github-copilot-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "OpenClaw GitHub Copilot provider plugin",
   "type": "module",
-  "openclaw": {
+  "ava-claw": {
     "extensions": [
       "./index.ts"
     ]

@@ -1,6 +1,6 @@
-import type { StreamFn } from "@mariozechner/pi-agent-core";
-import type { SimpleStreamOptions } from "@mariozechner/pi-ai";
-import { streamSimple } from "@mariozechner/pi-ai";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import type { SimpleStreamOptions } from "@avadisabelle/ava-pi-ai";
+import { streamSimple } from "@avadisabelle/ava-pi-ai";
 import { log } from "./logger.js";
 import { streamWithPayloadPatch } from "./stream-payload-utils.js";
 

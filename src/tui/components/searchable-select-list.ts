@@ -7,7 +7,7 @@ import {
   type SelectItem,
   type SelectListTheme,
   truncateToWidth,
-} from "@mariozechner/pi-tui";
+} from "@avadisabelle/ava-pi-tui";
 import { stripAnsi, visibleWidth } from "../../terminal/ansi.js";
 import { findWordBoundaryIndex, fuzzyFilterLower } from "./fuzzy-filter.js";
 

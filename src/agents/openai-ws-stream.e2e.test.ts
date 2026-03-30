@@ -14,7 +14,7 @@
  * Skipped in CI — no API key available and we avoid billable external calls.
  */
 
-import type { AssistantMessage, Context } from "@mariozechner/pi-ai";
+import type { AssistantMessage, Context } from "@avadisabelle/ava-pi-ai";
 import { describe, it, expect, afterEach } from "vitest";
 import {
   createOpenAIWebSocketStreamFn,

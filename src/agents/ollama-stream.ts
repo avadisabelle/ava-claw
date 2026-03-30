@@ -1,13 +1,13 @@
 import { randomUUID } from "node:crypto";
-import type { StreamFn } from "@mariozechner/pi-agent-core";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
 import type {
   AssistantMessage,
   StopReason,
   TextContent,
   ToolCall,
   Tool,
-} from "@mariozechner/pi-ai";
-import { createAssistantMessageEventStream } from "@mariozechner/pi-ai";
+} from "@avadisabelle/ava-pi-ai";
+import { createAssistantMessageEventStream } from "@avadisabelle/ava-pi-ai";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { isNonSecretApiKeyMarker } from "./model-auth-markers.js";
 import {

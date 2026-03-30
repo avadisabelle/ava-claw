@@ -1,4 +1,4 @@
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
+import type { AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
 import {
   banMemberDiscord,
   hasAnyGuildPermissionDiscord,

@@ -1,7 +1,7 @@
 import { afterAll, afterEach, beforeAll, vi } from "vitest";
 
-vi.mock("@mariozechner/pi-ai", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@mariozechner/pi-ai")>();
+vi.mock("@avadisabelle/ava-pi-ai", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@avadisabelle/ava-pi-ai")>();
   return {
     ...original,
     getOAuthApiKey: () => undefined,

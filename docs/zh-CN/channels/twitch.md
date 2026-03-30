@@ -1,6 +1,6 @@
 ---
 read_when:
-  - 为 OpenClaw 设置 Twitch 聊天集成
+  - 为 Ava-Claw 设置 Twitch 聊天集成
 summary: Twitch 聊天机器人配置和设置
 title: Twitch
 x-i18n:
@@ -14,7 +14,7 @@ x-i18n:
 
 # Twitch（插件）
 
-通过 IRC 连接支持 Twitch 聊天。OpenClaw 以 Twitch 用户（机器人账户）身份连接，在频道中接收和发送消息。
+通过 IRC 连接支持 Twitch 聊天。Ava-Claw 以 Twitch 用户（机器人账户）身份连接，在频道中接收和发送消息。
 
 ## 需要插件
 
@@ -23,7 +23,7 @@ Twitch 作为插件发布，未与核心安装捆绑。
 通过 CLI 安装（npm 注册表）：
 
 ```bash
-openclaw plugins install @openclaw/twitch
+openclaw plugins install @avadisabelle/ava-claw-twitch
 ```
 
 本地检出（从 git 仓库运行时）：

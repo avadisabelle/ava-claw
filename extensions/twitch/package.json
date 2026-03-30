@@ -1,5 +1,5 @@
 {
-  "name": "@openclaw/twitch",
+  "name": "@avadisabelle/ava-claw-twitch",
   "version": "2026.3.14",
   "description": "OpenClaw Twitch channel plugin",
   "type": "module",
@@ -9,7 +9,7 @@
     "@twurple/chat": "^8.0.3",
     "zod": "^4.3.6"
   },
-  "openclaw": {
+  "ava-claw": {
     "extensions": [
       "./index.ts"
     ]

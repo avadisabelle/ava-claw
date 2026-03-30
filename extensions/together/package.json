@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/together-provider",
+  "name": "@avadisabelle/ava-claw-together-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "OpenClaw Together provider plugin",
   "type": "module",
-  "openclaw": {
+  "ava-claw": {
     "extensions": [
       "./index.ts"
     ]

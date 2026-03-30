@@ -1,5 +1,5 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { AssistantMessage, ToolResultMessage } from "@mariozechner/pi-ai";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { AssistantMessage, ToolResultMessage } from "@avadisabelle/ava-pi-ai";
 import { describe, expect, it } from "vitest";
 import {
   estimateMessagesTokens,

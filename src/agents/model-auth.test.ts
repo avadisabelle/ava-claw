@@ -1,4 +1,4 @@
-import { streamSimpleOpenAICompletions, type Model } from "@mariozechner/pi-ai";
+import { streamSimpleOpenAICompletions, type Model } from "@avadisabelle/ava-pi-ai";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { AuthProfileStore } from "./auth-profiles.js";
 import { CUSTOM_LOCAL_AUTH_MARKER, NON_ENV_SECRETREF_MARKER } from "./model-auth-markers.js";

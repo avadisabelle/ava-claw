@@ -1,4 +1,4 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
 
 export type CompactionTimeoutSignal = {
   isTimeout: boolean;

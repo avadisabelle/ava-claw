@@ -1,4 +1,4 @@
-# @openclaw/diffs
+# @avadisabelle/ava-claw-diffs
 
 Read-only diff viewer plugin for **OpenClaw** agents.
 
@@ -69,7 +69,7 @@ Input safety limits:
 
 ## Plugin Defaults
 
-Set plugin-wide defaults in `~/.openclaw/openclaw.json`:
+Set plugin-wide defaults in `~/.avadisabelle/ava-claw.json`:
 
 ```json5
 {

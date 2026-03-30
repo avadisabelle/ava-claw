@@ -1,4 +1,4 @@
-import type { AgentTool } from "@mariozechner/pi-agent-core";
+import type { AgentTool } from "@avadisabelle/ava-pi-agent-core";
 import { describe, expect, it } from "vitest";
 import { sanitizeToolsForGoogle } from "./google.js";
 

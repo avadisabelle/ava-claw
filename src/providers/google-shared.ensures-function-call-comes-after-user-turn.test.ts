@@ -1,6 +1,6 @@
-import type { Context } from "@mariozechner/pi-ai";
+import type { Context } from "@avadisabelle/ava-pi-ai";
 import { describe, expect, it } from "vitest";
-import { convertMessages } from "../../node_modules/@mariozechner/pi-ai/dist/providers/google-shared.js";
+import { convertMessages } from "../../node_modules/@avadisabelle/ava-pi-ai/dist/providers/google-shared.js";
 import {
   asRecord,
   expectConvertedRoles,

@@ -1,5 +1,5 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { SessionManager } from "@mariozechner/pi-coding-agent";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import { expect, vi } from "vitest";
 
 export type SessionEntry = { type: string; customType: string; data: unknown };

@@ -1,5 +1,5 @@
-import type { Api, Model } from "@mariozechner/pi-ai";
-import type { AuthStorage, ModelRegistry } from "@mariozechner/pi-coding-agent";
+import type { Api, Model } from "@avadisabelle/ava-pi-ai";
+import type { AuthStorage, ModelRegistry } from "@avadisabelle/ava-pi-coding-agent";
 import type { OpenClawConfig } from "../../config/config.js";
 import type { ModelDefinitionConfig } from "../../config/types.js";
 import {
@@ -468,7 +468,7 @@ export async function resolveModelAsync(
  * error.  This detects known providers that require opt-in auth and adds
  * a hint.
  *
- * See: https://github.com/openclaw/openclaw/issues/17328
+ * See: https://github.com/avadisabelle/ava-claw/issues/17328
  */
 const LOCAL_PROVIDER_HINTS: Record<string, string> = {
   ollama:

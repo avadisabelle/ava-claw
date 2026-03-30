@@ -1,12 +1,12 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { AssistantMessage, UserMessage } from "@mariozechner/pi-ai";
-import type { ExtensionContext } from "@mariozechner/pi-coding-agent";
-import * as piCodingAgent from "@mariozechner/pi-coding-agent";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { AssistantMessage, UserMessage } from "@avadisabelle/ava-pi-ai";
+import type { ExtensionContext } from "@avadisabelle/ava-pi-coding-agent";
+import * as piCodingAgent from "@avadisabelle/ava-pi-coding-agent";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { retryAsync } from "../infra/retry.js";
 
 // Mock the external generateSummary function
-vi.mock("@mariozechner/pi-coding-agent", async (importOriginal) => {
+vi.mock("@avadisabelle/ava-pi-coding-agent", async (importOriginal) => {
   const actual = await importOriginal<typeof piCodingAgent>();
   return {
     ...actual,

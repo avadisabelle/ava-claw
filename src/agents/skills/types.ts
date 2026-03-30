@@ -1,4 +1,4 @@
-import type { Skill } from "@mariozechner/pi-coding-agent";
+import type { Skill } from "@avadisabelle/ava-pi-coding-agent";
 
 export type SkillInstallSpec = {
   id?: string;

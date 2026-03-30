@@ -1,5 +1,5 @@
-import type { StreamFn } from "@mariozechner/pi-agent-core";
-import type { Context, Model, SimpleStreamOptions } from "@mariozechner/pi-ai";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import type { Context, Model, SimpleStreamOptions } from "@avadisabelle/ava-pi-ai";
 import { describe, expect, it, vi } from "vitest";
 
 vi.mock("../plugins/provider-runtime.js", async (importOriginal) => {

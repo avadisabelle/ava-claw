@@ -1,4 +1,4 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
 import { registerContextEngineForOwner } from "./registry.js";
 import type {
   ContextEngine,

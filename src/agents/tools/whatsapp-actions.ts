@@ -1,4 +1,4 @@
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
+import type { AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
 import { sendReactionWhatsApp } from "../../../extensions/whatsapp/src/send.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import { createActionGate, jsonResult, readReactionParams, readStringParam } from "./common.js";

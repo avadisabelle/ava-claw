@@ -9,7 +9,7 @@ const mocks = vi.hoisted(() => ({
   formatOpenAIOAuthTlsPreflightFix: vi.fn(),
 }));
 
-vi.mock("@mariozechner/pi-ai/oauth", () => ({
+vi.mock("@avadisabelle/ava-pi-ai/oauth", () => ({
   loginOpenAICodex: mocks.loginOpenAICodex,
 }));
 

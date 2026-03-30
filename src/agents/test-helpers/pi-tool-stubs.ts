@@ -1,4 +1,4 @@
-import type { AgentTool, AgentToolResult } from "@mariozechner/pi-agent-core";
+import type { AgentTool, AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
 import { Type } from "@sinclair/typebox";
 
 export function createStubTool(name: string): AgentTool {

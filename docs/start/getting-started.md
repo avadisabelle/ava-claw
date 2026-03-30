@@ -1,5 +1,5 @@
 ---
-summary: "Get OpenClaw installed and run your first chat in minutes."
+summary: "Get Ava-Claw installed and run your first chat in minutes."
 read_when:
   - First time setup from zero
   - You want the fastest path to a working chat
@@ -13,7 +13,7 @@ Goal: go from zero to a first working chat with minimal setup.
 <Info>
 Fastest chat: open the Control UI (no channel setup needed). Run `openclaw dashboard`
 and chat in the browser, or open `http://127.0.0.1:18789/` on the
-<Tooltip headline="Gateway host" tip="The machine running the OpenClaw gateway service.">gateway host</Tooltip>.
+<Tooltip headline="Gateway host" tip="The machine running the Ava-Claw gateway service.">gateway host</Tooltip>.
 Docs: [Dashboard](/web/dashboard) and [Control UI](/web/control-ui).
 </Info>
 
@@ -28,7 +28,7 @@ Check your Node version with `node --version` if you are unsure.
 ## Quick setup (CLI)
 
 <Steps>
-  <Step title="Install OpenClaw (recommended)">
+  <Step title="Install Ava-Claw (recommended)">
     <Tabs>
       <Tab title="macOS/Linux">
         ```bash
@@ -95,7 +95,7 @@ If the Control UI loads, your Gateway is ready for use.
     Requires a configured channel.
 
     ```bash
-    openclaw message send --target +15555550123 --message "Hello from OpenClaw"
+    openclaw message send --target +15555550123 --message "Hello from Ava-Claw"
     ```
 
   </Accordion>
@@ -103,7 +103,7 @@ If the Control UI loads, your Gateway is ready for use.
 
 ## Useful environment variables
 
-If you run OpenClaw as a service account or want custom config/state locations:
+If you run Ava-Claw as a service account or want custom config/state locations:
 
 - `OPENCLAW_HOME` sets the home directory used for internal path resolution.
 - `OPENCLAW_STATE_DIR` overrides the state directory.

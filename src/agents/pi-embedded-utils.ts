@@ -1,5 +1,5 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { AssistantMessage } from "@mariozechner/pi-ai";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { AssistantMessage } from "@avadisabelle/ava-pi-ai";
 import { extractTextFromChatContent } from "../shared/chat-content.js";
 import { stripReasoningTagsFromText } from "../shared/text/reasoning-tags.js";
 import { sanitizeUserFacingText } from "./pi-embedded-helpers.js";
@@ -43,7 +43,7 @@ export function stripMinimaxToolCallXml(text: string): string {
  *
  * This is a provider bug — no upstream fix tracked yet.
  * Remove this function when upstream providers stop leaking tokens.
- * @see https://github.com/openclaw/openclaw/issues/40020
+ * @see https://github.com/avadisabelle/ava-claw/issues/40020
  */
 // Match both ASCII pipe <|...|> and full-width pipe <｜...｜> (U+FF5C) variants.
 const MODEL_SPECIAL_TOKEN_RE = /<[|｜][^|｜]*[|｜]>/g;

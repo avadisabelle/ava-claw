@@ -1,5 +1,5 @@
-import type { StreamFn } from "@mariozechner/pi-agent-core";
-import { streamSimple } from "@mariozechner/pi-ai";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import { streamSimple } from "@avadisabelle/ava-pi-ai";
 
 /**
  * Inject `tool_stream=true` for Z.AI requests so tool-call deltas stream in

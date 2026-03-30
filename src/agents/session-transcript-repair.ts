@@ -1,4 +1,4 @@
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
 import { extractToolCallsFromAssistant, extractToolResultId } from "./tool-call-id.js";
 
 const TOOL_CALL_NAME_MAX_CHARS = 64;
@@ -395,7 +395,7 @@ export function repairToolUseResultPairing(messages: AgentMessage[]): ToolUseRep
     // (e.g., partialJson: true) and should not have synthetic tool_results created.
     // Creating synthetic results for incomplete tool calls causes API 400 errors:
     // "unexpected tool_use_id found in tool_result blocks"
-    // See: https://github.com/openclaw/openclaw/issues/4597
+    // See: https://github.com/avadisabelle/ava-claw/issues/4597
     const stopReason = (assistant as { stopReason?: string }).stopReason;
     if (stopReason === "error" || stopReason === "aborted") {
       out.push(msg);

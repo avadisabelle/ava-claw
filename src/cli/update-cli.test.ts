@@ -561,7 +561,7 @@ describe("update-cli", () => {
         "npm",
         "i",
         "-g",
-        "github:openclaw/openclaw#main",
+        "github:avadisabelle/ava-claw#main",
         "--no-fund",
         "--no-audit",
         "--loglevel=error",
@@ -574,7 +574,7 @@ describe("update-cli", () => {
     const tempDir = createCaseDir("openclaw-update");
     mockPackageInstallStatus(tempDir);
 
-    await updateCommand({ yes: true, tag: "github:openclaw/openclaw#main" });
+    await updateCommand({ yes: true, tag: "github:avadisabelle/ava-claw#main" });
 
     expect(runGatewayUpdate).not.toHaveBeenCalled();
     expect(runCommandWithTimeout).toHaveBeenCalledWith(
@@ -582,7 +582,7 @@ describe("update-cli", () => {
         "npm",
         "i",
         "-g",
-        "github:openclaw/openclaw#main",
+        "github:avadisabelle/ava-claw#main",
         "--no-fund",
         "--no-audit",
         "--loglevel=error",

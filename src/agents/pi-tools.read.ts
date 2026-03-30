@@ -1,8 +1,8 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
-import { createEditTool, createReadTool, createWriteTool } from "@mariozechner/pi-coding-agent";
+import type { AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
+import { createEditTool, createReadTool, createWriteTool } from "@avadisabelle/ava-pi-coding-agent";
 import {
   appendFileWithinRoot,
   SafeOpenError,

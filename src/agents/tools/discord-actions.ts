@@ -1,4 +1,4 @@
-import type { AgentToolResult } from "@mariozechner/pi-agent-core";
+import type { AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
 import { createDiscordActionGate } from "../../../extensions/discord/src/accounts.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import { readStringParam } from "./common.js";

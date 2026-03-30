@@ -1,4 +1,4 @@
-# @openclaw/twitch
+# @avadisabelle/ava-claw-twitch
 
 Twitch channel plugin for OpenClaw.
 
@@ -11,7 +11,7 @@ openclaw plugins install ./extensions/twitch
 ## Install (npm)
 
 ```bash
-openclaw plugins install @openclaw/twitch
+openclaw plugins install @avadisabelle/ava-claw-twitch
 ```
 
 Onboarding: select Twitch and confirm the install prompt to fetch the plugin automatically.

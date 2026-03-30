@@ -1,4 +1,4 @@
-import type { AgentTool } from "@mariozechner/pi-agent-core";
+import type { AgentTool } from "@avadisabelle/ava-pi-agent-core";
 
 export function buildToolSummaryMap(tools: AgentTool[]): Record<string, string> {
   const summaries: Record<string, string> = {};

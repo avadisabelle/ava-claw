@@ -42,14 +42,14 @@ let multiToolMode = false;
 let responsePlan: Array<"toolUse" | "stop"> = [];
 let observedContexts: Array<Array<{ role?: string; content?: unknown }>> = [];
 
-vi.mock("@mariozechner/pi-coding-agent", async () => {
-  return await vi.importActual<typeof import("@mariozechner/pi-coding-agent")>(
-    "@mariozechner/pi-coding-agent",
+vi.mock("@avadisabelle/ava-pi-coding-agent", async () => {
+  return await vi.importActual<typeof import("@avadisabelle/ava-pi-coding-agent")>(
+    "@avadisabelle/ava-pi-coding-agent",
   );
 });
 
-vi.mock("@mariozechner/pi-ai", async () => {
-  const actual = await vi.importActual<typeof import("@mariozechner/pi-ai")>("@mariozechner/pi-ai");
+vi.mock("@avadisabelle/ava-pi-ai", async () => {
+  const actual = await vi.importActual<typeof import("@avadisabelle/ava-pi-ai")>("@avadisabelle/ava-pi-ai");
 
   const buildToolUseMessage = (model: { api: string; provider: string; id: string }) => {
     const toolCalls: Array<{

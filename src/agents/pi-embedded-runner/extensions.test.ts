@@ -1,5 +1,5 @@
-import type { Api, Model } from "@mariozechner/pi-ai";
-import type { SessionManager } from "@mariozechner/pi-coding-agent";
+import type { Api, Model } from "@avadisabelle/ava-pi-ai";
+import type { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import { describe, expect, it } from "vitest";
 import type { OpenClawConfig } from "../../config/config.js";
 import { getCompactionSafeguardRuntime } from "../pi-extensions/compaction-safeguard-runtime.js";

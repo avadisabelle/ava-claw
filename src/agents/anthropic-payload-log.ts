@@ -1,7 +1,7 @@
 import crypto from "node:crypto";
 import path from "node:path";
-import type { AgentMessage, StreamFn } from "@mariozechner/pi-agent-core";
-import type { Api, Model } from "@mariozechner/pi-ai";
+import type { AgentMessage, StreamFn } from "@avadisabelle/ava-pi-agent-core";
+import type { Api, Model } from "@avadisabelle/ava-pi-ai";
 import { resolveStateDir } from "../config/paths.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { resolveUserPath } from "../utils.js";

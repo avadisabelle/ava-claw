@@ -1,13 +1,13 @@
 ---
 summary: "Twitch chat bot configuration and setup"
 read_when:
-  - Setting up Twitch chat integration for OpenClaw
+  - Setting up Twitch chat integration for Ava-Claw
 title: "Twitch"
 ---
 
 # Twitch (plugin)
 
-Twitch chat support via IRC connection. OpenClaw connects as a Twitch user (bot account) to receive and send messages in channels.
+Twitch chat support via IRC connection. Ava-Claw connects as a Twitch user (bot account) to receive and send messages in channels.
 
 ## Plugin required
 
@@ -16,7 +16,7 @@ Twitch ships as a plugin and is not bundled with the core install.
 Install via CLI (npm registry):
 
 ```bash
-openclaw plugins install @openclaw/twitch
+openclaw plugins install @avadisabelle/ava-claw-twitch
 ```
 
 Local checkout (when running from a git repo):

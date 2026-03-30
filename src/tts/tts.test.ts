@@ -1,4 +1,4 @@
-import { completeSimple, type AssistantMessage } from "@mariozechner/pi-ai";
+import { completeSimple, type AssistantMessage } from "@avadisabelle/ava-pi-ai";
 import { describe, expect, it, vi, beforeEach } from "vitest";
 import { ensureCustomApiRegistered } from "../agents/custom-api-registry.js";
 import { getApiKeyForModel } from "../agents/model-auth.js";
@@ -7,15 +7,15 @@ import type { OpenClawConfig } from "../config/config.js";
 import { withEnv } from "../test-utils/env.js";
 import * as tts from "./tts.js";
 
-vi.mock("@mariozechner/pi-ai", async (importOriginal) => {
-  const original = await importOriginal<typeof import("@mariozechner/pi-ai")>();
+vi.mock("@avadisabelle/ava-pi-ai", async (importOriginal) => {
+  const original = await importOriginal<typeof import("@avadisabelle/ava-pi-ai")>();
   return {
     ...original,
     completeSimple: vi.fn(),
   };
 });
 
-vi.mock("@mariozechner/pi-ai/oauth", () => ({
+vi.mock("@avadisabelle/ava-pi-ai/oauth", () => ({
   getOAuthProviders: () => [],
   getOAuthApiKey: vi.fn(async () => null),
 }));

@@ -1,8 +1,8 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { SessionEntry as PiSessionEntry, SessionHeader } from "@mariozechner/pi-coding-agent";
-import { SessionManager } from "@mariozechner/pi-coding-agent";
+import type { SessionEntry as PiSessionEntry, SessionHeader } from "@avadisabelle/ava-pi-coding-agent";
+import { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import {
   resolveDefaultSessionStorePath,
   resolveSessionFilePath,
@@ -36,7 +36,7 @@ function generateHtml(sessionData: SessionData): string {
   const markedJs = loadTemplate(path.join("vendor", "marked.min.js"));
   const hljsJs = loadTemplate(path.join("vendor", "highlight.min.js"));
 
-  // Use pi-mono dark theme colors (matching their theme/dark.json)
+  // Use ava-pi dark theme colors (matching their theme/dark.json)
   const themeVars = `
     --cyan: #00d7ff;
     --blue: #5f87ff;

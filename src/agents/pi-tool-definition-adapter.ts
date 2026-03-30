@@ -2,8 +2,8 @@ import type {
   AgentTool,
   AgentToolResult,
   AgentToolUpdateCallback,
-} from "@mariozechner/pi-agent-core";
-import type { ToolDefinition } from "@mariozechner/pi-coding-agent";
+} from "@avadisabelle/ava-pi-agent-core";
+import type { ToolDefinition } from "@avadisabelle/ava-pi-coding-agent";
 import { logDebug, logError } from "../logger.js";
 import { isPlainObject } from "../utils.js";
 import type { ClientToolDefinition } from "./pi-embedded-runner/run/params.js";

@@ -18,7 +18,7 @@
 <li>Browser/agents: add built-in <code>profile="user"</code> for the logged-in host browser and <code>profile="chrome-relay"</code> for the extension relay, so agent browser calls can prefer the real signed-in browser without the extra <code>browserSession</code> selector.</li>
 <li>Browser/act automation: add batched actions, selector targeting, and delayed clicks for browser act requests with normalized batch dispatch. Thanks @vincentkoc.</li>
 <li>Docker/timezone override: add <code>OPENCLAW_TZ</code> so <code>docker-setup.sh</code> can pin gateway and CLI containers to a chosen IANA timezone instead of inheriting the daemon default. (#34119) Thanks @Lanfei.</li>
-<li>Dependencies/pi: bump <code>@mariozechner/pi-agent-core</code>, <code>@mariozechner/pi-ai</code>, <code>@mariozechner/pi-coding-agent</code>, and <code>@mariozechner/pi-tui</code> to <code>0.58.0</code>.</li>
+<li>Dependencies/pi: bump <code>@avadisabelle/ava-pi-agent-core</code>, <code>@avadisabelle/ava-pi-ai</code>, <code>@avadisabelle/ava-pi-coding-agent</code>, and <code>@avadisabelle/ava-pi-tui</code> to <code>0.58.0</code>.</li>
 </ul>
 <h3>Fixes</h3>
 <ul>

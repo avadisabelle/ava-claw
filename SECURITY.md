@@ -6,10 +6,10 @@ If you believe you've found a security issue in OpenClaw, please report it priva
 
 Report vulnerabilities directly to the repository where the issue lives:
 
-- **Core CLI and gateway** — [openclaw/openclaw](https://github.com/openclaw/openclaw)
-- **macOS desktop app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/macos)
-- **iOS app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/ios)
-- **Android app** — [openclaw/openclaw](https://github.com/openclaw/openclaw) (apps/android)
+- **Core CLI and gateway** — [avadisabelle/ava-claw](https://github.com/avadisabelle/ava-claw)
+- **macOS desktop app** — [avadisabelle/ava-claw](https://github.com/avadisabelle/ava-claw) (apps/macos)
+- **iOS app** — [avadisabelle/ava-claw](https://github.com/avadisabelle/ava-claw) (apps/ios)
+- **Android app** — [avadisabelle/ava-claw](https://github.com/avadisabelle/ava-claw) (apps/android)
 - **ClawHub** — [openclaw/clawhub](https://github.com/openclaw/clawhub)
 - **Trust and threat model** — [openclaw/trust](https://github.com/openclaw/trust)
 
@@ -276,7 +276,7 @@ Example secure Docker run:
 ```bash
 docker run --read-only --cap-drop=ALL \
   -v openclaw-data:/app/data \
-  openclaw/openclaw:latest
+  avadisabelle/ava-claw:latest
 ```
 
 ## Security Scanning

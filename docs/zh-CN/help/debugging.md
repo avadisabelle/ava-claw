@@ -105,9 +105,9 @@ OPENCLAW_PROFILE=dev openclaw gateway --dev --reset
 openclaw gateway stop
 ```
 
-## 原始流日志（OpenClaw）
+## 原始流日志（Ava-Claw）
 
-OpenClaw 可以在任何过滤/格式化之前记录**原始助手流**。
+Ava-Claw 可以在任何过滤/格式化之前记录**原始助手流**。
 这是查看推理是否作为纯文本增量到达（或作为单独的思考块）的最佳方式。
 
 通过 CLI 启用：
@@ -133,9 +133,9 @@ OPENCLAW_RAW_STREAM_PATH=~/.openclaw/logs/raw-stream.jsonl
 
 `~/.openclaw/logs/raw-stream.jsonl`
 
-## 原始块日志（pi-mono）
+## 原始块日志（ava-pi）
 
-要在解析为块之前捕获**原始 OpenAI 兼容块**，pi-mono 暴露了一个单独的日志记录器：
+要在解析为块之前捕获**原始 OpenAI 兼容块**，ava-pi 暴露了一个单独的日志记录器：
 
 ```bash
 PI_RAW_STREAM=1
@@ -144,14 +144,14 @@ PI_RAW_STREAM=1
 可选路径：
 
 ```bash
-PI_RAW_STREAM_PATH=~/.pi-mono/logs/raw-openai-completions.jsonl
+PI_RAW_STREAM_PATH=~/.ava-pi/logs/raw-openai-completions.jsonl
 ```
 
 默认文件：
 
-`~/.pi-mono/logs/raw-openai-completions.jsonl`
+`~/.ava-pi/logs/raw-openai-completions.jsonl`
 
-> 注意：这仅由使用 pi-mono 的 `openai-completions` 提供商的进程发出。
+> 注意：这仅由使用 ava-pi 的 `openai-completions` 提供商的进程发出。
 
 ## 安全注意事项
 

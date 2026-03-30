@@ -6,15 +6,15 @@
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import type { EditToolOptions } from "@mariozechner/pi-coding-agent";
+import type { EditToolOptions } from "@avadisabelle/ava-pi-coding-agent";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
   executeThrows: true,
 }));
 
-vi.mock("@mariozechner/pi-coding-agent", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@mariozechner/pi-coding-agent")>();
+vi.mock("@avadisabelle/ava-pi-coding-agent", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@avadisabelle/ava-pi-coding-agent")>();
   return {
     ...actual,
     createEditTool: (cwd: string, options?: EditToolOptions) => {

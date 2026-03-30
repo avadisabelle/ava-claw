@@ -16,11 +16,11 @@ const resolveSessionAuthProfileOverrideMock = vi.fn();
 const getActiveEmbeddedRunSnapshotMock = vi.fn();
 const diagDebugMock = vi.fn();
 
-vi.mock("@mariozechner/pi-ai", () => ({
+vi.mock("@avadisabelle/ava-pi-ai", () => ({
   streamSimple: (...args: unknown[]) => streamSimpleMock(...args),
 }));
 
-vi.mock("@mariozechner/pi-coding-agent", () => ({
+vi.mock("@avadisabelle/ava-pi-coding-agent", () => ({
   SessionManager: {
     open: () => ({
       getLeafEntry: getLeafEntryMock,

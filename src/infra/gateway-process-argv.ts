@@ -30,6 +30,8 @@ export function isGatewayArgv(args: string[], opts?: { allowGatewayBinary?: bool
   return (
     exe.endsWith("/openclaw") ||
     exe === "openclaw" ||
-    (opts?.allowGatewayBinary === true && exe.endsWith("/openclaw-gateway"))
+    exe.endsWith("/ava-claw") ||
+    exe === "ava-claw" ||
+    (opts?.allowGatewayBinary === true && (exe.endsWith("/openclaw-gateway") || exe.endsWith("/ava-claw-gateway")))
   );
 }

@@ -34,7 +34,7 @@ vi.mock("../config/config.js", async (importOriginal) => {
   };
 });
 
-vi.mock("@mariozechner/pi-ai/oauth", () => ({
+vi.mock("@avadisabelle/ava-pi-ai/oauth", () => ({
   getOAuthApiKey: () => "",
   getOAuthProviders: () => [],
 }));

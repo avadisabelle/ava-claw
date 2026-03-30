@@ -15,7 +15,7 @@ x-i18n:
 
 # Doctor
 
-`openclaw doctor` 是 OpenClaw 的修复 + 迁移工具。它修复过时的配置/状态，检查健康状况，并提供可操作的修复步骤。
+`openclaw doctor` 是 Ava-Claw 的修复 + 迁移工具。它修复过时的配置/状态，检查健康状况，并提供可操作的修复步骤。
 
 ## 快速开始
 
@@ -59,7 +59,7 @@ openclaw doctor --deep
 如果你想在写入前查看更改，请先打开配置文件：
 
 ```bash
-cat ~/.openclaw/openclaw.json
+cat ~/.avadisabelle/ava-claw.json
 ```
 
 ## 功能概述
@@ -106,7 +106,7 @@ Doctor 将：
 
 - 解释找到了哪些遗留键。
 - 显示它应用的迁移。
-- 使用更新后的 schema 重写 `~/.openclaw/openclaw.json`。
+- 使用更新后的 schema 重写 `~/.avadisabelle/ava-claw.json`。
 
 Gateway 网关在检测到遗留配置格式时也会在启动时自动运行 doctor 迁移，因此过时的配置无需手动干预即可修复。
 
@@ -129,7 +129,7 @@ Gateway 网关在检测到遗留配置格式时也会在启动时自动运行 do
 
 ### 2b）OpenCode Zen 提供商覆盖
 
-如果你手动添加了 `models.providers.opencode`（或 `opencode-zen`），它会覆盖 `@mariozechner/pi-ai` 中内置的 OpenCode Zen 目录。这可能会强制将每个模型放到单个 API 上或将成本归零。Doctor 会发出警告，以便你可以移除覆盖并恢复每模型 API 路由 + 成本。
+如果你手动添加了 `models.providers.opencode`（或 `opencode-zen`），它会覆盖 `@avadisabelle/ava-pi-ai` 中内置的 OpenCode Zen 目录。这可能会强制将每个模型放到单个 API 上或将成本归零。Doctor 会发出警告，以便你可以移除覆盖并恢复每模型 API 路由 + 成本。
 
 ### 3）遗留状态迁移（磁盘布局）
 
@@ -158,7 +158,7 @@ Doctor 检查：
 - **主会话"1 行 JSONL"**：当主记录只有一行时标记（历史未累积）。
 - **多个状态目录**：当多个 `~/.openclaw` 文件夹存在于不同 home 目录或当 `OPENCLAW_STATE_DIR` 指向别处时发出警告（历史可能在安装之间分裂）。
 - **远程模式提醒**：如果 `gateway.mode=remote`，doctor 会提醒你在远程主机上运行它（状态在那里）。
-- **配置文件权限**：当 `~/.openclaw/openclaw.json` 对组/其他用户可读时发出警告，并提供收紧到 `600` 的选项。
+- **配置文件权限**：当 `~/.avadisabelle/ava-claw.json` 对组/其他用户可读时发出警告，并提供收紧到 `600` 的选项。
 
 ### 5）模型认证健康（OAuth 过期）
 
@@ -180,8 +180,8 @@ Doctor 还会报告由于以下原因暂时不可用的认证配置文件：
 
 ### 8）Gateway 网关服务迁移和清理提示
 
-Doctor 检测遗留的 Gateway 网关服务（launchd/systemd/schtasks），并提供删除它们并使用当前 Gateway 网关端口安装 OpenClaw 服务的选项。它还可以扫描额外的类 Gateway 网关服务并打印清理提示。
-配置文件命名的 OpenClaw Gateway 网关服务被视为一等公民，不会被标记为"额外的"。
+Doctor 检测遗留的 Gateway 网关服务（launchd/systemd/schtasks），并提供删除它们并使用当前 Gateway 网关端口安装 Ava-Claw 服务的选项。它还可以扫描额外的类 Gateway 网关服务并打印清理提示。
+配置文件命名的 Ava-Claw Gateway 网关服务被视为一等公民，不会被标记为"额外的"。
 
 ### 9）安全警告
 

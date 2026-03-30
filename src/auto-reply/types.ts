@@ -1,4 +1,4 @@
-import type { ImageContent } from "@mariozechner/pi-ai";
+import type { ImageContent } from "@avadisabelle/ava-pi-ai";
 import type { TypingController } from "./reply/typing.js";
 
 export type BlockReplyContext = {

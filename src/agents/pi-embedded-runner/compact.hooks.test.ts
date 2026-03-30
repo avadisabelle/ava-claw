@@ -88,12 +88,12 @@ vi.mock("../../hooks/internal-hooks.js", async () => {
   };
 });
 
-vi.mock("@mariozechner/pi-ai/oauth", () => ({
+vi.mock("@avadisabelle/ava-pi-ai/oauth", () => ({
   getOAuthApiKey: vi.fn(),
   getOAuthProviders: vi.fn(() => []),
 }));
 
-vi.mock("@mariozechner/pi-coding-agent", () => {
+vi.mock("@avadisabelle/ava-pi-coding-agent", () => {
   return {
     AuthStorage: class AuthStorage {},
     ModelRegistry: class ModelRegistry {},
@@ -326,7 +326,7 @@ vi.mock("./utils.js", () => ({
   resolveExecToolDefaults: vi.fn(() => undefined),
 }));
 
-import { getApiProvider, unregisterApiProviders } from "@mariozechner/pi-ai";
+import { getApiProvider, unregisterApiProviders } from "@avadisabelle/ava-pi-ai";
 import { getCustomApiRegistrySourceId } from "../custom-api-registry.js";
 import { compactEmbeddedPiSessionDirect, compactEmbeddedPiSession } from "./compact.js";
 

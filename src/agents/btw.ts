@@ -5,8 +5,8 @@ import {
   type ThinkingLevel as SimpleThinkingLevel,
   type Message,
   type Model,
-} from "@mariozechner/pi-ai";
-import { SessionManager } from "@mariozechner/pi-coding-agent";
+} from "@avadisabelle/ava-pi-ai";
+import { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import type { ReasoningLevel, ThinkLevel } from "../auto-reply/thinking.js";
 import type { GetReplyOptions, ReplyPayload } from "../auto-reply/types.js";
 import type { OpenClawConfig } from "../config/config.js";

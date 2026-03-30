@@ -1,4 +1,4 @@
-import { Container, Markdown, Spacer } from "@mariozechner/pi-tui";
+import { Container, Markdown, Spacer } from "@avadisabelle/ava-pi-tui";
 import { markdownTheme } from "../theme/theme.js";
 
 type MarkdownOptions = ConstructorParameters<typeof Markdown>[4];

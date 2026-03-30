@@ -1,4 +1,4 @@
-import type { StreamFn } from "@mariozechner/pi-agent-core";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
 import {
   emptyPluginConfigSchema,
   type OpenClawPluginApi,

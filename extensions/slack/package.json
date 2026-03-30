@@ -1,10 +1,10 @@
 {
-  "name": "@openclaw/slack",
+  "name": "@avadisabelle/ava-claw-slack",
   "version": "2026.3.14",
   "private": true,
   "description": "OpenClaw Slack channel plugin",
   "type": "module",
-  "openclaw": {
+  "ava-claw": {
     "extensions": [
       "./index.ts"
     ]

@@ -1,14 +1,14 @@
 ---
-summary: "Updating OpenClaw safely (global install or source), plus rollback strategy"
+summary: "Updating Ava-Claw safely (global install or source), plus rollback strategy"
 read_when:
-  - Updating OpenClaw
+  - Updating Ava-Claw
   - Something breaks after an update
 title: "Updating"
 ---
 
 # Updating
 
-OpenClaw is moving fast (pre “1.0”). Treat updates like shipping infra: update → run checks → restart (or use `openclaw update`, which restarts) → verify.
+Ava-Claw is moving fast (pre “1.0”). Treat updates like shipping infra: update → run checks → restart (or use `openclaw update`, which restarts) → verify.
 
 ## Recommended: re-run the website installer (upgrade in place)
 
@@ -39,7 +39,7 @@ Notes:
 - Know how you installed: **global** (npm/pnpm) vs **from source** (git clone).
 - Know how your Gateway is running: **foreground terminal** vs **supervised service** (launchd/systemd).
 - Snapshot your tailoring:
-  - Config: `~/.openclaw/openclaw.json`
+  - Config: `~/.avadisabelle/ava-claw.json`
   - Credentials: `~/.openclaw/credentials/`
   - Workspace: `~/.openclaw/workspace`
 
@@ -76,11 +76,11 @@ openclaw update --tag main
 Manual equivalents:
 
 ```bash
-npm i -g github:openclaw/openclaw#main
+npm i -g github:avadisabelle/ava-claw#main
 ```
 
 ```bash
-pnpm add -g github:openclaw/openclaw#main
+pnpm add -g github:avadisabelle/ava-claw#main
 ```
 
 You can also pass an explicit package spec to `--tag` for one-off updates (for example a GitHub ref or tarball URL).
@@ -109,7 +109,7 @@ Auto-updater is **off by default** and is a core Gateway feature (not a plugin).
 
 Behavior:
 
-- `stable`: when a new version is seen, OpenClaw waits `stableDelayHours` and then applies a deterministic per-install jitter in `stableJitterHours` (spread rollout).
+- `stable`: when a new version is seen, Ava-Claw waits `stableDelayHours` and then applies a deterministic per-install jitter in `stableJitterHours` (spread rollout).
 - `beta`: checks on `betaCheckIntervalHours` cadence (default: hourly) and applies when an update is available.
 - `dev`: no automatic apply; use manual `openclaw update`.
 
@@ -179,7 +179,7 @@ openclaw health
 
 Notes:
 
-- `pnpm build` matters when you run the packaged `openclaw` binary ([`openclaw.mjs`](https://github.com/openclaw/openclaw/blob/main/openclaw.mjs)) or use Node to run `dist/`.
+- `pnpm build` matters when you run the packaged `openclaw` binary ([`openclaw.mjs`](https://github.com/avadisabelle/ava-claw/blob/main/openclaw.mjs)) or use Node to run `dist/`.
 - If you run from a repo checkout without a global install, use `pnpm openclaw ...` for CLI commands.
 - If you run directly from TypeScript (`pnpm openclaw ...`), a rebuild is usually unnecessary, but **config migrations still apply** → run doctor.
 - Switching between global and git installs is easy: install the other flavor, then run `openclaw doctor` so the gateway service entrypoint is rewritten to the current install.
@@ -195,7 +195,7 @@ Typical things it does:
 - Migrate deprecated config keys / legacy config file locations.
 - Audit DM policies and warn on risky “open” settings.
 - Check Gateway health and can offer to restart.
-- Detect and migrate older gateway services (launchd/systemd; legacy schtasks) to current OpenClaw services.
+- Detect and migrate older gateway services (launchd/systemd; legacy schtasks) to current Ava-Claw services.
 - On Linux, ensure systemd user lingering (so the Gateway survives logout).
 
 Details: [Doctor](/gateway/doctor)

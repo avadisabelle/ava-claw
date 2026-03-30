@@ -1,4 +1,4 @@
-import type { AgentEvent } from "@mariozechner/pi-agent-core";
+import type { AgentEvent } from "@avadisabelle/ava-pi-agent-core";
 import { emitAgentEvent } from "../infra/agent-events.js";
 import {
   buildExecApprovalPendingReplyPayload,

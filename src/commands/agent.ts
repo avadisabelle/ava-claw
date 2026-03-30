@@ -1,5 +1,5 @@
 import fs from "node:fs/promises";
-import { SessionManager } from "@mariozechner/pi-coding-agent";
+import { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import { getAcpSessionManager } from "../acp/control-plane/manager.js";
 import { resolveAcpAgentPolicyError, resolveAcpDispatchPolicyError } from "../acp/policy.js";
 import { toAcpRuntimeError } from "../acp/runtime/errors.js";

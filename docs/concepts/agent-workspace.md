@@ -26,7 +26,7 @@ inside a sandbox workspace under `~/.openclaw/sandboxes`, not your host workspac
 - Default: `~/.openclaw/workspace`
 - If `OPENCLAW_PROFILE` is set and not `"default"`, the default becomes
   `~/.openclaw/workspace-<profile>`.
-- Override in `~/.openclaw/openclaw.json`:
+- Override in `~/.avadisabelle/ava-claw.json`:
 
 ```json5
 {
@@ -63,7 +63,7 @@ If you intentionally keep multiple workspaces, make sure
 
 ## Workspace file map (what each file means)
 
-These are the standard files OpenClaw expects inside the workspace:
+These are the standard files Ava-Claw expects inside the workspace:
 
 - `AGENTS.md`
   - Operating instructions for the agent and how it should use memory.
@@ -116,7 +116,7 @@ See [Memory](/concepts/memory) for the workflow and automatic memory flush.
 - `canvas/` (optional)
   - Canvas UI files for node displays (for example `canvas/index.html`).
 
-If any bootstrap file is missing, OpenClaw injects a "missing file" marker into
+If any bootstrap file is missing, Ava-Claw injects a "missing file" marker into
 the session and continues. Large bootstrap files are truncated when injected;
 adjust limits with `agents.defaults.bootstrapMaxChars` (default: 20000) and
 `agents.defaults.bootstrapTotalMaxChars` (default: 150000).
@@ -127,7 +127,7 @@ files.
 
 These live under `~/.openclaw/` and should NOT be committed to the workspace repo:
 
-- `~/.openclaw/openclaw.json` (config)
+- `~/.avadisabelle/ava-claw.json` (config)
 - `~/.openclaw/credentials/` (OAuth tokens, API keys)
 - `~/.openclaw/agents/<agentId>/sessions/` (session transcripts + metadata)
 - `~/.openclaw/skills/` (managed skills)
@@ -223,7 +223,7 @@ Suggested `.gitignore` starter:
 ## Moving the workspace to a new machine
 
 1. Clone the repo to the desired path (default `~/.openclaw/workspace`).
-2. Set `agents.defaults.workspace` to that path in `~/.openclaw/openclaw.json`.
+2. Set `agents.defaults.workspace` to that path in `~/.avadisabelle/ava-claw.json`.
 3. Run `openclaw setup --workspace <path>` to seed any missing files.
 4. If you need sessions, copy `~/.openclaw/agents/<agentId>/sessions/` from the
    old machine separately.

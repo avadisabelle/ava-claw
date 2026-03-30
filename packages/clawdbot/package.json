@@ -1,5 +1,5 @@
 {
-  "name": "clawdbot",
+  "name": "@avadisabelle/ava-clawdbot",
   "version": "2026.2.12",
   "description": "Compatibility shim that forwards to openclaw",
   "bin": {
@@ -11,6 +11,6 @@
     "./cli-entry": "./bin/clawdbot.js"
   },
   "dependencies": {
-    "openclaw": "workspace:*"
+    "@avadisabelle/ava-claw": "workspace:*"
   }
 }

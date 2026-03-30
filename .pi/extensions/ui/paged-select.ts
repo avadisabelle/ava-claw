@@ -1,4 +1,4 @@
-import { DynamicBorder } from "@mariozechner/pi-coding-agent";
+import { DynamicBorder } from "@avadisabelle/ava-pi-coding-agent";
 import {
   Container,
   Key,
@@ -6,7 +6,7 @@ import {
   type SelectItem,
   SelectList,
   Text,
-} from "@mariozechner/pi-tui";
+} from "@avadisabelle/ava-pi-tui";
 
 type CustomUiContext = {
   ui: {

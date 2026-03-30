@@ -44507,7 +44507,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/bluebubbles",
+      "label": "@avadisabelle/ava-claw-bluebubbles",
       "help": "OpenClaw BlueBubbles channel plugin (plugin: bluebubbles)",
       "hasChildren": true
     },
@@ -44521,7 +44521,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/bluebubbles Config",
+      "label": "@avadisabelle/ava-claw-bluebubbles Config",
       "help": "Plugin-defined config payload for bluebubbles.",
       "hasChildren": false
     },
@@ -44535,7 +44535,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/bluebubbles",
+      "label": "Enable @avadisabelle/ava-claw-bluebubbles",
       "hasChildren": false
     },
     {
@@ -44576,7 +44576,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/copilot-proxy",
+      "label": "@avadisabelle/ava-claw-copilot-proxy",
       "help": "OpenClaw Copilot Proxy provider plugin (plugin: copilot-proxy)",
       "hasChildren": true
     },
@@ -44590,7 +44590,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/copilot-proxy Config",
+      "label": "@avadisabelle/ava-claw-copilot-proxy Config",
       "help": "Plugin-defined config payload for copilot-proxy.",
       "hasChildren": false
     },
@@ -44604,7 +44604,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/copilot-proxy",
+      "label": "Enable @avadisabelle/ava-claw-copilot-proxy",
       "hasChildren": false
     },
     {
@@ -44728,7 +44728,7 @@
       "tags": [
         "observability"
       ],
-      "label": "@openclaw/diagnostics-otel",
+      "label": "@avadisabelle/ava-claw-diagnostics-otel",
       "help": "OpenClaw diagnostics OpenTelemetry exporter (plugin: diagnostics-otel)",
       "hasChildren": true
     },
@@ -44742,7 +44742,7 @@
       "tags": [
         "observability"
       ],
-      "label": "@openclaw/diagnostics-otel Config",
+      "label": "@avadisabelle/ava-claw-diagnostics-otel Config",
       "help": "Plugin-defined config payload for diagnostics-otel.",
       "hasChildren": false
     },
@@ -44756,7 +44756,7 @@
       "tags": [
         "observability"
       ],
-      "label": "Enable @openclaw/diagnostics-otel",
+      "label": "Enable @avadisabelle/ava-claw-diagnostics-otel",
       "hasChildren": false
     },
     {
@@ -45203,7 +45203,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/discord",
+      "label": "@avadisabelle/ava-claw-discord",
       "help": "OpenClaw Discord channel plugin (plugin: discord)",
       "hasChildren": true
     },
@@ -45217,7 +45217,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/discord Config",
+      "label": "@avadisabelle/ava-claw-discord Config",
       "help": "Plugin-defined config payload for discord.",
       "hasChildren": false
     },
@@ -45231,7 +45231,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/discord",
+      "label": "Enable @avadisabelle/ava-claw-discord",
       "hasChildren": false
     },
     {
@@ -45272,7 +45272,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/feishu",
+      "label": "@avadisabelle/ava-claw-feishu",
       "help": "OpenClaw Feishu/Lark channel plugin (community maintained by @m1heng) (plugin: feishu)",
       "hasChildren": true
     },
@@ -45286,7 +45286,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/feishu Config",
+      "label": "@avadisabelle/ava-claw-feishu Config",
       "help": "Plugin-defined config payload for feishu.",
       "hasChildren": false
     },
@@ -45300,7 +45300,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/feishu",
+      "label": "Enable @avadisabelle/ava-claw-feishu",
       "hasChildren": false
     },
     {
@@ -45341,7 +45341,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/google-gemini-cli-auth",
+      "label": "@avadisabelle/ava-claw-google-gemini-cli-auth",
       "help": "OpenClaw Gemini CLI OAuth provider plugin (plugin: google-gemini-cli-auth)",
       "hasChildren": true
     },
@@ -45355,7 +45355,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/google-gemini-cli-auth Config",
+      "label": "@avadisabelle/ava-claw-google-gemini-cli-auth Config",
       "help": "Plugin-defined config payload for google-gemini-cli-auth.",
       "hasChildren": false
     },
@@ -45369,7 +45369,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/google-gemini-cli-auth",
+      "label": "Enable @avadisabelle/ava-claw-google-gemini-cli-auth",
       "hasChildren": false
     },
     {
@@ -45410,7 +45410,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/googlechat",
+      "label": "@avadisabelle/ava-claw-googlechat",
       "help": "OpenClaw Google Chat channel plugin (plugin: googlechat)",
       "hasChildren": true
     },
@@ -45424,7 +45424,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/googlechat Config",
+      "label": "@avadisabelle/ava-claw-googlechat Config",
       "help": "Plugin-defined config payload for googlechat.",
       "hasChildren": false
     },
@@ -45438,7 +45438,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/googlechat",
+      "label": "Enable @avadisabelle/ava-claw-googlechat",
       "hasChildren": false
     },
     {
@@ -45479,7 +45479,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/imessage",
+      "label": "@avadisabelle/ava-claw-imessage",
       "help": "OpenClaw iMessage channel plugin (plugin: imessage)",
       "hasChildren": true
     },
@@ -45493,7 +45493,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/imessage Config",
+      "label": "@avadisabelle/ava-claw-imessage Config",
       "help": "Plugin-defined config payload for imessage.",
       "hasChildren": false
     },
@@ -45507,7 +45507,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/imessage",
+      "label": "Enable @avadisabelle/ava-claw-imessage",
       "hasChildren": false
     },
     {
@@ -45548,7 +45548,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/irc",
+      "label": "@avadisabelle/ava-claw-irc",
       "help": "OpenClaw IRC channel plugin (plugin: irc)",
       "hasChildren": true
     },
@@ -45562,7 +45562,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/irc Config",
+      "label": "@avadisabelle/ava-claw-irc Config",
       "help": "Plugin-defined config payload for irc.",
       "hasChildren": false
     },
@@ -45576,7 +45576,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/irc",
+      "label": "Enable @avadisabelle/ava-claw-irc",
       "hasChildren": false
     },
     {
@@ -45617,7 +45617,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/line",
+      "label": "@avadisabelle/ava-claw-line",
       "help": "OpenClaw LINE channel plugin (plugin: line)",
       "hasChildren": true
     },
@@ -45631,7 +45631,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/line Config",
+      "label": "@avadisabelle/ava-claw-line Config",
       "help": "Plugin-defined config payload for line.",
       "hasChildren": false
     },
@@ -45645,7 +45645,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/line",
+      "label": "Enable @avadisabelle/ava-claw-line",
       "hasChildren": false
     },
     {
@@ -45894,7 +45894,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/matrix",
+      "label": "@avadisabelle/ava-claw-matrix",
       "help": "OpenClaw Matrix channel plugin (plugin: matrix)",
       "hasChildren": true
     },
@@ -45908,7 +45908,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/matrix Config",
+      "label": "@avadisabelle/ava-claw-matrix Config",
       "help": "Plugin-defined config payload for matrix.",
       "hasChildren": false
     },
@@ -45922,7 +45922,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/matrix",
+      "label": "Enable @avadisabelle/ava-claw-matrix",
       "hasChildren": false
     },
     {
@@ -45963,7 +45963,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/mattermost",
+      "label": "@avadisabelle/ava-claw-mattermost",
       "help": "OpenClaw Mattermost channel plugin (plugin: mattermost)",
       "hasChildren": true
     },
@@ -45977,7 +45977,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/mattermost Config",
+      "label": "@avadisabelle/ava-claw-mattermost Config",
       "help": "Plugin-defined config payload for mattermost.",
       "hasChildren": false
     },
@@ -45991,7 +45991,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/mattermost",
+      "label": "Enable @avadisabelle/ava-claw-mattermost",
       "hasChildren": false
     },
     {
@@ -46032,7 +46032,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/memory-core",
+      "label": "@avadisabelle/ava-claw-memory-core",
       "help": "OpenClaw core memory search plugin (plugin: memory-core)",
       "hasChildren": true
     },
@@ -46046,7 +46046,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/memory-core Config",
+      "label": "@avadisabelle/ava-claw-memory-core Config",
       "help": "Plugin-defined config payload for memory-core.",
       "hasChildren": false
     },
@@ -46060,7 +46060,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/memory-core",
+      "label": "Enable @avadisabelle/ava-claw-memory-core",
       "hasChildren": false
     },
     {
@@ -46101,7 +46101,7 @@
       "tags": [
         "storage"
       ],
-      "label": "@openclaw/memory-lancedb",
+      "label": "@avadisabelle/ava-claw-memory-lancedb",
       "help": "OpenClaw LanceDB-backed long-term memory plugin with auto-recall/capture (plugin: memory-lancedb)",
       "hasChildren": true
     },
@@ -46115,7 +46115,7 @@
       "tags": [
         "storage"
       ],
-      "label": "@openclaw/memory-lancedb Config",
+      "label": "@avadisabelle/ava-claw-memory-lancedb Config",
       "help": "Plugin-defined config payload for memory-lancedb.",
       "hasChildren": true
     },
@@ -46258,7 +46258,7 @@
       "tags": [
         "storage"
       ],
-      "label": "Enable @openclaw/memory-lancedb",
+      "label": "Enable @avadisabelle/ava-claw-memory-lancedb",
       "hasChildren": false
     },
     {
@@ -46299,7 +46299,7 @@
       "tags": [
         "performance"
       ],
-      "label": "@openclaw/minimax-portal-auth",
+      "label": "@avadisabelle/ava-claw-minimax-portal-auth",
       "help": "OpenClaw MiniMax Portal OAuth provider plugin (plugin: minimax-portal-auth)",
       "hasChildren": true
     },
@@ -46313,7 +46313,7 @@
       "tags": [
         "performance"
       ],
-      "label": "@openclaw/minimax-portal-auth Config",
+      "label": "@avadisabelle/ava-claw-minimax-portal-auth Config",
       "help": "Plugin-defined config payload for minimax-portal-auth.",
       "hasChildren": false
     },
@@ -46327,7 +46327,7 @@
       "tags": [
         "performance"
       ],
-      "label": "Enable @openclaw/minimax-portal-auth",
+      "label": "Enable @avadisabelle/ava-claw-minimax-portal-auth",
       "hasChildren": false
     },
     {
@@ -46368,7 +46368,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/msteams",
+      "label": "@avadisabelle/ava-claw-msteams",
       "help": "OpenClaw Microsoft Teams channel plugin (plugin: msteams)",
       "hasChildren": true
     },
@@ -46382,7 +46382,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/msteams Config",
+      "label": "@avadisabelle/ava-claw-msteams Config",
       "help": "Plugin-defined config payload for msteams.",
       "hasChildren": false
     },
@@ -46396,7 +46396,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/msteams",
+      "label": "Enable @avadisabelle/ava-claw-msteams",
       "hasChildren": false
     },
     {
@@ -46437,7 +46437,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nextcloud-talk",
+      "label": "@avadisabelle/ava-claw-nextcloud-talk",
       "help": "OpenClaw Nextcloud Talk channel plugin (plugin: nextcloud-talk)",
       "hasChildren": true
     },
@@ -46451,7 +46451,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nextcloud-talk Config",
+      "label": "@avadisabelle/ava-claw-nextcloud-talk Config",
       "help": "Plugin-defined config payload for nextcloud-talk.",
       "hasChildren": false
     },
@@ -46465,7 +46465,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/nextcloud-talk",
+      "label": "Enable @avadisabelle/ava-claw-nextcloud-talk",
       "hasChildren": false
     },
     {
@@ -46506,7 +46506,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nostr",
+      "label": "@avadisabelle/ava-claw-nostr",
       "help": "OpenClaw Nostr channel plugin for NIP-04 encrypted DMs (plugin: nostr)",
       "hasChildren": true
     },
@@ -46520,7 +46520,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/nostr Config",
+      "label": "@avadisabelle/ava-claw-nostr Config",
       "help": "Plugin-defined config payload for nostr.",
       "hasChildren": false
     },
@@ -46534,7 +46534,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/nostr",
+      "label": "Enable @avadisabelle/ava-claw-nostr",
       "hasChildren": false
     },
     {
@@ -46575,7 +46575,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/ollama-provider",
+      "label": "@avadisabelle/ava-claw-ollama-provider",
       "help": "OpenClaw Ollama provider plugin (plugin: ollama)",
       "hasChildren": true
     },
@@ -46589,7 +46589,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/ollama-provider Config",
+      "label": "@avadisabelle/ava-claw-ollama-provider Config",
       "help": "Plugin-defined config payload for ollama.",
       "hasChildren": false
     },
@@ -46603,7 +46603,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/ollama-provider",
+      "label": "Enable @avadisabelle/ava-claw-ollama-provider",
       "hasChildren": false
     },
     {
@@ -46851,7 +46851,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/sglang-provider",
+      "label": "@avadisabelle/ava-claw-sglang-provider",
       "help": "OpenClaw SGLang provider plugin (plugin: sglang)",
       "hasChildren": true
     },
@@ -46865,7 +46865,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/sglang-provider Config",
+      "label": "@avadisabelle/ava-claw-sglang-provider Config",
       "help": "Plugin-defined config payload for sglang.",
       "hasChildren": false
     },
@@ -46879,7 +46879,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/sglang-provider",
+      "label": "Enable @avadisabelle/ava-claw-sglang-provider",
       "hasChildren": false
     },
     {
@@ -46920,7 +46920,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/signal",
+      "label": "@avadisabelle/ava-claw-signal",
       "help": "OpenClaw Signal channel plugin (plugin: signal)",
       "hasChildren": true
     },
@@ -46934,7 +46934,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/signal Config",
+      "label": "@avadisabelle/ava-claw-signal Config",
       "help": "Plugin-defined config payload for signal.",
       "hasChildren": false
     },
@@ -46948,7 +46948,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/signal",
+      "label": "Enable @avadisabelle/ava-claw-signal",
       "hasChildren": false
     },
     {
@@ -46989,7 +46989,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/slack",
+      "label": "@avadisabelle/ava-claw-slack",
       "help": "OpenClaw Slack channel plugin (plugin: slack)",
       "hasChildren": true
     },
@@ -47003,7 +47003,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/slack Config",
+      "label": "@avadisabelle/ava-claw-slack Config",
       "help": "Plugin-defined config payload for slack.",
       "hasChildren": false
     },
@@ -47017,7 +47017,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/slack",
+      "label": "Enable @avadisabelle/ava-claw-slack",
       "hasChildren": false
     },
     {
@@ -47058,7 +47058,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/synology-chat",
+      "label": "@avadisabelle/ava-claw-synology-chat",
       "help": "Synology Chat channel plugin for OpenClaw (plugin: synology-chat)",
       "hasChildren": true
     },
@@ -47072,7 +47072,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/synology-chat Config",
+      "label": "@avadisabelle/ava-claw-synology-chat Config",
       "help": "Plugin-defined config payload for synology-chat.",
       "hasChildren": false
     },
@@ -47086,7 +47086,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/synology-chat",
+      "label": "Enable @avadisabelle/ava-claw-synology-chat",
       "hasChildren": false
     },
     {
@@ -47196,7 +47196,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/telegram",
+      "label": "@avadisabelle/ava-claw-telegram",
       "help": "OpenClaw Telegram channel plugin (plugin: telegram)",
       "hasChildren": true
     },
@@ -47210,7 +47210,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/telegram Config",
+      "label": "@avadisabelle/ava-claw-telegram Config",
       "help": "Plugin-defined config payload for telegram.",
       "hasChildren": false
     },
@@ -47224,7 +47224,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/telegram",
+      "label": "Enable @avadisabelle/ava-claw-telegram",
       "hasChildren": false
     },
     {
@@ -47372,7 +47372,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/tlon",
+      "label": "@avadisabelle/ava-claw-tlon",
       "help": "OpenClaw Tlon/Urbit channel plugin (plugin: tlon)",
       "hasChildren": true
     },
@@ -47386,7 +47386,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/tlon Config",
+      "label": "@avadisabelle/ava-claw-tlon Config",
       "help": "Plugin-defined config payload for tlon.",
       "hasChildren": false
     },
@@ -47400,7 +47400,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/tlon",
+      "label": "Enable @avadisabelle/ava-claw-tlon",
       "hasChildren": false
     },
     {
@@ -47441,7 +47441,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/twitch",
+      "label": "@avadisabelle/ava-claw-twitch",
       "help": "OpenClaw Twitch channel plugin (plugin: twitch)",
       "hasChildren": true
     },
@@ -47455,7 +47455,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/twitch Config",
+      "label": "@avadisabelle/ava-claw-twitch Config",
       "help": "Plugin-defined config payload for twitch.",
       "hasChildren": false
     },
@@ -47469,7 +47469,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/twitch",
+      "label": "Enable @avadisabelle/ava-claw-twitch",
       "hasChildren": false
     },
     {
@@ -47510,7 +47510,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/vllm-provider",
+      "label": "@avadisabelle/ava-claw-vllm-provider",
       "help": "OpenClaw vLLM provider plugin (plugin: vllm)",
       "hasChildren": true
     },
@@ -47524,7 +47524,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/vllm-provider Config",
+      "label": "@avadisabelle/ava-claw-vllm-provider Config",
       "help": "Plugin-defined config payload for vllm.",
       "hasChildren": false
     },
@@ -47538,7 +47538,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/vllm-provider",
+      "label": "Enable @avadisabelle/ava-claw-vllm-provider",
       "hasChildren": false
     },
     {
@@ -47579,7 +47579,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/voice-call",
+      "label": "@avadisabelle/ava-claw-voice-call",
       "help": "OpenClaw voice-call plugin (plugin: voice-call)",
       "hasChildren": true
     },
@@ -47593,7 +47593,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/voice-call Config",
+      "label": "@avadisabelle/ava-claw-voice-call Config",
       "help": "Plugin-defined config payload for voice-call.",
       "hasChildren": true
     },
@@ -48968,7 +48968,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/voice-call",
+      "label": "Enable @avadisabelle/ava-claw-voice-call",
       "hasChildren": false
     },
     {
@@ -49009,7 +49009,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/whatsapp",
+      "label": "@avadisabelle/ava-claw-whatsapp",
       "help": "OpenClaw WhatsApp channel plugin (plugin: whatsapp)",
       "hasChildren": true
     },
@@ -49023,7 +49023,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/whatsapp Config",
+      "label": "@avadisabelle/ava-claw-whatsapp Config",
       "help": "Plugin-defined config payload for whatsapp.",
       "hasChildren": false
     },
@@ -49037,7 +49037,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/whatsapp",
+      "label": "Enable @avadisabelle/ava-claw-whatsapp",
       "hasChildren": false
     },
     {
@@ -49078,7 +49078,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalo",
+      "label": "@avadisabelle/ava-claw-zalo",
       "help": "OpenClaw Zalo channel plugin (plugin: zalo)",
       "hasChildren": true
     },
@@ -49092,7 +49092,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalo Config",
+      "label": "@avadisabelle/ava-claw-zalo Config",
       "help": "Plugin-defined config payload for zalo.",
       "hasChildren": false
     },
@@ -49106,7 +49106,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/zalo",
+      "label": "Enable @avadisabelle/ava-claw-zalo",
       "hasChildren": false
     },
     {
@@ -49147,7 +49147,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalouser",
+      "label": "@avadisabelle/ava-claw-zalouser",
       "help": "OpenClaw Zalo Personal Account plugin via native zca-js integration (plugin: zalouser)",
       "hasChildren": true
     },
@@ -49161,7 +49161,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "@openclaw/zalouser Config",
+      "label": "@avadisabelle/ava-claw-zalouser Config",
       "help": "Plugin-defined config payload for zalouser.",
       "hasChildren": false
     },
@@ -49175,7 +49175,7 @@
       "tags": [
         "advanced"
       ],
-      "label": "Enable @openclaw/zalouser",
+      "label": "Enable @avadisabelle/ava-claw-zalouser",
       "hasChildren": false
     },
     {

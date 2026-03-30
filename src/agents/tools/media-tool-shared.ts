@@ -1,4 +1,4 @@
-import { type Api, type Model } from "@mariozechner/pi-ai";
+import { type Api, type Model } from "@avadisabelle/ava-pi-ai";
 import { getDefaultLocalRoots } from "../../../extensions/whatsapp/src/media.js";
 import type { OpenClawConfig } from "../../config/config.js";
 import type { ImageModelConfig } from "./image-tool.helpers.js";

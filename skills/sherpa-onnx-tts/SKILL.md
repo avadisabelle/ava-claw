@@ -66,7 +66,7 @@ Local TTS using the sherpa-onnx offline CLI.
 1. Download the runtime for your OS (extracts into `~/.openclaw/tools/sherpa-onnx-tts/runtime`)
 2. Download a voice model (extracts into `~/.openclaw/tools/sherpa-onnx-tts/models`)
 
-Update `~/.openclaw/openclaw.json`:
+Update `~/.avadisabelle/ava-claw.json`:
 
 ```json5
 {

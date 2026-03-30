@@ -1,5 +1,5 @@
-import type { AssistantMessage, Model, ToolResultMessage } from "@mariozechner/pi-ai";
-import { streamOpenAIResponses } from "@mariozechner/pi-ai";
+import type { AssistantMessage, Model, ToolResultMessage } from "@avadisabelle/ava-pi-ai";
+import { streamOpenAIResponses } from "@avadisabelle/ava-pi-ai";
 import { Type } from "@sinclair/typebox";
 import { describe, expect, it } from "vitest";
 

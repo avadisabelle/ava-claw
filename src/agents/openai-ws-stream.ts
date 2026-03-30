@@ -22,7 +22,7 @@
  */
 
 import { randomUUID } from "node:crypto";
-import type { StreamFn } from "@mariozechner/pi-agent-core";
+import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
 import type {
   AssistantMessage,
   Context,
@@ -30,8 +30,8 @@ import type {
   StopReason,
   TextContent,
   ToolCall,
-} from "@mariozechner/pi-ai";
-import { createAssistantMessageEventStream, streamSimple } from "@mariozechner/pi-ai";
+} from "@avadisabelle/ava-pi-ai";
+import { createAssistantMessageEventStream, streamSimple } from "@avadisabelle/ava-pi-ai";
 import {
   OpenAIWebSocketManager,
   type ContentPart,

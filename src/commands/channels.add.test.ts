@@ -102,7 +102,7 @@ describe("channelsAddCommand", () => {
     setActivePluginRegistry(createTestRegistry());
     const catalogEntry: ChannelPluginCatalogEntry = {
       id: "msteams",
-      pluginId: "@openclaw/msteams-plugin",
+      pluginId: "@avadisabelle/ava-claw-msteams-plugin",
       meta: {
         id: "msteams",
         label: "Microsoft Teams",
@@ -111,7 +111,7 @@ describe("channelsAddCommand", () => {
         blurb: "teams channel",
       },
       install: {
-        npmSpec: "@openclaw/msteams",
+        npmSpec: "@avadisabelle/ava-claw-msteams",
       },
     };
     catalogMocks.listChannelPluginCatalogEntries.mockReturnValue([catalogEntry]);
@@ -154,7 +154,7 @@ describe("channelsAddCommand", () => {
     expect(loadOnboardingPluginRegistrySnapshotForChannel).toHaveBeenCalledWith(
       expect.objectContaining({
         channel: "msteams",
-        pluginId: "@openclaw/msteams-plugin",
+        pluginId: "@avadisabelle/ava-claw-msteams-plugin",
       }),
     );
     expect(configMocks.writeConfigFile).toHaveBeenCalledWith(
@@ -176,7 +176,7 @@ describe("channelsAddCommand", () => {
     setActivePluginRegistry(createTestRegistry());
     const catalogEntry: ChannelPluginCatalogEntry = {
       id: "msteams",
-      pluginId: "@openclaw/msteams-plugin",
+      pluginId: "@avadisabelle/ava-claw-msteams-plugin",
       meta: {
         id: "msteams",
         label: "Microsoft Teams",
@@ -185,7 +185,7 @@ describe("channelsAddCommand", () => {
         blurb: "teams channel",
       },
       install: {
-        npmSpec: "@openclaw/msteams",
+        npmSpec: "@avadisabelle/ava-claw-msteams",
       },
     };
     catalogMocks.listChannelPluginCatalogEntries.mockReturnValue([catalogEntry]);

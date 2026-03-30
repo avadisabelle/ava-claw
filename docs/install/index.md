@@ -1,5 +1,5 @@
 ---
-summary: "Install OpenClaw — installer script, npm/pnpm, from source, Docker, and more"
+summary: "Install Ava-Claw — installer script, npm/pnpm, from source, Docker, and more"
 read_when:
   - You need an install method other than the Getting Started quickstart
   - You want to deploy to a cloud platform
@@ -18,17 +18,17 @@ Already followed [Getting Started](/start/getting-started)? You're all set — t
 - `pnpm` only if you build from source
 
 <Note>
-On Windows, we strongly recommend running OpenClaw under [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).
+On Windows, we strongly recommend running Ava-Claw under [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).
 </Note>
 
 ## Install methods
 
 <Tip>
-The **installer script** is the recommended way to install OpenClaw. It handles Node detection, installation, and onboarding in one step.
+The **installer script** is the recommended way to install Ava-Claw. It handles Node detection, installation, and onboarding in one step.
 </Tip>
 
 <Warning>
-For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possible. Prefer a clean base OS image (for example Ubuntu LTS), then install OpenClaw yourself with the installer script.
+For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possible. Prefer a clean base OS image (for example Ubuntu LTS), then install Ava-Claw yourself with the installer script.
 </Warning>
 
 <AccordionGroup>
@@ -70,7 +70,7 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
   </Accordion>
 
   <Accordion title="npm / pnpm" icon="package">
-    If you already manage Node yourself, we recommend Node 24. OpenClaw still supports Node 22 LTS, currently `22.16+`, for compatibility:
+    If you already manage Node yourself, we recommend Node 24. Ava-Claw still supports Node 22 LTS, currently `22.16+`, for compatibility:
 
     <Tabs>
       <Tab title="npm">
@@ -105,11 +105,11 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
     Want the current GitHub `main` head with a package-manager install?
 
     ```bash
-    npm install -g github:openclaw/openclaw#main
+    npm install -g github:avadisabelle/ava-claw#main
     ```
 
     ```bash
-    pnpm add -g github:openclaw/openclaw#main
+    pnpm add -g github:avadisabelle/ava-claw#main
     ```
 
   </Accordion>
@@ -119,10 +119,10 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
 
     <Steps>
       <Step title="Clone and build">
-        Clone the [OpenClaw repo](https://github.com/openclaw/openclaw) and build:
+        Clone the [Ava-Claw repo](https://github.com/avadisabelle/ava-claw) and build:
 
         ```bash
-        git clone https://github.com/openclaw/openclaw.git
+        git clone https://github.com/avadisabelle/ava-claw.git
         cd openclaw
         pnpm install
         pnpm ui:build
@@ -217,12 +217,12 @@ Then open a new terminal (or `rehash` in zsh / `hash -r` in bash).
 
 <CardGroup cols={3}>
   <Card title="Updating" href="/install/updating" icon="refresh-cw">
-    Keep OpenClaw up to date.
+    Keep Ava-Claw up to date.
   </Card>
   <Card title="Migrating" href="/install/migrating" icon="arrow-right">
     Move to a new machine.
   </Card>
   <Card title="Uninstall" href="/install/uninstall" icon="trash-2">
-    Remove OpenClaw completely.
+    Remove Ava-Claw completely.
   </Card>
 </CardGroup>

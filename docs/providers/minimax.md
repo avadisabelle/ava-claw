@@ -1,7 +1,7 @@
 ---
-summary: "Use MiniMax M2.5 in OpenClaw"
+summary: "Use MiniMax M2.5 in Ava-Claw"
 read_when:
-  - You want MiniMax models in OpenClaw
+  - You want MiniMax models in Ava-Claw
   - You need MiniMax setup guidance
 title: "MiniMax"
 ---
@@ -52,7 +52,7 @@ You will be prompted to select an endpoint:
 - **Global** - International users (`api.minimax.io`)
 - **CN** - Users in China (`api.minimaxi.com`)
 
-See [MiniMax OAuth plugin README](https://github.com/openclaw/openclaw/tree/main/extensions/minimax-portal-auth) for details.
+See [MiniMax OAuth plugin README](https://github.com/avadisabelle/ava-claw/tree/main/extensions/minimax-portal-auth) for details.
 
 ### MiniMax M2.5 (API key)
 

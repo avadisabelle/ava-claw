@@ -108,11 +108,11 @@ describe("collectReleasePackageMetadataErrors", () => {
   it("validates the expected npm package metadata", () => {
     expect(
       collectReleasePackageMetadataErrors({
-        name: "openclaw",
+        name: "@avadisabelle/ava-claw",
         description: "Multi-channel AI gateway with extensible messaging integrations",
         license: "MIT",
-        repository: { url: "git+https://github.com/openclaw/openclaw.git" },
-        bin: { openclaw: "openclaw.mjs" },
+        repository: { url: "git+https://github.com/avadisabelle/ava-claw.git" },
+        bin: { "ava-claw": "openclaw.mjs" },
         peerDependencies: { "node-llama-cpp": "3.16.2" },
         peerDependenciesMeta: { "node-llama-cpp": { optional: true } },
       }),
@@ -122,11 +122,11 @@ describe("collectReleasePackageMetadataErrors", () => {
   it("requires node-llama-cpp to stay an optional peer", () => {
     expect(
       collectReleasePackageMetadataErrors({
-        name: "openclaw",
+        name: "@avadisabelle/ava-claw",
         description: "Multi-channel AI gateway with extensible messaging integrations",
         license: "MIT",
-        repository: { url: "git+https://github.com/openclaw/openclaw.git" },
-        bin: { openclaw: "openclaw.mjs" },
+        repository: { url: "git+https://github.com/avadisabelle/ava-claw.git" },
+        bin: { "ava-claw": "openclaw.mjs" },
         peerDependencies: { "node-llama-cpp": "3.16.2" },
       }),
     ).toContain('package.json peerDependenciesMeta["node-llama-cpp"].optional must be true.');

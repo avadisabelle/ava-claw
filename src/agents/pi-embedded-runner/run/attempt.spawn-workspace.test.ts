@@ -1,14 +1,14 @@
 import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import type { AgentMessage } from "@mariozechner/pi-agent-core";
-import type { Api, Model } from "@mariozechner/pi-ai";
+import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
+import type { Api, Model } from "@avadisabelle/ava-pi-ai";
 import type {
   AuthStorage,
   ExtensionContext,
   ModelRegistry,
   ToolDefinition,
-} from "@mariozechner/pi-coding-agent";
+} from "@avadisabelle/ava-pi-coding-agent";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type {
   AssembleResult,
@@ -46,8 +46,8 @@ const hoisted = vi.hoisted(() => {
   };
 });
 
-vi.mock("@mariozechner/pi-coding-agent", async (importOriginal) => {
-  const actual = await importOriginal<typeof import("@mariozechner/pi-coding-agent")>();
+vi.mock("@avadisabelle/ava-pi-coding-agent", async (importOriginal) => {
+  const actual = await importOriginal<typeof import("@avadisabelle/ava-pi-coding-agent")>();
 
   return {
     ...actual,

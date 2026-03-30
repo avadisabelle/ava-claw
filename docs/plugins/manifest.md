@@ -1,14 +1,14 @@
 ---
 summary: "Plugin manifest + JSON schema requirements (strict config validation)"
 read_when:
-  - You are building a OpenClaw plugin
+  - You are building a Ava-Claw plugin
   - You need to ship a plugin config schema or debug plugin validation errors
 title: "Plugin Manifest"
 ---
 
 # Plugin manifest (openclaw.plugin.json)
 
-This page is for the **native OpenClaw plugin manifest** only.
+This page is for the **native Ava-Claw plugin manifest** only.
 
 For compatible bundle layouts, see [Plugin bundles](/plugins/bundles).
 
@@ -19,15 +19,15 @@ Compatible bundle formats use different manifest files:
   layout without a manifest
 - Cursor bundle: `.cursor-plugin/plugin.json`
 
-OpenClaw auto-detects those bundle layouts too, but they are not validated
+Ava-Claw auto-detects those bundle layouts too, but they are not validated
 against the `openclaw.plugin.json` schema described here.
 
-For compatible bundles, OpenClaw currently reads bundle metadata plus declared
+For compatible bundles, Ava-Claw currently reads bundle metadata plus declared
 skill roots, Claude command roots, Claude bundle `settings.json` defaults, and
-supported hook packs when the layout matches OpenClaw runtime expectations.
+supported hook packs when the layout matches Ava-Claw runtime expectations.
 
-Every native OpenClaw plugin **must** ship a `openclaw.plugin.json` file in the
-**plugin root**. OpenClaw uses this manifest to validate configuration
+Every native Ava-Claw plugin **must** ship a `openclaw.plugin.json` file in the
+**plugin root**. Ava-Claw uses this manifest to validate configuration
 **without executing plugin code**. Missing or invalid manifests are treated as
 plugin errors and block config validation.
 
@@ -81,7 +81,7 @@ Optional keys:
 
 ## Notes
 
-- The manifest is **required for native OpenClaw plugins**, including local filesystem loads.
+- The manifest is **required for native Ava-Claw plugins**, including local filesystem loads.
 - Runtime still loads the plugin module separately; the manifest is only for
   discovery + validation.
 - Exclusive plugin kinds are selected through `plugins.slots.*`.
