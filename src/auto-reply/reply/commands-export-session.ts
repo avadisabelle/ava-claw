@@ -1,7 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import type { SessionEntry as PiSessionEntry, SessionHeader } from "@avadisabelle/ava-pi-coding-agent";
+import type {
+  SessionEntry as PiSessionEntry,
+  SessionHeader,
+} from "@avadisabelle/ava-pi-coding-agent";
 import { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import {
   resolveDefaultSessionStorePath,

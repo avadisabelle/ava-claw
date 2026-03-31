@@ -140,9 +140,7 @@ function createSignalAccountOverrideCfg(): AvaClawConfig {
   } as AvaClawConfig;
 }
 
-function createDiscordModerationOverrideCfg(params?: {
-  channelsEnabled?: boolean;
-}): AvaClawConfig {
+function createDiscordModerationOverrideCfg(params?: { channelsEnabled?: boolean }): AvaClawConfig {
   const accountActions = params?.channelsEnabled
     ? { moderation: true, channels: true }
     : { moderation: true };

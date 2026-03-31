@@ -244,14 +244,10 @@ describe("diagnostics-otel service", () => {
     });
 
     expect(telemetryState.counters.get("avaclaw.webhook.received")?.add).toHaveBeenCalled();
-    expect(
-      telemetryState.histograms.get("avaclaw.webhook.duration_ms")?.record,
-    ).toHaveBeenCalled();
+    expect(telemetryState.histograms.get("avaclaw.webhook.duration_ms")?.record).toHaveBeenCalled();
     expect(telemetryState.counters.get("avaclaw.message.queued")?.add).toHaveBeenCalled();
     expect(telemetryState.counters.get("avaclaw.message.processed")?.add).toHaveBeenCalled();
-    expect(
-      telemetryState.histograms.get("avaclaw.message.duration_ms")?.record,
-    ).toHaveBeenCalled();
+    expect(telemetryState.histograms.get("avaclaw.message.duration_ms")?.record).toHaveBeenCalled();
     expect(telemetryState.histograms.get("avaclaw.queue.wait_ms")?.record).toHaveBeenCalled();
     expect(telemetryState.counters.get("avaclaw.session.stuck")?.add).toHaveBeenCalled();
     expect(

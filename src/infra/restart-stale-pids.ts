@@ -60,7 +60,12 @@ function parsePidsFromLsofOutput(stdout: string): number[] {
   let currentCmd: string | undefined;
   for (const line of stdout.split(/\r?\n/).filter(Boolean)) {
     if (line.startsWith("p")) {
-      if (currentPid != null && currentCmd && (currentCmd.toLowerCase().includes("ava-claw") || currentCmd.toLowerCase().includes("avaclaw"))) {
+      if (
+        currentPid != null &&
+        currentCmd &&
+        (currentCmd.toLowerCase().includes("ava-claw") ||
+          currentCmd.toLowerCase().includes("avaclaw"))
+      ) {
         pids.push(currentPid);
       }
       const parsed = Number.parseInt(line.slice(1), 10);
@@ -70,7 +75,11 @@ function parsePidsFromLsofOutput(stdout: string): number[] {
       currentCmd = line.slice(1);
     }
   }
-  if (currentPid != null && currentCmd && (currentCmd.toLowerCase().includes("ava-claw") || currentCmd.toLowerCase().includes("avaclaw"))) {
+  if (
+    currentPid != null &&
+    currentCmd &&
+    (currentCmd.toLowerCase().includes("ava-claw") || currentCmd.toLowerCase().includes("avaclaw"))
+  ) {
     pids.push(currentPid);
   }
   // Deduplicate: dual-stack listeners (IPv4 + IPv6) cause lsof to emit the

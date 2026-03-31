@@ -202,9 +202,7 @@ describe("backup commands", () => {
 
   it("optionally verifies the archive after writing it", async () => {
     const stateDir = path.join(tempHome.home, ".avaclaw");
-    const archiveDir = await fs.mkdtemp(
-      path.join(os.tmpdir(), "avaclaw-backup-verify-on-create-"),
-    );
+    const archiveDir = await fs.mkdtemp(path.join(os.tmpdir(), "avaclaw-backup-verify-on-create-"));
     try {
       await fs.writeFile(path.join(stateDir, "avaclaw.json"), JSON.stringify({}), "utf8");
       await fs.writeFile(path.join(stateDir, "state.txt"), "state\n", "utf8");

@@ -95,7 +95,9 @@ describe("update global helpers", () => {
     expect(canResolveRegistryVersionForPackageTarget("latest")).toBe(true);
     expect(canResolveRegistryVersionForPackageTarget("2026.3.14")).toBe(true);
     expect(canResolveRegistryVersionForPackageTarget("main")).toBe(false);
-    expect(canResolveRegistryVersionForPackageTarget("github:avadisabelle/ava-claw#main")).toBe(false);
+    expect(canResolveRegistryVersionForPackageTarget("github:avadisabelle/ava-claw#main")).toBe(
+      false,
+    );
   });
 
   it("detects install managers from resolved roots and on-disk presence", async () => {

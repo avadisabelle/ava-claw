@@ -1337,9 +1337,9 @@ Related: [Agent workspace](/concepts/agent-workspace), [Memory](/concepts/memory
 
 Everything lives under `$AVACLAW_STATE_DIR` (default: `~/.avaclaw`):
 
-| Path                                                            | Purpose                                                            |
-| --------------------------------------------------------------- | ------------------------------------------------------------------ |
-| `$AVACLAW_STATE_DIR/avaclaw.json`                             | Main config (JSON5)                                                |
+| Path                                                           | Purpose                                                            |
+| -------------------------------------------------------------- | ------------------------------------------------------------------ |
+| `$AVACLAW_STATE_DIR/avaclaw.json`                              | Main config (JSON5)                                                |
 | `$AVACLAW_STATE_DIR/credentials/oauth.json`                    | Legacy OAuth import (copied into auth profiles on first use)       |
 | `$AVACLAW_STATE_DIR/agents/<agentId>/agent/auth-profiles.json` | Auth profiles (OAuth, API keys, and optional `keyRef`/`tokenRef`)  |
 | `$AVACLAW_STATE_DIR/secrets.json`                              | Optional file-backed secret payload for `file` SecretRef providers |

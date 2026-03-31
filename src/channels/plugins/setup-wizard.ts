@@ -81,10 +81,7 @@ export type ChannelSetupWizardCredential = {
   keepPrompt: string;
   inputPrompt: string;
   allowEnv?: (params: { cfg: AvaClawConfig; accountId: string }) => boolean;
-  inspect: (params: {
-    cfg: AvaClawConfig;
-    accountId: string;
-  }) => ChannelSetupWizardCredentialState;
+  inspect: (params: { cfg: AvaClawConfig; accountId: string }) => ChannelSetupWizardCredentialState;
   applyUseEnv?: (params: {
     cfg: AvaClawConfig;
     accountId: string;

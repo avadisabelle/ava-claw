@@ -34,7 +34,8 @@ vi.mock("@avadisabelle/ava-pi-coding-agent", async () => {
 });
 
 vi.mock("@avadisabelle/ava-pi-ai", async () => {
-  const actual = await vi.importActual<typeof import("@avadisabelle/ava-pi-ai")>("@avadisabelle/ava-pi-ai");
+  const actual =
+    await vi.importActual<typeof import("@avadisabelle/ava-pi-ai")>("@avadisabelle/ava-pi-ai");
 
   const buildAssistantMessage = (model: { api: string; provider: string; id: string }) => ({
     role: "assistant" as const,

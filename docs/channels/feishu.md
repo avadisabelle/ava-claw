@@ -439,8 +439,8 @@ avaclaw pairing list feishu
 
 ## Gateway management commands
 
-| Command                    | Description                   |
-| -------------------------- | ----------------------------- |
+| Command                   | Description                   |
+| ------------------------- | ----------------------------- |
 | `avaclaw gateway status`  | Show gateway status           |
 | `avaclaw gateway install` | Install/start gateway service |
 | `avaclaw gateway stop`    | Stop gateway service          |

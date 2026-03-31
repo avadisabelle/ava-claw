@@ -239,9 +239,7 @@ export function resolvePlanTargetAgainstRegistry(candidate: {
   return null;
 }
 
-export function discoverConfigSecretTargets(
-  config: AvaClawConfig,
-): DiscoveredConfigSecretTarget[] {
+export function discoverConfigSecretTargets(config: AvaClawConfig): DiscoveredConfigSecretTarget[] {
   return discoverConfigSecretTargetsByIds(config);
 }
 

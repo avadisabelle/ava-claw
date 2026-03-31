@@ -40,10 +40,7 @@ export function applyOnboardAuthAgentModelsAndProviders(
   };
 }
 
-export function applyAgentDefaultModelPrimary(
-  cfg: AvaClawConfig,
-  primary: string,
-): AvaClawConfig {
+export function applyAgentDefaultModelPrimary(cfg: AvaClawConfig, primary: string): AvaClawConfig {
   const existingFallbacks = extractAgentDefaultModelFallbacks(cfg.agents?.defaults?.model);
   return {
     ...cfg,

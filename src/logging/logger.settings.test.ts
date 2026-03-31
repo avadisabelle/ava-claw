@@ -24,9 +24,9 @@ describe("shouldSkipLoadConfigFallback", () => {
   });
 
   it("does not match other commands", () => {
-    expect(
-      __test__.shouldSkipLoadConfigFallback(["node", "avaclaw", "config", "get", "foo"]),
-    ).toBe(false);
+    expect(__test__.shouldSkipLoadConfigFallback(["node", "avaclaw", "config", "get", "foo"])).toBe(
+      false,
+    );
     expect(__test__.shouldSkipLoadConfigFallback(["node", "avaclaw", "status"])).toBe(false);
   });
 });

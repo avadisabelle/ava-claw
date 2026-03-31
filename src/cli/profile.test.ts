@@ -94,9 +94,7 @@ describe("applyCliProfileEnv", () => {
 
     const resolvedHome = path.resolve("/srv/avaclaw-home");
     expect(env.AVACLAW_STATE_DIR).toBe(path.join(resolvedHome, ".avaclaw-work"));
-    expect(env.AVACLAW_CONFIG_PATH).toBe(
-      path.join(resolvedHome, ".avaclaw-work", "avaclaw.json"),
-    );
+    expect(env.AVACLAW_CONFIG_PATH).toBe(path.join(resolvedHome, ".avaclaw-work", "avaclaw.json"));
   });
 });
 
@@ -155,9 +153,7 @@ describe("formatCliCommand", () => {
   });
 
   it("handles command with no args after avaclaw", () => {
-    expect(formatCliCommand("avaclaw", { AVACLAW_PROFILE: "test" })).toBe(
-      "avaclaw --profile test",
-    );
+    expect(formatCliCommand("avaclaw", { AVACLAW_PROFILE: "test" })).toBe("avaclaw --profile test");
   });
 
   it("handles pnpm wrapper", () => {

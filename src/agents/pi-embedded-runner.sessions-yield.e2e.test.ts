@@ -49,7 +49,8 @@ vi.mock("@avadisabelle/ava-pi-coding-agent", async () => {
 });
 
 vi.mock("@avadisabelle/ava-pi-ai", async () => {
-  const actual = await vi.importActual<typeof import("@avadisabelle/ava-pi-ai")>("@avadisabelle/ava-pi-ai");
+  const actual =
+    await vi.importActual<typeof import("@avadisabelle/ava-pi-ai")>("@avadisabelle/ava-pi-ai");
 
   const buildToolUseMessage = (model: { api: string; provider: string; id: string }) => {
     const toolCalls: Array<{
@@ -228,8 +229,7 @@ describe("sessions_yield e2e", () => {
 
       const entries = await readSessionEntries(sessionFile);
       const yieldContext = entries.find(
-        (entry) =>
-          entry.type === "custom_message" && entry.customType === "avaclaw.sessions_yield",
+        (entry) => entry.type === "custom_message" && entry.customType === "avaclaw.sessions_yield",
       );
       expect(yieldContext).toMatchObject({
         content: expect.stringContaining("Yielding turn."),

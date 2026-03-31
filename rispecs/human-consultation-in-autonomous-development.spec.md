@@ -180,13 +180,13 @@ interface HumanConsultationPacket {
   taskId: string;
   summary: string;
   decisionType:
-    | 'meaning'
-    | 'taste'
-    | 'consent'
-    | 'governance'
-    | 'tradeoff'
-    | 'ambiguity'
-    | 'evaluation';
+    | "meaning"
+    | "taste"
+    | "consent"
+    | "governance"
+    | "tradeoff"
+    | "ambiguity"
+    | "evaluation";
   question: string;
   options?: {
     id: string;
@@ -194,7 +194,7 @@ interface HumanConsultationPacket {
     consequences: string[];
   }[];
   recommendation?: string;
-  urgency: 'low' | 'medium' | 'high';
+  urgency: "low" | "medium" | "high";
   canProceedWithoutReply: boolean;
   blockedUntil?: string;
 }

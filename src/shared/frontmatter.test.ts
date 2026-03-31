@@ -51,9 +51,7 @@ describe("shared/frontmatter", () => {
 
   test("resolveAvaClawManifestBlock returns undefined for invalid input", () => {
     expect(resolveAvaClawManifestBlock({ frontmatter: {} })).toBeUndefined();
-    expect(
-      resolveAvaClawManifestBlock({ frontmatter: { metadata: "not-json5" } }),
-    ).toBeUndefined();
+    expect(resolveAvaClawManifestBlock({ frontmatter: { metadata: "not-json5" } })).toBeUndefined();
     expect(resolveAvaClawManifestBlock({ frontmatter: { metadata: "123" } })).toBeUndefined();
     expect(resolveAvaClawManifestBlock({ frontmatter: { metadata: "[]" } })).toBeUndefined();
     expect(

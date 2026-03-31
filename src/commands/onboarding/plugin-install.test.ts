@@ -198,7 +198,9 @@ describe("ensureOnboardingPluginInstalled", () => {
 
     expect(result.installed).toBe(true);
     expect(result.pluginId).toBe("@avadisabelle/ava-claw-msteams-plugin");
-    expect(result.cfg.plugins?.entries?.["@avadisabelle/ava-claw-msteams-plugin"]?.enabled).toBe(true);
+    expect(result.cfg.plugins?.entries?.["@avadisabelle/ava-claw-msteams-plugin"]?.enabled).toBe(
+      true,
+    );
   });
 
   it("defaults to local on dev channel when local path exists", async () => {

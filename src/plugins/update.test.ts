@@ -119,7 +119,8 @@ describe("updateNpmInstalledPlugins", () => {
       {
         pluginId: "missing",
         status: "error",
-        message: "Failed to check missing: npm package not found for @avadisabelle/ava-claw-missing.",
+        message:
+          "Failed to check missing: npm package not found for @avadisabelle/ava-claw-missing.",
       },
     ]);
   });

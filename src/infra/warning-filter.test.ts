@@ -126,9 +126,7 @@ describe("warning filter", () => {
         { type: "Warning", code: "AVACLAW_VISIBLE_OVERRIDE" },
       );
       await flushWarnings();
-      expect(
-        seenWarnings.find((warning) => warning.code === "AVACLAW_TEST_WARNING"),
-      ).toBeDefined();
+      expect(seenWarnings.find((warning) => warning.code === "AVACLAW_TEST_WARNING")).toBeDefined();
       expect(
         seenWarnings.find(
           (warning) =>

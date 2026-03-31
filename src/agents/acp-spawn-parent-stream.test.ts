@@ -217,9 +217,7 @@ describe("startAcpSpawnParentStreamRelay", () => {
         sessionFile: "/tmp/avaclaw/agents/codex/sessions/sess-123.jsonl",
       },
     });
-    resolveSessionFilePathMock.mockReturnValue(
-      "/tmp/avaclaw/agents/codex/sessions/sess-123.jsonl",
-    );
+    resolveSessionFilePathMock.mockReturnValue("/tmp/avaclaw/agents/codex/sessions/sess-123.jsonl");
 
     const resolved = resolveAcpSpawnStreamLogPath({
       childSessionKey: "agent:codex:acp:child-1",

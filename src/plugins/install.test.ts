@@ -513,7 +513,11 @@ describe("installPluginFromArchive", () => {
       archivePath,
       extensionsDir,
     });
-    expectSuccessfulArchiveInstall({ result, stateDir, pluginId: "@avadisabelle/ava-claw-voice-call" });
+    expectSuccessfulArchiveInstall({
+      result,
+      stateDir,
+      pluginId: "@avadisabelle/ava-claw-voice-call",
+    });
   });
 
   it("rejects installing when plugin already exists", async () => {
@@ -1238,7 +1242,9 @@ describe("installPluginFromNpmSpec", () => {
       return;
     }
     expect(result.npmResolution?.version).toBe("0.0.2-beta.1");
-    expect(result.npmResolution?.resolvedSpec).toBe("@avadisabelle/ava-claw-voice-call@0.0.2-beta.1");
+    expect(result.npmResolution?.resolvedSpec).toBe(
+      "@avadisabelle/ava-claw-voice-call@0.0.2-beta.1",
+    );
     expectSingleNpmPackIgnoreScriptsCall({
       calls: run.mock.calls,
       expectedSpec: "@avadisabelle/ava-claw-voice-call@beta",

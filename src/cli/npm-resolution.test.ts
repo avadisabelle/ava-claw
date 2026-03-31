@@ -135,7 +135,9 @@ describe("npm-resolution helpers", () => {
       shasum: undefined,
       resolvedAt: undefined,
     });
-    expect(logs).toEqual(["Pinned npm install record to @avadisabelle/ava-claw-plugin-alpha@1.2.3."]);
+    expect(logs).toEqual([
+      "Pinned npm install record to @avadisabelle/ava-claw-plugin-alpha@1.2.3.",
+    ]);
     expect(warns).toEqual([]);
   });
 

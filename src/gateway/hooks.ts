@@ -166,9 +166,7 @@ export function extractHookToken(req: IncomingMessage): string | undefined {
     }
   }
   const headerToken =
-    typeof req.headers["x-avaclaw-token"] === "string"
-      ? req.headers["x-avaclaw-token"].trim()
-      : "";
+    typeof req.headers["x-avaclaw-token"] === "string" ? req.headers["x-avaclaw-token"].trim() : "";
   if (headerToken) {
     return headerToken;
   }

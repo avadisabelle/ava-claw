@@ -2209,9 +2209,7 @@ description: test skill
       expect(finding?.detail).toContain(
         "channels.discord.guilds.123.channels.general.users:security-team",
       );
-      expect(finding?.detail).toContain(
-        "~/.avaclaw/credentials/discord-allowFrom.json:team.owner",
-      );
+      expect(finding?.detail).toContain("~/.avaclaw/credentials/discord-allowFrom.json:team.owner");
       expect(finding?.detail).not.toContain("<@123456789012345678>");
     });
   });

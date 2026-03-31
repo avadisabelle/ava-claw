@@ -77,7 +77,10 @@ function candidateBinDirs(opts: EnsureAvaClawPathOpts): { prepend: string[]; app
     isTruthyEnvValue(process.env.AVACLAW_ALLOW_PROJECT_LOCAL_BIN);
   if (allowProjectLocalBin) {
     const localBinDir = path.join(cwd, "node_modules", ".bin");
-    if (isExecutable(path.join(localBinDir, "ava-claw")) || isExecutable(path.join(localBinDir, "avaclaw"))) {
+    if (
+      isExecutable(path.join(localBinDir, "ava-claw")) ||
+      isExecutable(path.join(localBinDir, "avaclaw"))
+    ) {
       append.push(localBinDir);
     }
   }

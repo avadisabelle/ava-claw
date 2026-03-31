@@ -151,7 +151,7 @@ The delegated agent is a temporary specialist, not an independent sovereign.
 interface DelegationPacket {
   taskId: string;
   parentSessionId: string;
-  delegateRole: 'coder' | 'researcher' | 'reviewer' | 'planner' | 'synthesizer';
+  delegateRole: "coder" | "researcher" | "reviewer" | "planner" | "synthesizer";
   objective: string;
   projectId?: string;
   scope: {

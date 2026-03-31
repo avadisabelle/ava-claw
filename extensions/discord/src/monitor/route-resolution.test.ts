@@ -8,10 +8,7 @@ import {
   resolveDiscordEffectiveRoute,
 } from "./route-resolution.js";
 
-function buildWorkerBindingConfig(peer: {
-  kind: "channel" | "direct";
-  id: string;
-}): AvaClawConfig {
+function buildWorkerBindingConfig(peer: { kind: "channel" | "direct"; id: string }): AvaClawConfig {
   return {
     agents: {
       list: [{ id: "worker" }],

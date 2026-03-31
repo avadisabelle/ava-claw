@@ -68,9 +68,7 @@ function cloneStatWithDev<T extends { dev: number | bigint }>(stat: T, dev: numb
 }
 
 beforeAll(async () => {
-  fixtureRoot = await fs.mkdtemp(
-    path.join(resolvePreferredAvaClawTmpDir(), "avaclaw-media-test-"),
-  );
+  fixtureRoot = await fs.mkdtemp(path.join(resolvePreferredAvaClawTmpDir(), "avaclaw-media-test-"));
   largeJpegBuffer = await sharp({
     create: {
       width: 400,

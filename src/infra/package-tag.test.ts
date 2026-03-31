@@ -11,7 +11,9 @@ describe("normalizePackageTagInput", () => {
 
   it("strips known package-name prefixes before returning the tag", () => {
     expect(normalizePackageTagInput("avaclaw@beta", packageNames)).toBe("beta");
-    expect(normalizePackageTagInput("@avadisabelle/ava-claw-plugin@2026.2.24", packageNames)).toBe("2026.2.24");
+    expect(normalizePackageTagInput("@avadisabelle/ava-claw-plugin@2026.2.24", packageNames)).toBe(
+      "2026.2.24",
+    );
     expect(normalizePackageTagInput("avaclaw@   ", packageNames)).toBeNull();
   });
 
