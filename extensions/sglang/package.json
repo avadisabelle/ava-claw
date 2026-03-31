@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-sglang-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw SGLang provider plugin",
+  "description": "AvaClaw SGLang provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

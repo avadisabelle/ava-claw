@@ -18,7 +18,7 @@ x-i18n:
 控制 UI 是一个由 Gateway 网关提供服务的小型 **Vite + Lit** 单页应用：
 
 - 默认：`http://<host>:18789/`
-- 可选前缀：设置 `gateway.controlUi.basePath`（例如 `/openclaw`）
+- 可选前缀：设置 `gateway.controlUi.basePath`（例如 `/avaclaw`）
 
 它**直接与同一端口上的 Gateway 网关 WebSocket** 通信。
 
@@ -28,7 +28,7 @@ x-i18n:
 
 - http://127.0.0.1:18789/（或 http://localhost:18789/）
 
-如果页面加载失败，请先启动 Gateway 网关：`openclaw gateway`。
+如果页面加载失败，请先启动 Gateway 网关：`avaclaw gateway`。
 
 认证在 WebSocket 握手期间通过以下方式提供：
 
@@ -47,13 +47,13 @@ x-i18n:
 
 ```bash
 # 列出待处理的请求
-openclaw devices list
+avaclaw devices list
 
 # 按请求 ID 批准
-openclaw devices approve <requestId>
+avaclaw devices approve <requestId>
 ```
 
-一旦批准，设备会被记住，除非你使用 `openclaw devices revoke --device <id> --role <role>` 撤销它，否则不需要重新批准。参见 [Devices CLI](/cli/devices) 了解 token 轮换和撤销。
+一旦批准，设备会被记住，除非你使用 `avaclaw devices revoke --device <id> --role <role>` 撤销它，否则不需要重新批准。参见 [Devices CLI](/cli/devices) 了解 token 轮换和撤销。
 
 **注意：**
 
@@ -97,7 +97,7 @@ openclaw devices approve <requestId>
 保持 Gateway 网关在 loopback 上，让 Tailscale Serve 用 HTTPS 代理它：
 
 ```bash
-openclaw gateway --tailscale serve
+avaclaw gateway --tailscale serve
 ```
 
 打开：
@@ -109,7 +109,7 @@ openclaw gateway --tailscale serve
 ### 绑定到 tailnet + token
 
 ```bash
-openclaw gateway --bind tailnet --token "$(openssl rand -hex 32)"
+avaclaw gateway --bind tailnet --token "$(openssl rand -hex 32)"
 ```
 
 然后打开：
@@ -154,7 +154,7 @@ pnpm ui:build # 首次运行时自动安装 UI 依赖
 可选的绝对基础路径（当你想要固定的资源 URL 时）：
 
 ```bash
-OPENCLAW_CONTROL_UI_BASE_PATH=/openclaw/ pnpm ui:build
+AVACLAW_CONTROL_UI_BASE_PATH=/avaclaw/ pnpm ui:build
 ```
 
 用于本地开发（单独的开发服务器）：

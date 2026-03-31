@@ -9,7 +9,7 @@ title: "Ansible"
 
 # Ansible Installation
 
-The recommended way to deploy Ava-Claw to production servers is via **[openclaw-ansible](https://github.com/avadisabelle/ava-claw-ansible)** — an automated installer with security-first architecture.
+The recommended way to deploy Ava-Claw to production servers is via **[avaclaw-ansible](https://github.com/avadisabelle/ava-claw-ansible)** — an automated installer with security-first architecture.
 
 ## Quick Start
 
@@ -21,7 +21,7 @@ curl -fsSL https://raw.githubusercontent.com/avadisabelle/ava-claw-ansible/main/
 
 > **📦 Full guide: [github.com/avadisabelle/ava-claw-ansible](https://github.com/avadisabelle/ava-claw-ansible)**
 >
-> The openclaw-ansible repo is the source of truth for Ansible deployment. This page is a quick overview.
+> The avaclaw-ansible repo is the source of truth for Ansible deployment. This page is a quick overview.
 
 ## What You Get
 
@@ -54,10 +54,10 @@ Note: The gateway runs **directly on the host** (not in Docker), but agent sandb
 
 ## Post-Install Setup
 
-After installation completes, switch to the openclaw user:
+After installation completes, switch to the avaclaw user:
 
 ```bash
-sudo -i -u openclaw
+sudo -i -u avaclaw
 ```
 
 The post-install script will guide you through:
@@ -71,17 +71,17 @@ The post-install script will guide you through:
 
 ```bash
 # Check service status
-sudo systemctl status openclaw
+sudo systemctl status avaclaw
 
 # View live logs
-sudo journalctl -u openclaw -f
+sudo journalctl -u avaclaw -f
 
 # Restart gateway
-sudo systemctl restart openclaw
+sudo systemctl restart avaclaw
 
-# Provider login (run as openclaw user)
-sudo -i -u openclaw
-openclaw channels login
+# Provider login (run as avaclaw user)
+sudo -i -u avaclaw
+avaclaw channels login
 ```
 
 ## Security Architecture
@@ -119,7 +119,7 @@ sudo apt update && sudo apt install -y ansible git
 
 # 2. Clone repository
 git clone https://github.com/avadisabelle/ava-claw-ansible.git
-cd openclaw-ansible
+cd avaclaw-ansible
 
 # 3. Install Ansible collections
 ansible-galaxy collection install -r requirements.yml
@@ -127,7 +127,7 @@ ansible-galaxy collection install -r requirements.yml
 # 4. Run playbook
 ./run-playbook.sh
 
-# Or run directly (then manually execute /tmp/openclaw-setup.sh after)
+# Or run directly (then manually execute /tmp/avaclaw-setup.sh after)
 # ansible-playbook playbook.yml --ask-become-pass
 ```
 
@@ -138,7 +138,7 @@ The Ansible installer sets up Ava-Claw for manual updates. See [Updating](/insta
 To re-run the Ansible playbook (e.g., for configuration changes):
 
 ```bash
-cd openclaw-ansible
+cd avaclaw-ansible
 ./run-playbook.sh
 ```
 
@@ -158,14 +158,14 @@ If you're locked out:
 
 ```bash
 # Check logs
-sudo journalctl -u openclaw -n 100
+sudo journalctl -u avaclaw -n 100
 
 # Verify permissions
-sudo ls -la /opt/openclaw
+sudo ls -la /opt/avaclaw
 
 # Test manual start
-sudo -i -u openclaw
-cd ~/openclaw
+sudo -i -u avaclaw
+cd ~/avaclaw
 pnpm start
 ```
 
@@ -176,20 +176,20 @@ pnpm start
 sudo systemctl status docker
 
 # Check sandbox image
-sudo docker images | grep openclaw-sandbox
+sudo docker images | grep avaclaw-sandbox
 
 # Build sandbox image if missing
 cd /opt/avadisabelle/ava-claw
-sudo -u openclaw ./scripts/sandbox-setup.sh
+sudo -u avaclaw ./scripts/sandbox-setup.sh
 ```
 
 ### Provider login fails
 
-Make sure you're running as the `openclaw` user:
+Make sure you're running as the `avaclaw` user:
 
 ```bash
-sudo -i -u openclaw
-openclaw channels login
+sudo -i -u avaclaw
+avaclaw channels login
 ```
 
 ## Advanced Configuration
@@ -202,7 +202,7 @@ For detailed security architecture and troubleshooting:
 
 ## Related
 
-- [openclaw-ansible](https://github.com/avadisabelle/ava-claw-ansible) — full deployment guide
+- [avaclaw-ansible](https://github.com/avadisabelle/ava-claw-ansible) — full deployment guide
 - [Docker](/install/docker) — containerized gateway setup
 - [Sandboxing](/gateway/sandboxing) — agent sandbox configuration
 - [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) — per-agent isolation

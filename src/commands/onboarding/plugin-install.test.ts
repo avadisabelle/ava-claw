@@ -46,7 +46,7 @@ vi.mock("../../plugins/bundled-sources.js", () => ({
 }));
 
 vi.mock("../../plugins/loader.js", () => ({
-  loadOpenClawPlugins: vi.fn(),
+  loadAvaClawPlugins: vi.fn(),
 }));
 
 const clearPluginDiscoveryCache = vi.fn();
@@ -56,8 +56,8 @@ vi.mock("../../plugins/discovery.js", () => ({
 
 import fs from "node:fs";
 import type { ChannelPluginCatalogEntry } from "../../channels/plugins/catalog.js";
-import type { OpenClawConfig } from "../../config/config.js";
-import { loadOpenClawPlugins } from "../../plugins/loader.js";
+import type { AvaClawConfig } from "../../config/config.js";
+import { loadAvaClawPlugins } from "../../plugins/loader.js";
 import { createEmptyPluginRegistry } from "../../plugins/registry.js";
 import { setActivePluginRegistry } from "../../plugins/runtime.js";
 import type { WizardPrompter } from "../../wizard/prompts.js";
@@ -103,7 +103,7 @@ async function runInitialValueForChannel(channel: "dev" | "beta") {
   const runtime = makeRuntime();
   const select = vi.fn((async <T extends string>() => "skip" as T) as WizardPrompter["select"]);
   const prompter = makePrompter({ select: select as unknown as WizardPrompter["select"] });
-  const cfg: OpenClawConfig = { update: { channel } };
+  const cfg: AvaClawConfig = { update: { channel } };
   mockRepoLocalPathExists();
 
   await ensureOnboardingPluginInstalled({
@@ -131,7 +131,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const prompter = makePrompter({
       select: vi.fn(async () => "npm") as WizardPrompter["select"],
     });
-    const cfg: OpenClawConfig = { plugins: { allow: ["other"] } };
+    const cfg: AvaClawConfig = { plugins: { allow: ["other"] } };
     vi.mocked(fs.existsSync).mockReturnValue(false);
     installPluginFromNpmSpec.mockResolvedValue({
       ok: true,
@@ -163,7 +163,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const prompter = makePrompter({
       select: vi.fn(async () => "local") as WizardPrompter["select"],
     });
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
     mockRepoLocalPathExists();
 
     const result = await ensureOnboardingPluginInstalled({
@@ -182,7 +182,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const prompter = makePrompter({
       select: vi.fn(async () => "local") as WizardPrompter["select"],
     });
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
     mockRepoLocalPathExists();
 
     const result = await ensureOnboardingPluginInstalled({
@@ -213,7 +213,7 @@ describe("ensureOnboardingPluginInstalled", () => {
     const runtime = makeRuntime();
     const select = vi.fn((async <T extends string>() => "skip" as T) as WizardPrompter["select"]);
     const prompter = makePrompter({ select: select as unknown as WizardPrompter["select"] });
-    const cfg: OpenClawConfig = { update: { channel: "beta" } };
+    const cfg: AvaClawConfig = { update: { channel: "beta" } };
     vi.mocked(fs.existsSync).mockReturnValue(false);
     resolveBundledPluginSources.mockReturnValue(
       new Map([
@@ -221,7 +221,7 @@ describe("ensureOnboardingPluginInstalled", () => {
           "zalo",
           {
             pluginId: "zalo",
-            localPath: "/opt/openclaw/extensions/zalo",
+            localPath: "/opt/avaclaw/extensions/zalo",
             npmSpec: "@avadisabelle/ava-claw-zalo",
           },
         ],
@@ -241,7 +241,7 @@ describe("ensureOnboardingPluginInstalled", () => {
         options: expect.arrayContaining([
           expect.objectContaining({
             value: "local",
-            hint: "/opt/openclaw/extensions/zalo",
+            hint: "/opt/avaclaw/extensions/zalo",
           }),
         ]),
       }),
@@ -257,7 +257,7 @@ describe("ensureOnboardingPluginInstalled", () => {
       note,
       confirm,
     });
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
     mockRepoLocalPathExists();
     installPluginFromNpmSpec.mockResolvedValue({
       ok: false,
@@ -278,42 +278,42 @@ describe("ensureOnboardingPluginInstalled", () => {
 
   it("clears discovery cache before reloading the onboarding plugin registry", () => {
     const runtime = makeRuntime();
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
 
     reloadOnboardingPluginRegistry({
       cfg,
       runtime,
-      workspaceDir: "/tmp/openclaw-workspace",
+      workspaceDir: "/tmp/avaclaw-workspace",
     });
 
     expect(clearPluginDiscoveryCache).toHaveBeenCalledTimes(1);
-    expect(loadOpenClawPlugins).toHaveBeenCalledWith(
+    expect(loadAvaClawPlugins).toHaveBeenCalledWith(
       expect.objectContaining({
         config: cfg,
-        workspaceDir: "/tmp/openclaw-workspace",
+        workspaceDir: "/tmp/avaclaw-workspace",
         cache: false,
       }),
     );
     expect(clearPluginDiscoveryCache.mock.invocationCallOrder[0]).toBeLessThan(
-      vi.mocked(loadOpenClawPlugins).mock.invocationCallOrder[0] ?? Number.POSITIVE_INFINITY,
+      vi.mocked(loadAvaClawPlugins).mock.invocationCallOrder[0] ?? Number.POSITIVE_INFINITY,
     );
   });
 
   it("scopes channel reloads when onboarding starts from an empty registry", () => {
     const runtime = makeRuntime();
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
 
     reloadOnboardingPluginRegistryForChannel({
       cfg,
       runtime,
       channel: "telegram",
-      workspaceDir: "/tmp/openclaw-workspace",
+      workspaceDir: "/tmp/avaclaw-workspace",
     });
 
-    expect(loadOpenClawPlugins).toHaveBeenCalledWith(
+    expect(loadAvaClawPlugins).toHaveBeenCalledWith(
       expect.objectContaining({
         config: cfg,
-        workspaceDir: "/tmp/openclaw-workspace",
+        workspaceDir: "/tmp/avaclaw-workspace",
         cache: false,
         onlyPluginIds: ["telegram"],
       }),
@@ -322,7 +322,7 @@ describe("ensureOnboardingPluginInstalled", () => {
 
   it("keeps full reloads when the active plugin registry is already populated", () => {
     const runtime = makeRuntime();
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
     const registry = createEmptyPluginRegistry();
     registry.plugins.push({
       id: "loaded",
@@ -349,10 +349,10 @@ describe("ensureOnboardingPluginInstalled", () => {
       cfg,
       runtime,
       channel: "telegram",
-      workspaceDir: "/tmp/openclaw-workspace",
+      workspaceDir: "/tmp/avaclaw-workspace",
     });
 
-    expect(loadOpenClawPlugins).toHaveBeenCalledWith(
+    expect(loadAvaClawPlugins).toHaveBeenCalledWith(
       expect.not.objectContaining({
         onlyPluginIds: expect.anything(),
       }),
@@ -361,19 +361,19 @@ describe("ensureOnboardingPluginInstalled", () => {
 
   it("can load a channel-scoped snapshot without activating the global registry", () => {
     const runtime = makeRuntime();
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
 
     loadOnboardingPluginRegistrySnapshotForChannel({
       cfg,
       runtime,
       channel: "telegram",
-      workspaceDir: "/tmp/openclaw-workspace",
+      workspaceDir: "/tmp/avaclaw-workspace",
     });
 
-    expect(loadOpenClawPlugins).toHaveBeenCalledWith(
+    expect(loadAvaClawPlugins).toHaveBeenCalledWith(
       expect.objectContaining({
         config: cfg,
-        workspaceDir: "/tmp/openclaw-workspace",
+        workspaceDir: "/tmp/avaclaw-workspace",
         cache: false,
         onlyPluginIds: ["telegram"],
         activate: false,
@@ -383,20 +383,20 @@ describe("ensureOnboardingPluginInstalled", () => {
 
   it("scopes snapshots by plugin id when channel and plugin ids differ", () => {
     const runtime = makeRuntime();
-    const cfg: OpenClawConfig = {};
+    const cfg: AvaClawConfig = {};
 
     loadOnboardingPluginRegistrySnapshotForChannel({
       cfg,
       runtime,
       channel: "msteams",
       pluginId: "@avadisabelle/ava-claw-msteams-plugin",
-      workspaceDir: "/tmp/openclaw-workspace",
+      workspaceDir: "/tmp/avaclaw-workspace",
     });
 
-    expect(loadOpenClawPlugins).toHaveBeenCalledWith(
+    expect(loadAvaClawPlugins).toHaveBeenCalledWith(
       expect.objectContaining({
         config: cfg,
-        workspaceDir: "/tmp/openclaw-workspace",
+        workspaceDir: "/tmp/avaclaw-workspace",
         cache: false,
         onlyPluginIds: ["@avadisabelle/ava-claw-msteams-plugin"],
         activate: false,

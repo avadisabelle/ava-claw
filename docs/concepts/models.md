@@ -39,7 +39,7 @@ Related:
 If you don’t want to hand-edit config, run the onboarding wizard:
 
 ```bash
-openclaw onboard
+avaclaw onboard
 ```
 
 It can set up model + auth for common providers, including **OpenAI Code (Codex)
@@ -116,27 +116,27 @@ Full command behavior/config: [Slash commands](/tools/slash-commands).
 ## CLI commands
 
 ```bash
-openclaw models list
-openclaw models status
-openclaw models set <provider/model>
-openclaw models set-image <provider/model>
+avaclaw models list
+avaclaw models status
+avaclaw models set <provider/model>
+avaclaw models set-image <provider/model>
 
-openclaw models aliases list
-openclaw models aliases add <alias> <provider/model>
-openclaw models aliases remove <alias>
+avaclaw models aliases list
+avaclaw models aliases add <alias> <provider/model>
+avaclaw models aliases remove <alias>
 
-openclaw models fallbacks list
-openclaw models fallbacks add <provider/model>
-openclaw models fallbacks remove <provider/model>
-openclaw models fallbacks clear
+avaclaw models fallbacks list
+avaclaw models fallbacks add <provider/model>
+avaclaw models fallbacks remove <provider/model>
+avaclaw models fallbacks clear
 
-openclaw models image-fallbacks list
-openclaw models image-fallbacks add <provider/model>
-openclaw models image-fallbacks remove <provider/model>
-openclaw models image-fallbacks clear
+avaclaw models image-fallbacks list
+avaclaw models image-fallbacks add <provider/model>
+avaclaw models image-fallbacks remove <provider/model>
+avaclaw models image-fallbacks clear
 ```
 
-`openclaw models` (no subcommand) is a shortcut for `models status`.
+`avaclaw models` (no subcommand) is a shortcut for `models status`.
 
 ### `models list`
 
@@ -166,12 +166,12 @@ Example (Anthropic setup-token):
 
 ```bash
 claude setup-token
-openclaw models status
+avaclaw models status
 ```
 
 ## Scanning (OpenRouter free models)
 
-`openclaw models scan` inspects OpenRouter’s **free model catalog** and can
+`avaclaw models scan` inspects OpenRouter’s **free model catalog** and can
 optionally probe models for tool and image support.
 
 Key flags:
@@ -207,7 +207,7 @@ mode, pass `--yes` to accept defaults.
 ## Models registry (`models.json`)
 
 Custom providers in `models.providers` are written into `models.json` under the
-agent directory (default `~/.openclaw/agents/<agentId>/agent/models.json`). This file
+agent directory (default `~/.avaclaw/agents/<agentId>/agent/models.json`). This file
 is merged by default unless `models.mode` is set to `replace`.
 
 Merge mode precedence for matching provider IDs:
@@ -220,4 +220,4 @@ Merge mode precedence for matching provider IDs:
 - Other provider fields are refreshed from config and normalized catalog data.
 
 Marker persistence is source-authoritative: Ava-Claw writes markers from the active source config snapshot (pre-resolution), not from resolved runtime secret values.
-This applies whenever Ava-Claw regenerates `models.json`, including command-driven paths like `openclaw agent`.
+This applies whenever Ava-Claw regenerates `models.json`, including command-driven paths like `avaclaw agent`.

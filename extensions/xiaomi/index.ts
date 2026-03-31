@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 import { buildXiaomiProvider } from "../../src/agents/models-config.providers.static.js";
 import { PROVIDER_LABELS } from "../../src/infra/provider-usage.shared.js";
 
@@ -9,7 +9,7 @@ const xiaomiPlugin = {
   name: "Xiaomi Provider",
   description: "Bundled Xiaomi provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Xiaomi",

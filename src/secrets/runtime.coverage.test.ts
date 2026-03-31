@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it } from "vitest";
 import type { AuthProfileStore } from "../agents/auth-profiles.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import { getPath, setPathCreateStrict } from "./path-utils.js";
 import { clearSecretsRuntimeSnapshot, prepareSecretsRuntimeSnapshot } from "./runtime.js";
 import { listSecretTargetRegistryEntries } from "./target-registry.js";
@@ -24,8 +24,8 @@ function toConcretePathSegments(pathPattern: string): string[] {
   return out;
 }
 
-function buildConfigForOpenClawTarget(entry: SecretRegistryEntry, envId: string): OpenClawConfig {
-  const config = {} as OpenClawConfig;
+function buildConfigForAvaClawTarget(entry: SecretRegistryEntry, envId: string): AvaClawConfig {
+  const config = {} as AvaClawConfig;
   const refTargetPath =
     entry.secretShape === "sibling_ref" && entry.refPathPattern // pragma: allowlist secret
       ? entry.refPathPattern
@@ -143,17 +143,17 @@ describe("secrets runtime target coverage", () => {
     clearSecretsRuntimeSnapshot();
   });
 
-  it("handles every openclaw.json registry target when configured as active", async () => {
+  it("handles every avaclaw.json registry target when configured as active", async () => {
     const entries = listSecretTargetRegistryEntries().filter(
-      (entry) => entry.configFile === "openclaw.json",
+      (entry) => entry.configFile === "avaclaw.json",
     );
     for (const [index, entry] of entries.entries()) {
-      const envId = `OPENCLAW_SECRET_TARGET_${index}`;
+      const envId = `AVACLAW_SECRET_TARGET_${index}`;
       const expectedValue = `resolved-${entry.id}`;
       const snapshot = await prepareSecretsRuntimeSnapshot({
-        config: buildConfigForOpenClawTarget(entry, envId),
+        config: buildConfigForAvaClawTarget(entry, envId),
         env: { [envId]: expectedValue },
-        agentDirs: ["/tmp/openclaw-agent-main"],
+        agentDirs: ["/tmp/avaclaw-agent-main"],
         loadAuthStore: () => ({ version: 1, profiles: {} }),
       });
       const resolved = getPath(snapshot.config, toConcretePathSegments(entry.pathPattern));
@@ -172,12 +172,12 @@ describe("secrets runtime target coverage", () => {
       (entry) => entry.configFile === "auth-profiles.json",
     );
     for (const [index, entry] of entries.entries()) {
-      const envId = `OPENCLAW_AUTH_SECRET_TARGET_${index}`;
+      const envId = `AVACLAW_AUTH_SECRET_TARGET_${index}`;
       const expectedValue = `resolved-${entry.id}`;
       const snapshot = await prepareSecretsRuntimeSnapshot({
-        config: {} as OpenClawConfig,
+        config: {} as AvaClawConfig,
         env: { [envId]: expectedValue },
-        agentDirs: ["/tmp/openclaw-agent-main"],
+        agentDirs: ["/tmp/avaclaw-agent-main"],
         loadAuthStore: () => buildAuthStoreForTarget(entry, envId),
       });
       const store = snapshot.authStores[0]?.store;

@@ -1,6 +1,6 @@
 import type { Api, Model } from "@avadisabelle/ava-pi-ai";
 import type { AuthStorage, ModelRegistry } from "@avadisabelle/ava-pi-coding-agent";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import type { ModelDefinitionConfig } from "../../config/types.js";
 import {
   prepareProviderDynamicModel,
@@ -8,7 +8,7 @@ import {
   runProviderDynamicModel,
   normalizeProviderResolvedModelWithPlugin,
 } from "../../plugins/provider-runtime.js";
-import { resolveOpenClawAgentDir } from "../agent-paths.js";
+import { resolveAvaClawAgentDir } from "../agent-paths.js";
 import { DEFAULT_CONTEXT_TOKENS } from "../defaults.js";
 import { buildModelAliasLines } from "../model-alias-lines.js";
 import { isSecretRefHeaderValueMarker } from "../model-auth-markers.js";
@@ -59,7 +59,7 @@ function sanitizeModelHeaders(
 function normalizeResolvedModel(params: {
   provider: string;
   model: Model<Api>;
-  cfg?: OpenClawConfig;
+  cfg?: AvaClawConfig;
   agentDir?: string;
 }): Model<Api> {
   const pluginNormalized = normalizeProviderResolvedModelWithPlugin({
@@ -82,7 +82,7 @@ function normalizeResolvedModel(params: {
 export { buildModelAliasLines };
 
 function resolveConfiguredProviderConfig(
-  cfg: OpenClawConfig | undefined,
+  cfg: AvaClawConfig | undefined,
   provider: string,
 ): InlineProviderConfig | undefined {
   const configuredProviders = cfg?.models?.providers;
@@ -188,7 +188,7 @@ function resolveExplicitModelWithRegistry(params: {
   provider: string;
   modelId: string;
   modelRegistry: ModelRegistry;
-  cfg?: OpenClawConfig;
+  cfg?: AvaClawConfig;
   agentDir?: string;
 }): { kind: "resolved"; model: Model<Api> } | { kind: "suppressed" } | undefined {
   const { provider, modelId, modelRegistry, cfg, agentDir } = params;
@@ -286,7 +286,7 @@ export function resolveModelWithRegistry(params: {
   provider: string;
   modelId: string;
   modelRegistry: ModelRegistry;
-  cfg?: OpenClawConfig;
+  cfg?: AvaClawConfig;
   agentDir?: string;
 }): Model<Api> | undefined {
   const explicitModel = resolveExplicitModelWithRegistry(params);
@@ -362,14 +362,14 @@ export function resolveModel(
   provider: string,
   modelId: string,
   agentDir?: string,
-  cfg?: OpenClawConfig,
+  cfg?: AvaClawConfig,
 ): {
   model?: Model<Api>;
   error?: string;
   authStorage: AuthStorage;
   modelRegistry: ModelRegistry;
 } {
-  const resolvedAgentDir = agentDir ?? resolveOpenClawAgentDir();
+  const resolvedAgentDir = agentDir ?? resolveAvaClawAgentDir();
   const authStorage = discoverAuthStorage(resolvedAgentDir);
   const modelRegistry = discoverModels(authStorage, resolvedAgentDir);
   const model = resolveModelWithRegistry({
@@ -394,14 +394,14 @@ export async function resolveModelAsync(
   provider: string,
   modelId: string,
   agentDir?: string,
-  cfg?: OpenClawConfig,
+  cfg?: AvaClawConfig,
 ): Promise<{
   model?: Model<Api>;
   error?: string;
   authStorage: AuthStorage;
   modelRegistry: ModelRegistry;
 }> {
-  const resolvedAgentDir = agentDir ?? resolveOpenClawAgentDir();
+  const resolvedAgentDir = agentDir ?? resolveAvaClawAgentDir();
   const authStorage = discoverAuthStorage(resolvedAgentDir);
   const modelRegistry = discoverModels(authStorage, resolvedAgentDir);
   const explicitModel = resolveExplicitModelWithRegistry({
@@ -473,12 +473,12 @@ export async function resolveModelAsync(
 const LOCAL_PROVIDER_HINTS: Record<string, string> = {
   ollama:
     "Ollama requires authentication to be registered as a provider. " +
-    'Set OLLAMA_API_KEY="ollama-local" (any value works) or run "openclaw configure". ' +
-    "See: https://docs.openclaw.ai/providers/ollama",
+    'Set OLLAMA_API_KEY="ollama-local" (any value works) or run "avaclaw configure". ' +
+    "See: https://docs.avaclaw.ai/providers/ollama",
   vllm:
     "vLLM requires authentication to be registered as a provider. " +
-    'Set VLLM_API_KEY (any value works) or run "openclaw configure". ' +
-    "See: https://docs.openclaw.ai/providers/vllm",
+    'Set VLLM_API_KEY (any value works) or run "avaclaw configure". ' +
+    "See: https://docs.avaclaw.ai/providers/vllm",
 };
 
 function buildUnknownModelError(provider: string, modelId: string): string {

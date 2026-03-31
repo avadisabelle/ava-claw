@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-opencode-go-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw OpenCode Go provider plugin",
+  "description": "AvaClaw OpenCode Go provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

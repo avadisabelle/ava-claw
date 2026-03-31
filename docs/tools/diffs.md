@@ -255,7 +255,7 @@ Example:
 
 ## Artifact lifecycle and storage
 
-- Artifacts are stored under the temp subfolder: `$TMPDIR/openclaw-diffs`.
+- Artifacts are stored under the temp subfolder: `$TMPDIR/avaclaw-diffs`.
 - Viewer artifact metadata contains:
   - random artifact ID (20 hex chars)
   - random token (48 hex chars)
@@ -318,7 +318,7 @@ Resolution order:
 
 1. `browser.executablePath` in Ava-Claw config.
 2. Environment variables:
-   - `OPENCLAW_BROWSER_EXECUTABLE_PATH`
+   - `AVACLAW_BROWSER_EXECUTABLE_PATH`
    - `BROWSER_EXECUTABLE_PATH`
    - `PLAYWRIGHT_CHROMIUM_EXECUTABLE_PATH`
 3. Platform command/path discovery fallback.

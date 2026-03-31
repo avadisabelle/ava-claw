@@ -56,18 +56,18 @@ const pluginSdkSubpaths = [
 
 export default defineConfig({
   resolve: {
-    // Keep this ordered: the base `openclaw/plugin-sdk` alias is a prefix match.
+    // Keep this ordered: the base `avaclaw/plugin-sdk` alias is a prefix match.
     alias: [
       {
-        find: "openclaw/extension-api",
+        find: "avaclaw/extension-api",
         replacement: path.join(repoRoot, "src", "extensionAPI.ts"),
       },
       ...pluginSdkSubpaths.map((subpath) => ({
-        find: `openclaw/plugin-sdk/${subpath}`,
+        find: `avaclaw/plugin-sdk/${subpath}`,
         replacement: path.join(repoRoot, "src", "plugin-sdk", `${subpath}.ts`),
       })),
       {
-        find: "openclaw/plugin-sdk",
+        find: "avaclaw/plugin-sdk",
         replacement: path.join(repoRoot, "src", "plugin-sdk", "index.ts"),
       },
     ],
@@ -100,7 +100,7 @@ export default defineConfig({
       "apps/macos/.build/**",
       "**/node_modules/**",
       "**/vendor/**",
-      "dist/OpenClaw.app/**",
+      "dist/AvaClaw.app/**",
       "**/*.live.test.ts",
       "**/*.e2e.test.ts",
     ],

@@ -2,12 +2,12 @@
 summary: "Integrated browser control service + action commands"
 read_when:
   - Adding agent-controlled browser automation
-  - Debugging why openclaw is interfering with your own Chrome
+  - Debugging why avaclaw is interfering with your own Chrome
   - Implementing browser settings + lifecycle in the macOS app
 title: "Browser (Ava-Claw-managed)"
 ---
 
-# Browser (openclaw-managed)
+# Browser (avaclaw-managed)
 
 Ava-Claw can run a **dedicated Chrome/Brave/Edge/Chromium profile** that the agent controls.
 It is isolated from your personal browser and is managed through a small local
@@ -16,17 +16,17 @@ control service inside the Gateway (loopback only).
 Beginner view:
 
 - Think of it as a **separate, agent-only browser**.
-- The `openclaw` profile does **not** touch your personal browser profile.
+- The `avaclaw` profile does **not** touch your personal browser profile.
 - The agent can **open tabs, read pages, click, and type** in a safe lane.
 - The built-in `user` profile attaches to your real signed-in Chrome session;
   `chrome-relay` is the explicit extension-relay profile.
 
 ## What you get
 
-- A separate browser profile named **openclaw** (orange accent by default).
+- A separate browser profile named **avaclaw** (orange accent by default).
 - Deterministic tab control (list/open/focus/close).
 - Agent actions (click/type/drag/select), snapshots, screenshots, PDFs.
-- Optional multi-profile support (`openclaw`, `work`, `remote`, ...).
+- Optional multi-profile support (`avaclaw`, `work`, `remote`, ...).
 
 This browser is **not** your daily driver. It is a safe, isolated surface for
 agent automation and verification.
@@ -34,18 +34,18 @@ agent automation and verification.
 ## Quick start
 
 ```bash
-openclaw browser --browser-profile openclaw status
-openclaw browser --browser-profile openclaw start
-openclaw browser --browser-profile openclaw open https://example.com
-openclaw browser --browser-profile openclaw snapshot
+avaclaw browser --browser-profile avaclaw status
+avaclaw browser --browser-profile avaclaw start
+avaclaw browser --browser-profile avaclaw open https://example.com
+avaclaw browser --browser-profile avaclaw snapshot
 ```
 
 If you get “Browser disabled”, enable it in config (see below) and restart the
 Gateway.
 
-## Profiles: `openclaw` vs `user` vs `chrome-relay`
+## Profiles: `avaclaw` vs `user` vs `chrome-relay`
 
-- `openclaw`: managed, isolated browser (no extension required).
+- `avaclaw`: managed, isolated browser (no extension required).
 - `user`: built-in Chrome MCP attach profile for your **real signed-in Chrome**
   session.
 - `chrome-relay`: extension relay to your **system browser** (requires the
@@ -53,14 +53,14 @@ Gateway.
 
 For agent browser tool calls:
 
-- Default: use the isolated `openclaw` browser.
+- Default: use the isolated `avaclaw` browser.
 - Prefer `profile="user"` when existing logged-in sessions matter and the user
   is at the computer to click/approve any attach prompt.
 - Use `profile="chrome-relay"` only when the user explicitly wants the Chrome
   extension / toolbar-button attach flow.
 - `profile` is the explicit override when you want a specific browser mode.
 
-Set `browser.defaultProfile: "openclaw"` if you want managed mode by default.
+Set `browser.defaultProfile: "avaclaw"` if you want managed mode by default.
 
 ## Configuration
 
@@ -79,14 +79,14 @@ Browser settings live in `~/.avadisabelle/ava-claw.json`.
     // cdpUrl: "http://127.0.0.1:18792", // legacy single-profile override
     remoteCdpTimeoutMs: 1500, // remote CDP HTTP timeout (ms)
     remoteCdpHandshakeTimeoutMs: 3000, // remote CDP WebSocket handshake timeout (ms)
-    defaultProfile: "openclaw",
+    defaultProfile: "avaclaw",
     color: "#FF4500",
     headless: false,
     noSandbox: false,
     attachOnly: false,
     executablePath: "/Applications/Brave Browser.app/Contents/MacOS/Brave Browser",
     profiles: {
-      openclaw: { cdpPort: 18800, color: "#FF4500" },
+      avaclaw: { cdpPort: 18800, color: "#FF4500" },
       work: { cdpPort: 18801, color: "#0066CC" },
       user: {
         driver: "existing-session",
@@ -108,7 +108,7 @@ Notes:
 
 - The browser control service binds to loopback on a port derived from `gateway.port`
   (default: `18791`, which is gateway + 2). The relay uses the next port (`18792`).
-- If you override the Gateway port (`gateway.port` or `OPENCLAW_GATEWAY_PORT`),
+- If you override the Gateway port (`gateway.port` or `AVACLAW_GATEWAY_PORT`),
   the derived browser ports shift to stay in the same “family”.
 - `cdpUrl` defaults to the relay port when unset.
 - `remoteCdpTimeoutMs` applies to remote (non-loopback) CDP reachability checks.
@@ -119,9 +119,9 @@ Notes:
 - `browser.ssrfPolicy.allowPrivateNetwork` remains supported as a legacy alias for compatibility.
 - `attachOnly: true` means “never launch a local browser; only attach if it is already running.”
 - `color` + per-profile `color` tint the browser UI so you can see which profile is active.
-- Default profile is `openclaw` (Ava-Claw-managed standalone browser). Use `defaultProfile: "user"` to opt into the signed-in user browser, or `defaultProfile: "chrome-relay"` for the extension relay.
+- Default profile is `avaclaw` (Ava-Claw-managed standalone browser). Use `defaultProfile: "user"` to opt into the signed-in user browser, or `defaultProfile: "chrome-relay"` for the extension relay.
 - Auto-detect order: system default browser if Chromium-based; otherwise Chrome → Brave → Edge → Chromium → Chrome Canary.
-- Local `openclaw` profiles auto-assign `cdpPort`/`cdpUrl` — set those only for remote CDP.
+- Local `avaclaw` profiles auto-assign `cdpPort`/`cdpUrl` — set those only for remote CDP.
 - `driver: "existing-session"` uses Chrome DevTools MCP instead of raw CDP. Do
   not set `cdpUrl` for that driver.
 
@@ -134,7 +134,7 @@ auto-detection:
 CLI example:
 
 ```bash
-openclaw config set browser.executablePath "/usr/bin/google-chrome"
+avaclaw config set browser.executablePath "/usr/bin/google-chrome"
 ```
 
 ```json5
@@ -285,14 +285,14 @@ Remote CDP tips:
 
 Ava-Claw supports multiple named profiles (routing configs). Profiles can be:
 
-- **openclaw-managed**: a dedicated Chromium-based browser instance with its own user data directory + CDP port
+- **avaclaw-managed**: a dedicated Chromium-based browser instance with its own user data directory + CDP port
 - **remote**: an explicit CDP URL (Chromium-based browser running elsewhere)
 - **extension relay**: your existing Chrome tab(s) via the local relay + Chrome extension
 - **existing session**: your existing Chrome profile via Chrome DevTools MCP auto-connect
 
 Defaults:
 
-- The `openclaw` profile is auto-created if missing.
+- The `avaclaw` profile is auto-created if missing.
 - The `chrome-relay` profile is built-in for the Chrome extension relay (points at `http://127.0.0.1:18792` by default).
 - Existing-session profiles are opt-in; create them with `--driver existing-session`.
 - Local CDP ports allocate from **18800–18899** by default.
@@ -302,7 +302,7 @@ All control endpoints accept `?profile=<name>`; the CLI uses `--browser-profile`
 
 ## Chrome extension relay (use your existing Chrome)
 
-Ava-Claw can also drive **your existing Chrome tabs** (no separate “openclaw” Chrome instance) via a local CDP relay + a Chrome extension.
+Ava-Claw can also drive **your existing Chrome tabs** (no separate “avaclaw” Chrome instance) via a local CDP relay + a Chrome extension.
 
 Full guide: [Chrome extension](/tools/chrome-extension)
 
@@ -328,22 +328,22 @@ Chrome extension relay takeover requires host browser control, so either:
 1. Load the extension (dev/unpacked):
 
 ```bash
-openclaw browser extension install
+avaclaw browser extension install
 ```
 
 - Chrome → `chrome://extensions` → enable “Developer mode”
-- “Load unpacked” → select the directory printed by `openclaw browser extension path`
+- “Load unpacked” → select the directory printed by `avaclaw browser extension path`
 - Pin the extension, then click it on the tab you want to control (badge shows `ON`).
 
 2. Use it:
 
-- CLI: `openclaw browser --browser-profile chrome-relay tabs`
+- CLI: `avaclaw browser --browser-profile chrome-relay tabs`
 - Agent tool: `browser` with `profile="chrome-relay"`
 
 Optional: if you want a different name or relay port, create your own profile:
 
 ```bash
-openclaw browser create-profile \
+avaclaw browser create-profile \
   --name my-chrome \
   --driver extension \
   --cdp-url http://127.0.0.1:18792 \
@@ -385,10 +385,10 @@ Then in Chrome:
 Live attach smoke test:
 
 ```bash
-openclaw browser --browser-profile user start
-openclaw browser --browser-profile user status
-openclaw browser --browser-profile user tabs
-openclaw browser --browser-profile user snapshot --format ai
+avaclaw browser --browser-profile user start
+avaclaw browser --browser-profile user status
+avaclaw browser --browser-profile user tabs
+avaclaw browser --browser-profile user snapshot --format ai
 ```
 
 What success looks like:
@@ -417,7 +417,7 @@ Agent use:
 
 Notes:
 
-- This path is higher-risk than the isolated `openclaw` profile because it can
+- This path is higher-risk than the isolated `avaclaw` profile because it can
   act inside your signed-in browser session.
 - Ava-Claw does not launch Chrome for this driver; it attaches to an existing
   session only.
@@ -489,13 +489,13 @@ All endpoints accept `?profile=<name>`.
 If gateway auth is configured, browser HTTP routes require auth too:
 
 - `Authorization: Bearer <gateway token>`
-- `x-openclaw-password: <gateway password>` or HTTP Basic auth with that password
+- `x-avaclaw-password: <gateway password>` or HTTP Basic auth with that password
 
 ### Playwright requirement
 
 Some features (navigate/act/AI snapshot/role snapshot, element screenshots, PDF) require
 Playwright. If Playwright isn’t installed, those endpoints return a clear 501
-error. ARIA snapshots and basic screenshots still work for openclaw-managed Chrome.
+error. ARIA snapshots and basic screenshots still work for avaclaw-managed Chrome.
 For the Chrome extension relay driver, ARIA snapshots and screenshots require Playwright.
 
 If you see `Playwright is not available in this gateway build`, install the full
@@ -508,13 +508,13 @@ If your Gateway runs in Docker, avoid `npx playwright` (npm override conflicts).
 Use the bundled CLI instead:
 
 ```bash
-docker compose run --rm openclaw-cli \
+docker compose run --rm avaclaw-cli \
   node /app/node_modules/playwright-core/cli.js install chromium
 ```
 
 To persist browser downloads, set `PLAYWRIGHT_BROWSERS_PATH` (for example,
 `/home/node/.cache/ms-playwright`) and make sure `/home/node` is persisted via
-`OPENCLAW_HOME_VOLUME` or a bind mount. See [Docker](/install/docker).
+`AVACLAW_HOME_VOLUME` or a bind mount. See [Docker](/install/docker).
 
 ## How it works (internal)
 
@@ -536,95 +536,95 @@ All commands also accept `--json` for machine-readable output (stable payloads).
 
 Basics:
 
-- `openclaw browser status`
-- `openclaw browser start`
-- `openclaw browser stop`
-- `openclaw browser tabs`
-- `openclaw browser tab`
-- `openclaw browser tab new`
-- `openclaw browser tab select 2`
-- `openclaw browser tab close 2`
-- `openclaw browser open https://example.com`
-- `openclaw browser focus abcd1234`
-- `openclaw browser close abcd1234`
+- `avaclaw browser status`
+- `avaclaw browser start`
+- `avaclaw browser stop`
+- `avaclaw browser tabs`
+- `avaclaw browser tab`
+- `avaclaw browser tab new`
+- `avaclaw browser tab select 2`
+- `avaclaw browser tab close 2`
+- `avaclaw browser open https://example.com`
+- `avaclaw browser focus abcd1234`
+- `avaclaw browser close abcd1234`
 
 Inspection:
 
-- `openclaw browser screenshot`
-- `openclaw browser screenshot --full-page`
-- `openclaw browser screenshot --ref 12`
-- `openclaw browser screenshot --ref e12`
-- `openclaw browser snapshot`
-- `openclaw browser snapshot --format aria --limit 200`
-- `openclaw browser snapshot --interactive --compact --depth 6`
-- `openclaw browser snapshot --efficient`
-- `openclaw browser snapshot --labels`
-- `openclaw browser snapshot --selector "#main" --interactive`
-- `openclaw browser snapshot --frame "iframe#main" --interactive`
-- `openclaw browser console --level error`
-- `openclaw browser errors --clear`
-- `openclaw browser requests --filter api --clear`
-- `openclaw browser pdf`
-- `openclaw browser responsebody "**/api" --max-chars 5000`
+- `avaclaw browser screenshot`
+- `avaclaw browser screenshot --full-page`
+- `avaclaw browser screenshot --ref 12`
+- `avaclaw browser screenshot --ref e12`
+- `avaclaw browser snapshot`
+- `avaclaw browser snapshot --format aria --limit 200`
+- `avaclaw browser snapshot --interactive --compact --depth 6`
+- `avaclaw browser snapshot --efficient`
+- `avaclaw browser snapshot --labels`
+- `avaclaw browser snapshot --selector "#main" --interactive`
+- `avaclaw browser snapshot --frame "iframe#main" --interactive`
+- `avaclaw browser console --level error`
+- `avaclaw browser errors --clear`
+- `avaclaw browser requests --filter api --clear`
+- `avaclaw browser pdf`
+- `avaclaw browser responsebody "**/api" --max-chars 5000`
 
 Actions:
 
-- `openclaw browser navigate https://example.com`
-- `openclaw browser resize 1280 720`
-- `openclaw browser click 12 --double`
-- `openclaw browser click e12 --double`
-- `openclaw browser type 23 "hello" --submit`
-- `openclaw browser press Enter`
-- `openclaw browser hover 44`
-- `openclaw browser scrollintoview e12`
-- `openclaw browser drag 10 11`
-- `openclaw browser select 9 OptionA OptionB`
-- `openclaw browser download e12 report.pdf`
-- `openclaw browser waitfordownload report.pdf`
-- `openclaw browser upload /tmp/openclaw/uploads/file.pdf`
-- `openclaw browser fill --fields '[{"ref":"1","type":"text","value":"Ada"}]'`
-- `openclaw browser dialog --accept`
-- `openclaw browser wait --text "Done"`
-- `openclaw browser wait "#main" --url "**/dash" --load networkidle --fn "window.ready===true"`
-- `openclaw browser evaluate --fn '(el) => el.textContent' --ref 7`
-- `openclaw browser highlight e12`
-- `openclaw browser trace start`
-- `openclaw browser trace stop`
+- `avaclaw browser navigate https://example.com`
+- `avaclaw browser resize 1280 720`
+- `avaclaw browser click 12 --double`
+- `avaclaw browser click e12 --double`
+- `avaclaw browser type 23 "hello" --submit`
+- `avaclaw browser press Enter`
+- `avaclaw browser hover 44`
+- `avaclaw browser scrollintoview e12`
+- `avaclaw browser drag 10 11`
+- `avaclaw browser select 9 OptionA OptionB`
+- `avaclaw browser download e12 report.pdf`
+- `avaclaw browser waitfordownload report.pdf`
+- `avaclaw browser upload /tmp/avaclaw/uploads/file.pdf`
+- `avaclaw browser fill --fields '[{"ref":"1","type":"text","value":"Ada"}]'`
+- `avaclaw browser dialog --accept`
+- `avaclaw browser wait --text "Done"`
+- `avaclaw browser wait "#main" --url "**/dash" --load networkidle --fn "window.ready===true"`
+- `avaclaw browser evaluate --fn '(el) => el.textContent' --ref 7`
+- `avaclaw browser highlight e12`
+- `avaclaw browser trace start`
+- `avaclaw browser trace stop`
 
 State:
 
-- `openclaw browser cookies`
-- `openclaw browser cookies set session abc123 --url "https://example.com"`
-- `openclaw browser cookies clear`
-- `openclaw browser storage local get`
-- `openclaw browser storage local set theme dark`
-- `openclaw browser storage session clear`
-- `openclaw browser set offline on`
-- `openclaw browser set headers --headers-json '{"X-Debug":"1"}'`
-- `openclaw browser set credentials user pass`
-- `openclaw browser set credentials --clear`
-- `openclaw browser set geo 37.7749 -122.4194 --origin "https://example.com"`
-- `openclaw browser set geo --clear`
-- `openclaw browser set media dark`
-- `openclaw browser set timezone America/New_York`
-- `openclaw browser set locale en-US`
-- `openclaw browser set device "iPhone 14"`
+- `avaclaw browser cookies`
+- `avaclaw browser cookies set session abc123 --url "https://example.com"`
+- `avaclaw browser cookies clear`
+- `avaclaw browser storage local get`
+- `avaclaw browser storage local set theme dark`
+- `avaclaw browser storage session clear`
+- `avaclaw browser set offline on`
+- `avaclaw browser set headers --headers-json '{"X-Debug":"1"}'`
+- `avaclaw browser set credentials user pass`
+- `avaclaw browser set credentials --clear`
+- `avaclaw browser set geo 37.7749 -122.4194 --origin "https://example.com"`
+- `avaclaw browser set geo --clear`
+- `avaclaw browser set media dark`
+- `avaclaw browser set timezone America/New_York`
+- `avaclaw browser set locale en-US`
+- `avaclaw browser set device "iPhone 14"`
 
 Notes:
 
 - `upload` and `dialog` are **arming** calls; run them before the click/press
   that triggers the chooser/dialog.
 - Download and trace output paths are constrained to Ava-Claw temp roots:
-  - traces: `/tmp/openclaw` (fallback: `${os.tmpdir()}/openclaw`)
-  - downloads: `/tmp/openclaw/downloads` (fallback: `${os.tmpdir()}/openclaw/downloads`)
+  - traces: `/tmp/avaclaw` (fallback: `${os.tmpdir()}/avaclaw`)
+  - downloads: `/tmp/avaclaw/downloads` (fallback: `${os.tmpdir()}/avaclaw/downloads`)
 - Upload paths are constrained to an Ava-Claw temp uploads root:
-  - uploads: `/tmp/openclaw/uploads` (fallback: `${os.tmpdir()}/openclaw/uploads`)
+  - uploads: `/tmp/avaclaw/uploads` (fallback: `${os.tmpdir()}/avaclaw/uploads`)
 - `upload` can also set file inputs directly via `--input-ref` or `--element`.
 - `snapshot`:
   - `--format ai` (default when Playwright is installed): returns an AI snapshot with numeric refs (`aria-ref="<n>"`).
   - `--format aria`: returns the accessibility tree (no refs; inspection only).
   - `--efficient` (or `--mode efficient`): compact role snapshot preset (interactive + compact + depth + lower maxChars).
-  - Config default (tool/CLI only): set `browser.snapshotDefaults.mode: "efficient"` to use efficient snapshots when the caller does not pass a mode (see [Gateway configuration](/gateway/configuration#browser-openclaw-managed-browser)).
+  - Config default (tool/CLI only): set `browser.snapshotDefaults.mode: "efficient"` to use efficient snapshots when the caller does not pass a mode (see [Gateway configuration](/gateway/configuration#browser-avaclaw-managed-browser)).
   - Role snapshot options (`--interactive`, `--compact`, `--depth`, `--selector`) force a role-based snapshot with refs like `ref=e12`.
   - `--frame "<iframe selector>"` scopes role snapshots to an iframe (pairs with role refs like `e12`).
   - `--interactive` outputs a flat, easy-to-pick list of interactive elements (best for driving actions).
@@ -636,14 +636,14 @@ Notes:
 
 Ava-Claw supports two “snapshot” styles:
 
-- **AI snapshot (numeric refs)**: `openclaw browser snapshot` (default; `--format ai`)
+- **AI snapshot (numeric refs)**: `avaclaw browser snapshot` (default; `--format ai`)
   - Output: a text snapshot that includes numeric refs.
-  - Actions: `openclaw browser click 12`, `openclaw browser type 23 "hello"`.
+  - Actions: `avaclaw browser click 12`, `avaclaw browser type 23 "hello"`.
   - Internally, the ref is resolved via Playwright’s `aria-ref`.
 
-- **Role snapshot (role refs like `e12`)**: `openclaw browser snapshot --interactive` (or `--compact`, `--depth`, `--selector`, `--frame`)
+- **Role snapshot (role refs like `e12`)**: `avaclaw browser snapshot --interactive` (or `--compact`, `--depth`, `--selector`, `--frame`)
   - Output: a role-based list/tree with `[ref=e12]` (and optional `[nth=1]`).
-  - Actions: `openclaw browser click e12`, `openclaw browser highlight e12`.
+  - Actions: `avaclaw browser click e12`, `avaclaw browser highlight e12`.
   - Internally, the ref is resolved via `getByRole(...)` (plus `nth()` for duplicates).
   - Add `--labels` to include a viewport screenshot with overlayed `e12` labels.
 
@@ -657,18 +657,18 @@ Ref behavior:
 You can wait on more than just time/text:
 
 - Wait for URL (globs supported by Playwright):
-  - `openclaw browser wait --url "**/dash"`
+  - `avaclaw browser wait --url "**/dash"`
 - Wait for load state:
-  - `openclaw browser wait --load networkidle`
+  - `avaclaw browser wait --load networkidle`
 - Wait for a JS predicate:
-  - `openclaw browser wait --fn "window.ready===true"`
+  - `avaclaw browser wait --fn "window.ready===true"`
 - Wait for a selector to become visible:
-  - `openclaw browser wait "#main"`
+  - `avaclaw browser wait "#main"`
 
 These can be combined:
 
 ```bash
-openclaw browser wait "#main" \
+avaclaw browser wait "#main" \
   --url "**/dash" \
   --load networkidle \
   --fn "window.ready===true" \
@@ -679,16 +679,16 @@ openclaw browser wait "#main" \
 
 When an action fails (e.g. “not visible”, “strict mode violation”, “covered”):
 
-1. `openclaw browser snapshot --interactive`
+1. `avaclaw browser snapshot --interactive`
 2. Use `click <ref>` / `type <ref>` (prefer role refs in interactive mode)
-3. If it still fails: `openclaw browser highlight <ref>` to see what Playwright is targeting
+3. If it still fails: `avaclaw browser highlight <ref>` to see what Playwright is targeting
 4. If the page behaves oddly:
-   - `openclaw browser errors --clear`
-   - `openclaw browser requests --filter api --clear`
+   - `avaclaw browser errors --clear`
+   - `avaclaw browser requests --filter api --clear`
 5. For deep debugging: record a trace:
-   - `openclaw browser trace start`
+   - `avaclaw browser trace start`
    - reproduce the issue
-   - `openclaw browser trace stop` (prints `TRACE:<path>`)
+   - `avaclaw browser trace stop` (prints `TRACE:<path>`)
 
 ## JSON output
 
@@ -697,10 +697,10 @@ When an action fails (e.g. “not visible”, “strict mode violation”, “co
 Examples:
 
 ```bash
-openclaw browser status --json
-openclaw browser snapshot --interactive --json
-openclaw browser requests --filter api --json
-openclaw browser cookies --json
+avaclaw browser status --json
+avaclaw browser snapshot --interactive --json
+avaclaw browser requests --filter api --json
+avaclaw browser cookies --json
 ```
 
 Role snapshots in JSON include `refs` plus a small `stats` block (lines/chars/refs/interactive) so tools can reason about payload size and density.
@@ -723,8 +723,8 @@ These are useful for “make the site behave like X” workflows:
 
 ## Security & privacy
 
-- The openclaw browser profile may contain logged-in sessions; treat it as sensitive.
-- `browser act kind=evaluate` / `openclaw browser evaluate` and `wait --fn`
+- The avaclaw browser profile may contain logged-in sessions; treat it as sensitive.
+- `browser act kind=evaluate` / `avaclaw browser evaluate` and `wait --fn`
   execute arbitrary JavaScript in the page context. Prompt injection can steer
   this. Disable it with `browser.evaluateEnabled=false` if you do not need it.
 - For logins and anti-bot notes (X/Twitter, etc.), see [Browser login + X/Twitter posting](/tools/browser-login).
@@ -765,7 +765,7 @@ How it maps:
 - `browser act` uses the snapshot `ref` IDs to click/type/drag/select.
 - `browser screenshot` captures pixels (full page or element).
 - `browser` accepts:
-  - `profile` to choose a named browser profile (openclaw, chrome, or remote CDP).
+  - `profile` to choose a named browser profile (avaclaw, chrome, or remote CDP).
   - `target` (`sandbox` | `host` | `node`) to select where the browser lives.
   - In sandboxed sessions, `target: "host"` requires `agents.defaults.sandbox.browser.allowHostControl=true`.
   - If `target` is omitted: sandboxed sessions default to `sandbox`, non-sandbox sessions default to `host`.

@@ -1,5 +1,5 @@
 import { createSubsystemLogger } from "../logging/subsystem.js";
-import { loadOpenClawPlugins, type PluginLoadOptions } from "./loader.js";
+import { loadAvaClawPlugins, type PluginLoadOptions } from "./loader.js";
 import { createPluginLoaderLogger } from "./logger.js";
 import type { ProviderPlugin } from "./types.js";
 
@@ -81,7 +81,7 @@ export function resolvePluginProviders(params: {
   const config = params.bundledProviderAllowlistCompat
     ? withBundledProviderAllowlistCompat(params.config)
     : params.config;
-  const registry = loadOpenClawPlugins({
+  const registry = loadAvaClawPlugins({
     config,
     workspaceDir: params.workspaceDir,
     env: params.env,

@@ -57,8 +57,8 @@ Ava-Claw persists sessions in two layers:
 
 Per agent, on the Gateway host:
 
-- Store: `~/.openclaw/agents/<agentId>/sessions/sessions.json`
-- Transcripts: `~/.openclaw/agents/<agentId>/sessions/<sessionId>.jsonl`
+- Store: `~/.avaclaw/agents/<agentId>/sessions/sessions.json`
+- Transcripts: `~/.avaclaw/agents/<agentId>/sessions/<sessionId>.jsonl`
   - Telegram topic sessions: `.../<sessionId>-topic-<threadId>.jsonl`
 
 Ava-Claw resolves these via `src/config/sessions.ts`.
@@ -88,8 +88,8 @@ In `mode: "warn"`, Ava-Claw reports potential evictions but does not mutate the 
 Run maintenance on demand:
 
 ```bash
-openclaw sessions cleanup --dry-run
-openclaw sessions cleanup --enforce
+avaclaw sessions cleanup --dry-run
+avaclaw sessions cleanup --enforce
 ```
 
 ---
@@ -99,7 +99,7 @@ openclaw sessions cleanup --enforce
 Isolated cron runs also create session entries/transcripts, and they have dedicated retention controls:
 
 - `cron.sessionRetention` (default `24h`) prunes old isolated cron run sessions from the session store (`false` disables).
-- `cron.runLog.maxBytes` + `cron.runLog.keepLines` prune `~/.openclaw/cron/runs/<jobId>.jsonl` files (defaults: `2_000_000` bytes and `2000` lines).
+- `cron.runLog.maxBytes` + `cron.runLog.keepLines` prune `~/.avaclaw/cron/runs/<jobId>.jsonl` files (defaults: `2_000_000` bytes and `2000` lines).
 
 ---
 
@@ -261,8 +261,8 @@ Implementation: `ensurePiCompactionReserveTokens()` in `src/agents/pi-settings.t
 You can observe compaction and session state via:
 
 - `/status` (in any chat session)
-- `openclaw status` (CLI)
-- `openclaw sessions` / `sessions --json`
+- `avaclaw status` (CLI)
+- `avaclaw sessions` / `sessions --json`
 - Verbose mode: `🧹 Auto-compaction complete` + compaction count
 
 ---
@@ -316,7 +316,7 @@ flush logic lives on the Gateway side today.
 ## Troubleshooting checklist
 
 - Session key wrong? Start with [/concepts/session](/concepts/session) and confirm the `sessionKey` in `/status`.
-- Store vs transcript mismatch? Confirm the Gateway host and the store path from `openclaw status`.
+- Store vs transcript mismatch? Confirm the Gateway host and the store path from `avaclaw status`.
 - Compaction spam? Check:
   - model context window (too small)
   - compaction settings (`reserveTokens` too high for the model window can cause earlier compaction)

@@ -1,7 +1,7 @@
 {
   "name": "@avadisabelle/ava-claw-nextcloud-talk",
   "version": "2026.3.14",
-  "description": "OpenClaw Nextcloud Talk channel plugin",
+  "description": "AvaClaw Nextcloud Talk channel plugin",
   "type": "module",
   "dependencies": {
     "zod": "^4.3.6"

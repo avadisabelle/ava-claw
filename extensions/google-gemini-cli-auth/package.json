@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-google-gemini-cli-auth",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Gemini CLI OAuth provider plugin",
+  "description": "AvaClaw Gemini CLI OAuth provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

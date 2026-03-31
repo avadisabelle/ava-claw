@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import type { ChannelPluginCatalogEntry } from "../channels/plugins/catalog.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import { createEmptyPluginRegistry } from "../plugins/registry.js";
 import { setActivePluginRegistry } from "../plugins/runtime.js";
 import type { WizardPrompter } from "../wizard/prompts.js";
@@ -43,7 +43,7 @@ function createUnexpectedPromptGuards() {
 type SetupChannelsOptions = Parameters<typeof setupChannels>[3];
 
 function runSetupChannels(
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
   prompter: WizardPrompter,
   options?: SetupChannelsOptions,
 ) {
@@ -80,7 +80,7 @@ function createUnexpectedQuickstartPrompter(select: WizardPrompter["select"]) {
   };
 }
 
-function createTelegramCfg(botToken: string, enabled?: boolean): OpenClawConfig {
+function createTelegramCfg(botToken: string, enabled?: boolean): AvaClawConfig {
   return {
     channels: {
       telegram: {
@@ -88,7 +88,7 @@ function createTelegramCfg(botToken: string, enabled?: boolean): OpenClawConfig 
         ...(typeof enabled === "boolean" ? { enabled } : {}),
       },
     },
-  } as OpenClawConfig;
+  } as AvaClawConfig;
 }
 
 function patchTelegramAdapter(overrides: Parameters<typeof patchChannelOnboardingAdapter>[1]) {
@@ -96,7 +96,7 @@ function patchTelegramAdapter(overrides: Parameters<typeof patchChannelOnboardin
     ...overrides,
     getStatus:
       overrides.getStatus ??
-      vi.fn(async ({ cfg }: { cfg: OpenClawConfig }) => ({
+      vi.fn(async ({ cfg }: { cfg: AvaClawConfig }) => ({
         channel: "telegram",
         configured: Boolean(cfg.channels?.telegram?.botToken),
         statusLines: [],
@@ -160,7 +160,7 @@ async function runQuickstartTelegramSetupWithInteractive(params: {
   );
 
   try {
-    const cfg = await runSetupChannels({} as OpenClawConfig, prompter, {
+    const cfg = await runSetupChannels({} as AvaClawConfig, prompter, {
       quickstartDefaults: true,
       onSelection: selection,
       onAccountId,
@@ -239,7 +239,7 @@ describe("setupChannels", () => {
       text: text as unknown as WizardPrompter["text"],
     });
 
-    await runSetupChannels({} as OpenClawConfig, prompter, {
+    await runSetupChannels({} as AvaClawConfig, prompter, {
       quickstartDefaults: true,
       forceAllowFromChannels: ["whatsapp"],
     });
@@ -271,7 +271,7 @@ describe("setupChannels", () => {
       text: text as unknown as WizardPrompter["text"],
     });
 
-    await runSetupChannels({} as OpenClawConfig, prompter, {
+    await runSetupChannels({} as AvaClawConfig, prompter, {
       quickstartDefaults: true,
     });
 
@@ -304,7 +304,7 @@ describe("setupChannels", () => {
       text,
     });
 
-    await runSetupChannels({} as OpenClawConfig, prompter);
+    await runSetupChannels({} as AvaClawConfig, prompter);
 
     const sawPrimer = note.mock.calls.some(
       ([message, title]) =>
@@ -391,7 +391,7 @@ describe("setupChannels", () => {
             "@avadisabelle/ava-claw-msteams-plugin": { enabled: true },
           },
         },
-      } as OpenClawConfig,
+      } as AvaClawConfig,
       prompter,
     );
 
@@ -412,7 +412,7 @@ describe("setupChannels", () => {
         accountId,
         enabled,
       }: {
-        cfg: OpenClawConfig;
+        cfg: AvaClawConfig;
         accountId: string;
         enabled: boolean;
       }) => ({
@@ -457,12 +457,12 @@ describe("setupChannels", () => {
               },
               capabilities: { chatTypes: ["direct"] },
               config: {
-                listAccountIds: (cfg: OpenClawConfig) =>
+                listAccountIds: (cfg: AvaClawConfig) =>
                   Object.keys(
                     (cfg.channels?.msteams as { accounts?: Record<string, unknown> } | undefined)
                       ?.accounts ?? {},
                   ),
-                resolveAccount: (cfg: OpenClawConfig, accountId: string) =>
+                resolveAccount: (cfg: AvaClawConfig, accountId: string) =>
                   (
                     cfg.channels?.msteams as
                       | {
@@ -473,7 +473,7 @@ describe("setupChannels", () => {
                 setAccountEnabled,
               },
               onboarding: {
-                getStatus: vi.fn(async ({ cfg }: { cfg: OpenClawConfig }) => ({
+                getStatus: vi.fn(async ({ cfg }: { cfg: AvaClawConfig }) => ({
                   channel: "msteams",
                   configured: Boolean(
                     (cfg.channels?.msteams as { tenantId?: string } | undefined)?.tenantId,
@@ -529,7 +529,7 @@ describe("setupChannels", () => {
             msteams: { enabled: true },
           },
         },
-      } as OpenClawConfig,
+      } as AvaClawConfig,
       prompter,
       { allowDisable: true },
     );
@@ -624,14 +624,14 @@ describe("setupChannels", () => {
   });
 
   it("applies configureInteractive result cfg/account updates", async () => {
-    const configureInteractive = vi.fn(async ({ cfg }: { cfg: OpenClawConfig }) => ({
+    const configureInteractive = vi.fn(async ({ cfg }: { cfg: AvaClawConfig }) => ({
       cfg: {
         ...cfg,
         channels: {
           ...cfg.channels,
           telegram: { ...cfg.channels?.telegram, botToken: "new-token" },
         },
-      } as OpenClawConfig,
+      } as AvaClawConfig,
       accountId: "acct-1",
     }));
     const configure = createUnexpectedConfigureCall(
@@ -650,14 +650,14 @@ describe("setupChannels", () => {
   });
 
   it("uses configureWhenConfigured when channel is already configured", async () => {
-    const configureWhenConfigured = vi.fn(async ({ cfg }: { cfg: OpenClawConfig }) => ({
+    const configureWhenConfigured = vi.fn(async ({ cfg }: { cfg: AvaClawConfig }) => ({
       cfg: {
         ...cfg,
         channels: {
           ...cfg.channels,
           telegram: { ...cfg.channels?.telegram, botToken: "updated-token" },
         },
-      } as OpenClawConfig,
+      } as AvaClawConfig,
       accountId: "acct-2",
     }));
     const { cfg, selection, onAccountId, configure } = await runConfiguredTelegramSetup({

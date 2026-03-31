@@ -1,7 +1,7 @@
 {
   "name": "@avadisabelle/ava-claw-matrix",
   "version": "2026.3.14",
-  "description": "OpenClaw Matrix channel plugin",
+  "description": "AvaClaw Matrix channel plugin",
   "type": "module",
   "dependencies": {
     "@avadisabelle/ava-pi-agent-core": "^0.61.1",

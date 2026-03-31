@@ -1,5 +1,5 @@
 import type { AuthProfileStore } from "../agents/auth-profiles.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import { resolveProviderWizardOptions } from "../plugins/provider-wizard.js";
 import {
   AUTH_CHOICE_GROUP_DEFS,
@@ -11,7 +11,7 @@ import {
 import type { AuthChoice, AuthChoiceGroupId } from "./onboard-types.js";
 
 function resolveDynamicProviderCliChoices(params?: {
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): string[] {
@@ -21,7 +21,7 @@ function resolveDynamicProviderCliChoices(params?: {
 export function formatAuthChoiceChoicesForCli(params?: {
   includeSkip?: boolean;
   includeLegacyAliases?: boolean;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): string {
@@ -36,7 +36,7 @@ export function formatAuthChoiceChoicesForCli(params?: {
 export function buildAuthChoiceOptions(params: {
   store: AuthProfileStore;
   includeSkip: boolean;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): AuthChoiceOption[] {
@@ -70,7 +70,7 @@ export function buildAuthChoiceOptions(params: {
 export function buildAuthChoiceGroups(params: {
   store: AuthProfileStore;
   includeSkip: boolean;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): {

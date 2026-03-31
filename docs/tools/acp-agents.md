@@ -136,7 +136,7 @@ Example:
             agent: "codex",
             backend: "acpx",
             mode: "persistent",
-            cwd: "/workspace/openclaw",
+            cwd: "/workspace/avaclaw",
           },
         },
       },
@@ -510,14 +510,14 @@ See [Configuration Reference](/gateway/configuration-reference).
 Install and enable plugin:
 
 ```bash
-openclaw plugins install acpx
-openclaw config set plugins.entries.acpx.enabled true
+avaclaw plugins install acpx
+avaclaw config set plugins.entries.acpx.enabled true
 ```
 
 Local workspace install during development:
 
 ```bash
-openclaw plugins install ./extensions/acpx
+avaclaw plugins install ./extensions/acpx
 ```
 
 Then verify backend health:
@@ -593,8 +593,8 @@ Controls what happens when a permission prompt would be shown but no interactive
 Set via plugin config:
 
 ```bash
-openclaw config set plugins.entries.acpx.config.permissionMode approve-all
-openclaw config set plugins.entries.acpx.config.nonInteractivePermissions fail
+avaclaw config set plugins.entries.acpx.config.permissionMode approve-all
+avaclaw config set plugins.entries.acpx.config.nonInteractivePermissions fail
 ```
 
 Restart the gateway after changing these values.

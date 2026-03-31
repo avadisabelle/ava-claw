@@ -1,5 +1,5 @@
 import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 
 const THREAD_SUFFIX_REGEX = /^(.*)(?::(?:thread|topic):\d+)$/i;
 
@@ -42,7 +42,7 @@ export function limitHistoryTurns(
  */
 export function getHistoryLimitFromSessionKey(
   sessionKey: string | undefined,
-  config: OpenClawConfig | undefined,
+  config: AvaClawConfig | undefined,
 ): number | undefined {
   if (!sessionKey || !config) {
     return undefined;
@@ -61,7 +61,7 @@ export function getHistoryLimitFromSessionKey(
   const userId = stripThreadSuffix(userIdRaw);
 
   const resolveProviderConfig = (
-    cfg: OpenClawConfig | undefined,
+    cfg: AvaClawConfig | undefined,
     providerId: string,
   ):
     | {

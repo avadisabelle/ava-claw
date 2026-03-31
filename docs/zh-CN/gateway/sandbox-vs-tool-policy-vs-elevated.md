@@ -25,10 +25,10 @@ Ava-Claw 有三个相关（但不同）的控制：
 使用检查器查看 Ava-Claw *实际*在做什么：
 
 ```bash
-openclaw sandbox explain
-openclaw sandbox explain --session agent:main:main
-openclaw sandbox explain --agent work
-openclaw sandbox explain --json
+avaclaw sandbox explain
+avaclaw sandbox explain --session agent:main:main
+avaclaw sandbox explain --agent work
+avaclaw sandbox explain --json
 ```
 
 它会打印：
@@ -100,7 +100,7 @@ openclaw sandbox explain --json
 - `group:automation`：`cron`、`gateway`
 - `group:messaging`：`message`
 - `group:nodes`：`nodes`
-- `group:openclaw`：所有内置 Ava-Claw 工具（不包括提供商插件）
+- `group:avaclaw`：所有内置 Ava-Claw 工具（不包括提供商插件）
 
 ## 提权：仅限 exec 的"在主机上运行"
 

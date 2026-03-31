@@ -2,7 +2,7 @@ import fs from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import { captureEnv } from "../test-utils/env.js";
 import { loadEnabledBundleMcpConfig } from "./bundle-mcp.js";
 import { clearPluginManifestRegistryCache } from "./manifest-registry.js";
@@ -26,11 +26,11 @@ describe("loadEnabledBundleMcpConfig", () => {
   it("loads enabled Claude bundle MCP config and absolutizes relative args", async () => {
     const env = captureEnv(["HOME"]);
     try {
-      const homeDir = await createTempDir("openclaw-bundle-mcp-home-");
-      const workspaceDir = await createTempDir("openclaw-bundle-mcp-workspace-");
+      const homeDir = await createTempDir("avaclaw-bundle-mcp-home-");
+      const workspaceDir = await createTempDir("avaclaw-bundle-mcp-workspace-");
       process.env.HOME = homeDir;
 
-      const pluginRoot = path.join(homeDir, ".openclaw", "extensions", "bundle-probe");
+      const pluginRoot = path.join(homeDir, ".avaclaw", "extensions", "bundle-probe");
       const serverPath = path.join(pluginRoot, "servers", "probe.mjs");
       await fs.mkdir(path.join(pluginRoot, ".claude-plugin"), { recursive: true });
       await fs.mkdir(path.dirname(serverPath), { recursive: true });
@@ -57,7 +57,7 @@ describe("loadEnabledBundleMcpConfig", () => {
         "utf-8",
       );
 
-      const config: OpenClawConfig = {
+      const config: AvaClawConfig = {
         plugins: {
           entries: {
             "bundle-probe": { enabled: true },
@@ -82,12 +82,12 @@ describe("loadEnabledBundleMcpConfig", () => {
   it("merges inline bundle MCP servers and skips disabled bundles", async () => {
     const env = captureEnv(["HOME"]);
     try {
-      const homeDir = await createTempDir("openclaw-bundle-inline-home-");
-      const workspaceDir = await createTempDir("openclaw-bundle-inline-workspace-");
+      const homeDir = await createTempDir("avaclaw-bundle-inline-home-");
+      const workspaceDir = await createTempDir("avaclaw-bundle-inline-workspace-");
       process.env.HOME = homeDir;
 
-      const enabledRoot = path.join(homeDir, ".openclaw", "extensions", "inline-enabled");
-      const disabledRoot = path.join(homeDir, ".openclaw", "extensions", "inline-disabled");
+      const enabledRoot = path.join(homeDir, ".avaclaw", "extensions", "inline-enabled");
+      const disabledRoot = path.join(homeDir, ".avaclaw", "extensions", "inline-disabled");
       await fs.mkdir(path.join(enabledRoot, ".claude-plugin"), { recursive: true });
       await fs.mkdir(path.join(disabledRoot, ".claude-plugin"), { recursive: true });
       await fs.writeFile(
@@ -125,7 +125,7 @@ describe("loadEnabledBundleMcpConfig", () => {
         "utf-8",
       );
 
-      const config: OpenClawConfig = {
+      const config: AvaClawConfig = {
         plugins: {
           entries: {
             "inline-enabled": { enabled: true },

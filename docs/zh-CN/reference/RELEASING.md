@@ -40,9 +40,9 @@ Ava-Claw 有三个公开发布渠道：
 
 ## 公开参考
 
-- [`.github/workflows/openclaw-npm-release.yml`](https://github.com/avadisabelle/ava-claw/blob/main/.github/workflows/openclaw-npm-release.yml)
-- [`scripts/openclaw-npm-release-check.ts`](https://github.com/avadisabelle/ava-claw/blob/main/scripts/openclaw-npm-release-check.ts)
+- [`.github/workflows/avaclaw-npm-release.yml`](https://github.com/avadisabelle/ava-claw/blob/main/.github/workflows/avaclaw-npm-release.yml)
+- [`scripts/avaclaw-npm-release-check.ts`](https://github.com/avadisabelle/ava-claw/blob/main/scripts/avaclaw-npm-release-check.ts)
 
 维护者使用
-[`openclaw/maintainers/release/README.md`](https://github.com/openclaw/maintainers/blob/main/release/README.md)
+[`avaclaw/maintainers/release/README.md`](https://github.com/avaclaw/maintainers/blob/main/release/README.md)
 中的私有发布文档作为实际操作手册。

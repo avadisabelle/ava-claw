@@ -9,7 +9,7 @@ title: "Chrome Extension"
 
 # Chrome extension (browser relay)
 
-The Ava-Claw Chrome extension lets the agent control your **existing Chrome tabs** (your normal Chrome window) instead of launching a separate openclaw-managed Chrome profile.
+The Ava-Claw Chrome extension lets the agent control your **existing Chrome tabs** (your normal Chrome window) instead of launching a separate avaclaw-managed Chrome profile.
 
 Attach/detach happens via a **single Chrome toolbar button**.
 
@@ -35,13 +35,13 @@ Ava-Claw then controls the attached tab through the normal `browser` tool surfac
 1. Install the extension to a stable local path:
 
 ```bash
-openclaw browser extension install
+avaclaw browser extension install
 ```
 
 2. Print the installed extension directory path:
 
 ```bash
-openclaw browser extension path
+avaclaw browser extension path
 ```
 
 3. Chrome → `chrome://extensions`
@@ -57,7 +57,7 @@ The extension ships inside the Ava-Claw release (npm package) as static files. T
 
 After upgrading Ava-Claw:
 
-- Re-run `openclaw browser extension install` to refresh the installed files under your Ava-Claw state directory.
+- Re-run `avaclaw browser extension install` to refresh the installed files under your Ava-Claw state directory.
 - Chrome → `chrome://extensions` → click “Reload” on the extension.
 
 ## Use it (set gateway token once)
@@ -67,12 +67,12 @@ To use the extension relay, create a browser profile for it:
 Before first attach, open extension Options and set:
 
 - `Port` (default `18792`)
-- `Gateway token` (must match `gateway.auth.token` / `OPENCLAW_GATEWAY_TOKEN`)
+- `Gateway token` (must match `gateway.auth.token` / `AVACLAW_GATEWAY_TOKEN`)
 
 Then create a profile:
 
 ```bash
-openclaw browser create-profile \
+avaclaw browser create-profile \
   --name my-chrome \
   --driver extension \
   --cdp-url http://127.0.0.1:18792 \
@@ -81,7 +81,7 @@ openclaw browser create-profile \
 
 Use it:
 
-- CLI: `openclaw browser --browser-profile my-chrome tabs`
+- CLI: `avaclaw browser --browser-profile my-chrome tabs`
 - Agent tool: `browser` with `profile="my-chrome"`
 
 ### Custom Gateway ports
@@ -162,7 +162,7 @@ Options:
 
 Then ensure the tool isn’t denied by tool policy, and (if needed) call `browser` with `target="host"`.
 
-Debugging: `openclaw sandbox explain`
+Debugging: `avaclaw sandbox explain`
 
 ## Remote access tips
 
@@ -172,9 +172,9 @@ Debugging: `openclaw sandbox explain`
 
 ## How “extension path” works
 
-`openclaw browser extension path` prints the **installed** on-disk directory containing the extension files.
+`avaclaw browser extension path` prints the **installed** on-disk directory containing the extension files.
 
-The CLI intentionally does **not** print a `node_modules` path. Always run `openclaw browser extension install` first to copy the extension to a stable location under your Ava-Claw state directory.
+The CLI intentionally does **not** print a `node_modules` path. Always run `avaclaw browser extension install` first to copy the extension to a stable location under your Ava-Claw state directory.
 
 If you move or delete that install directory, Chrome will mark the extension as broken until you reload it from a valid path.
 
@@ -186,7 +186,7 @@ This is powerful and risky. Treat it like giving the model “hands on your brow
   - click/type/navigate in that tab
   - read page content
   - access whatever the tab’s logged-in session can access
-- **This is not isolated** like the dedicated openclaw-managed profile.
+- **This is not isolated** like the dedicated avaclaw-managed profile.
   - If you attach to your daily-driver profile/tab, you’re granting access to that account state.
 
 Recommendations:

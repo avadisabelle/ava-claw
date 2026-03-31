@@ -160,8 +160,8 @@ Pomerium config snippet:
 
 ```yaml
 routes:
-  - from: https://openclaw.example.com
-    to: http://openclaw-gateway:18789
+  - from: https://avaclaw.example.com
+    to: http://avaclaw-gateway:18789
     policy:
       - allow:
           or:
@@ -192,11 +192,11 @@ Caddy with the `caddy-security` plugin can authenticate users and pass identity 
 Caddyfile snippet:
 
 ```
-openclaw.example.com {
+avaclaw.example.com {
     authenticate with oauth2_provider
     authorize with policy1
 
-    reverse_proxy openclaw:18789 {
+    reverse_proxy avaclaw:18789 {
         header_up X-Forwarded-User {http.auth.user.email}
     }
 }
@@ -228,7 +228,7 @@ location / {
     auth_request /oauth2/auth;
     auth_request_set $user $upstream_http_x_auth_request_email;
 
-    proxy_pass http://openclaw:18789;
+    proxy_pass http://avaclaw:18789;
     proxy_set_header X-Auth-Request-Email $user;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
@@ -265,7 +265,7 @@ Before enabling trusted-proxy auth, verify:
 
 ## Security Audit
 
-`openclaw security audit` will flag trusted-proxy auth with a **critical** severity finding. This is intentional — it's a reminder that you're delegating security to your proxy setup.
+`avaclaw security audit` will flag trusted-proxy auth with a **critical** severity finding. This is intentional — it's a reminder that you're delegating security to your proxy setup.
 
 The audit checks for:
 
@@ -319,7 +319,7 @@ If you're moving from token auth to trusted-proxy:
 3. Update Ava-Claw config with trusted-proxy auth
 4. Restart the Gateway
 5. Test WebSocket connections from the Control UI
-6. Run `openclaw security audit` and review findings
+6. Run `avaclaw security audit` and review findings
 
 ## Related
 

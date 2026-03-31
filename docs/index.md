@@ -9,13 +9,13 @@ title: "Ava-Claw"
 
 <p align="center">
     <img
-        src="/assets/openclaw-logo-text-dark.png"
+        src="/assets/avaclaw-logo-text-dark.png"
         alt="Ava-Claw"
         width="500"
         class="dark:hidden"
     />
     <img
-        src="/assets/openclaw-logo-text.png"
+        src="/assets/avaclaw-logo-text.png"
         alt="Ava-Claw"
         width="500"
         class="hidden dark:block"
@@ -34,7 +34,7 @@ title: "Ava-Claw"
     Install Ava-Claw and bring up the Gateway in minutes.
   </Card>
   <Card title="Run the Wizard" href="/start/wizard" icon="sparkles">
-    Guided setup with `openclaw onboard` and pairing flows.
+    Guided setup with `avaclaw onboard` and pairing flows.
   </Card>
   <Card title="Open the Control UI" href="/web/control-ui" icon="layout-dashboard">
     Launch the browser dashboard for chat, config, and sessions.
@@ -98,18 +98,18 @@ The Gateway is the single source of truth for sessions, routing, and channel con
 <Steps>
   <Step title="Install Ava-Claw">
     ```bash
-    npm install -g openclaw@latest
+    npm install -g avaclaw@latest
     ```
   </Step>
   <Step title="Onboard and install the service">
     ```bash
-    openclaw onboard --install-daemon
+    avaclaw onboard --install-daemon
     ```
   </Step>
   <Step title="Pair WhatsApp and start the Gateway">
     ```bash
-    openclaw channels login
-    openclaw gateway --port 18789
+    avaclaw channels login
+    avaclaw gateway --port 18789
     ```
   </Step>
 </Steps>
@@ -124,7 +124,7 @@ Open the browser Control UI after the Gateway starts.
 - Remote access: [Web surfaces](/web) and [Tailscale](/gateway/tailscale)
 
 <p align="center">
-  <img src="/whatsapp-openclaw.jpg" alt="Ava-Claw" width="420" />
+  <img src="/whatsapp-avaclaw.jpg" alt="Ava-Claw" width="420" />
 </p>
 
 ## Configuration (optional)
@@ -144,7 +144,7 @@ Example:
       groups: { "*": { requireMention: true } },
     },
   },
-  messages: { groupChat: { mentionPatterns: ["@openclaw"] } },
+  messages: { groupChat: { mentionPatterns: ["@avaclaw"] } },
 }
 ```
 

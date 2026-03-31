@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-diffs",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw diff viewer plugin",
+  "description": "AvaClaw diff viewer plugin",
   "type": "module",
   "scripts": {
     "build:viewer": "bun build src/viewer-client.ts --target browser --format esm --minify --outfile assets/viewer-runtime.js"

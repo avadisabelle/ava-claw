@@ -16,13 +16,13 @@ x-i18n:
 
 <p align="center">
     <img
-        src="/assets/openclaw-logo-text-dark.png"
+        src="/assets/avaclaw-logo-text-dark.png"
         alt="Ava-Claw"
         width="500"
         class="dark:hidden"
     />
     <img
-        src="/assets/openclaw-logo-text.png"
+        src="/assets/avaclaw-logo-text.png"
         alt="Ava-Claw"
         width="500"
         class="hidden dark:block"
@@ -41,7 +41,7 @@ x-i18n:
     安装 Ava-Claw 并在几分钟内启动 Gateway 网关。
   </Card>
   <Card title="运行向导" href="/start/wizard" icon="sparkles">
-    通过 `openclaw onboard` 和配对流程进行引导式设置。
+    通过 `avaclaw onboard` 和配对流程进行引导式设置。
   </Card>
   <Card title="打开控制界面" href="/web/control-ui" icon="layout-dashboard">
     启动浏览器仪表板，管理聊天、配置和会话。
@@ -92,18 +92,18 @@ Gateway 网关是会话、路由和渠道连接的唯一事实来源。
 <Steps>
   <Step title="安装 Ava-Claw">
     ```bash
-    npm install -g openclaw@latest
+    npm install -g avaclaw@latest
     ```
   </Step>
   <Step title="新手引导并安装服务">
     ```bash
-    openclaw onboard --install-daemon
+    avaclaw onboard --install-daemon
     ```
   </Step>
   <Step title="配对 WhatsApp 并启动 Gateway 网关">
     ```bash
-    openclaw channels login
-    openclaw gateway --port 18789
+    avaclaw channels login
+    avaclaw gateway --port 18789
     ```
   </Step>
 </Steps>
@@ -118,7 +118,7 @@ Gateway 网关启动后，打开浏览器控制界面。
 - 远程访问：[Web 界面](/web)和 [Tailscale](/gateway/tailscale)
 
 <p align="center">
-  <img src="/whatsapp-openclaw.jpg" alt="Ava-Claw" width="420" />
+  <img src="/whatsapp-avaclaw.jpg" alt="Ava-Claw" width="420" />
 </p>
 
 ## 配置（可选）
@@ -138,7 +138,7 @@ Gateway 网关启动后，打开浏览器控制界面。
       groups: { "*": { requireMention: true } },
     },
   },
-  messages: { groupChat: { mentionPatterns: ["@openclaw"] } },
+  messages: { groupChat: { mentionPatterns: ["@avaclaw"] } },
 }
 ```
 

@@ -119,14 +119,14 @@ sudo sysctl -p
 ### 选项 A：标准安装（推荐）
 
 ```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
+curl -fsSL https://avaclaw.ai/install.sh | bash
 ```
 
 ### 选项 B：可修改安装（用于调试）
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
-cd openclaw
+cd avaclaw
 npm install
 npm run build
 npm link
@@ -137,7 +137,7 @@ npm link
 ## 7) 运行新手引导
 
 ```bash
-openclaw onboard --install-daemon
+avaclaw onboard --install-daemon
 ```
 
 按照向导操作：
@@ -151,13 +151,13 @@ openclaw onboard --install-daemon
 
 ```bash
 # 检查状态
-openclaw status
+avaclaw status
 
 # 检查服务
-sudo systemctl status openclaw
+sudo systemctl status avaclaw
 
 # 查看日志
-journalctl -u openclaw -f
+journalctl -u avaclaw -f
 ```
 
 ## 9) 访问仪表板
@@ -180,8 +180,8 @@ curl -fsSL https://tailscale.com/install.sh | sh
 sudo tailscale up
 
 # 更新配置
-openclaw config set gateway.bind tailnet
-sudo systemctl restart openclaw
+avaclaw config set gateway.bind tailnet
+sudo systemctl restart avaclaw
 ```
 
 ---
@@ -278,13 +278,13 @@ uname -m
 
 ```bash
 # 检查服务是否已启用
-sudo systemctl is-enabled openclaw
+sudo systemctl is-enabled avaclaw
 
 # 如果没有则启用
-sudo systemctl enable openclaw
+sudo systemctl enable avaclaw
 
 # 开机启动
-sudo systemctl start openclaw
+sudo systemctl start avaclaw
 ```
 
 ---
@@ -311,12 +311,12 @@ free -h
 
 ```bash
 # 检查日志
-journalctl -u openclaw --no-pager -n 100
+journalctl -u avaclaw --no-pager -n 100
 
 # 常见修复：重新构建
-cd ~/openclaw  # 如果使用可修改安装
+cd ~/avaclaw  # 如果使用可修改安装
 npm run build
-sudo systemctl restart openclaw
+sudo systemctl restart avaclaw
 ```
 
 ### ARM 二进制问题

@@ -19,7 +19,7 @@ Synology Chat is plugin-based and not part of the default core channel install.
 Install from a local checkout:
 
 ```bash
-openclaw plugins install ./extensions/synology-chat
+avaclaw plugins install ./extensions/synology-chat
 ```
 
 Details: [Plugins](/tools/plugin)
@@ -64,7 +64,7 @@ For the default account, you can use env vars:
 - `SYNOLOGY_NAS_HOST`
 - `SYNOLOGY_ALLOWED_USER_IDS` (comma-separated)
 - `SYNOLOGY_RATE_LIMIT`
-- `OPENCLAW_BOT_NAME`
+- `AVACLAW_BOT_NAME`
 
 Config values override env vars.
 
@@ -76,8 +76,8 @@ Config values override env vars.
 - `dmPolicy: "open"` allows any sender.
 - `dmPolicy: "disabled"` blocks DMs.
 - Pairing approvals work with:
-  - `openclaw pairing list synology-chat`
-  - `openclaw pairing approve synology-chat <CODE>`
+  - `avaclaw pairing list synology-chat`
+  - `avaclaw pairing approve synology-chat <CODE>`
 
 ## Outbound delivery
 
@@ -86,8 +86,8 @@ Use numeric Synology Chat user IDs as targets.
 Examples:
 
 ```bash
-openclaw message send --channel synology-chat --target 123456 --text "Hello from Ava-Claw"
-openclaw message send --channel synology-chat --target synology-chat:123456 --text "Hello again"
+avaclaw message send --channel synology-chat --target 123456 --text "Hello from Ava-Claw"
+avaclaw message send --channel synology-chat --target synology-chat:123456 --text "Hello again"
 ```
 
 Media sends are supported by URL-based file delivery.

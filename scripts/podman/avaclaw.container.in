@@ -1,0 +1,28 @@
+# AvaClaw gateway — Podman Quadlet (rootless)
+# Installed by setup-podman.sh into avaclaw's ~/.config/containers/systemd/
+# {{AVACLAW_HOME}} is replaced at install time.
+
+[Unit]
+Description=AvaClaw gateway (rootless Podman)
+
+[Container]
+Image=avaclaw:local
+ContainerName=avaclaw
+UserNS=keep-id
+# Keep container UID/GID aligned with the invoking user so mounted config is readable.
+User=%U:%G
+Volume={{AVACLAW_HOME}}/.avaclaw:/home/node/.avaclaw:Z
+EnvironmentFile={{AVACLAW_HOME}}/.avaclaw/.env
+Environment=HOME=/home/node
+Environment=TERM=xterm-256color
+PublishPort=18789:18789
+PublishPort=18790:18790
+Pull=never
+Exec=node dist/index.js gateway --bind lan --port 18789
+
+[Service]
+TimeoutStartSec=300
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

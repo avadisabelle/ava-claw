@@ -5,8 +5,8 @@ import {
   hasConfiguredSecretInput,
   migrateBaseNameToDefaultAccount,
   normalizeAccountId,
-  type OpenClawConfig,
-} from "openclaw/plugin-sdk/mattermost";
+  type AvaClawConfig,
+} from "avaclaw/plugin-sdk/mattermost";
 import { type ChannelSetupWizard } from "../../../src/channels/plugins/setup-wizard.js";
 import type { ChannelSetupAdapter } from "../../../src/channels/plugins/types.adapters.js";
 import { formatDocsLink } from "../../../src/terminal/links.js";
@@ -25,7 +25,7 @@ function isMattermostConfigured(account: ResolvedMattermostAccount): boolean {
   return tokenConfigured && Boolean(account.baseUrl);
 }
 
-function resolveMattermostAccountWithSecrets(cfg: OpenClawConfig, accountId: string) {
+function resolveMattermostAccountWithSecrets(cfg: AvaClawConfig, accountId: string) {
   return resolveMattermostAccount({
     cfg,
     accountId,
@@ -180,7 +180,7 @@ export const mattermostSetupWizard: ChannelSetupWizard = {
       normalizeValue: ({ value }) => normalizeMattermostBaseUrl(value) ?? value.trim(),
     },
   ],
-  disable: (cfg: OpenClawConfig) => ({
+  disable: (cfg: AvaClawConfig) => ({
     ...cfg,
     channels: {
       ...cfg.channels,

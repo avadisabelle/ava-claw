@@ -25,7 +25,7 @@ Status: external CLI integration. Gateway talks to `signal-cli` over HTTP JSON-R
    - **Path A (QR link):** `signal-cli link -n "Ava-Claw"` and scan with Signal.
    - **Path B (SMS register):** register a dedicated number with captcha + SMS verification.
 4. Configure Ava-Claw and restart the gateway.
-5. Send a first DM and approve pairing (`openclaw pairing approve signal <CODE>`).
+5. Send a first DM and approve pairing (`avaclaw pairing approve signal <CODE>`).
 
 Minimal config:
 
@@ -142,16 +142,16 @@ signal-cli -a +<BOT_PHONE_NUMBER> verify <VERIFICATION_CODE>
 
 ```bash
 # If you run the gateway as a user systemd service:
-systemctl --user restart openclaw-gateway
+systemctl --user restart avaclaw-gateway
 
 # Then verify:
-openclaw doctor
-openclaw channels status --probe
+avaclaw doctor
+avaclaw channels status --probe
 ```
 
 5. Pair your DM sender:
    - Send any message to the bot number.
-   - Approve code on the server: `openclaw pairing approve signal <PAIRING_CODE>`.
+   - Approve code on the server: `avaclaw pairing approve signal <PAIRING_CODE>`.
    - Save the bot number as a contact on your phone to avoid "Unknown contact".
 
 Important: registering a phone number account with `signal-cli` can de-authenticate the main Signal app session for that number. Prefer a dedicated bot number, or use QR link mode if you need to keep your existing phone app setup.
@@ -186,8 +186,8 @@ DMs:
 - Default: `channels.signal.dmPolicy = "pairing"`.
 - Unknown senders receive a pairing code; messages are ignored until approved (codes expire after 1 hour).
 - Approve via:
-  - `openclaw pairing list signal`
-  - `openclaw pairing approve signal <CODE>`
+  - `avaclaw pairing list signal`
+  - `avaclaw pairing approve signal <CODE>`
 - Pairing is the default token exchange for Signal DMs. Details: [Pairing](/channels/pairing)
 - UUID-only senders (from `sourceUuid`) are stored as `uuid:<id>` in `channels.signal.allowFrom`.
 
@@ -255,17 +255,17 @@ Config:
 Run this ladder first:
 
 ```bash
-openclaw status
-openclaw gateway status
-openclaw logs --follow
-openclaw doctor
-openclaw channels status --probe
+avaclaw status
+avaclaw gateway status
+avaclaw logs --follow
+avaclaw doctor
+avaclaw channels status --probe
 ```
 
 Then confirm DM pairing state if needed:
 
 ```bash
-openclaw pairing list signal
+avaclaw pairing list signal
 ```
 
 Common failures:
@@ -273,13 +273,13 @@ Common failures:
 - Daemon reachable but no replies: verify account/daemon settings (`httpUrl`, `account`) and receive mode.
 - DMs ignored: sender is pending pairing approval.
 - Group messages ignored: group sender/mention gating blocks delivery.
-- Config validation errors after edits: run `openclaw doctor --fix`.
+- Config validation errors after edits: run `avaclaw doctor --fix`.
 - Signal missing from diagnostics: confirm `channels.signal.enabled: true`.
 
 Extra checks:
 
 ```bash
-openclaw pairing list signal
+avaclaw pairing list signal
 pgrep -af signal-cli
 grep -i "signal" "/tmp/avadisabelle/ava-claw-$(date +%Y-%m-%d).log" | tail -20
 ```

@@ -112,14 +112,14 @@ sudo sysctl -p
 ### Option A: Standard Install (Recommended)
 
 ```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
+curl -fsSL https://avaclaw.ai/install.sh | bash
 ```
 
 ### Option B: Hackable Install (For tinkering)
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
-cd openclaw
+cd avaclaw
 npm install
 npm run build
 npm link
@@ -130,7 +130,7 @@ The hackable install gives you direct access to logs and code — useful for deb
 ## 7) Run Onboarding
 
 ```bash
-openclaw onboard --install-daemon
+avaclaw onboard --install-daemon
 ```
 
 Follow the wizard:
@@ -144,13 +144,13 @@ Follow the wizard:
 
 ```bash
 # Check status
-openclaw status
+avaclaw status
 
 # Check service
-sudo systemctl status openclaw
+sudo systemctl status avaclaw
 
 # View logs
-journalctl -u openclaw -f
+journalctl -u avaclaw -f
 ```
 
 ## 9) Access the Ava-Claw Dashboard
@@ -160,7 +160,7 @@ Replace `user@gateway-host` with your Pi username and hostname or IP address.
 On your computer, ask the Pi to print a fresh dashboard URL:
 
 ```bash
-ssh user@gateway-host 'openclaw dashboard --no-open'
+ssh user@gateway-host 'avaclaw dashboard --no-open'
 ```
 
 The command prints `Dashboard URL:`. Depending on how `gateway.auth.token`
@@ -176,7 +176,7 @@ ssh -N -L 18789:127.0.0.1:18789 user@gateway-host
 Then open the printed Dashboard URL in your local browser.
 
 If the UI asks for auth, paste the token from `gateway.auth.token`
-(or `OPENCLAW_GATEWAY_TOKEN`) into Control UI settings.
+(or `AVACLAW_GATEWAY_TOKEN`) into Control UI settings.
 
 For always-on remote access, see [Tailscale](/gateway/tailscale).
 
@@ -200,10 +200,10 @@ See [Pi USB boot guide](https://www.raspberrypi.com/documentation/computers/rasp
 On lower-power Pi hosts, enable Node's module compile cache so repeated CLI runs are faster:
 
 ```bash
-grep -q 'NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache' ~/.bashrc || cat >> ~/.bashrc <<'EOF' # pragma: allowlist secret
-export NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
-mkdir -p /var/tmp/openclaw-compile-cache
-export OPENCLAW_NO_RESPAWN=1
+grep -q 'NODE_COMPILE_CACHE=/var/tmp/avaclaw-compile-cache' ~/.bashrc || cat >> ~/.bashrc <<'EOF' # pragma: allowlist secret
+export NODE_COMPILE_CACHE=/var/tmp/avaclaw-compile-cache
+mkdir -p /var/tmp/avaclaw-compile-cache
+export AVACLAW_NO_RESPAWN=1
 EOF
 source ~/.bashrc
 ```
@@ -212,7 +212,7 @@ Notes:
 
 - `NODE_COMPILE_CACHE` speeds up subsequent runs (`status`, `health`, `--help`).
 - `/var/tmp` survives reboots better than `/tmp`.
-- `OPENCLAW_NO_RESPAWN=1` avoids extra startup cost from CLI self-respawn.
+- `AVACLAW_NO_RESPAWN=1` avoids extra startup cost from CLI self-respawn.
 - First run warms the cache; later runs benefit most.
 
 ### systemd startup tuning (optional)
@@ -221,13 +221,13 @@ If this Pi is mostly running Ava-Claw, add a service drop-in to reduce restart
 jitter and keep startup env stable:
 
 ```bash
-sudo systemctl edit openclaw
+sudo systemctl edit avaclaw
 ```
 
 ```ini
 [Service]
-Environment=OPENCLAW_NO_RESPAWN=1
-Environment=NODE_COMPILE_CACHE=/var/tmp/openclaw-compile-cache
+Environment=AVACLAW_NO_RESPAWN=1
+Environment=NODE_COMPILE_CACHE=/var/tmp/avaclaw-compile-cache
 Restart=always
 RestartSec=2
 TimeoutStartSec=90
@@ -237,7 +237,7 @@ Then apply:
 
 ```bash
 sudo systemctl daemon-reload
-sudo systemctl restart openclaw
+sudo systemctl restart avaclaw
 ```
 
 If possible, keep Ava-Claw state/cache on SSD-backed storage to avoid SD-card
@@ -325,13 +325,13 @@ The onboarding wizard sets this up, but to verify:
 
 ```bash
 # Check service is enabled
-sudo systemctl is-enabled openclaw
+sudo systemctl is-enabled avaclaw
 
 # Enable if not
-sudo systemctl enable openclaw
+sudo systemctl enable avaclaw
 
 # Start on boot
-sudo systemctl start openclaw
+sudo systemctl start avaclaw
 ```
 
 ---
@@ -358,12 +358,12 @@ free -h
 
 ```bash
 # Check logs
-journalctl -u openclaw --no-pager -n 100
+journalctl -u avaclaw --no-pager -n 100
 
 # Common fix: rebuild
-cd ~/openclaw  # if using hackable install
+cd ~/avaclaw  # if using hackable install
 npm run build
-sudo systemctl restart openclaw
+sudo systemctl restart avaclaw
 ```
 
 ### ARM Binary Issues

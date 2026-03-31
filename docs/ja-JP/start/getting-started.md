@@ -18,7 +18,7 @@ x-i18n:
 目標：ゼロから最小限のセットアップで最初の動作するチャットを実現する。
 
 <Info>
-最速のチャット方法：Control UIを開く（チャンネル設定は不要）。`openclaw dashboard`を実行してブラウザでチャットするか、<Tooltip headline="Gatewayホスト" tip="Ava-Claw Gatewayサービスを実行しているマシン。">Gatewayホスト</Tooltip>で`http://127.0.0.1:18789/`を開きます。
+最速のチャット方法：Control UIを開く（チャンネル設定は不要）。`avaclaw dashboard`を実行してブラウザでチャットするか、<Tooltip headline="Gatewayホスト" tip="Ava-Claw Gatewayサービスを実行しているマシン。">Gatewayホスト</Tooltip>で`http://127.0.0.1:18789/`を開きます。
 ドキュメント：[Dashboard](/web/dashboard)と[Control UI](/web/control-ui)。
 </Info>
 
@@ -37,12 +37,12 @@ x-i18n:
     <Tabs>
       <Tab title="macOS/Linux">
         ```bash
-        curl -fsSL https://openclaw.ai/install.sh | bash
+        curl -fsSL https://avaclaw.ai/install.sh | bash
         ```
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://openclaw.ai/install.ps1 | iex
+        iwr -useb https://avaclaw.ai/install.ps1 | iex
         ```
       </Tab>
     </Tabs>
@@ -54,7 +54,7 @@ x-i18n:
   </Step>
   <Step title="オンボーディングウィザードを実行">
     ```bash
-    openclaw onboard --install-daemon
+    avaclaw onboard --install-daemon
     ```
 
     ウィザードは認証、Gateway設定、およびオプションのチャンネルを構成します。
@@ -65,13 +65,13 @@ x-i18n:
     サービスをインストールした場合、すでに実行されているはずです：
 
     ```bash
-    openclaw gateway status
+    avaclaw gateway status
     ```
 
   </Step>
   <Step title="Control UIを開く">
     ```bash
-    openclaw dashboard
+    avaclaw dashboard
     ```
   </Step>
 </Steps>
@@ -87,7 +87,7 @@ Control UIが読み込まれれば、Gatewayは使用可能な状態です。
     クイックテストやトラブルシューティングに便利です。
 
     ```bash
-    openclaw gateway --port 18789
+    avaclaw gateway --port 18789
     ```
 
   </Accordion>
@@ -95,7 +95,7 @@ Control UIが読み込まれれば、Gatewayは使用可能な状態です。
     構成済みのチャンネルが必要です。
 
     ```bash
-    openclaw message send --target +15555550123 --message "Hello from Ava-Claw"
+    avaclaw message send --target +15555550123 --message "Hello from Ava-Claw"
     ```
 
   </Accordion>

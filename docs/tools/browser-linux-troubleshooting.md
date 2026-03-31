@@ -11,7 +11,7 @@ title: "Browser Troubleshooting"
 Ava-Claw's browser control server fails to launch Chrome/Brave/Edge/Chromium with the error:
 
 ```
-{"error":"Error: Failed to start Chrome CDP on port 18800 for profile \"openclaw\"."}
+{"error":"Error: Failed to start Chrome CDP on port 18800 for profile \"avaclaw\"."}
 ```
 
 ### Root Cause
@@ -72,20 +72,20 @@ If you must use snap Chromium, configure Ava-Claw to attach to a manually-starte
 ```bash
 chromium-browser --headless --no-sandbox --disable-gpu \
   --remote-debugging-port=18800 \
-  --user-data-dir=$HOME/.openclaw/browser/openclaw/user-data \
+  --user-data-dir=$HOME/.avaclaw/browser/avaclaw/user-data \
   about:blank &
 ```
 
 3. Optionally create a systemd user service to auto-start Chrome:
 
 ```ini
-# ~/.config/systemd/user/openclaw-browser.service
+# ~/.config/systemd/user/avaclaw-browser.service
 [Unit]
 Description=Ava-Claw Browser (Chrome CDP)
 After=network.target
 
 [Service]
-ExecStart=/snap/bin/chromium --headless --no-sandbox --disable-gpu --remote-debugging-port=18800 --user-data-dir=%h/.openclaw/browser/openclaw/user-data about:blank
+ExecStart=/snap/bin/chromium --headless --no-sandbox --disable-gpu --remote-debugging-port=18800 --user-data-dir=%h/.avaclaw/browser/avaclaw/user-data about:blank
 Restart=on-failure
 RestartSec=5
 
@@ -93,7 +93,7 @@ RestartSec=5
 WantedBy=default.target
 ```
 
-Enable with: `systemctl --user enable --now openclaw-browser.service`
+Enable with: `systemctl --user enable --now avaclaw-browser.service`
 
 ### Verifying the Browser Works
 
@@ -128,12 +128,12 @@ browser extension to be attached to a live tab.
 
 Fix options:
 
-1. **Use the managed browser:** `openclaw browser start --browser-profile openclaw`
-   (or set `browser.defaultProfile: "openclaw"`).
+1. **Use the managed browser:** `avaclaw browser start --browser-profile avaclaw`
+   (or set `browser.defaultProfile: "avaclaw"`).
 2. **Use the extension relay:** install the extension, open a tab, and click the
    Ava-Claw extension icon to attach it.
 
 Notes:
 
 - The `chrome-relay` profile uses your **system default Chromium browser** when possible.
-- Local `openclaw` profiles auto-assign `cdpPort`/`cdpUrl`; only set those for remote CDP.
+- Local `avaclaw` profiles auto-assign `cdpPort`/`cdpUrl`; only set those for remote CDP.

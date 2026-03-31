@@ -38,19 +38,19 @@ afterEach(() => {
 });
 
 describe.runIf(process.platform !== "win32")("findGatewayPidsOnPortSync", () => {
-  it("parses lsof output and filters non-openclaw/current processes", () => {
+  it("parses lsof output and filters non-avaclaw/current processes", () => {
     spawnSyncMock.mockReturnValue({
       error: undefined,
       status: 0,
       stdout: [
         `p${process.pid}`,
-        "copenclaw",
+        "cavaclaw",
         "p4100",
-        "copenclaw-gateway",
+        "cavaclaw-gateway",
         "p4200",
         "cnode",
         "p4300",
-        "cOpenClaw",
+        "cAvaClaw",
       ].join("\n"),
     });
 
@@ -81,7 +81,7 @@ describe.runIf(process.platform !== "win32")("cleanStaleGatewayProcessesSync", (
     spawnSyncMock.mockReturnValue({
       error: undefined,
       status: 0,
-      stdout: ["p6001", "copenclaw", "p6002", "copenclaw-gateway"].join("\n"),
+      stdout: ["p6001", "cavaclaw", "p6002", "cavaclaw-gateway"].join("\n"),
     });
     const killSpy = vi.spyOn(process, "kill").mockImplementation(() => true);
 
@@ -99,7 +99,7 @@ describe.runIf(process.platform !== "win32")("cleanStaleGatewayProcessesSync", (
     spawnSyncMock.mockReturnValue({
       error: undefined,
       status: 0,
-      stdout: ["p7001", "copenclaw"].join("\n"),
+      stdout: ["p7001", "cavaclaw"].join("\n"),
     });
     const killSpy = vi.spyOn(process, "kill").mockImplementation(() => true);
 

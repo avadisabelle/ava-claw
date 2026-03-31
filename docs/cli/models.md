@@ -1,12 +1,12 @@
 ---
-summary: "CLI reference for `openclaw models` (status/list/set/scan, aliases, fallbacks, auth)"
+summary: "CLI reference for `avaclaw models` (status/list/set/scan, aliases, fallbacks, auth)"
 read_when:
   - You want to change default models or view provider auth status
   - You want to scan available models/providers and debug auth profiles
 title: "models"
 ---
 
-# `openclaw models`
+# `avaclaw models`
 
 Model discovery, scanning, and configuration (default model, fallbacks, auth profiles).
 
@@ -18,19 +18,19 @@ Related:
 ## Common commands
 
 ```bash
-openclaw models status
-openclaw models list
-openclaw models set <model-or-alias>
-openclaw models scan
+avaclaw models status
+avaclaw models list
+avaclaw models set <model-or-alias>
+avaclaw models scan
 ```
 
-`openclaw models status` shows the resolved default/fallbacks plus an auth overview.
+`avaclaw models status` shows the resolved default/fallbacks plus an auth overview.
 When provider usage snapshots are available, the OAuth/token status section includes
 provider usage headers.
 Add `--probe` to run live auth probes against each configured provider profile.
 Probes are real requests (may consume tokens and trigger rate limits).
 Use `--agent <id>` to inspect a configured agent’s model/auth state. When omitted,
-the command uses `OPENCLAW_AGENT_DIR`/`PI_CODING_AGENT_DIR` if set, otherwise the
+the command uses `AVACLAW_AGENT_DIR`/`PI_CODING_AGENT_DIR` if set, otherwise the
 configured default agent.
 
 Notes:
@@ -53,26 +53,26 @@ Options:
 - `--probe-timeout <ms>`
 - `--probe-concurrency <n>`
 - `--probe-max-tokens <n>`
-- `--agent <id>` (configured agent id; overrides `OPENCLAW_AGENT_DIR`/`PI_CODING_AGENT_DIR`)
+- `--agent <id>` (configured agent id; overrides `AVACLAW_AGENT_DIR`/`PI_CODING_AGENT_DIR`)
 
 ## Aliases + fallbacks
 
 ```bash
-openclaw models aliases list
-openclaw models fallbacks list
+avaclaw models aliases list
+avaclaw models fallbacks list
 ```
 
 ## Auth profiles
 
 ```bash
-openclaw models auth add
-openclaw models auth login --provider <id>
-openclaw models auth setup-token
-openclaw models auth paste-token
+avaclaw models auth add
+avaclaw models auth login --provider <id>
+avaclaw models auth setup-token
+avaclaw models auth paste-token
 ```
 
 `models auth login` runs a provider plugin’s auth flow (OAuth/API key). Use
-`openclaw plugins list` to see which providers are installed.
+`avaclaw plugins list` to see which providers are installed.
 
 Notes:
 

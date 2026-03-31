@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-opencode-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw OpenCode Zen provider plugin",
+  "description": "AvaClaw OpenCode Zen provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

@@ -1,9 +1,9 @@
 import {
   emptyPluginConfigSchema,
-  type OpenClawPluginApi,
+  type AvaClawPluginApi,
   type ProviderResolveDynamicModelContext,
   type ProviderRuntimeModel,
-} from "openclaw/plugin-sdk/core";
+} from "avaclaw/plugin-sdk/core";
 import { DEFAULT_CONTEXT_TOKENS } from "../../src/agents/defaults.js";
 import { normalizeModelCompat } from "../../src/agents/model-compat.js";
 import { normalizeProviderId } from "../../src/agents/model-selection.js";
@@ -113,7 +113,7 @@ const openAIPlugin = {
   name: "OpenAI Provider",
   description: "Bundled OpenAI provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "OpenAI",

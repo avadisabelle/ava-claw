@@ -10,16 +10,16 @@ title: "Gateway on macOS"
 # Gateway on macOS (external launchd)
 
 Ava-Claw.app no longer bundles Node/Bun or the Gateway runtime. The macOS app
-expects an **external** `openclaw` CLI install, does not spawn the Gateway as a
+expects an **external** `avaclaw` CLI install, does not spawn the Gateway as a
 child process, and manages a per‑user launchd service to keep the Gateway
 running (or attaches to an existing local Gateway if one is already running).
 
 ## Install the CLI (required for local mode)
 
-Node 24 is the default runtime on the Mac. Node 22 LTS, currently `22.16+`, still works for compatibility. Then install `openclaw` globally:
+Node 24 is the default runtime on the Mac. Node 22 LTS, currently `22.16+`, still works for compatibility. Then install `avaclaw` globally:
 
 ```bash
-npm install -g openclaw@<version>
+npm install -g avaclaw@<version>
 ```
 
 The macOS app’s **Install CLI** button runs the same flow via npm/pnpm (bun not recommended for Gateway runtime).
@@ -28,17 +28,17 @@ The macOS app’s **Install CLI** button runs the same flow via npm/pnpm (bun no
 
 Label:
 
-- `ai.openclaw.gateway` (or `ai.openclaw.<profile>`; legacy `com.openclaw.*` may remain)
+- `ai.avaclaw.gateway` (or `ai.avaclaw.<profile>`; legacy `com.avaclaw.*` may remain)
 
 Plist location (per‑user):
 
-- `~/Library/LaunchAgents/ai.openclaw.gateway.plist`
-  (or `~/Library/LaunchAgents/ai.openclaw.<profile>.plist`)
+- `~/Library/LaunchAgents/ai.avaclaw.gateway.plist`
+  (or `~/Library/LaunchAgents/ai.avaclaw.<profile>.plist`)
 
 Manager:
 
 - The macOS app owns LaunchAgent install/update in Local mode.
-- The CLI can also install it: `openclaw gateway install`.
+- The CLI can also install it: `avaclaw gateway install`.
 
 Behavior:
 
@@ -59,15 +59,15 @@ incompatible, update the global CLI to match the app version.
 ## Smoke check
 
 ```bash
-openclaw --version
+avaclaw --version
 
-OPENCLAW_SKIP_CHANNELS=1 \
-OPENCLAW_SKIP_CANVAS_HOST=1 \
-openclaw gateway --port 18999 --bind loopback
+AVACLAW_SKIP_CHANNELS=1 \
+AVACLAW_SKIP_CANVAS_HOST=1 \
+avaclaw gateway --port 18999 --bind loopback
 ```
 
 Then:
 
 ```bash
-openclaw gateway call health --url ws://127.0.0.1:18999 --timeout 3000
+avaclaw gateway call health --url ws://127.0.0.1:18999 --timeout 3000
 ```

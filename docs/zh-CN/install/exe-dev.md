@@ -21,7 +21,7 @@ x-i18n:
 
 ## 新手快速路径
 
-1. [https://exe.new/openclaw](https://exe.new/openclaw)
+1. [https://exe.new/avaclaw](https://exe.new/avaclaw)
 2. 根据需要填写你的认证密钥/令牌
 3. 点击 VM 旁边的"Agent"，然后等待...
 4. ???
@@ -37,7 +37,7 @@ x-i18n:
 Shelley，[exe.dev](https://exe.dev) 的智能体，可以使用我们的提示立即安装 Ava-Claw。使用的提示如下：
 
 ```
-Set up Ava-Claw (https://docs.openclaw.ai/install) on this VM. Use the non-interactive and accept-risk flags for openclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "openclaw devices list" and "openclaw device approve <request id>". Make sure the dashboard shows that Ava-Claw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
+Set up Ava-Claw (https://docs.avaclaw.ai/install) on this VM. Use the non-interactive and accept-risk flags for avaclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "avaclaw devices list" and "avaclaw device approve <request id>". Make sure the dashboard shows that Ava-Claw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
 ```
 
 ## 手动安装
@@ -56,7 +56,7 @@ ssh exe.dev new
 ssh <vm-name>.exe.xyz
 ```
 
-提示：保持此 VM **有状态**。Ava-Claw 在 `~/.openclaw/` 和 `~/.openclaw/workspace/` 下存储状态。
+提示：保持此 VM **有状态**。Ava-Claw 在 `~/.avaclaw/` 和 `~/.avaclaw/workspace/` 下存储状态。
 
 ## 2) 安装先决条件（在 VM 上）
 
@@ -70,7 +70,7 @@ sudo apt-get install -y git curl jq ca-certificates openssl
 运行 Ava-Claw 安装脚本：
 
 ```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
+curl -fsSL https://avaclaw.ai/install.sh | bash
 ```
 
 ## 4) 设置 nginx 将 Ava-Claw 代理到端口 8000
@@ -109,7 +109,7 @@ server {
 
 ## 5) 访问 Ava-Claw 并授予权限
 
-访问 `https://<vm-name>.exe.xyz/?token=YOUR-TOKEN-FROM-TERMINAL`（参阅新手引导中的控制 UI 输出）。使用 `openclaw devices list` 和 `openclaw devices approve <requestId>` 批准设备。如有疑问，从浏览器使用 Shelley！
+访问 `https://<vm-name>.exe.xyz/?token=YOUR-TOKEN-FROM-TERMINAL`（参阅新手引导中的控制 UI 输出）。使用 `avaclaw devices list` 和 `avaclaw devices approve <requestId>` 批准设备。如有疑问，从浏览器使用 Shelley！
 
 ## 远程访问
 
@@ -118,10 +118,10 @@ server {
 ## 更新
 
 ```bash
-npm i -g openclaw@latest
-openclaw doctor
-openclaw gateway restart
-openclaw health
+npm i -g avaclaw@latest
+avaclaw doctor
+avaclaw gateway restart
+avaclaw health
 ```
 
 指南：[更新](/install/updating)

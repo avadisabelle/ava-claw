@@ -1,23 +1,23 @@
 ---
-summary: "CLI reference for `openclaw backup` (create local backup archives)"
+summary: "CLI reference for `avaclaw backup` (create local backup archives)"
 read_when:
   - You want a first-class backup archive for local Ava-Claw state
   - You want to preview which paths would be included before reset or uninstall
 title: "backup"
 ---
 
-# `openclaw backup`
+# `avaclaw backup`
 
 Create a local backup archive for Ava-Claw state, config, credentials, sessions, and optionally workspaces.
 
 ```bash
-openclaw backup create
-openclaw backup create --output ~/Backups
-openclaw backup create --dry-run --json
-openclaw backup create --verify
-openclaw backup create --no-include-workspace
-openclaw backup create --only-config
-openclaw backup verify ./2026-03-09T00-00-00.000Z-openclaw-backup.tar.gz
+avaclaw backup create
+avaclaw backup create --output ~/Backups
+avaclaw backup create --dry-run --json
+avaclaw backup create --verify
+avaclaw backup create --no-include-workspace
+avaclaw backup create --only-config
+avaclaw backup verify ./2026-03-09T00-00-00.000Z-avaclaw-backup.tar.gz
 ```
 
 ## Notes
@@ -27,15 +27,15 @@ openclaw backup verify ./2026-03-09T00-00-00.000Z-openclaw-backup.tar.gz
 - If the current working directory is inside a backed-up source tree, Ava-Claw falls back to your home directory for the default archive location.
 - Existing archive files are never overwritten.
 - Output paths inside the source state/workspace trees are rejected to avoid self-inclusion.
-- `openclaw backup verify <archive>` validates that the archive contains exactly one root manifest, rejects traversal-style archive paths, and checks that every manifest-declared payload exists in the tarball.
-- `openclaw backup create --verify` runs that validation immediately after writing the archive.
-- `openclaw backup create --only-config` backs up just the active JSON config file.
+- `avaclaw backup verify <archive>` validates that the archive contains exactly one root manifest, rejects traversal-style archive paths, and checks that every manifest-declared payload exists in the tarball.
+- `avaclaw backup create --verify` runs that validation immediately after writing the archive.
+- `avaclaw backup create --only-config` backs up just the active JSON config file.
 
 ## What gets backed up
 
-`openclaw backup create` plans backup sources from your local Ava-Claw install:
+`avaclaw backup create` plans backup sources from your local Ava-Claw install:
 
-- The state directory returned by Ava-Claw's local state resolver, usually `~/.openclaw`
+- The state directory returned by Ava-Claw's local state resolver, usually `~/.avaclaw`
 - The active config file path
 - The OAuth / credentials directory
 - Workspace directories discovered from the current config, unless you pass `--no-include-workspace`
@@ -48,12 +48,12 @@ The archive payload stores file contents from those source trees, and the embedd
 
 ## Invalid config behavior
 
-`openclaw backup` intentionally bypasses the normal config preflight so it can still help during recovery. Because workspace discovery depends on a valid config, `openclaw backup create` now fails fast when the config file exists but is invalid and workspace backup is still enabled.
+`avaclaw backup` intentionally bypasses the normal config preflight so it can still help during recovery. Because workspace discovery depends on a valid config, `avaclaw backup create` now fails fast when the config file exists but is invalid and workspace backup is still enabled.
 
 If you still want a partial backup in that situation, rerun:
 
 ```bash
-openclaw backup create --no-include-workspace
+avaclaw backup create --no-include-workspace
 ```
 
 That keeps state, config, and credentials in scope while skipping workspace discovery entirely.
@@ -68,7 +68,7 @@ Practical limits come from the local machine and destination filesystem:
 
 - Available space for the temporary archive write plus the final archive
 - Time to walk large workspace trees and compress them into a `.tar.gz`
-- Time to rescan the archive if you use `openclaw backup create --verify` or run `openclaw backup verify`
+- Time to rescan the archive if you use `avaclaw backup create --verify` or run `avaclaw backup verify`
 - Filesystem behavior at the destination path. Ava-Claw prefers a no-overwrite hard-link publish step and falls back to exclusive copy when hard links are unsupported
 
 Large workspaces are usually the main driver of archive size. If you want a smaller or faster backup, use `--no-include-workspace`.

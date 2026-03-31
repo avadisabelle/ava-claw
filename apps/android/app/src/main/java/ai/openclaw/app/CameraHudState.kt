@@ -1,4 +1,4 @@
-package ai.openclaw.app
+package ai.avaclaw.app
 
 enum class CameraHudKind {
   Photo,

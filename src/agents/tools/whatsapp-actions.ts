@@ -1,12 +1,12 @@
 import type { AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
 import { sendReactionWhatsApp } from "../../../extensions/whatsapp/src/send.js";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import { createActionGate, jsonResult, readReactionParams, readStringParam } from "./common.js";
 import { resolveAuthorizedWhatsAppOutboundTarget } from "./whatsapp-target-auth.js";
 
 export async function handleWhatsAppAction(
   params: Record<string, unknown>,
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
 ): Promise<AgentToolResult<unknown>> {
   const action = readStringParam(params, "action", { required: true });
   const isActionEnabled = createActionGate(cfg.channels?.whatsapp?.actions);

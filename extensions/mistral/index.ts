@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 
 const PROVIDER_ID = "mistral";
 
@@ -7,7 +7,7 @@ const mistralPlugin = {
   name: "Mistral Provider",
   description: "Bundled Mistral provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Mistral",

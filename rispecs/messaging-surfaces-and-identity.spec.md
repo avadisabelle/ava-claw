@@ -11,7 +11,7 @@
 
 ## Desired Outcome
 
-Define how a Mia/OpenClaw-style platform behaves across messaging surfaces so that companions can participate coherently, safely, and recognizably in human communication spaces.
+Define how a Mia/AvaClaw-style platform behaves across messaging surfaces so that companions can participate coherently, safely, and recognizably in human communication spaces.
 
 The system should be able to:
 
@@ -24,7 +24,7 @@ The system should be able to:
 
 ## Structural Tension
 
-Current: OpenClaw already routes agent interaction through real communication surfaces and can maintain a session-aware relationship to ongoing work. But product-level behavior is still needed to define how an agent should appear in channels, what kind of social actor it is, and how messaging participation connects to project context.
+Current: AvaClaw already routes agent interaction through real communication surfaces and can maintain a session-aware relationship to ongoing work. But product-level behavior is still needed to define how an agent should appear in channels, what kind of social actor it is, and how messaging participation connects to project context.
 
 Desired: A clear messaging and identity layer where agents are not merely technically connected to a surface, but are understandable, well-behaved participants within that social environment.
 
@@ -242,9 +242,9 @@ Humans are simply acknowledging each other or chatting socially. The agent remai
 
 ---
 
-## Relationship to OpenClaw
+## Relationship to AvaClaw
 
-OpenClaw already demonstrates much of the underlying machinery needed here:
+AvaClaw already demonstrates much of the underlying machinery needed here:
 
 - routed replies to chat surfaces
 - thread-aware interaction
@@ -260,7 +260,7 @@ What this rispec adds is the product-level definition of companion identity, soc
 
 This rispec should be read alongside:
 
-- `OpenClaw-as-foundation.spec.md`
+- `AvaClaw-as-foundation.spec.md`
 - `human-consultation-in-autonomous-development.spec.md`
 - `agent-delegation-and-autonomy.spec.md`
 - future companion/session and workspace-binding rispecs
@@ -292,7 +292,7 @@ That makes messaging and identity a core rispec, not a cosmetic afterthought.
 
 ## Provenance / Co-Sign
 
-Drafted in the Slack **"Miadi-STC"** channel through live OpenClaw-assisted discussion and rispec authoring in `mia-openclaw.rispecs`.
+Drafted in the Slack **"Miadi-STC"** channel through live AvaClaw-assisted discussion and rispec authoring in `mia-avaclaw.rispecs`.
 
 Created by model: **openai-codex/gpt-5.4**  
 Context noted by assistant: drafted as the messaging/social complement to the autonomy and human-consultation rispecs.

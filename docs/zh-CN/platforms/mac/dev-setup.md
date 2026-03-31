@@ -48,7 +48,7 @@ https://github.com/avadisabelle/ava-claw/blob/main/apps/macos/README.md
 
 ## 3. 安装 CLI
 
-macOS 应用期望全局安装 `openclaw` CLI 来管理后台任务。
+macOS 应用期望全局安装 `avaclaw` CLI 来管理后台任务。
 
 **安装方法（推荐）：**
 
@@ -59,7 +59,7 @@ macOS 应用期望全局安装 `openclaw` CLI 来管理后台任务。
 或者，手动安装：
 
 ```bash
-npm install -g openclaw@<version>
+npm install -g avaclaw@<version>
 ```
 
 ## 故障排除
@@ -99,8 +99,8 @@ xcrun swift --version
 如果 Gateway 网关状态一直停留在"Starting..."，检查是否有僵尸进程占用端口：
 
 ```bash
-openclaw gateway status
-openclaw gateway stop
+avaclaw gateway status
+avaclaw gateway stop
 
 # 如果你没有使用 LaunchAgent（开发模式/手动运行），找到监听器：
 lsof -nP -iTCP:18789 -sTCP:LISTEN

@@ -14,7 +14,7 @@ We accept PRs that add community plugins here when they meet the quality bar.
 
 ## Required for listing
 
-- Plugin package is published on npmjs (installable via `openclaw plugins install <npm-spec>`).
+- Plugin package is published on npmjs (installable via `avaclaw plugins install <npm-spec>`).
 - Source code is hosted on GitHub (public repository).
 - Repository includes setup/use docs and an issue tracker.
 - Plugin has a clear maintenance signal (active maintainer, recent updates, or responsive issue handling).
@@ -41,11 +41,11 @@ Use this format when adding entries:
 - **Plugin Name** — short description
   npm: `@scope/package`
   repo: `https://github.com/org/repo`
-  install: `openclaw plugins install @scope/package`
+  install: `avaclaw plugins install @scope/package`
 
 ## Listed plugins
 
 - **WeChat** — Connect Ava-Claw to WeChat personal accounts via WeChatPadPro (iPad protocol). Supports text, image, and file exchange with keyword-triggered conversations.
-  npm: `@icesword760/openclaw-wechat`
-  repo: `https://github.com/icesword0760/openclaw-wechat`
-  install: `openclaw plugins install @icesword760/openclaw-wechat`
+  npm: `@icesword760/avaclaw-wechat`
+  repo: `https://github.com/icesword0760/avaclaw-wechat`
+  install: `avaclaw plugins install @icesword760/avaclaw-wechat`

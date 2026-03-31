@@ -155,7 +155,7 @@ describe("browser manage output", () => {
         ? {
             enabled: true,
             profile: "remote",
-            driver: "openclaw",
+            driver: "avaclaw",
             transport: "cdp",
             running: true,
             cdpReady: true,

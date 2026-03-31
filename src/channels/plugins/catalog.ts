@@ -1,9 +1,9 @@
 import fs from "node:fs";
 import path from "node:path";
 import { MANIFEST_KEY } from "../../compat/legacy-names.js";
-import { discoverOpenClawPlugins } from "../../plugins/discovery.js";
+import { discoverAvaClawPlugins } from "../../plugins/discovery.js";
 import { loadPluginManifest } from "../../plugins/manifest.js";
-import type { OpenClawPackageManifest } from "../../plugins/manifest.js";
+import type { AvaClawPackageManifest } from "../../plugins/manifest.js";
 import type { PluginOrigin } from "../../plugins/types.js";
 import { isRecord, resolveConfigDir, resolveUserPath } from "../../utils.js";
 import type { ChannelMeta } from "./types.js";
@@ -52,9 +52,9 @@ type ExternalCatalogEntry = {
   name?: string;
   version?: string;
   description?: string;
-} & Partial<Record<ManifestKey, OpenClawPackageManifest>>;
+} & Partial<Record<ManifestKey, AvaClawPackageManifest>>;
 
-const ENV_CATALOG_PATHS = ["OPENCLAW_PLUGIN_CATALOG_PATHS", "OPENCLAW_MPM_CATALOG_PATHS"];
+const ENV_CATALOG_PATHS = ["AVACLAW_PLUGIN_CATALOG_PATHS", "AVACLAW_MPM_CATALOG_PATHS"];
 
 type ManifestKey = typeof MANIFEST_KEY;
 
@@ -127,7 +127,7 @@ function loadExternalCatalogEntries(options: CatalogOptions): ExternalCatalogEnt
 }
 
 function toChannelMeta(params: {
-  channel: NonNullable<OpenClawPackageManifest["channel"]>;
+  channel: NonNullable<AvaClawPackageManifest["channel"]>;
   id: string;
 }): ChannelMeta | null {
   const label = params.channel.label?.trim();
@@ -177,7 +177,7 @@ function toChannelMeta(params: {
 }
 
 function resolveInstallInfo(params: {
-  manifest: OpenClawPackageManifest;
+  manifest: AvaClawPackageManifest;
   packageName?: string;
   packageDir?: string;
   workspaceDir?: string;
@@ -219,7 +219,7 @@ function buildCatalogEntry(candidate: {
   rootDir?: string;
   origin?: PluginOrigin;
   workspaceDir?: string;
-  packageManifest?: OpenClawPackageManifest;
+  packageManifest?: AvaClawPackageManifest;
 }): ChannelPluginCatalogEntry | null {
   const manifest = candidate.packageManifest;
   if (!manifest?.channel) {
@@ -294,7 +294,7 @@ export function buildChannelUiCatalog(
 export function listChannelPluginCatalogEntries(
   options: CatalogOptions = {},
 ): ChannelPluginCatalogEntry[] {
-  const discovery = discoverOpenClawPlugins({
+  const discovery = discoverAvaClawPlugins({
     workspaceDir: options.workspaceDir,
     env: options.env,
   });

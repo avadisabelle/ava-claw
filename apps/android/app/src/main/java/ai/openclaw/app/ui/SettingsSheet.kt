@@ -1,4 +1,4 @@
-package ai.openclaw.app.ui
+package ai.avaclaw.app.ui
 
 import android.Manifest
 import android.content.Context
@@ -65,10 +65,10 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
-import ai.openclaw.app.BuildConfig
-import ai.openclaw.app.LocationMode
-import ai.openclaw.app.MainViewModel
-import ai.openclaw.app.node.DeviceNotificationListenerService
+import ai.avaclaw.app.BuildConfig
+import ai.avaclaw.app.LocationMode
+import ai.avaclaw.app.MainViewModel
+import ai.avaclaw.app.node.DeviceNotificationListenerService
 
 @Composable
 fun SettingsSheet(viewModel: MainViewModel) {
@@ -701,7 +701,7 @@ fun SettingsSheet(viewModel: MainViewModel) {
             modifier = Modifier.fillMaxWidth(),
             colors = listItemColors,
             headlineContent = { Text("While Using", style = mobileHeadline) },
-            supportingContent = { Text("Only while OpenClaw is open.", style = mobileCallout) },
+            supportingContent = { Text("Only while AvaClaw is open.", style = mobileCallout) },
             trailingContent = {
               RadioButton(
                 selected = locationMode == LocationMode.WhileUsing,

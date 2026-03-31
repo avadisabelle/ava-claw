@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 import { buildHuggingfaceProvider } from "../../src/agents/models-config.providers.discovery.js";
 
 const PROVIDER_ID = "huggingface";
@@ -8,7 +8,7 @@ const huggingfacePlugin = {
   name: "Hugging Face Provider",
   description: "Bundled Hugging Face provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Hugging Face",

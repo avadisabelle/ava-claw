@@ -1,6 +1,6 @@
-const KEY = "openclaw.control.settings.v1";
-const LEGACY_TOKEN_SESSION_KEY = "openclaw.control.token.v1";
-const TOKEN_SESSION_KEY_PREFIX = "openclaw.control.token.v1:";
+const KEY = "avaclaw.control.settings.v1";
+const LEGACY_TOKEN_SESSION_KEY = "avaclaw.control.token.v1";
+const TOKEN_SESSION_KEY_PREFIX = "avaclaw.control.token.v1:";
 const MAX_SCOPED_SESSION_ENTRIES = 10;
 
 type ScopedSessionSelection = {
@@ -52,8 +52,8 @@ function deriveDefaultGatewayUrl(): { pageUrl: string; effectiveUrl: string } {
   const proto = location.protocol === "https:" ? "wss" : "ws";
   const configured =
     typeof window !== "undefined" &&
-    typeof window.__OPENCLAW_CONTROL_UI_BASE_PATH__ === "string" &&
-    window.__OPENCLAW_CONTROL_UI_BASE_PATH__.trim();
+    typeof window.__AVACLAW_CONTROL_UI_BASE_PATH__ === "string" &&
+    window.__AVACLAW_CONTROL_UI_BASE_PATH__.trim();
   const basePath = configured
     ? normalizeBasePath(configured)
     : inferBasePathFromPathname(location.pathname);

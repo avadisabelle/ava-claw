@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-github-copilot-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw GitHub Copilot provider plugin",
+  "description": "AvaClaw GitHub Copilot provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

@@ -91,7 +91,7 @@ Returns `details.json` containing the parsed JSON (and validates against
 ## Example: Lobster workflow step
 
 ```lobster
-openclaw.invoke --tool llm-task --action json --args-json '{
+avaclaw.invoke --tool llm-task --action json --args-json '{
   "prompt": "Given the input email, return intent and draft.",
   "thinking": "low",
   "input": {

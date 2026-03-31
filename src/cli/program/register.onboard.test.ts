@@ -130,10 +130,10 @@ describe("registerOnboardCommand", () => {
   });
 
   it("forwards --gateway-token-ref-env", async () => {
-    await runCli(["onboard", "--gateway-token-ref-env", "OPENCLAW_GATEWAY_TOKEN"]);
+    await runCli(["onboard", "--gateway-token-ref-env", "AVACLAW_GATEWAY_TOKEN"]);
     expect(onboardCommandMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        gatewayTokenRefEnv: "OPENCLAW_GATEWAY_TOKEN",
+        gatewayTokenRefEnv: "AVACLAW_GATEWAY_TOKEN",
       }),
       runtime,
     );

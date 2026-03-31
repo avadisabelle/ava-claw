@@ -2,7 +2,7 @@
 summary: "Sign in to GitHub Copilot from Ava-Claw using the device flow"
 read_when:
   - You want to use GitHub Copilot as a model provider
-  - You need the `openclaw models auth login-github-copilot` flow
+  - You need the `avaclaw models auth login-github-copilot` flow
 title: "GitHub Copilot"
 ---
 
@@ -36,7 +36,7 @@ profile.
 ## CLI setup
 
 ```bash
-openclaw models auth login-github-copilot
+avaclaw models auth login-github-copilot
 ```
 
 You'll be prompted to visit a URL and enter a one-time code. Keep the terminal
@@ -45,14 +45,14 @@ open until it completes.
 ### Optional flags
 
 ```bash
-openclaw models auth login-github-copilot --profile-id github-copilot:work
-openclaw models auth login-github-copilot --yes
+avaclaw models auth login-github-copilot --profile-id github-copilot:work
+avaclaw models auth login-github-copilot --yes
 ```
 
 ## Set a default model
 
 ```bash
-openclaw models set github-copilot/gpt-4o
+avaclaw models set github-copilot/gpt-4o
 ```
 
 ### Config snippet

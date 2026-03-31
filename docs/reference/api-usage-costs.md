@@ -26,7 +26,7 @@ Ava-Claw features that can generate provider usage or paid API calls.
 
 **CLI usage windows (provider quotas)**
 
-- `openclaw status --usage` and `openclaw channels list` show provider **usage windows**
+- `avaclaw status --usage` and `avaclaw channels list` show provider **usage windows**
   (quota snapshots, not per-message costs).
 
 See [Token use & costs](/reference/token-use) for details and examples.
@@ -107,8 +107,8 @@ See [Web tools](/tools/web).
 Some status commands call **provider usage endpoints** to display quota windows or auth health.
 These are typically low-volume calls but still hit provider APIs:
 
-- `openclaw status --usage`
-- `openclaw models status --json`
+- `avaclaw status --usage`
+- `avaclaw models status --json`
 
 See [Models CLI](/cli/models).
 
@@ -121,7 +121,7 @@ See [Session management + compaction](/reference/session-management-compaction).
 
 ### 8) Model scan / probe
 
-`openclaw models scan` can probe OpenRouter models and uses `OPENROUTER_API_KEY` when
+`avaclaw models scan` can probe OpenRouter models and uses `OPENROUTER_API_KEY` when
 probing is enabled.
 
 See [Models CLI](/cli/models).

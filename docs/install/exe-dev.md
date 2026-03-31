@@ -14,7 +14,7 @@ This page assumes exe.dev's default **exeuntu** image. If you picked a different
 
 ## Beginner quick path
 
-1. [https://exe.new/openclaw](https://exe.new/openclaw)
+1. [https://exe.new/avaclaw](https://exe.new/avaclaw)
 2. Fill in your auth key/token as needed
 3. Click on "Agent" next to your VM, and wait...
 4. ???
@@ -31,7 +31,7 @@ Shelley, [exe.dev](https://exe.dev)'s agent, can install Ava-Claw instantly with
 prompt. The prompt used is as below:
 
 ```
-Set up Ava-Claw (https://docs.openclaw.ai/install) on this VM. Use the non-interactive and accept-risk flags for openclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "openclaw devices list" and "openclaw devices approve <request id>". Make sure the dashboard shows that Ava-Claw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
+Set up Ava-Claw (https://docs.avaclaw.ai/install) on this VM. Use the non-interactive and accept-risk flags for avaclaw onboarding. Add the supplied auth or token as needed. Configure nginx to forward from the default port 18789 to the root location on the default enabled site config, making sure to enable Websocket support. Pairing is done by "avaclaw devices list" and "avaclaw devices approve <request id>". Make sure the dashboard shows that Ava-Claw's health is OK. exe.dev handles forwarding from port 8000 to port 80/443 and HTTPS for us, so the final "reachable" should be <vm-name>.exe.xyz, without port specification.
 ```
 
 ## Manual installation
@@ -50,7 +50,7 @@ Then connect:
 ssh <vm-name>.exe.xyz
 ```
 
-Tip: keep this VM **stateful**. Ava-Claw stores state under `~/.openclaw/` and `~/.openclaw/workspace/`.
+Tip: keep this VM **stateful**. Ava-Claw stores state under `~/.avaclaw/` and `~/.avaclaw/workspace/`.
 
 ## 2) Install prerequisites (on the VM)
 
@@ -64,7 +64,7 @@ sudo apt-get install -y git curl jq ca-certificates openssl
 Run the Ava-Claw install script:
 
 ```bash
-curl -fsSL https://openclaw.ai/install.sh | bash
+curl -fsSL https://avaclaw.ai/install.sh | bash
 ```
 
 ## 4) Setup nginx to proxy Ava-Claw to port 8000
@@ -104,9 +104,9 @@ server {
 ## 5) Access Ava-Claw and grant privileges
 
 Access `https://<vm-name>.exe.xyz/` (see the Control UI output from onboarding). If it prompts for auth, paste the
-token from `gateway.auth.token` on the VM (retrieve with `openclaw config get gateway.auth.token`, or generate one
-with `openclaw doctor --generate-gateway-token`). Approve devices with `openclaw devices list` and
-`openclaw devices approve <requestId>`. When in doubt, use Shelley from your browser!
+token from `gateway.auth.token` on the VM (retrieve with `avaclaw config get gateway.auth.token`, or generate one
+with `avaclaw doctor --generate-gateway-token`). Approve devices with `avaclaw devices list` and
+`avaclaw devices approve <requestId>`. When in doubt, use Shelley from your browser!
 
 ## Remote Access
 
@@ -117,10 +117,10 @@ with email auth.
 ## Updating
 
 ```bash
-npm i -g openclaw@latest
-openclaw doctor
-openclaw gateway restart
-openclaw health
+npm i -g avaclaw@latest
+avaclaw doctor
+avaclaw gateway restart
+avaclaw health
 ```
 
 Guide: [Updating](/install/updating)

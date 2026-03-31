@@ -74,7 +74,7 @@ SLACK_BOT_TOKEN=xoxb-...
       <Step title="Start gateway">
 
 ```bash
-openclaw gateway
+avaclaw gateway
 ```
 
       </Step>
@@ -158,7 +158,7 @@ For actions/directory reads, user token can be preferred when configured. For wr
     - Named accounts inherit `channels.slack.allowFrom` when their own `allowFrom` is unset.
     - Named accounts do not inherit `channels.slack.accounts.default.allowFrom`.
 
-    Pairing in DMs uses `openclaw pairing approve slack <code>`.
+    Pairing in DMs uses `avaclaw pairing approve slack <code>`.
 
   </Tab>
 
@@ -270,7 +270,7 @@ Notes:
 Default slash command settings:
 
 - `enabled: false`
-- `name: "openclaw"`
+- `name: "avaclaw"`
 - `sessionPrefix: "slack:slash"`
 - `ephemeral: true`
 
@@ -408,7 +408,7 @@ Notes:
     },
     "slash_commands": [
       {
-        "command": "/openclaw",
+        "command": "/avaclaw",
         "description": "Send a message to Ava-Claw",
         "should_escape": false
       }
@@ -493,9 +493,9 @@ Notes:
     Useful commands:
 
 ```bash
-openclaw channels status --probe
-openclaw logs --follow
-openclaw doctor
+avaclaw channels status --probe
+avaclaw logs --follow
+avaclaw doctor
 ```
 
   </Accordion>
@@ -508,7 +508,7 @@ openclaw doctor
     - pairing approvals / allowlist entries
 
 ```bash
-openclaw pairing list slack
+avaclaw pairing list slack
 ```
 
   </Accordion>

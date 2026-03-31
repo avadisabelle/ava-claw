@@ -52,9 +52,9 @@ x-i18n:
 ## 快速路径（Lume，有经验的用户）
 
 1. 安装 Lume
-2. `lume create openclaw --os macos --ipsw latest`
+2. `lume create avaclaw --os macos --ipsw latest`
 3. 完成设置助手，启用远程登录（SSH）
-4. `lume run openclaw --no-display`
+4. `lume run avaclaw --no-display`
 5. SSH 进入，安装 Ava-Claw，配置渠道
 6. 完成
 
@@ -94,7 +94,7 @@ lume --version
 ## 2) 创建 macOS VM
 
 ```bash
-lume create openclaw --os macos --ipsw latest
+lume create avaclaw --os macos --ipsw latest
 ```
 
 这会下载 macOS 并创建 VM。VNC 窗口会自动打开。
@@ -122,7 +122,7 @@ lume create openclaw --os macos --ipsw latest
 ## 4) 获取 VM 的 IP 地址
 
 ```bash
-lume get openclaw
+lume get avaclaw
 ```
 
 查找 IP 地址（通常是 `192.168.64.x`）。
@@ -144,8 +144,8 @@ ssh youruser@192.168.64.X
 在 VM 内：
 
 ```bash
-npm install -g openclaw@latest
-openclaw onboard --install-daemon
+npm install -g avaclaw@latest
+avaclaw onboard --install-daemon
 ```
 
 按照新手引导提示设置你的模型提供商（Anthropic、OpenAI 等）。
@@ -179,7 +179,7 @@ nano ~/.avadisabelle/ava-claw.json
 然后登录 WhatsApp（扫描二维码）：
 
 ```bash
-openclaw channels login
+avaclaw channels login
 ```
 
 ---
@@ -189,8 +189,8 @@ openclaw channels login
 停止 VM 并在无显示器模式下重启：
 
 ```bash
-lume stop openclaw
-lume run openclaw --no-display
+lume stop avaclaw
+lume run avaclaw --no-display
 ```
 
 VM 在后台运行。Ava-Claw 的守护进程保持 Gateway 网关运行。
@@ -198,7 +198,7 @@ VM 在后台运行。Ava-Claw 的守护进程保持 Gateway 网关运行。
 检查状态：
 
 ```bash
-ssh youruser@192.168.64.X "openclaw status"
+ssh youruser@192.168.64.X "avaclaw status"
 ```
 
 ---
@@ -239,16 +239,16 @@ ssh youruser@192.168.64.X "openclaw status"
 在进一步自定义之前，快照你的干净状态：
 
 ```bash
-lume stop openclaw
-lume clone openclaw openclaw-golden
+lume stop avaclaw
+lume clone avaclaw avaclaw-golden
 ```
 
 随时重置：
 
 ```bash
-lume stop openclaw && lume delete openclaw
-lume clone openclaw-golden openclaw
-lume run openclaw --no-display
+lume stop avaclaw && lume delete avaclaw
+lume clone avaclaw-golden avaclaw
+lume run avaclaw --no-display
 ```
 
 ---
@@ -270,9 +270,9 @@ lume run openclaw --no-display
 | 问题                    | 解决方案                                                         |
 | ----------------------- | ---------------------------------------------------------------- |
 | 无法 SSH 进入 VM        | 检查 VM 的系统设置中是否启用了"远程登录"                         |
-| VM IP 未显示            | 等待 VM 完全启动，再次运行 `lume get openclaw`                   |
+| VM IP 未显示            | 等待 VM 完全启动，再次运行 `lume get avaclaw`                   |
 | 找不到 Lume 命令        | 将 `~/.local/bin` 添加到你的 PATH                                |
-| WhatsApp 二维码扫描失败 | 确保运行 `openclaw channels login` 时你是登录到 VM（而不是主机） |
+| WhatsApp 二维码扫描失败 | 确保运行 `avaclaw channels login` 时你是登录到 VM（而不是主机） |
 
 ---
 

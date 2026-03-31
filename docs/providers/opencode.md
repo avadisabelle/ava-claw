@@ -22,15 +22,15 @@ as one OpenCode setup.
 ### Zen catalog
 
 ```bash
-openclaw onboard --auth-choice opencode-zen
-openclaw onboard --opencode-zen-api-key "$OPENCODE_API_KEY"
+avaclaw onboard --auth-choice opencode-zen
+avaclaw onboard --opencode-zen-api-key "$OPENCODE_API_KEY"
 ```
 
 ### Go catalog
 
 ```bash
-openclaw onboard --auth-choice opencode-go
-openclaw onboard --opencode-go-api-key "$OPENCODE_API_KEY"
+avaclaw onboard --auth-choice opencode-go
+avaclaw onboard --opencode-go-api-key "$OPENCODE_API_KEY"
 ```
 
 ## Config snippet

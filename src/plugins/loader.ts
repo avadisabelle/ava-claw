@@ -2,11 +2,11 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { createJiti } from "jiti";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import type { PluginInstallRecord } from "../config/types.plugins.js";
 import type { GatewayRequestHandler } from "../gateway/server-methods/types.js";
 import { openBoundaryFileSync } from "../infra/boundary-file-read.js";
-import { resolveOpenClawPackageRootSync } from "../infra/openclaw-root.js";
+import { resolveAvaClawPackageRootSync } from "../infra/avaclaw-root.js";
 import { createSubsystemLogger } from "../logging/subsystem.js";
 import { resolveUserPath } from "../utils.js";
 import { clearPluginCommands } from "./commands.js";
@@ -17,7 +17,7 @@ import {
   resolveMemorySlotDecision,
   type NormalizedPluginsConfig,
 } from "./config-state.js";
-import { discoverOpenClawPlugins } from "./discovery.js";
+import { discoverAvaClawPlugins } from "./discovery.js";
 import { initializeGlobalHookRunner } from "./hook-runner-global.js";
 import { clearPluginInteractiveHandlers } from "./interactive.js";
 import { loadPluginManifestRegistry } from "./manifest-registry.js";
@@ -29,8 +29,8 @@ import { createPluginRuntime, type CreatePluginRuntimeOptions } from "./runtime/
 import type { PluginRuntime } from "./runtime/types.js";
 import { validateJsonSchemaValue } from "./schema-validator.js";
 import type {
-  OpenClawPluginDefinition,
-  OpenClawPluginModule,
+  AvaClawPluginDefinition,
+  AvaClawPluginModule,
   PluginDiagnostic,
   PluginBundleFormat,
   PluginFormat,
@@ -40,7 +40,7 @@ import type {
 export type PluginLoadResult = PluginRegistry;
 
 export type PluginLoadOptions = {
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   workspaceDir?: string;
   // Allows callers to resolve plugin roots and load paths against an explicit env
   // instead of the process-global environment.
@@ -132,7 +132,7 @@ const resolvePluginSdkAlias = (): string | null =>
 const resolveExtensionApiAlias = (params: { modulePath?: string } = {}): string | null => {
   try {
     const modulePath = params.modulePath ?? fileURLToPath(import.meta.url);
-    const packageRoot = resolveOpenClawPackageRootSync({
+    const packageRoot = resolveAvaClawPackageRootSync({
       cwd: path.dirname(modulePath),
     });
     if (!packageRoot) {
@@ -163,7 +163,7 @@ const cachedPluginSdkExportedSubpaths = new Map<string, string[]>();
 
 function listPluginSdkExportedSubpaths(params: { modulePath?: string } = {}): string[] {
   const modulePath = params.modulePath ?? fileURLToPath(import.meta.url);
-  const packageRoot = resolveOpenClawPackageRootSync({
+  const packageRoot = resolveAvaClawPackageRootSync({
     cwd: path.dirname(modulePath),
   });
   if (!packageRoot) {
@@ -198,7 +198,7 @@ const resolvePluginSdkScopedAliasMap = (): Record<string, string> => {
       distFile: `${subpath}.js`,
     });
     if (resolved) {
-      aliasMap[`openclaw/plugin-sdk/${subpath}`] = resolved;
+      aliasMap[`avaclaw/plugin-sdk/${subpath}`] = resolved;
     }
   }
   return aliasMap;
@@ -304,8 +304,8 @@ function validatePluginConfig(params: {
 }
 
 function resolvePluginModuleExport(moduleExport: unknown): {
-  definition?: OpenClawPluginDefinition;
-  register?: OpenClawPluginDefinition["register"];
+  definition?: AvaClawPluginDefinition;
+  register?: AvaClawPluginDefinition["register"];
 } {
   const resolved =
     moduleExport &&
@@ -315,11 +315,11 @@ function resolvePluginModuleExport(moduleExport: unknown): {
       : moduleExport;
   if (typeof resolved === "function") {
     return {
-      register: resolved as OpenClawPluginDefinition["register"],
+      register: resolved as AvaClawPluginDefinition["register"],
     };
   }
   if (resolved && typeof resolved === "object") {
-    const def = resolved as OpenClawPluginDefinition;
+    const def = resolved as AvaClawPluginDefinition;
     const register = def.register ?? def.activate;
     return { definition: def, register };
   }
@@ -346,7 +346,7 @@ function createPluginRecord(params: {
     name: params.name ?? params.id,
     description: params.description,
     version: params.version,
-    format: params.format ?? "openclaw",
+    format: params.format ?? "avaclaw",
     bundleFormat: params.bundleFormat,
     bundleCapabilities: params.bundleCapabilities,
     source: params.source,
@@ -456,7 +456,7 @@ function matchesPathMatcher(matcher: PathMatcher, sourcePath: string): boolean {
 }
 
 function buildProvenanceIndex(params: {
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   normalizedLoadPaths: string[];
   env: NodeJS.ProcessEnv;
 }): PluginProvenanceIndex {
@@ -522,7 +522,7 @@ function matchesExplicitInstallRule(params: {
 }
 
 function resolveCandidateDuplicateRank(params: {
-  candidate: ReturnType<typeof discoverOpenClawPlugins>["candidates"][number];
+  candidate: ReturnType<typeof discoverAvaClawPlugins>["candidates"][number];
   manifestByRoot: Map<string, ReturnType<typeof loadPluginManifestRegistry>["plugins"][number]>;
   provenance: PluginProvenanceIndex;
   env: NodeJS.ProcessEnv;
@@ -556,8 +556,8 @@ function resolveCandidateDuplicateRank(params: {
 }
 
 function compareDuplicateCandidateOrder(params: {
-  left: ReturnType<typeof discoverOpenClawPlugins>["candidates"][number];
-  right: ReturnType<typeof discoverOpenClawPlugins>["candidates"][number];
+  left: ReturnType<typeof discoverAvaClawPlugins>["candidates"][number];
+  right: ReturnType<typeof discoverAvaClawPlugins>["candidates"][number];
   manifestByRoot: Map<string, ReturnType<typeof loadPluginManifestRegistry>["plugins"][number]>;
   provenance: PluginProvenanceIndex;
   env: NodeJS.ProcessEnv;
@@ -651,12 +651,12 @@ function activatePluginRegistry(registry: PluginRegistry, cacheKey: string): voi
   initializeGlobalHookRunner(registry);
 }
 
-export function loadOpenClawPlugins(options: PluginLoadOptions = {}): PluginRegistry {
+export function loadAvaClawPlugins(options: PluginLoadOptions = {}): PluginRegistry {
   // Snapshot (non-activating) loads must disable the cache to avoid storing a registry
   // whose commands were never globally registered.
   if (options.activate === false && options.cache !== false) {
     throw new Error(
-      "loadOpenClawPlugins: activate:false requires cache:false to prevent command registry divergence",
+      "loadAvaClawPlugins: activate:false requires cache:false to prevent command registry divergence",
     );
   }
   const env = options.env ?? process.env;
@@ -738,7 +738,7 @@ export function loadOpenClawPlugins(options: PluginLoadOptions = {}): PluginRegi
     suppressGlobalCommands: !shouldActivate,
   });
 
-  const discovery = discoverOpenClawPlugins({
+  const discovery = discoverAvaClawPlugins({
     workspaceDir: options.workspaceDir,
     extraPaths: normalized.loadPaths,
     cache: options.cache,
@@ -783,8 +783,8 @@ export function loadOpenClawPlugins(options: PluginLoadOptions = {}): PluginRegi
     const pluginSdkAlias = resolvePluginSdkAlias();
     const extensionApiAlias = resolveExtensionApiAlias();
     const aliasMap = {
-      ...(extensionApiAlias ? { "openclaw/extension-api": extensionApiAlias } : {}),
-      ...(pluginSdkAlias ? { "openclaw/plugin-sdk": pluginSdkAlias } : {}),
+      ...(extensionApiAlias ? { "avaclaw/extension-api": extensionApiAlias } : {}),
+      ...(pluginSdkAlias ? { "avaclaw/plugin-sdk": pluginSdkAlias } : {}),
       ...resolvePluginSdkScopedAliasMap(),
     };
     jitiLoader = createJiti(import.meta.url, {
@@ -923,7 +923,7 @@ export function loadOpenClawPlugins(options: PluginLoadOptions = {}): PluginRegi
           level: "warn",
           pluginId: record.id,
           source: record.source,
-          message: `bundle capability detected but not wired into OpenClaw yet: ${capability}`,
+          message: `bundle capability detected but not wired into AvaClaw yet: ${capability}`,
         });
       }
       registry.plugins.push(record);
@@ -973,9 +973,9 @@ export function loadOpenClawPlugins(options: PluginLoadOptions = {}): PluginRegi
     const safeSource = opened.path;
     fs.closeSync(opened.fd);
 
-    let mod: OpenClawPluginModule | null = null;
+    let mod: AvaClawPluginModule | null = null;
     try {
-      mod = getJiti()(safeSource) as OpenClawPluginModule;
+      mod = getJiti()(safeSource) as AvaClawPluginModule;
     } catch (err) {
       recordPluginError({
         logger,

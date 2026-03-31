@@ -38,7 +38,7 @@ const {
   getActivePluginRegistry,
   getActivePluginRegistryKey,
   getGlobalHookRunner,
-  loadOpenClawPlugins,
+  loadAvaClawPlugins,
   resetGlobalHookRunner,
   setActivePluginRegistry,
 } = await importFreshPluginTestModules();
@@ -63,9 +63,9 @@ function mkdirSafe(dir: string) {
   chmodSafeDir(dir);
 }
 
-const fixtureRoot = mkdtempSafe(path.join(os.tmpdir(), "openclaw-plugin-"));
+const fixtureRoot = mkdtempSafe(path.join(os.tmpdir(), "avaclaw-plugin-"));
 let tempDirIndex = 0;
-const prevBundledDir = process.env.OPENCLAW_BUNDLED_PLUGINS_DIR;
+const prevBundledDir = process.env.AVACLAW_BUNDLED_PLUGINS_DIR;
 const EMPTY_PLUGIN_SCHEMA = { type: "object", additionalProperties: false, properties: {} };
 let cachedBundledTelegramDir = "";
 let cachedBundledMemoryDir = "";
@@ -111,7 +111,7 @@ function writePlugin(params: {
   const file = path.join(dir, filename);
   fs.writeFileSync(file, params.body, "utf-8");
   fs.writeFileSync(
-    path.join(dir, "openclaw.plugin.json"),
+    path.join(dir, "avaclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,
@@ -131,8 +131,8 @@ function loadBundledMemoryPluginRegistry(options?: {
   pluginFilename?: string;
 }) {
   if (!options && cachedBundledMemoryDir) {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = cachedBundledMemoryDir;
-    return loadOpenClawPlugins({
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = cachedBundledMemoryDir;
+    return loadAvaClawPlugins({
       cache: false,
       workspaceDir: cachedBundledMemoryDir,
       config: {
@@ -160,7 +160,7 @@ function loadBundledMemoryPluginRegistry(options?: {
           name: options.packageMeta.name,
           version: options.packageMeta.version,
           description: options.packageMeta.description,
-          openclaw: { extensions: [`./${pluginFilename}`] },
+          avaclaw: { extensions: [`./${pluginFilename}`] },
         },
         null,
         2,
@@ -180,9 +180,9 @@ function loadBundledMemoryPluginRegistry(options?: {
   if (!options) {
     cachedBundledMemoryDir = bundledDir;
   }
-  process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+  process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
-  return loadOpenClawPlugins({
+  return loadAvaClawPlugins({
     cache: false,
     workspaceDir: bundledDir,
     config: {
@@ -205,27 +205,27 @@ function setupBundledTelegramPlugin() {
       filename: "telegram.cjs",
     });
   }
-  process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = cachedBundledTelegramDir;
+  process.env.AVACLAW_BUNDLED_PLUGINS_DIR = cachedBundledTelegramDir;
 }
 
-function expectTelegramLoaded(registry: ReturnType<typeof loadOpenClawPlugins>) {
+function expectTelegramLoaded(registry: ReturnType<typeof loadAvaClawPlugins>) {
   const telegram = registry.plugins.find((entry) => entry.id === "telegram");
   expect(telegram?.status).toBe("loaded");
   expect(registry.channels.some((entry) => entry.plugin.id === "telegram")).toBe(true);
 }
 
 function useNoBundledPlugins() {
-  process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
+  process.env.AVACLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
 }
 
 function loadRegistryFromSinglePlugin(params: {
   plugin: TempPlugin;
   pluginConfig?: Record<string, unknown>;
   includeWorkspaceDir?: boolean;
-  options?: Omit<Parameters<typeof loadOpenClawPlugins>[0], "cache" | "workspaceDir" | "config">;
+  options?: Omit<Parameters<typeof loadAvaClawPlugins>[0], "cache" | "workspaceDir" | "config">;
 }) {
   const pluginConfig = params.pluginConfig ?? {};
-  return loadOpenClawPlugins({
+  return loadAvaClawPlugins({
     cache: false,
     ...(params.includeWorkspaceDir === false ? {} : { workspaceDir: params.plugin.dir }),
     ...params.options,
@@ -262,7 +262,7 @@ function createEscapingEntryFixture(params: { id: string; sourceBody: string }) 
   const linkedEntry = path.join(pluginDir, "entry.cjs");
   fs.writeFileSync(outsideEntry, params.sourceBody, "utf-8");
   fs.writeFileSync(
-    path.join(pluginDir, "openclaw.plugin.json"),
+    path.join(pluginDir, "avaclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,
@@ -300,7 +300,7 @@ function createExtensionApiAliasFixture(params?: { srcBody?: string; distBody?: 
   mkdirSafe(path.dirname(distFile));
   fs.writeFileSync(
     path.join(root, "package.json"),
-    JSON.stringify({ name: "openclaw", type: "module" }, null, 2),
+    JSON.stringify({ name: "avaclaw", type: "module" }, null, 2),
     "utf-8",
   );
   fs.writeFileSync(srcFile, params?.srcBody ?? "export {};\n", "utf-8");
@@ -311,16 +311,16 @@ function createExtensionApiAliasFixture(params?: { srcBody?: string; distBody?: 
 afterEach(() => {
   clearPluginLoaderCache();
   if (prevBundledDir === undefined) {
-    delete process.env.OPENCLAW_BUNDLED_PLUGINS_DIR;
+    delete process.env.AVACLAW_BUNDLED_PLUGINS_DIR;
   } else {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = prevBundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = prevBundledDir;
   }
 });
 
 describe("bundle plugins", () => {
   it("reports Codex bundles as loaded bundle plugins without importing runtime code", () => {
     const workspaceDir = makeTempDir();
-    const bundleRoot = path.join(workspaceDir, ".openclaw", "extensions", "sample-bundle");
+    const bundleRoot = path.join(workspaceDir, ".avaclaw", "extensions", "sample-bundle");
     mkdirSafe(path.join(bundleRoot, ".codex-plugin"));
     mkdirSafe(path.join(bundleRoot, "skills"));
     fs.writeFileSync(
@@ -337,7 +337,7 @@ describe("bundle plugins", () => {
       "---\ndescription: fixture\n---\n",
     );
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       workspaceDir,
       config: {
         plugins: {
@@ -360,7 +360,7 @@ describe("bundle plugins", () => {
 
   it("treats Claude command roots and settings as supported bundle surfaces", () => {
     const workspaceDir = makeTempDir();
-    const bundleRoot = path.join(workspaceDir, ".openclaw", "extensions", "claude-skills");
+    const bundleRoot = path.join(workspaceDir, ".avaclaw", "extensions", "claude-skills");
     mkdirSafe(path.join(bundleRoot, "commands"));
     fs.writeFileSync(
       path.join(bundleRoot, "commands", "review.md"),
@@ -368,7 +368,7 @@ describe("bundle plugins", () => {
     );
     fs.writeFileSync(path.join(bundleRoot, "settings.json"), '{"hideThinkingBlock":true}', "utf-8");
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       workspaceDir,
       config: {
         plugins: {
@@ -399,7 +399,7 @@ describe("bundle plugins", () => {
 
   it("treats Cursor command roots as supported bundle skill surfaces", () => {
     const workspaceDir = makeTempDir();
-    const bundleRoot = path.join(workspaceDir, ".openclaw", "extensions", "cursor-skills");
+    const bundleRoot = path.join(workspaceDir, ".avaclaw", "extensions", "cursor-skills");
     mkdirSafe(path.join(bundleRoot, ".cursor-plugin"));
     mkdirSafe(path.join(bundleRoot, ".cursor", "commands"));
     fs.writeFileSync(
@@ -414,7 +414,7 @@ describe("bundle plugins", () => {
       "---\ndescription: fixture\n---\n",
     );
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       workspaceDir,
       config: {
         plugins: {
@@ -453,7 +453,7 @@ afterAll(() => {
   }
 });
 
-describe("loadOpenClawPlugins", () => {
+describe("loadAvaClawPlugins", () => {
   it("disables bundled plugins by default", () => {
     const bundledDir = makeTempDir();
     writePlugin({
@@ -462,9 +462,9 @@ describe("loadOpenClawPlugins", () => {
       dir: bundledDir,
       filename: "bundled.cjs",
     });
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -480,7 +480,7 @@ describe("loadOpenClawPlugins", () => {
   it("loads bundled telegram plugin when enabled", () => {
     setupBundledTelegramPlugin();
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir: cachedBundledTelegramDir,
       config: {
@@ -499,7 +499,7 @@ describe("loadOpenClawPlugins", () => {
   it("loads bundled channel plugins when channels.<id>.enabled=true", () => {
     setupBundledTelegramPlugin();
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir: cachedBundledTelegramDir,
       config: {
@@ -520,7 +520,7 @@ describe("loadOpenClawPlugins", () => {
   it("still respects explicit disable via plugins.entries for bundled channels", () => {
     setupBundledTelegramPlugin();
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir: cachedBundledTelegramDir,
       config: {
@@ -560,7 +560,7 @@ describe("loadOpenClawPlugins", () => {
     expect(memory?.version).toBe("1.2.3");
   });
   it("loads plugins from config paths", () => {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
     const plugin = writePlugin({
       id: "allowed",
       filename: "allowed.cjs",
@@ -572,7 +572,7 @@ describe("loadOpenClawPlugins", () => {
 };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir: plugin.dir,
       config: {
@@ -603,7 +603,7 @@ describe("loadOpenClawPlugins", () => {
 module.exports = { id: "skipped", register() { throw new Error("skipped plugin should not load"); } };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -639,12 +639,12 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       },
     };
 
-    const full = loadOpenClawPlugins(options);
-    const scoped = loadOpenClawPlugins({
+    const full = loadAvaClawPlugins(options);
+    const scoped = loadAvaClawPlugins({
       ...options,
       onlyPluginIds: ["allowed"],
     });
-    const scopedAgain = loadOpenClawPlugins({
+    const scopedAgain = loadAvaClawPlugins({
       ...options,
       onlyPluginIds: ["allowed"],
     });
@@ -666,7 +666,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
     setActivePluginRegistry(previousRegistry, "existing-registry");
     resetGlobalHookRunner();
 
-    const scoped = loadOpenClawPlugins({
+    const scoped = loadAvaClawPlugins({
       cache: false,
       activate: false,
       workspaceDir: plugin.dir,
@@ -686,16 +686,16 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   });
 
   it("throws when activate:false is used without cache:false", () => {
-    expect(() => loadOpenClawPlugins({ activate: false })).toThrow(
+    expect(() => loadAvaClawPlugins({ activate: false })).toThrow(
       "activate:false requires cache:false",
     );
-    expect(() => loadOpenClawPlugins({ activate: false, cache: true })).toThrow(
+    expect(() => loadAvaClawPlugins({ activate: false, cache: true })).toThrow(
       "activate:false requires cache:false",
     );
   });
 
   it("re-initializes global hook runner when serving registry from cache", () => {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
     const plugin = writePlugin({
       id: "cache-hook-runner",
       filename: "cache-hook-runner.cjs",
@@ -712,13 +712,13 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       },
     };
 
-    const first = loadOpenClawPlugins(options);
+    const first = loadAvaClawPlugins(options);
     expect(getGlobalHookRunner()).not.toBeNull();
 
     resetGlobalHookRunner();
     expect(getGlobalHookRunner()).toBeNull();
 
-    const second = loadOpenClawPlugins(options);
+    const second = loadAvaClawPlugins(options);
     expect(second).toBe(first);
     expect(getGlobalHookRunner()).not.toBeNull();
 
@@ -752,18 +752,18 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       },
     };
 
-    const first = loadOpenClawPlugins({
+    const first = loadAvaClawPlugins({
       ...options,
       env: {
         ...process.env,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledA,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledA,
       },
     });
-    const second = loadOpenClawPlugins({
+    const second = loadAvaClawPlugins({
       ...options,
       env: {
         ...process.env,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledB,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledB,
       },
     });
 
@@ -808,24 +808,24 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       },
     };
 
-    const first = loadOpenClawPlugins({
+    const first = loadAvaClawPlugins({
       ...options,
       env: {
         ...process.env,
         HOME: homeA,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: stateDir,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledDir,
+        AVACLAW_HOME: undefined,
+        AVACLAW_STATE_DIR: stateDir,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledDir,
       },
     });
-    const second = loadOpenClawPlugins({
+    const second = loadAvaClawPlugins({
       ...options,
       env: {
         ...process.env,
         HOME: homeB,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: stateDir,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledDir,
+        AVACLAW_HOME: undefined,
+        AVACLAW_STATE_DIR: stateDir,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledDir,
       },
     });
 
@@ -840,10 +840,10 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 
   it("does not reuse cached registries when env-resolved install paths change", () => {
     useNoBundledPlugins();
-    const openclawHome = makeTempDir();
+    const avaclawHome = makeTempDir();
     const ignoredHome = makeTempDir();
     const stateDir = makeTempDir();
-    const pluginDir = path.join(openclawHome, "plugins", "tracked-install-cache");
+    const pluginDir = path.join(avaclawHome, "plugins", "tracked-install-cache");
     mkdirSafe(pluginDir);
     const plugin = writePlugin({
       id: "tracked-install-cache",
@@ -868,15 +868,15 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       },
     };
 
-    const first = loadOpenClawPlugins({
+    const first = loadAvaClawPlugins({
       ...options,
       env: {
         ...process.env,
-        OPENCLAW_HOME: openclawHome,
+        AVACLAW_HOME: avaclawHome,
         HOME: ignoredHome,
-        OPENCLAW_STATE_DIR: stateDir,
+        AVACLAW_STATE_DIR: stateDir,
         CLAWDBOT_STATE_DIR: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+        AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
       },
     });
     const secondHome = makeTempDir();
@@ -884,15 +884,15 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       ...options,
       env: {
         ...process.env,
-        OPENCLAW_HOME: secondHome,
+        AVACLAW_HOME: secondHome,
         HOME: ignoredHome,
-        OPENCLAW_STATE_DIR: stateDir,
+        AVACLAW_STATE_DIR: stateDir,
         CLAWDBOT_STATE_DIR: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+        AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
       },
     };
-    const second = loadOpenClawPlugins(secondOptions);
-    const third = loadOpenClawPlugins(secondOptions);
+    const second = loadAvaClawPlugins(secondOptions);
+    const third = loadAvaClawPlugins(secondOptions);
 
     expect(second).not.toBe(first);
     expect(third).toBe(second);
@@ -910,11 +910,11 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
     );
 
     const loadWithStateDir = (stateDir: string) =>
-      loadOpenClawPlugins({
+      loadAvaClawPlugins({
         env: {
           ...process.env,
-          OPENCLAW_STATE_DIR: stateDir,
-          OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+          AVACLAW_STATE_DIR: stateDir,
+          AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
         },
         config: {
           plugins: {
@@ -950,12 +950,12 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       body: `module.exports = { id: "tilde-bundled", register() {} };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       env: {
         ...process.env,
         HOME: homeDir,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: override,
+        AVACLAW_HOME: undefined,
+        AVACLAW_BUNDLED_PLUGINS_DIR: override,
       },
       config: {
         plugins: {
@@ -972,34 +972,34 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
     ).toBe(fs.realpathSync(plugin.file));
   });
 
-  it("prefers OPENCLAW_HOME over HOME for env-expanded load paths", () => {
+  it("prefers AVACLAW_HOME over HOME for env-expanded load paths", () => {
     const ignoredHome = makeTempDir();
-    const openclawHome = makeTempDir();
+    const avaclawHome = makeTempDir();
     const stateDir = makeTempDir();
     const bundledDir = makeTempDir();
     const plugin = writePlugin({
-      id: "openclaw-home-demo",
-      dir: path.join(openclawHome, "plugins", "openclaw-home-demo"),
+      id: "avaclaw-home-demo",
+      dir: path.join(avaclawHome, "plugins", "avaclaw-home-demo"),
       filename: "index.cjs",
-      body: `module.exports = { id: "openclaw-home-demo", register() {} };`,
+      body: `module.exports = { id: "avaclaw-home-demo", register() {} };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       env: {
         ...process.env,
         HOME: ignoredHome,
-        OPENCLAW_HOME: openclawHome,
-        OPENCLAW_STATE_DIR: stateDir,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledDir,
+        AVACLAW_HOME: avaclawHome,
+        AVACLAW_STATE_DIR: stateDir,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledDir,
       },
       config: {
         plugins: {
-          allow: ["openclaw-home-demo"],
+          allow: ["avaclaw-home-demo"],
           entries: {
-            "openclaw-home-demo": { enabled: true },
+            "avaclaw-home-demo": { enabled: true },
           },
           load: {
-            paths: ["~/plugins/openclaw-home-demo"],
+            paths: ["~/plugins/avaclaw-home-demo"],
           },
         },
       },
@@ -1007,7 +1007,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 
     expect(
       fs.realpathSync(
-        registry.plugins.find((entry) => entry.id === "openclaw-home-demo")?.source ?? "",
+        registry.plugins.find((entry) => entry.id === "avaclaw-home-demo")?.source ?? "",
       ),
     ).toBe(fs.realpathSync(plugin.file));
   });
@@ -1258,7 +1258,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 } };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1298,7 +1298,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 } };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1365,7 +1365,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 } };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1431,7 +1431,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 } };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1608,7 +1608,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 } };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1681,13 +1681,13 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   });
 
   it("respects explicit disable in config", () => {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
     const plugin = writePlugin({
       id: "config-disable",
       body: `module.exports = { id: "config-disable", register() {} };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1820,7 +1820,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   });
 
   it("enforces memory slot selection", () => {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
     const memoryA = writePlugin({
       id: "memory-a",
       body: `module.exports = { id: "memory-a", kind: "memory", register() {} };`,
@@ -1830,7 +1830,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       body: `module.exports = { id: "memory-b", kind: "memory", register() {} };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1865,7 +1865,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       body: `module.exports = { id: "memory-b", kind: "memory", register() {} };`,
     });
     fs.writeFileSync(
-      path.join(memoryADir, "openclaw.plugin.json"),
+      path.join(memoryADir, "avaclaw.plugin.json"),
       JSON.stringify(
         {
           id: "memory-a",
@@ -1878,7 +1878,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       "utf-8",
     );
     fs.writeFileSync(
-      path.join(memoryBDir, "openclaw.plugin.json"),
+      path.join(memoryBDir, "avaclaw.plugin.json"),
       JSON.stringify(
         {
           id: "memory-b",
@@ -1890,9 +1890,9 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       ),
       "utf-8",
     );
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1914,13 +1914,13 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   });
 
   it("disables memory plugins when slot is none", () => {
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = "/nonexistent/bundled/plugins";
     const memory = writePlugin({
       id: "memory-off",
       body: `module.exports = { id: "memory-off", kind: "memory", register() {} };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1942,14 +1942,14 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       dir: bundledDir,
       filename: "shadow.cjs",
     });
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
     const override = writePlugin({
       id: "shadow",
       body: `module.exports = { id: "shadow", register() {} };`,
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -1976,10 +1976,10 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       dir: bundledDir,
       filename: "index.cjs",
     });
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
     const stateDir = makeTempDir();
-    withEnv({ OPENCLAW_STATE_DIR: stateDir, CLAWDBOT_STATE_DIR: undefined }, () => {
+    withEnv({ AVACLAW_STATE_DIR: stateDir, CLAWDBOT_STATE_DIR: undefined }, () => {
       const globalDir = path.join(stateDir, "extensions", "feishu");
       mkdirSafe(globalDir);
       writePlugin({
@@ -1989,7 +1989,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
         filename: "index.cjs",
       });
 
-      const registry = loadOpenClawPlugins({
+      const registry = loadAvaClawPlugins({
         cache: false,
         config: {
           plugins: {
@@ -2018,10 +2018,10 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       dir: bundledDir,
       filename: "index.cjs",
     });
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
     const stateDir = makeTempDir();
-    withEnv({ OPENCLAW_STATE_DIR: stateDir, CLAWDBOT_STATE_DIR: undefined }, () => {
+    withEnv({ AVACLAW_STATE_DIR: stateDir, CLAWDBOT_STATE_DIR: undefined }, () => {
       const globalDir = path.join(stateDir, "extensions", "zalouser");
       mkdirSafe(globalDir);
       writePlugin({
@@ -2031,7 +2031,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
         filename: "index.cjs",
       });
 
-      const registry = loadOpenClawPlugins({
+      const registry = loadAvaClawPlugins({
         cache: false,
         config: {
           plugins: {
@@ -2065,7 +2065,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       body: `module.exports = { id: "warn-open-allow", register() {} };`,
     });
     const warnings: string[] = [];
-    loadOpenClawPlugins({
+    loadAvaClawPlugins({
       cache: false,
       logger: createWarningLogger(warnings),
       config: {
@@ -2097,8 +2097,8 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       },
     };
 
-    loadOpenClawPlugins(options);
-    loadOpenClawPlugins(options);
+    loadAvaClawPlugins(options);
+    loadAvaClawPlugins(options);
 
     expect(warnings.filter((msg) => msg.includes("plugins.allow is empty"))).toHaveLength(1);
   });
@@ -2106,7 +2106,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   it("does not auto-load workspace-discovered plugins unless explicitly trusted", () => {
     useNoBundledPlugins();
     const workspaceDir = makeTempDir();
-    const workspaceExtDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-helper");
+    const workspaceExtDir = path.join(workspaceDir, ".avaclaw", "extensions", "workspace-helper");
     mkdirSafe(workspaceExtDir);
     writePlugin({
       id: "workspace-helper",
@@ -2115,7 +2115,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       filename: "index.cjs",
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir,
       config: {
@@ -2134,7 +2134,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   it("loads workspace-discovered plugins when plugins.allow explicitly trusts them", () => {
     useNoBundledPlugins();
     const workspaceDir = makeTempDir();
-    const workspaceExtDir = path.join(workspaceDir, ".openclaw", "extensions", "workspace-helper");
+    const workspaceExtDir = path.join(workspaceDir, ".avaclaw", "extensions", "workspace-helper");
     mkdirSafe(workspaceExtDir);
     writePlugin({
       id: "workspace-helper",
@@ -2143,7 +2143,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       filename: "index.cjs",
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir,
       config: {
@@ -2172,7 +2172,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       filename: "unscoped.cjs",
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -2197,10 +2197,10 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       dir: bundledDir,
       filename: "index.cjs",
     });
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
 
     const workspaceDir = makeTempDir();
-    const workspaceExtDir = path.join(workspaceDir, ".openclaw", "extensions", "shadowed");
+    const workspaceExtDir = path.join(workspaceDir, ".avaclaw", "extensions", "shadowed");
     mkdirSafe(workspaceExtDir);
     writePlugin({
       id: "shadowed",
@@ -2209,7 +2209,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       filename: "index.cjs",
     });
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir,
       config: {
@@ -2234,7 +2234,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
   it("warns when loaded non-bundled plugin has no install/load-path provenance", () => {
     useNoBundledPlugins();
     const stateDir = makeTempDir();
-    withEnv({ OPENCLAW_STATE_DIR: stateDir, CLAWDBOT_STATE_DIR: undefined }, () => {
+    withEnv({ AVACLAW_STATE_DIR: stateDir, CLAWDBOT_STATE_DIR: undefined }, () => {
       const globalDir = path.join(stateDir, "extensions", "rogue");
       mkdirSafe(globalDir);
       writePlugin({
@@ -2245,7 +2245,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       });
 
       const warnings: string[] = [];
-      const registry = loadOpenClawPlugins({
+      const registry = loadAvaClawPlugins({
         cache: false,
         logger: createWarningLogger(warnings),
         config: {
@@ -2268,10 +2268,10 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 
   it("does not warn about missing provenance for env-resolved load paths", () => {
     useNoBundledPlugins();
-    const openclawHome = makeTempDir();
+    const avaclawHome = makeTempDir();
     const ignoredHome = makeTempDir();
     const stateDir = makeTempDir();
-    const pluginDir = path.join(openclawHome, "plugins", "tracked-load-path");
+    const pluginDir = path.join(avaclawHome, "plugins", "tracked-load-path");
     mkdirSafe(pluginDir);
     const plugin = writePlugin({
       id: "tracked-load-path",
@@ -2281,16 +2281,16 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
     });
 
     const warnings: string[] = [];
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       logger: createWarningLogger(warnings),
       env: {
         ...process.env,
-        OPENCLAW_HOME: openclawHome,
+        AVACLAW_HOME: avaclawHome,
         HOME: ignoredHome,
-        OPENCLAW_STATE_DIR: stateDir,
+        AVACLAW_STATE_DIR: stateDir,
         CLAWDBOT_STATE_DIR: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+        AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
       },
       config: {
         plugins: {
@@ -2310,10 +2310,10 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
 
   it("does not warn about missing provenance for env-resolved install paths", () => {
     useNoBundledPlugins();
-    const openclawHome = makeTempDir();
+    const avaclawHome = makeTempDir();
     const ignoredHome = makeTempDir();
     const stateDir = makeTempDir();
-    const pluginDir = path.join(openclawHome, "plugins", "tracked-install-path");
+    const pluginDir = path.join(avaclawHome, "plugins", "tracked-install-path");
     mkdirSafe(pluginDir);
     const plugin = writePlugin({
       id: "tracked-install-path",
@@ -2323,16 +2323,16 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
     });
 
     const warnings: string[] = [];
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       logger: createWarningLogger(warnings),
       env: {
         ...process.env,
-        OPENCLAW_HOME: openclawHome,
+        AVACLAW_HOME: avaclawHome,
         HOME: ignoredHome,
-        OPENCLAW_STATE_DIR: stateDir,
+        AVACLAW_STATE_DIR: stateDir,
         CLAWDBOT_STATE_DIR: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+        AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
       },
       config: {
         plugins: {
@@ -2370,7 +2370,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       return;
     }
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -2404,7 +2404,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       throw err;
     }
 
-    const registry = loadOpenClawPlugins({
+    const registry = loadAvaClawPlugins({
       cache: false,
       config: {
         plugins: {
@@ -2450,8 +2450,8 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       throw err;
     }
 
-    process.env.OPENCLAW_BUNDLED_PLUGINS_DIR = bundledDir;
-    const registry = loadOpenClawPlugins({
+    process.env.AVACLAW_BUNDLED_PLUGINS_DIR = bundledDir;
+    const registry = loadAvaClawPlugins({
       cache: false,
       workspaceDir: bundledDir,
       config: {
@@ -2509,7 +2509,7 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       filename: "legacy-root-import.cjs",
       body: `module.exports = {
   id: "legacy-root-import",
-  configSchema: (require("openclaw/plugin-sdk").emptyPluginConfigSchema)(),
+  configSchema: (require("avaclaw/plugin-sdk").emptyPluginConfigSchema)(),
   register() {},
 };`,
     });
@@ -2518,8 +2518,8 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       path.join(process.cwd(), "src", "plugins", "loader.ts"),
     ).href;
     const script = `
-      import { loadOpenClawPlugins } from ${JSON.stringify(loaderModuleUrl)};
-      const registry = loadOpenClawPlugins({
+      import { loadAvaClawPlugins } from ${JSON.stringify(loaderModuleUrl)};
+      const registry = loadAvaClawPlugins({
         cache: false,
         workspaceDir: ${JSON.stringify(plugin.dir)},
         config: {
@@ -2540,8 +2540,8 @@ module.exports = { id: "skipped", register() { throw new Error("skipped plugin s
       cwd: process.cwd(),
       env: {
         ...process.env,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+        AVACLAW_HOME: undefined,
+        AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
       },
       encoding: "utf-8",
       stdio: "pipe",

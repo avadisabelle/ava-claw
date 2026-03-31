@@ -58,7 +58,7 @@ export VENICE_API_KEY="vapi_xxxxxxxxxxxx"
 **Option B: Interactive Setup (Recommended)**
 
 ```bash
-openclaw onboard --auth-choice venice-api-key
+avaclaw onboard --auth-choice venice-api-key
 ```
 
 This will:
@@ -71,7 +71,7 @@ This will:
 **Option C: Non-interactive**
 
 ```bash
-openclaw onboard --non-interactive \
+avaclaw onboard --non-interactive \
   --auth-choice venice-api-key \
   --venice-api-key "vapi_xxxxxxxxxxxx"
 ```
@@ -79,7 +79,7 @@ openclaw onboard --non-interactive \
 ### 3. Verify Setup
 
 ```bash
-openclaw agent --model venice/kimi-k2-5 --message "Hello, are you working?"
+avaclaw agent --model venice/kimi-k2-5 --message "Hello, are you working?"
 ```
 
 ## Model Selection
@@ -94,19 +94,19 @@ After setup, Ava-Claw shows all available Venice models. Pick based on your need
 Change your default model anytime:
 
 ```bash
-openclaw models set venice/kimi-k2-5
-openclaw models set venice/claude-opus-4-6
+avaclaw models set venice/kimi-k2-5
+avaclaw models set venice/claude-opus-4-6
 ```
 
 List all available models:
 
 ```bash
-openclaw models list | grep venice
+avaclaw models list | grep venice
 ```
 
-## Configure via `openclaw configure`
+## Configure via `avaclaw configure`
 
-1. Run `openclaw configure`
+1. Run `avaclaw configure`
 2. Select **Model/auth**
 3. Choose **Venice AI**
 
@@ -210,19 +210,19 @@ Venice uses a credit-based system. Check [venice.ai/pricing](https://venice.ai/p
 
 ```bash
 # Use the default private model
-openclaw agent --model venice/kimi-k2-5 --message "Quick health check"
+avaclaw agent --model venice/kimi-k2-5 --message "Quick health check"
 
 # Use Claude Opus via Venice (anonymized)
-openclaw agent --model venice/claude-opus-4-6 --message "Summarize this task"
+avaclaw agent --model venice/claude-opus-4-6 --message "Summarize this task"
 
 # Use uncensored model
-openclaw agent --model venice/venice-uncensored --message "Draft options"
+avaclaw agent --model venice/venice-uncensored --message "Draft options"
 
 # Use vision model with image
-openclaw agent --model venice/qwen3-vl-235b-a22b --message "Review attached image"
+avaclaw agent --model venice/qwen3-vl-235b-a22b --message "Review attached image"
 
 # Use coding model
-openclaw agent --model venice/qwen3-coder-480b-a35b-instruct --message "Refactor this function"
+avaclaw agent --model venice/qwen3-coder-480b-a35b-instruct --message "Refactor this function"
 ```
 
 ## Troubleshooting
@@ -231,14 +231,14 @@ openclaw agent --model venice/qwen3-coder-480b-a35b-instruct --message "Refactor
 
 ```bash
 echo $VENICE_API_KEY
-openclaw models list | grep venice
+avaclaw models list | grep venice
 ```
 
 Ensure the key starts with `vapi_`.
 
 ### Model not available
 
-The Venice model catalog updates dynamically. Run `openclaw models list` to see currently available models. Some models may be temporarily offline.
+The Venice model catalog updates dynamically. Run `avaclaw models list` to see currently available models. Some models may be temporarily offline.
 
 ### Connection issues
 

@@ -14,6 +14,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "OpenClawNodeAndroid"
+rootProject.name = "AvaClawNodeAndroid"
 include(":app")
 include(":benchmark")

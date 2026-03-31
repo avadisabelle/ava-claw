@@ -57,13 +57,13 @@ Runtime SecretRef behavior:
 
 ## Setting up web search
 
-Use `openclaw configure --section web` to set up your API key and choose a provider.
+Use `avaclaw configure --section web` to set up your API key and choose a provider.
 
 ### Brave Search
 
 1. Create a Brave Search API account at [brave.com/search/api](https://brave.com/search/api/)
 2. In the dashboard, choose the **Search** plan and generate an API key.
-3. Run `openclaw configure --section web` to store the key in config, or set `BRAVE_API_KEY` in your environment.
+3. Run `avaclaw configure --section web` to store the key in config, or set `BRAVE_API_KEY` in your environment.
 
 Each Brave plan includes **\$5/month in free credit** (renewing). The Search
 plan costs \$5 per 1,000 requests, so the credit covers 1,000 queries/month. Set
@@ -75,7 +75,7 @@ pricing.
 
 1. Create a Perplexity account at [perplexity.ai/settings/api](https://www.perplexity.ai/settings/api)
 2. Generate an API key in the dashboard
-3. Run `openclaw configure --section web` to store the key in config, or set `PERPLEXITY_API_KEY` in your environment.
+3. Run `avaclaw configure --section web` to store the key in config, or set `PERPLEXITY_API_KEY` in your environment.
 
 For legacy Sonar/OpenRouter compatibility, set `OPENROUTER_API_KEY` instead, or configure `tools.web.search.perplexity.apiKey` with an `sk-or-...` key. Setting `tools.web.search.perplexity.baseUrl` or `model` also opts Perplexity back into the chat-completions compatibility path.
 
@@ -83,7 +83,7 @@ See [Perplexity Search API Docs](https://docs.perplexity.ai/guides/search-quicks
 
 ### Where to store the key
 
-**Via config:** run `openclaw configure --section web`. It stores the key under the provider-specific config path:
+**Via config:** run `avaclaw configure --section web`. It stores the key under the provider-specific config path:
 
 - Brave: `tools.web.search.apiKey`
 - Gemini: `tools.web.search.gemini.apiKey`
@@ -101,7 +101,7 @@ All of these fields also support SecretRef objects.
 - Kimi: `KIMI_API_KEY` or `MOONSHOT_API_KEY`
 - Perplexity: `PERPLEXITY_API_KEY` or `OPENROUTER_API_KEY`
 
-For a gateway install, put these in `~/.openclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-openclaw-load-environment-variables).
+For a gateway install, put these in `~/.avaclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-avaclaw-load-environment-variables).
 
 ### Config examples
 
@@ -214,7 +214,7 @@ which returns AI-synthesized answers backed by live Google Search results with c
 ```
 
 **Environment alternative:** set `GEMINI_API_KEY` in the Gateway environment.
-For a gateway install, put it in `~/.openclaw/.env`.
+For a gateway install, put it in `~/.avaclaw/.env`.
 
 ### Notes
 

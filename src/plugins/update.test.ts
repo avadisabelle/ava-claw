@@ -24,8 +24,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("skips integrity drift checks for unpinned npm specs during dry-run updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "opik-openclaw",
-      targetDir: "/tmp/opik-openclaw",
+      pluginId: "opik-avaclaw",
+      targetDir: "/tmp/opik-avaclaw",
       version: "0.2.6",
       extensions: ["index.ts"],
     });
@@ -35,22 +35,22 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "opik-openclaw": {
+            "opik-avaclaw": {
               source: "npm",
-              spec: "@opik/opik-openclaw",
+              spec: "@opik/opik-avaclaw",
               integrity: "sha512-old",
-              installPath: "/tmp/opik-openclaw",
+              installPath: "/tmp/opik-avaclaw",
             },
           },
         },
       },
-      pluginIds: ["opik-openclaw"],
+      pluginIds: ["opik-avaclaw"],
       dryRun: true,
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "@opik/opik-openclaw",
+        spec: "@opik/opik-avaclaw",
         expectedIntegrity: undefined,
       }),
     );
@@ -59,8 +59,8 @@ describe("updateNpmInstalledPlugins", () => {
   it("keeps integrity drift checks for exact-version npm specs during dry-run updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "opik-openclaw",
-      targetDir: "/tmp/opik-openclaw",
+      pluginId: "opik-avaclaw",
+      targetDir: "/tmp/opik-avaclaw",
       version: "0.2.6",
       extensions: ["index.ts"],
     });
@@ -70,22 +70,22 @@ describe("updateNpmInstalledPlugins", () => {
       config: {
         plugins: {
           installs: {
-            "opik-openclaw": {
+            "opik-avaclaw": {
               source: "npm",
-              spec: "@opik/opik-openclaw@0.2.5",
+              spec: "@opik/opik-avaclaw@0.2.5",
               integrity: "sha512-old",
-              installPath: "/tmp/opik-openclaw",
+              installPath: "/tmp/opik-avaclaw",
             },
           },
         },
       },
-      pluginIds: ["opik-openclaw"],
+      pluginIds: ["opik-avaclaw"],
       dryRun: true,
     });
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "@opik/opik-openclaw@0.2.5",
+        spec: "@opik/opik-avaclaw@0.2.5",
         expectedIntegrity: "sha512-old",
       }),
     );
@@ -161,7 +161,7 @@ describe("updateNpmInstalledPlugins", () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
       pluginId: "@avadisabelle/ava-claw-voice-call",
-      targetDir: "/tmp/openclaw-voice-call",
+      targetDir: "/tmp/avaclaw-voice-call",
       version: "0.0.2",
       extensions: ["index.ts"],
     });
@@ -208,7 +208,7 @@ describe("updateNpmInstalledPlugins", () => {
     expect(result.config.plugins?.installs?.["@avadisabelle/ava-claw-voice-call"]).toMatchObject({
       source: "npm",
       spec: "@avadisabelle/ava-claw-voice-call",
-      installPath: "/tmp/openclaw-voice-call",
+      installPath: "/tmp/avaclaw-voice-call",
       version: "0.0.2",
     });
     expect(result.config.plugins?.installs?.["voice-call"]).toBeUndefined();
@@ -305,7 +305,7 @@ describe("syncPluginsForUpdateChannel", () => {
 
   it("forwards an explicit env to bundled plugin source resolution", async () => {
     resolveBundledPluginSourcesMock.mockReturnValue(new Map());
-    const env = { OPENCLAW_HOME: "/srv/openclaw-home" } as NodeJS.ProcessEnv;
+    const env = { AVACLAW_HOME: "/srv/avaclaw-home" } as NodeJS.ProcessEnv;
 
     const { syncPluginsForUpdateChannel } = await import("./update.js");
     await syncPluginsForUpdateChannel({
@@ -322,7 +322,7 @@ describe("syncPluginsForUpdateChannel", () => {
   });
 
   it("uses the provided env when matching bundled load and install paths", async () => {
-    const bundledHome = "/tmp/openclaw-home";
+    const bundledHome = "/tmp/avaclaw-home";
     resolveBundledPluginSourcesMock.mockReturnValue(
       new Map([
         [
@@ -344,7 +344,7 @@ describe("syncPluginsForUpdateChannel", () => {
         channel: "beta",
         env: {
           ...process.env,
-          OPENCLAW_HOME: bundledHome,
+          AVACLAW_HOME: bundledHome,
           HOME: "/tmp/ignored-home",
         },
         config: {

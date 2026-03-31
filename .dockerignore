@@ -56,14 +56,14 @@ vendor/
 # Needed for building the Canvas A2UI bundle during Docker image builds.
 # Keep the rest of apps/ and vendor/ excluded to avoid a large build context.
 !apps/shared/
-!apps/shared/OpenClawKit/
-!apps/shared/OpenClawKit/Sources/
-!apps/shared/OpenClawKit/Sources/OpenClawKit/
-!apps/shared/OpenClawKit/Sources/OpenClawKit/Resources/
-!apps/shared/OpenClawKit/Sources/OpenClawKit/Resources/tool-display.json
-!apps/shared/OpenClawKit/Tools/
-!apps/shared/OpenClawKit/Tools/CanvasA2UI/
-!apps/shared/OpenClawKit/Tools/CanvasA2UI/**
+!apps/shared/AvaClawKit/
+!apps/shared/AvaClawKit/Sources/
+!apps/shared/AvaClawKit/Sources/AvaClawKit/
+!apps/shared/AvaClawKit/Sources/AvaClawKit/Resources/
+!apps/shared/AvaClawKit/Sources/AvaClawKit/Resources/tool-display.json
+!apps/shared/AvaClawKit/Tools/
+!apps/shared/AvaClawKit/Tools/CanvasA2UI/
+!apps/shared/AvaClawKit/Tools/CanvasA2UI/**
 !vendor/a2ui/
 !vendor/a2ui/renderers/
 !vendor/a2ui/renderers/lit/

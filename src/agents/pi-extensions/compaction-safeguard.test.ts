@@ -5,7 +5,7 @@ import type { AgentMessage } from "@avadisabelle/ava-pi-agent-core";
 import type { Api, Model } from "@avadisabelle/ava-pi-ai";
 import type { ExtensionAPI, ExtensionContext } from "@avadisabelle/ava-pi-coding-agent";
 import { describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import * as compactionModule from "../compaction.js";
 import { buildEmbeddedExtensionFactories } from "../pi-embedded-runner/extensions.js";
 import { castAgentMessage } from "../test-helpers/agent-message-fixtures.js";
@@ -420,7 +420,7 @@ describe("compaction-safeguard runtime registry", () => {
           },
         },
       },
-    } as OpenClawConfig;
+    } as AvaClawConfig;
 
     buildEmbeddedExtensionFactories({
       cfg,
@@ -1550,7 +1550,7 @@ describe("compaction-safeguard double-compaction guard", () => {
 async function expectWorkspaceSummaryEmptyForAgentsAlias(
   createAlias: (outsidePath: string, agentsPath: string) => void,
 ) {
-  const root = fs.mkdtempSync(path.join(os.tmpdir(), "openclaw-compaction-summary-"));
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "avaclaw-compaction-summary-"));
   const prevCwd = process.cwd();
   try {
     const outside = path.join(root, "outside-secret.txt");

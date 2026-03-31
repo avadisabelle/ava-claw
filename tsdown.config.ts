@@ -7,7 +7,7 @@ const env = {
 };
 
 function buildInputOptions(options: { onLog?: unknown; [key: string]: unknown }) {
-  if (process.env.OPENCLAW_BUILD_VERBOSE === "1") {
+  if (process.env.AVACLAW_BUILD_VERBOSE === "1") {
     return undefined;
   }
 
@@ -99,7 +99,7 @@ function listBundledPluginBuildEntries(): Record<string, string> {
     }
 
     const pluginDir = path.join(extensionsRoot, dirent.name);
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "avaclaw.plugin.json");
     if (!fs.existsSync(manifestPath)) {
       continue;
     }
@@ -109,10 +109,10 @@ function listBundledPluginBuildEntries(): Record<string, string> {
     if (fs.existsSync(packageJsonPath)) {
       try {
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8")) as {
-          openclaw?: { extensions?: unknown };
+          avaclaw?: { extensions?: unknown };
         };
-        packageEntries = Array.isArray(packageJson.openclaw?.extensions)
-          ? packageJson.openclaw.extensions.filter(
+        packageEntries = Array.isArray(packageJson.avaclaw?.extensions)
+          ? packageJson.avaclaw.extensions.filter(
               (entry): entry is string => typeof entry === "string" && entry.trim().length > 0,
             )
           : [];

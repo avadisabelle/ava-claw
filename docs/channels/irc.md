@@ -23,8 +23,8 @@ IRC ships as an extension plugin, but it is configured in the main config under 
       "host": "irc.libera.chat",
       "port": 6697,
       "tls": true,
-      "nick": "openclaw-bot",
-      "channels": ["#openclaw"]
+      "nick": "avaclaw-bot",
+      "channels": ["#avaclaw"]
     }
   }
 }
@@ -33,7 +33,7 @@ IRC ships as an extension plugin, but it is configured in the main config under 
 3. Start/restart gateway:
 
 ```bash
-openclaw gateway run
+avaclaw gateway run
 ```
 
 ## Security defaults

@@ -2,7 +2,7 @@ import {
   buildAccountScopedDmSecurityPolicy,
   createScopedAccountConfigAccessors,
   collectAllowlistProviderRestrictSendersWarnings,
-} from "openclaw/plugin-sdk/compat";
+} from "avaclaw/plugin-sdk/compat";
 import {
   buildBaseAccountStatusSnapshot,
   buildBaseChannelStatusSummary,
@@ -25,7 +25,7 @@ import {
   type ChannelMessageActionAdapter,
   type ChannelPlugin,
   type ResolvedSignalAccount,
-} from "openclaw/plugin-sdk/signal";
+} from "avaclaw/plugin-sdk/signal";
 import { resolveOutboundSendDep } from "../../../src/infra/outbound/send-deps.js";
 import { getSignalRuntime } from "./runtime.js";
 import { signalSetupAdapter, signalSetupWizard } from "./setup-surface.js";

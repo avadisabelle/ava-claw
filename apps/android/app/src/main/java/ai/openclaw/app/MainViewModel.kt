@@ -1,13 +1,13 @@
-package ai.openclaw.app
+package ai.avaclaw.app
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import ai.openclaw.app.gateway.GatewayEndpoint
-import ai.openclaw.app.chat.OutgoingAttachment
-import ai.openclaw.app.node.CameraCaptureManager
-import ai.openclaw.app.node.CanvasController
-import ai.openclaw.app.node.SmsManager
-import ai.openclaw.app.voice.VoiceConversationEntry
+import ai.avaclaw.app.gateway.GatewayEndpoint
+import ai.avaclaw.app.chat.OutgoingAttachment
+import ai.avaclaw.app.node.CameraCaptureManager
+import ai.avaclaw.app.node.CanvasController
+import ai.avaclaw.app.node.SmsManager
+import ai.avaclaw.app.voice.VoiceConversationEntry
 import kotlinx.coroutines.flow.StateFlow
 
 class MainViewModel(app: Application) : AndroidViewModel(app) {

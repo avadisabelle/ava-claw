@@ -15,9 +15,9 @@ Mistral can also be used for memory embeddings (`memorySearch.provider = "mistra
 ## CLI setup
 
 ```bash
-openclaw onboard --auth-choice mistral-api-key
+avaclaw onboard --auth-choice mistral-api-key
 # or non-interactive
-openclaw onboard --mistral-api-key "$MISTRAL_API_KEY"
+avaclaw onboard --mistral-api-key "$MISTRAL_API_KEY"
 ```
 
 ## Config snippet (LLM provider)

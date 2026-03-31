@@ -19,12 +19,12 @@ Ava-Claw treats **wake words as a single global list** owned by the **Gateway**.
 
 Wake words are stored on the gateway machine at:
 
-- `~/.openclaw/settings/voicewake.json`
+- `~/.avaclaw/settings/voicewake.json`
 
 Shape:
 
 ```json
-{ "triggers": ["openclaw", "claude", "computer"], "updatedAtMs": 1730000000000 }
+{ "triggers": ["avaclaw", "claude", "computer"], "updatedAtMs": 1730000000000 }
 ```
 
 ## Protocol

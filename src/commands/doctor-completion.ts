@@ -9,7 +9,7 @@ import {
   resolveShellFromEnv,
   usesSlowDynamicCompletion,
 } from "../cli/completion-cli.js";
-import { resolveOpenClawPackageRoot } from "../infra/openclaw-root.js";
+import { resolveAvaClawPackageRoot } from "../infra/avaclaw-root.js";
 import type { RuntimeEnv } from "../runtime.js";
 import { note } from "../terminal/note.js";
 import type { DoctorPrompter } from "./doctor-prompter.js";
@@ -18,7 +18,7 @@ type CompletionShell = "zsh" | "bash" | "fish" | "powershell";
 
 /** Generate the completion cache by spawning the CLI. */
 async function generateCompletionCache(): Promise<boolean> {
-  const root = await resolveOpenClawPackageRoot({
+  const root = await resolveAvaClawPackageRoot({
     moduleUrl: import.meta.url,
     argv1: process.argv[1],
     cwd: process.cwd(),
@@ -27,7 +27,7 @@ async function generateCompletionCache(): Promise<boolean> {
     return false;
   }
 
-  const binPath = path.join(root, "openclaw.mjs");
+  const binPath = path.join(root, "avaclaw.mjs");
   const result = spawnSync(process.execPath, [binPath, "completion", "--write-state"], {
     cwd: root,
     env: process.env,
@@ -42,7 +42,7 @@ export type ShellCompletionStatus = {
   profileInstalled: boolean;
   cacheExists: boolean;
   cachePath: string;
-  /** True if profile uses slow dynamic pattern like `source <(openclaw completion ...)` */
+  /** True if profile uses slow dynamic pattern like `source <(avaclaw completion ...)` */
   usesSlowPattern: boolean;
 };
 

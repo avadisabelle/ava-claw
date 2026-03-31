@@ -15,25 +15,25 @@ Ava-Claw can run agents in isolated Docker containers for security. The `sandbox
 
 ## Commands
 
-### `openclaw sandbox explain`
+### `avaclaw sandbox explain`
 
 Inspect the **effective** sandbox mode/scope/workspace access, sandbox tool policy, and elevated gates (with fix-it config key paths).
 
 ```bash
-openclaw sandbox explain
-openclaw sandbox explain --session agent:main:main
-openclaw sandbox explain --agent work
-openclaw sandbox explain --json
+avaclaw sandbox explain
+avaclaw sandbox explain --session agent:main:main
+avaclaw sandbox explain --agent work
+avaclaw sandbox explain --json
 ```
 
-### `openclaw sandbox list`
+### `avaclaw sandbox list`
 
 List all sandbox containers with their status and configuration.
 
 ```bash
-openclaw sandbox list
-openclaw sandbox list --browser  # List only browser containers
-openclaw sandbox list --json     # JSON output
+avaclaw sandbox list
+avaclaw sandbox list --browser  # List only browser containers
+avaclaw sandbox list --json     # JSON output
 ```
 
 **Output includes:**
@@ -44,16 +44,16 @@ openclaw sandbox list --json     # JSON output
 - Idle time (time since last use)
 - Associated session/agent
 
-### `openclaw sandbox recreate`
+### `avaclaw sandbox recreate`
 
 Remove sandbox containers to force recreation with updated images/config.
 
 ```bash
-openclaw sandbox recreate --all                # Recreate all containers
-openclaw sandbox recreate --session main       # Specific session
-openclaw sandbox recreate --agent mybot        # Specific agent
-openclaw sandbox recreate --browser            # Only browser containers
-openclaw sandbox recreate --all --force        # Skip confirmation
+avaclaw sandbox recreate --all                # Recreate all containers
+avaclaw sandbox recreate --session main       # Specific session
+avaclaw sandbox recreate --agent mybot        # Specific agent
+avaclaw sandbox recreate --browser            # Only browser containers
+avaclaw sandbox recreate --all --force        # Skip confirmation
 ```
 
 **Options:**
@@ -72,14 +72,14 @@ openclaw sandbox recreate --all --force        # Skip confirmation
 
 ```bash
 # Pull new image
-docker pull openclaw-sandbox:latest
-docker tag openclaw-sandbox:latest openclaw-sandbox:bookworm-slim
+docker pull avaclaw-sandbox:latest
+docker tag avaclaw-sandbox:latest avaclaw-sandbox:bookworm-slim
 
 # Update config to use new image
 # Edit config: agents.defaults.sandbox.docker.image (or agents.list[].sandbox.docker.image)
 
 # Recreate containers
-openclaw sandbox recreate --all
+avaclaw sandbox recreate --all
 ```
 
 ### After changing sandbox configuration
@@ -88,22 +88,22 @@ openclaw sandbox recreate --all
 # Edit config: agents.defaults.sandbox.* (or agents.list[].sandbox.*)
 
 # Recreate to apply new config
-openclaw sandbox recreate --all
+avaclaw sandbox recreate --all
 ```
 
 ### After changing setupCommand
 
 ```bash
-openclaw sandbox recreate --all
+avaclaw sandbox recreate --all
 # or just one agent:
-openclaw sandbox recreate --agent family
+avaclaw sandbox recreate --agent family
 ```
 
 ### For a specific agent only
 
 ```bash
 # Update only one agent's containers
-openclaw sandbox recreate --agent alfred
+avaclaw sandbox recreate --agent alfred
 ```
 
 ## Why is this needed?
@@ -114,9 +114,9 @@ openclaw sandbox recreate --agent alfred
 - Containers are only pruned after 24h of inactivity
 - Regularly-used agents keep old containers running indefinitely
 
-**Solution:** Use `openclaw sandbox recreate` to force removal of old containers. They'll be recreated automatically with current settings when next needed.
+**Solution:** Use `avaclaw sandbox recreate` to force removal of old containers. They'll be recreated automatically with current settings when next needed.
 
-Tip: prefer `openclaw sandbox recreate` over manual `docker rm`. It uses the
+Tip: prefer `avaclaw sandbox recreate` over manual `docker rm`. It uses the
 Gateway’s container naming and avoids mismatches when scope/session keys change.
 
 ## Configuration
@@ -131,8 +131,8 @@ Sandbox settings live in `~/.avadisabelle/ava-claw.json` under `agents.defaults.
         "mode": "all", // off, non-main, all
         "scope": "agent", // session, agent, shared
         "docker": {
-          "image": "openclaw-sandbox:bookworm-slim",
-          "containerPrefix": "openclaw-sbx-",
+          "image": "avaclaw-sandbox:bookworm-slim",
+          "containerPrefix": "avaclaw-sbx-",
           // ... more Docker options
         },
         "prune": {

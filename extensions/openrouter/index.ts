@@ -1,10 +1,10 @@
 import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
 import {
   emptyPluginConfigSchema,
-  type OpenClawPluginApi,
+  type AvaClawPluginApi,
   type ProviderResolveDynamicModelContext,
   type ProviderRuntimeModel,
-} from "openclaw/plugin-sdk/core";
+} from "avaclaw/plugin-sdk/core";
 import { DEFAULT_CONTEXT_TOKENS } from "../../src/agents/defaults.js";
 import { buildOpenrouterProvider } from "../../src/agents/models-config.providers.static.js";
 import {
@@ -79,7 +79,7 @@ const openRouterPlugin = {
   name: "OpenRouter Provider",
   description: "Bundled OpenRouter provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "OpenRouter",

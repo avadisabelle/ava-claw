@@ -48,7 +48,7 @@ Examples of inactive surfaces:
   - In local mode without those remote surfaces:
     - `gateway.remote.token` is active when token auth can win and no env/auth token is configured.
     - `gateway.remote.password` is active only when password auth can win and no env/auth password is configured.
-- `gateway.auth.token` SecretRef is inactive for startup auth resolution when `OPENCLAW_GATEWAY_TOKEN` (or `CLAWDBOT_GATEWAY_TOKEN`) is set, because env token input wins for that runtime.
+- `gateway.auth.token` SecretRef is inactive for startup auth resolution when `AVACLAW_GATEWAY_TOKEN` (or `CLAWDBOT_GATEWAY_TOKEN`) is set, because env token input wins for that runtime.
 
 ## Gateway auth surface diagnostics
 
@@ -127,12 +127,12 @@ Define providers under `secrets.providers`:
       default: { source: "env" },
       filemain: {
         source: "file",
-        path: "~/.openclaw/secrets.json",
+        path: "~/.avaclaw/secrets.json",
         mode: "json", // or "singleValue"
       },
       vault: {
         source: "exec",
-        command: "/usr/local/bin/openclaw-vault-resolver",
+        command: "/usr/local/bin/avaclaw-vault-resolver",
         args: ["--profile", "prod"],
         passEnv: ["PATH", "VAULT_ADDR"],
         jsonOnly: true,
@@ -238,7 +238,7 @@ Optional per-id errors:
         command: "/opt/homebrew/bin/vault",
         allowSymlinkCommand: true, // required for Homebrew symlinked binaries
         trustedDirs: ["/opt/homebrew"],
-        args: ["kv", "get", "-field=OPENAI_API_KEY", "secret/openclaw"],
+        args: ["kv", "get", "-field=OPENAI_API_KEY", "secret/avaclaw"],
         passEnv: ["VAULT_ADDR", "VAULT_TOKEN"],
         jsonOnly: false,
       },
@@ -302,7 +302,7 @@ Runtime-minted or rotating credentials and OAuth refresh material are intentiona
 Warning and audit signals:
 
 - `SECRETS_REF_OVERRIDES_PLAINTEXT` (runtime warning)
-- `REF_SHADOWED` (audit finding when `auth-profiles.json` credentials take precedence over `openclaw.json` refs)
+- `REF_SHADOWED` (audit finding when `auth-profiles.json` credentials take precedence over `avaclaw.json` refs)
 
 Google Chat compatibility behavior:
 
@@ -347,8 +347,8 @@ Command paths can opt into supported SecretRef resolution via gateway snapshot R
 
 There are two broad behaviors:
 
-- Strict command paths (for example `openclaw memory` remote-memory paths and `openclaw qr --remote`) read from the active snapshot and fail fast when a required SecretRef is unavailable.
-- Read-only command paths (for example `openclaw status`, `openclaw status --all`, `openclaw channels status`, `openclaw channels resolve`, and read-only doctor/config repair flows) also prefer the active snapshot, but degrade instead of aborting when a targeted SecretRef is unavailable in that command path.
+- Strict command paths (for example `avaclaw memory` remote-memory paths and `avaclaw qr --remote`) read from the active snapshot and fail fast when a required SecretRef is unavailable.
+- Read-only command paths (for example `avaclaw status`, `avaclaw status --all`, `avaclaw channels status`, `avaclaw channels resolve`, and read-only doctor/config repair flows) also prefer the active snapshot, but degrade instead of aborting when a targeted SecretRef is unavailable in that command path.
 
 Read-only behavior:
 
@@ -359,7 +359,7 @@ Read-only behavior:
 
 Other notes:
 
-- Snapshot refresh after backend secret rotation is handled by `openclaw secrets reload`.
+- Snapshot refresh after backend secret rotation is handled by `avaclaw secrets reload`.
 - Gateway RPC method used by these command paths: `secrets.resolve`.
 
 ## Audit and configure workflow
@@ -367,19 +367,19 @@ Other notes:
 Default operator flow:
 
 ```bash
-openclaw secrets audit --check
-openclaw secrets configure
-openclaw secrets audit --check
+avaclaw secrets audit --check
+avaclaw secrets configure
+avaclaw secrets audit --check
 ```
 
 ### `secrets audit`
 
 Findings include:
 
-- plaintext values at rest (`openclaw.json`, `auth-profiles.json`, `.env`, and generated `agents/*/agent/models.json`)
+- plaintext values at rest (`avaclaw.json`, `auth-profiles.json`, `.env`, and generated `agents/*/agent/models.json`)
 - plaintext sensitive provider header residues in generated `models.json` entries
 - unresolved refs
-- precedence shadowing (`auth-profiles.json` taking priority over `openclaw.json` refs)
+- precedence shadowing (`auth-profiles.json` taking priority over `avaclaw.json` refs)
 - legacy residues (`auth.json`, OAuth reminders)
 
 Header residue note:
@@ -391,7 +391,7 @@ Header residue note:
 Interactive helper that:
 
 - configures `secrets.providers` first (`env`/`file`/`exec`, add/edit/remove)
-- lets you select supported secret-bearing fields in `openclaw.json` plus `auth-profiles.json` for one agent scope
+- lets you select supported secret-bearing fields in `avaclaw.json` plus `auth-profiles.json` for one agent scope
 - can create a new `auth-profiles.json` mapping directly in the target picker
 - captures SecretRef details (`source`, `provider`, `id`)
 - runs preflight resolution
@@ -399,9 +399,9 @@ Interactive helper that:
 
 Helpful modes:
 
-- `openclaw secrets configure --providers-only`
-- `openclaw secrets configure --skip-provider-setup`
-- `openclaw secrets configure --agent <id>`
+- `avaclaw secrets configure --providers-only`
+- `avaclaw secrets configure --skip-provider-setup`
+- `avaclaw secrets configure --agent <id>`
 
 `configure` apply defaults:
 
@@ -414,8 +414,8 @@ Helpful modes:
 Apply a saved plan:
 
 ```bash
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json --dry-run
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json --dry-run
 ```
 
 For strict target/path contract details and exact rejection rules, see:

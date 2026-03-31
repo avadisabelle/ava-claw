@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 import {
   buildBytePlusCodingProvider,
   buildBytePlusProvider,
@@ -11,7 +11,7 @@ const byteplusPlugin = {
   name: "BytePlus Provider",
   description: "Bundled BytePlus provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "BytePlus",

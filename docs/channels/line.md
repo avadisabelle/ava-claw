@@ -22,13 +22,13 @@ are not supported.
 Install the LINE plugin:
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-line
+avaclaw plugins install @avadisabelle/ava-claw-line
 ```
 
 Local checkout (when running from a git repo):
 
 ```bash
-openclaw plugins install ./extensions/line
+avaclaw plugins install ./extensions/line
 ```
 
 ## Setup
@@ -113,8 +113,8 @@ Direct messages default to pairing. Unknown senders get a pairing code and their
 messages are ignored until approved.
 
 ```bash
-openclaw pairing list line
-openclaw pairing approve line <CODE>
+avaclaw pairing list line
+avaclaw pairing approve line <CODE>
 ```
 
 Allowlists and policies:

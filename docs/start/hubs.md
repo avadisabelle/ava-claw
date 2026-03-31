@@ -26,7 +26,7 @@ Use these hubs to discover every page, including deep dives and reference docs t
 - [Docs directory](/start/docs-directory)
 - [Configuration](/gateway/configuration)
 - [Configuration examples](/gateway/configuration-examples)
-- [Ava-Claw assistant](/start/openclaw)
+- [Ava-Claw assistant](/start/avaclaw)
 - [Showcase](/start/showcase)
 - [Lore](/start/lore)
 

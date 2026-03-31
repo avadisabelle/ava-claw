@@ -16,7 +16,7 @@ macOS app’s TCC permissions.
 ## What this is (and isn’t)
 
 - **Host**: Ava-Claw.app can act as a PeekabooBridge host.
-- **Client**: use the `peekaboo` CLI (no separate `openclaw ui ...` surface).
+- **Client**: use the `peekaboo` CLI (no separate `avaclaw ui ...` surface).
 - **UI**: visual overlays stay in Peekaboo.app; Ava-Claw is a thin broker host.
 
 ## Enable the bridge

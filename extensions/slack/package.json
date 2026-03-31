@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-slack",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Slack channel plugin",
+  "description": "AvaClaw Slack channel plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

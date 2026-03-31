@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-moonshot-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Moonshot provider plugin",
+  "description": "AvaClaw Moonshot provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

@@ -30,7 +30,7 @@ See [Security](/gateway/security) and [VPS hosting](/vps).
 - Rent a small Linux server (Hetzner VPS)
 - Install Docker (isolated app runtime)
 - Start the Ava-Claw Gateway in Docker
-- Persist `~/.openclaw` + `~/.openclaw/workspace` on the host (survives restarts/rebuilds)
+- Persist `~/.avaclaw` + `~/.avaclaw/workspace` on the host (survives restarts/rebuilds)
 - Access the Control UI from your laptop via an SSH tunnel
 
 The Gateway can be accessed via:
@@ -108,7 +108,7 @@ docker compose version
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
-cd openclaw
+cd avaclaw
 ```
 
 This guide assumes you will build a custom image to guarantee binary persistence.
@@ -121,10 +121,10 @@ Docker containers are ephemeral.
 All long-lived state must live on the host.
 
 ```bash
-mkdir -p /root/.openclaw/workspace
+mkdir -p /root/.avaclaw/workspace
 
 # Set ownership to the container user (uid 1000):
-chown -R 1000:1000 /root/.openclaw
+chown -R 1000:1000 /root/.avaclaw
 ```
 
 ---
@@ -134,16 +134,16 @@ chown -R 1000:1000 /root/.openclaw
 Create `.env` in the repository root.
 
 ```bash
-OPENCLAW_IMAGE=openclaw:latest
-OPENCLAW_GATEWAY_TOKEN=change-me-now
-OPENCLAW_GATEWAY_BIND=lan
-OPENCLAW_GATEWAY_PORT=18789
+AVACLAW_IMAGE=avaclaw:latest
+AVACLAW_GATEWAY_TOKEN=change-me-now
+AVACLAW_GATEWAY_BIND=lan
+AVACLAW_GATEWAY_PORT=18789
 
-OPENCLAW_CONFIG_DIR=/root/.openclaw
-OPENCLAW_WORKSPACE_DIR=/root/.openclaw/workspace
+AVACLAW_CONFIG_DIR=/root/.avaclaw
+AVACLAW_WORKSPACE_DIR=/root/.avaclaw/workspace
 
 GOG_KEYRING_PASSWORD=change-me-now
-XDG_CONFIG_HOME=/home/node/.openclaw
+XDG_CONFIG_HOME=/home/node/.avaclaw
 ```
 
 Generate strong secrets:
@@ -162,8 +162,8 @@ Create or update `docker-compose.yml`.
 
 ```yaml
 services:
-  openclaw-gateway:
-    image: ${OPENCLAW_IMAGE}
+  avaclaw-gateway:
+    image: ${AVACLAW_IMAGE}
     build: .
     restart: unless-stopped
     env_file:
@@ -172,28 +172,28 @@ services:
       - HOME=/home/node
       - NODE_ENV=production
       - TERM=xterm-256color
-      - OPENCLAW_GATEWAY_BIND=${OPENCLAW_GATEWAY_BIND}
-      - OPENCLAW_GATEWAY_PORT=${OPENCLAW_GATEWAY_PORT}
-      - OPENCLAW_GATEWAY_TOKEN=${OPENCLAW_GATEWAY_TOKEN}
+      - AVACLAW_GATEWAY_BIND=${AVACLAW_GATEWAY_BIND}
+      - AVACLAW_GATEWAY_PORT=${AVACLAW_GATEWAY_PORT}
+      - AVACLAW_GATEWAY_TOKEN=${AVACLAW_GATEWAY_TOKEN}
       - GOG_KEYRING_PASSWORD=${GOG_KEYRING_PASSWORD}
       - XDG_CONFIG_HOME=${XDG_CONFIG_HOME}
       - PATH=/home/linuxbrew/.linuxbrew/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
     volumes:
-      - ${OPENCLAW_CONFIG_DIR}:/home/node/.openclaw
-      - ${OPENCLAW_WORKSPACE_DIR}:/home/node/.openclaw/workspace
+      - ${AVACLAW_CONFIG_DIR}:/home/node/.avaclaw
+      - ${AVACLAW_WORKSPACE_DIR}:/home/node/.avaclaw/workspace
     ports:
       # Recommended: keep the Gateway loopback-only on the VPS; access via SSH tunnel.
       # To expose it publicly, remove the `127.0.0.1:` prefix and firewall accordingly.
-      - "127.0.0.1:${OPENCLAW_GATEWAY_PORT}:18789"
+      - "127.0.0.1:${AVACLAW_GATEWAY_PORT}:18789"
     command:
       [
         "node",
         "dist/index.js",
         "gateway",
         "--bind",
-        "${OPENCLAW_GATEWAY_BIND}",
+        "${AVACLAW_GATEWAY_BIND}",
         "--port",
-        "${OPENCLAW_GATEWAY_PORT}",
+        "${AVACLAW_GATEWAY_PORT}",
         "--allow-unconfigured",
       ]
 ```
@@ -243,8 +243,8 @@ For teams preferring infrastructure-as-code workflows, a community-maintained Te
 
 **Repositories:**
 
-- Infrastructure: [openclaw-terraform-hetzner](https://github.com/andreesg/openclaw-terraform-hetzner)
-- Docker config: [openclaw-docker-config](https://github.com/andreesg/openclaw-docker-config)
+- Infrastructure: [avaclaw-terraform-hetzner](https://github.com/andreesg/avaclaw-terraform-hetzner)
+- Docker config: [avaclaw-docker-config](https://github.com/andreesg/avaclaw-docker-config)
 
 This approach complements the Docker setup above with reproducible deployments, version-controlled infrastructure, and automated disaster recovery.
 

@@ -1,4 +1,4 @@
-import { createPluginRuntimeStore, type PluginRuntime } from "openclaw/plugin-sdk/whatsapp";
+import { createPluginRuntimeStore, type PluginRuntime } from "avaclaw/plugin-sdk/whatsapp";
 
 const { setRuntime: setWhatsAppRuntime, getRuntime: getWhatsAppRuntime } =
   createPluginRuntimeStore<PluginRuntime>("WhatsApp runtime not initialized");

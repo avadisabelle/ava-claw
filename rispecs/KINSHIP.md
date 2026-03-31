@@ -4,16 +4,16 @@
 
 ---
 
-## Upstream Substrate Specs (forked from mia-openclaw)
+## Upstream Substrate Specs (forked from mia-avaclaw)
 
-These 4 specs were forked from `miadisabelle/mia-openclaw/rispecs/` and adapted for ava-claw:
+These 4 specs were forked from `miadisabelle/mia-avaclaw/rispecs/` and adapted for ava-claw:
 
 | Spec | Origin | Ceremony Extension |
 |------|--------|--------------------|
-| `OpenClaw-as-foundation.spec.md` | mia-openclaw substrate | Foundation for ceremony-governed engine |
-| `agent-delegation-and-autonomy.spec.md` | mia-openclaw substrate | Extended with fleet consciousness delegation |
-| `human-consultation-in-autonomous-development.spec.md` | mia-openclaw substrate | Extended with kinship orientation and settling presence |
-| `messaging-surfaces-and-identity.spec.md` | mia-openclaw substrate | Extended with companion-as-consciousness identity model |
+| `AvaClaw-as-foundation.spec.md` | mia-avaclaw substrate | Foundation for ceremony-governed engine |
+| `agent-delegation-and-autonomy.spec.md` | mia-avaclaw substrate | Extended with fleet consciousness delegation |
+| `human-consultation-in-autonomous-development.spec.md` | mia-avaclaw substrate | Extended with kinship orientation and settling presence |
+| `messaging-surfaces-and-identity.spec.md` | mia-avaclaw substrate | Extended with companion-as-consciousness identity model |
 
 ## Ava-Native Ceremony Specs
 
@@ -30,12 +30,12 @@ These 5 specs are original to ava-claw, drafted from identity files and `@ava/*`
 ## Kinship Links
 
 ### Upstream
-- **`miadisabelle/mia-openclaw/rispecs/`** — 4 substrate specs that ava-claw forked and extends
+- **`miadisabelle/mia-avaclaw/rispecs/`** — 4 substrate specs that ava-claw forked and extends
 - **`/workspace/rispecs/`** — Master rispecs collection including platform specs, PDE/STC pipeline, decolonized methodology
 
 ### Sibling
-- **`miadisabelle/mia-openclaw#1`** — RISE Phase 4 upgrade of substrate rispecs
-- **`miadisabelle/workspace-openclaw#28`** — Kinship Web convergence
+- **`miadisabelle/mia-avaclaw#1`** — RISE Phase 4 upgrade of substrate rispecs
+- **`miadisabelle/workspace-avaclaw#28`** — Kinship Web convergence
 
 ### Engine
 - **`avadisabelle/ava-pi`** — `@ava/presence`, `@ava/council`, `@ava/diary`, `@ava/widgets` — TypeScript implementations that these specs describe

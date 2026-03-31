@@ -76,7 +76,7 @@ x-i18n:
 
 1. 创建专用 Apple ID（例如：`my-cool-bot@icloud.com`）。
    - Apple 可能需要电话号码进行验证 / 2FA。
-2. 创建 macOS 用户（例如：`openclawhome`）并登录。
+2. 创建 macOS 用户（例如：`avaclawhome`）并登录。
 3. 在该 macOS 用户中打开"信息"并使用机器人 Apple ID 登录 iMessage。
 4. 启用远程登录（系统设置 → 通用 → 共享 → 远程登录）。
 5. 安装 `imsg`：
@@ -156,7 +156,7 @@ exec ssh -T gateway-host imsg "$@"
 ```
 ┌──────────────────────────────┐          SSH (imsg rpc)          ┌──────────────────────────┐
 │ Gateway host (Linux/VM)      │──────────────────────────────────▶│ Mac with Messages + imsg │
-│ - openclaw gateway           │          SCP (attachments)        │ - Messages signed in     │
+│ - avaclaw gateway           │          SCP (attachments)        │ - Messages signed in     │
 │ - channels.imessage.cliPath  │◀──────────────────────────────────│ - Remote Login enabled   │
 └──────────────────────────────┘                                   └──────────────────────────┘
               ▲
@@ -172,7 +172,7 @@ exec ssh -T gateway-host imsg "$@"
   channels: {
     imessage: {
       enabled: true,
-      cliPath: "~/.openclaw/scripts/imsg-ssh",
+      cliPath: "~/.avaclaw/scripts/imsg-ssh",
       remoteHost: "bot@mac-mini.tailnet-1234.ts.net",
       includeAttachments: true,
       dbPath: "/Users/bot/Library/Messages/chat.db",
@@ -181,7 +181,7 @@ exec ssh -T gateway-host imsg "$@"
 }
 ```
 
-示例包装脚本（`~/.openclaw/scripts/imsg-ssh`）：
+示例包装脚本（`~/.avaclaw/scripts/imsg-ssh`）：
 
 ```bash
 #!/usr/bin/env bash
@@ -203,8 +203,8 @@ exec ssh -T bot@mac-mini.tailnet-1234.ts.net imsg "$@"
 - 默认：`channels.imessage.dmPolicy = "pairing"`。
 - 未知发送者会收到配对码；消息在批准前会被忽略（配对码在 1 小时后过期）。
 - 批准方式：
-  - `openclaw pairing list imessage`
-  - `openclaw pairing approve imessage <CODE>`
+  - `avaclaw pairing list imessage`
+  - `avaclaw pairing approve imessage <CODE>`
 - 配对是 iMessage 私信的默认令牌交换方式。详情：[配对](/channels/pairing)
 
 群组：

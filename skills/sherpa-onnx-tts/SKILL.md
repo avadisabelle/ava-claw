@@ -3,7 +3,7 @@ name: sherpa-onnx-tts
 description: Local text-to-speech via sherpa-onnx (offline, no cloud)
 metadata:
   {
-    "openclaw":
+    "avaclaw":
       {
         "emoji": "🔉",
         "os": ["darwin", "linux", "win32"],
@@ -63,8 +63,8 @@ Local TTS using the sherpa-onnx offline CLI.
 
 ## Install
 
-1. Download the runtime for your OS (extracts into `~/.openclaw/tools/sherpa-onnx-tts/runtime`)
-2. Download a voice model (extracts into `~/.openclaw/tools/sherpa-onnx-tts/models`)
+1. Download the runtime for your OS (extracts into `~/.avaclaw/tools/sherpa-onnx-tts/runtime`)
+2. Download a voice model (extracts into `~/.avaclaw/tools/sherpa-onnx-tts/models`)
 
 Update `~/.avadisabelle/ava-claw.json`:
 
@@ -74,8 +74,8 @@ Update `~/.avadisabelle/ava-claw.json`:
     entries: {
       "sherpa-onnx-tts": {
         env: {
-          SHERPA_ONNX_RUNTIME_DIR: "~/.openclaw/tools/sherpa-onnx-tts/runtime",
-          SHERPA_ONNX_MODEL_DIR: "~/.openclaw/tools/sherpa-onnx-tts/models/vits-piper-en_US-lessac-high",
+          SHERPA_ONNX_RUNTIME_DIR: "~/.avaclaw/tools/sherpa-onnx-tts/runtime",
+          SHERPA_ONNX_MODEL_DIR: "~/.avaclaw/tools/sherpa-onnx-tts/models/vits-piper-en_US-lessac-high",
         },
       },
     },

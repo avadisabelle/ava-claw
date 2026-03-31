@@ -18,7 +18,7 @@ The [Together AI](https://together.ai) provides access to leading open-source mo
 1. Set the API key (recommended: store it for the Gateway):
 
 ```bash
-openclaw onboard --auth-choice together-api-key
+avaclaw onboard --auth-choice together-api-key
 ```
 
 2. Set a default model:
@@ -36,7 +36,7 @@ openclaw onboard --auth-choice together-api-key
 ## Non-interactive example
 
 ```bash
-openclaw onboard --non-interactive \
+avaclaw onboard --non-interactive \
   --mode local \
   --auth-choice together-api-key \
   --together-api-key "$TOGETHER_API_KEY"
@@ -47,7 +47,7 @@ This will set `together/moonshotai/Kimi-K2.5` as the default model.
 ## Environment note
 
 If the Gateway runs as a daemon (launchd/systemd), make sure `TOGETHER_API_KEY`
-is available to that process (for example, in `~/.openclaw/.env` or via
+is available to that process (for example, in `~/.avaclaw/.env` or via
 `env.shellEnv`).
 
 ## Available models

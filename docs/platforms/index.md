@@ -36,18 +36,18 @@ Native companion apps for Windows are also planned; the Gateway is recommended v
 - Install guide: [Getting Started](/start/getting-started)
 - Gateway runbook: [Gateway](/gateway)
 - Gateway configuration: [Configuration](/gateway/configuration)
-- Service status: `openclaw gateway status`
+- Service status: `avaclaw gateway status`
 
 ## Gateway service install (CLI)
 
 Use one of these (all supported):
 
-- Wizard (recommended): `openclaw onboard --install-daemon`
-- Direct: `openclaw gateway install`
-- Configure flow: `openclaw configure` → select **Gateway service**
-- Repair/migrate: `openclaw doctor` (offers to install or fix the service)
+- Wizard (recommended): `avaclaw onboard --install-daemon`
+- Direct: `avaclaw gateway install`
+- Configure flow: `avaclaw configure` → select **Gateway service**
+- Repair/migrate: `avaclaw doctor` (offers to install or fix the service)
 
 The service target depends on OS:
 
-- macOS: LaunchAgent (`ai.openclaw.gateway` or `ai.openclaw.<profile>`; legacy `com.openclaw.*`)
-- Linux/WSL2: systemd user service (`openclaw-gateway[-<profile>].service`)
+- macOS: LaunchAgent (`ai.avaclaw.gateway` or `ai.avaclaw.<profile>`; legacy `com.avaclaw.*`)
+- Linux/WSL2: systemd user service (`avaclaw-gateway[-<profile>].service`)

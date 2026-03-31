@@ -31,7 +31,7 @@ function mkdirSafe(dir: string) {
 }
 
 function makeTempDir() {
-  const dir = mkdtempSafe(path.join(os.tmpdir(), "openclaw-plugin-auto-enable-"));
+  const dir = mkdtempSafe(path.join(os.tmpdir(), "avaclaw-plugin-auto-enable-"));
   tempDirs.push(dir);
   return dir;
 }
@@ -39,7 +39,7 @@ function makeTempDir() {
 function writePluginManifestFixture(params: { rootDir: string; id: string; channels: string[] }) {
   mkdirSafe(params.rootDir);
   fs.writeFileSync(
-    path.join(params.rootDir, "openclaw.plugin.json"),
+    path.join(params.rootDir, "avaclaw.plugin.json"),
     JSON.stringify(
       {
         id: params.id,
@@ -66,7 +66,7 @@ function makeRegistry(plugins: Array<{ id: string; channels: string[] }>): Plugi
       origin: "config" as const,
       rootDir: `/fake/${p.id}`,
       source: `/fake/${p.id}/index.js`,
-      manifestPath: `/fake/${p.id}/openclaw.plugin.json`,
+      manifestPath: `/fake/${p.id}/avaclaw.plugin.json`,
     })),
     diagnostics: [],
   };
@@ -210,7 +210,7 @@ describe("applyPluginAutoEnable", () => {
       config: {},
       env: {
         IRC_HOST: "irc.libera.chat",
-        IRC_NICK: "openclaw-bot",
+        IRC_NICK: "avaclaw-bot",
       },
     });
 
@@ -233,10 +233,10 @@ describe("applyPluginAutoEnable", () => {
       },
       env: {
         ...process.env,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: stateDir,
+        AVACLAW_HOME: undefined,
+        AVACLAW_STATE_DIR: stateDir,
         CLAWDBOT_STATE_DIR: undefined,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+        AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
       },
     });
 
@@ -254,7 +254,7 @@ describe("applyPluginAutoEnable", () => {
         entries: [
           {
             name: "@avadisabelle/ava-claw-env-secondary",
-            openclaw: {
+            avaclaw: {
               channel: {
                 id: "env-secondary",
                 label: "Env Secondary",
@@ -282,7 +282,7 @@ describe("applyPluginAutoEnable", () => {
       },
       env: {
         ...process.env,
-        OPENCLAW_STATE_DIR: stateDir,
+        AVACLAW_STATE_DIR: stateDir,
         CLAWDBOT_STATE_DIR: undefined,
       },
       manifestRegistry: makeRegistry([]),
@@ -459,10 +459,10 @@ describe("applyPluginAutoEnable", () => {
         config: makeApnChannelConfig(),
         env: {
           ...process.env,
-          OPENCLAW_HOME: undefined,
-          OPENCLAW_STATE_DIR: stateDir,
+          AVACLAW_HOME: undefined,
+          AVACLAW_STATE_DIR: stateDir,
           CLAWDBOT_STATE_DIR: undefined,
-          OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+          AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
         },
       });
 

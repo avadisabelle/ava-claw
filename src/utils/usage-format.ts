@@ -1,5 +1,5 @@
 import type { NormalizedUsage } from "../agents/usage.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 
 export type ModelCostConfig = {
   input: number;
@@ -51,7 +51,7 @@ export function formatUsd(value?: number): string | undefined {
 export function resolveModelCostConfig(params: {
   provider?: string;
   model?: string;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
 }): ModelCostConfig | undefined {
   const provider = params.provider?.trim();
   const model = params.model?.trim();

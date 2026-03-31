@@ -156,7 +156,7 @@ The agent resumes execution with the human guidance incorporated as a binding co
 
 ## Chat Surface as Consultation Interface
 
-A major advantage of using OpenClaw as a foundation is that consultation can happen through real conversational surfaces such as Slack.
+A major advantage of using AvaClaw as a foundation is that consultation can happen through real conversational surfaces such as Slack.
 
 This means the system does not need a separate supervisory dashboard for every human decision. Instead, it can:
 
@@ -230,9 +230,9 @@ A human evaluation checkpoint is required.
 
 ---
 
-## Relationship to OpenClaw
+## Relationship to AvaClaw
 
-OpenClaw already contains several primitives that make this rispec feasible:
+AvaClaw already contains several primitives that make this rispec feasible:
 
 - chat-native interaction
 - session continuity
@@ -250,7 +250,7 @@ What this rispec adds is the policy and behavior layer for deciding when autonom
 
 This rispec should link with and inform:
 
-- `OpenClaw-as-foundation.spec.md`
+- `AvaClaw-as-foundation.spec.md`
 - `agent-delegation-and-autonomy.spec.md`
 - `messaging-surfaces-and-identity.spec.md`
 - `workspace-binding-and-file-access.spec.md`
@@ -287,7 +287,7 @@ So this should indeed stand as its own rispec:
 
 ## Provenance / Co-Sign
 
-Drafted in the Slack **"Miadi-STC"** channel through live OpenClaw-assisted discussion and follow-up drafting in `mia-openclaw.rispecs`.
+Drafted in the Slack **"Miadi-STC"** channel through live AvaClaw-assisted discussion and follow-up drafting in `mia-avaclaw.rispecs`.
 
 Created by model: **openai-codex/gpt-5.4**  
 Influence note: draft shaped in part by the kinship guidance present in `./llms/KINSHIP.md` and by the conversation about autonomous development with human consultation.

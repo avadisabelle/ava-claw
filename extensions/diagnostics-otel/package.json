@@ -1,7 +1,7 @@
 {
   "name": "@avadisabelle/ava-claw-diagnostics-otel",
   "version": "2026.3.14",
-  "description": "OpenClaw diagnostics OpenTelemetry exporter",
+  "description": "AvaClaw diagnostics OpenTelemetry exporter",
   "type": "module",
   "dependencies": {
     "@opentelemetry/api": "^1.9.0",

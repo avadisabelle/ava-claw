@@ -111,7 +111,7 @@ export function copyBundledPluginMetadata(params = {}) {
 
   const sourcePluginDirs = new Set();
   const removeGeneratedPluginArtifacts = (distPluginDir) => {
-    removeFileIfExists(path.join(distPluginDir, "openclaw.plugin.json"));
+    removeFileIfExists(path.join(distPluginDir, "avaclaw.plugin.json"));
     removeFileIfExists(path.join(distPluginDir, "package.json"));
     removePathIfExists(path.join(distPluginDir, GENERATED_BUNDLED_SKILLS_DIR));
     removePathIfExists(path.join(distPluginDir, "node_modules"));
@@ -124,9 +124,9 @@ export function copyBundledPluginMetadata(params = {}) {
     sourcePluginDirs.add(dirent.name);
 
     const pluginDir = path.join(extensionsRoot, dirent.name);
-    const manifestPath = path.join(pluginDir, "openclaw.plugin.json");
+    const manifestPath = path.join(pluginDir, "avaclaw.plugin.json");
     const distPluginDir = path.join(distExtensionsRoot, dirent.name);
-    const distManifestPath = path.join(distPluginDir, "openclaw.plugin.json");
+    const distManifestPath = path.join(distPluginDir, "avaclaw.plugin.json");
     const distPackageJsonPath = path.join(distPluginDir, "package.json");
     if (!fs.existsSync(manifestPath)) {
       removeGeneratedPluginArtifacts(distPluginDir);
@@ -151,10 +151,10 @@ export function copyBundledPluginMetadata(params = {}) {
     }
 
     const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, "utf8"));
-    if (packageJson.openclaw && "extensions" in packageJson.openclaw) {
-      packageJson.openclaw = {
-        ...packageJson.openclaw,
-        extensions: rewritePackageExtensions(packageJson.openclaw.extensions),
+    if (packageJson.avaclaw && "extensions" in packageJson.avaclaw) {
+      packageJson.avaclaw = {
+        ...packageJson.avaclaw,
+        extensions: rewritePackageExtensions(packageJson.avaclaw.extensions),
       };
     }
 

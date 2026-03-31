@@ -190,20 +190,20 @@ Helpful page:
 From WSL2:
 
 ```bash
-openclaw browser open https://example.com --browser-profile remote
-openclaw browser tabs --browser-profile remote
+avaclaw browser open https://example.com --browser-profile remote
+avaclaw browser tabs --browser-profile remote
 ```
 
 For the extension relay:
 
 ```bash
-openclaw browser tabs --browser-profile chrome-relay
+avaclaw browser tabs --browser-profile chrome-relay
 ```
 
 Good result:
 
 - the tab opens in Windows Chrome
-- `openclaw browser tabs` returns the target
+- `avaclaw browser tabs` returns the target
 - later actions (`snapshot`, `screenshot`, `navigate`) work from the same profile
 
 ## Common misleading errors

@@ -1450,7 +1450,7 @@
         "advanced"
       ],
       "label": "Embedded Pi",
-      "help": "Embedded Pi runner hardening controls for how workspace-local Pi settings are trusted and applied in OpenClaw sessions.",
+      "help": "Embedded Pi runner hardening controls for how workspace-local Pi settings are trusted and applied in AvaClaw sessions.",
       "hasChildren": true
     },
     {
@@ -2567,7 +2567,7 @@
         "storage"
       ],
       "label": "Memory Search Index Path",
-      "help": "Sets where the SQLite memory index is stored on disk for each agent. Keep the default `~/.openclaw/memory/{agentId}.sqlite` unless you need custom storage placement or backup policy alignment.",
+      "help": "Sets where the SQLite memory index is stored on disk for each agent. Keep the default `~/.avaclaw/memory/{agentId}.sqlite` unless you need custom storage placement or backup policy alignment.",
       "hasChildren": false
     },
     {
@@ -3101,7 +3101,7 @@
         "storage"
       ],
       "label": "Sandbox Browser Network",
-      "help": "Docker network for sandbox browser containers (default: openclaw-sandbox-browser). Avoid bridge if you need stricter isolation.",
+      "help": "Docker network for sandbox browser containers (default: avaclaw-sandbox-browser). Avoid bridge if you need stricter isolation.",
       "hasChildren": false
     },
     {
@@ -4947,7 +4947,7 @@
         "advanced"
       ],
       "label": "Agent Runtime",
-      "help": "Optional runtime descriptor for this agent. Use embedded for default OpenClaw execution or acp for external ACP harness defaults.",
+      "help": "Optional runtime descriptor for this agent. Use embedded for default AvaClaw execution or acp for external ACP harness defaults.",
       "hasChildren": true
     },
     {
@@ -4975,7 +4975,7 @@
         "advanced"
       ],
       "label": "Agent ACP Harness Agent",
-      "help": "Optional ACP harness agent id to use for this OpenClaw agent (for example codex, claude).",
+      "help": "Optional ACP harness agent id to use for this AvaClaw agent (for example codex, claude).",
       "hasChildren": false
     },
     {
@@ -5035,7 +5035,7 @@
         "advanced"
       ],
       "label": "Agent Runtime Type",
-      "help": "Runtime type for this agent: \"embedded\" (default OpenClaw runtime) or \"acp\" (ACP harness defaults).",
+      "help": "Runtime type for this agent: \"embedded\" (default AvaClaw runtime) or \"acp\" (ACP harness defaults).",
       "hasChildren": false
     },
     {
@@ -7559,7 +7559,7 @@
         "storage"
       ],
       "label": "Browser Profile Driver",
-      "help": "Per-profile browser driver mode: \"openclaw\" (or legacy \"clawd\") or \"extension\" depending on connection/runtime strategy. Use the driver that matches your browser control stack to avoid protocol mismatches.",
+      "help": "Per-profile browser driver mode: \"avaclaw\" (or legacy \"clawd\") or \"extension\" depending on connection/runtime strategy. Use the driver that matches your browser control stack to avoid protocol mismatches.",
       "hasChildren": false
     },
     {
@@ -12377,7 +12377,7 @@
         "performance"
       ],
       "label": "Discord EventQueue Listener Timeout (ms)",
-      "help": "Canonical Discord listener timeout control in ms for gateway normalization/enqueue handlers. Default is 120000 in OpenClaw; set per account via channels.discord.accounts.<id>.eventQueue.listenerTimeout.",
+      "help": "Canonical Discord listener timeout control in ms for gateway normalization/enqueue handlers. Default is 120000 in AvaClaw; set per account via channels.discord.accounts.<id>.eventQueue.listenerTimeout.",
       "hasChildren": false
     },
     {
@@ -29960,7 +29960,7 @@
         "network"
       ],
       "label": "Synology Chat",
-      "help": "Connect your Synology NAS Chat to OpenClaw",
+      "help": "Connect your Synology NAS Chat to AvaClaw",
       "hasChildren": true
     },
     {
@@ -38067,7 +38067,7 @@
         "storage"
       ],
       "label": "Cache Trace File Path",
-      "help": "JSONL output path for cache trace logs (default: $OPENCLAW_STATE_DIR/logs/cache-trace.jsonl).",
+      "help": "JSONL output path for cache trace logs (default: $AVACLAW_STATE_DIR/logs/cache-trace.jsonl).",
       "hasChildren": false
     },
     {
@@ -38405,7 +38405,7 @@
         "network"
       ],
       "label": "Wide-area Discovery Domain",
-      "help": "Optional unicast DNS-SD domain for wide-area discovery, such as openclaw.internal. Use this when you intentionally publish gateway discovery beyond local mDNS scopes.",
+      "help": "Optional unicast DNS-SD domain for wide-area discovery, such as avaclaw.internal. Use this when you intentionally publish gateway discovery beyond local mDNS scopes.",
       "hasChildren": false
     },
     {
@@ -38499,7 +38499,7 @@
         "advanced"
       ],
       "label": "Environment Variable Overrides",
-      "help": "Explicit key/value environment variable overrides merged into runtime process environment for OpenClaw. Use this for deterministic env configuration instead of relying only on shell profile side effects.",
+      "help": "Explicit key/value environment variable overrides merged into runtime process environment for AvaClaw. Use this for deterministic env configuration instead of relying only on shell profile side effects.",
       "hasChildren": true
     },
     {
@@ -38930,7 +38930,7 @@
         "storage"
       ],
       "label": "Control UI Base Path",
-      "help": "Optional URL prefix where the Control UI is served (e.g. /openclaw).",
+      "help": "Optional URL prefix where the Control UI is served (e.g. /avaclaw).",
       "hasChildren": false
     },
     {
@@ -39577,7 +39577,7 @@
         "network"
       ],
       "label": "Gateway Node Allowlist (Extra Commands)",
-      "help": "Extra node.invoke commands to allow beyond the gateway defaults (array of command strings). Enabling dangerous commands here is a security-sensitive override and is flagged by `openclaw security audit`.",
+      "help": "Extra node.invoke commands to allow beyond the gateway defaults (array of command strings). Enabling dangerous commands here is a security-sensitive override and is flagged by `avaclaw security audit`.",
       "hasChildren": true
     },
     {
@@ -40197,7 +40197,7 @@
         "advanced"
       ],
       "label": "Hooks",
-      "help": "Inbound webhook automation surface for mapping external events into wake or agent actions in OpenClaw. Keep this locked down with explicit token/session/agent controls before exposing it beyond trusted networks.",
+      "help": "Inbound webhook automation surface for mapping external events into wake or agent actions in AvaClaw. Keep this locked down with explicit token/session/agent controls before exposing it beyond trusted networks.",
       "hasChildren": true
     },
     {
@@ -41534,7 +41534,7 @@
         "storage"
       ],
       "label": "Memory Backend",
-      "help": "Selects the global memory engine: \"builtin\" uses OpenClaw memory internals, while \"qmd\" uses the QMD sidecar pipeline. Keep \"builtin\" unless you intentionally operate QMD.",
+      "help": "Selects the global memory engine: \"builtin\" uses AvaClaw memory internals, while \"qmd\" uses the QMD sidecar pipeline. Keep \"builtin\" unless you intentionally operate QMD.",
       "hasChildren": false
     },
     {
@@ -43290,7 +43290,7 @@
         "advanced"
       ],
       "label": "Metadata",
-      "help": "Metadata fields automatically maintained by OpenClaw to record write/version history for this config file. Keep these values system-managed and avoid manual edits unless debugging migration history.",
+      "help": "Metadata fields automatically maintained by AvaClaw to record write/version history for this config file. Keep these values system-managed and avoid manual edits unless debugging migration history.",
       "hasChildren": true
     },
     {
@@ -43318,7 +43318,7 @@
         "media"
       ],
       "label": "Config Last Touched Version",
-      "help": "Auto-set when OpenClaw writes the config.",
+      "help": "Auto-set when AvaClaw writes the config.",
       "hasChildren": false
     },
     {
@@ -43671,7 +43671,7 @@
         "models"
       ],
       "label": "Model Provider Inject num_ctx (OpenAI Compat)",
-      "help": "Controls whether OpenClaw injects `options.num_ctx` for Ollama providers configured with the OpenAI-compatible adapter (`openai-completions`). Default is true. Set false only if your proxy/upstream rejects unknown `options` payload fields.",
+      "help": "Controls whether AvaClaw injects `options.num_ctx` for Ollama providers configured with the OpenAI-compatible adapter (`openai-completions`). Default is true. Set false only if your proxy/upstream rejects unknown `options` payload fields.",
       "hasChildren": false
     },
     {
@@ -44424,7 +44424,7 @@
         "advanced"
       ],
       "label": "Queue Owner TTL Seconds",
-      "help": "Idle queue-owner TTL for acpx prompt turns. Keep this short in OpenClaw to avoid delayed completion after each turn.",
+      "help": "Idle queue-owner TTL for acpx prompt turns. Keep this short in AvaClaw to avoid delayed completion after each turn.",
       "hasChildren": false
     },
     {
@@ -44508,7 +44508,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-bluebubbles",
-      "help": "OpenClaw BlueBubbles channel plugin (plugin: bluebubbles)",
+      "help": "AvaClaw BlueBubbles channel plugin (plugin: bluebubbles)",
       "hasChildren": true
     },
     {
@@ -44577,7 +44577,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-copilot-proxy",
-      "help": "OpenClaw Copilot Proxy provider plugin (plugin: copilot-proxy)",
+      "help": "AvaClaw Copilot Proxy provider plugin (plugin: copilot-proxy)",
       "hasChildren": true
     },
     {
@@ -44729,7 +44729,7 @@
         "observability"
       ],
       "label": "@avadisabelle/ava-claw-diagnostics-otel",
-      "help": "OpenClaw diagnostics OpenTelemetry exporter (plugin: diagnostics-otel)",
+      "help": "AvaClaw diagnostics OpenTelemetry exporter (plugin: diagnostics-otel)",
       "hasChildren": true
     },
     {
@@ -45204,7 +45204,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-discord",
-      "help": "OpenClaw Discord channel plugin (plugin: discord)",
+      "help": "AvaClaw Discord channel plugin (plugin: discord)",
       "hasChildren": true
     },
     {
@@ -45273,7 +45273,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-feishu",
-      "help": "OpenClaw Feishu/Lark channel plugin (community maintained by @m1heng) (plugin: feishu)",
+      "help": "AvaClaw Feishu/Lark channel plugin (community maintained by @m1heng) (plugin: feishu)",
       "hasChildren": true
     },
     {
@@ -45342,7 +45342,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-google-gemini-cli-auth",
-      "help": "OpenClaw Gemini CLI OAuth provider plugin (plugin: google-gemini-cli-auth)",
+      "help": "AvaClaw Gemini CLI OAuth provider plugin (plugin: google-gemini-cli-auth)",
       "hasChildren": true
     },
     {
@@ -45411,7 +45411,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-googlechat",
-      "help": "OpenClaw Google Chat channel plugin (plugin: googlechat)",
+      "help": "AvaClaw Google Chat channel plugin (plugin: googlechat)",
       "hasChildren": true
     },
     {
@@ -45480,7 +45480,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-imessage",
-      "help": "OpenClaw iMessage channel plugin (plugin: imessage)",
+      "help": "AvaClaw iMessage channel plugin (plugin: imessage)",
       "hasChildren": true
     },
     {
@@ -45549,7 +45549,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-irc",
-      "help": "OpenClaw IRC channel plugin (plugin: irc)",
+      "help": "AvaClaw IRC channel plugin (plugin: irc)",
       "hasChildren": true
     },
     {
@@ -45618,7 +45618,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-line",
-      "help": "OpenClaw LINE channel plugin (plugin: line)",
+      "help": "AvaClaw LINE channel plugin (plugin: line)",
       "hasChildren": true
     },
     {
@@ -45895,7 +45895,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-matrix",
-      "help": "OpenClaw Matrix channel plugin (plugin: matrix)",
+      "help": "AvaClaw Matrix channel plugin (plugin: matrix)",
       "hasChildren": true
     },
     {
@@ -45964,7 +45964,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-mattermost",
-      "help": "OpenClaw Mattermost channel plugin (plugin: mattermost)",
+      "help": "AvaClaw Mattermost channel plugin (plugin: mattermost)",
       "hasChildren": true
     },
     {
@@ -46033,7 +46033,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-memory-core",
-      "help": "OpenClaw core memory search plugin (plugin: memory-core)",
+      "help": "AvaClaw core memory search plugin (plugin: memory-core)",
       "hasChildren": true
     },
     {
@@ -46102,7 +46102,7 @@
         "storage"
       ],
       "label": "@avadisabelle/ava-claw-memory-lancedb",
-      "help": "OpenClaw LanceDB-backed long-term memory plugin with auto-recall/capture (plugin: memory-lancedb)",
+      "help": "AvaClaw LanceDB-backed long-term memory plugin with auto-recall/capture (plugin: memory-lancedb)",
       "hasChildren": true
     },
     {
@@ -46300,7 +46300,7 @@
         "performance"
       ],
       "label": "@avadisabelle/ava-claw-minimax-portal-auth",
-      "help": "OpenClaw MiniMax Portal OAuth provider plugin (plugin: minimax-portal-auth)",
+      "help": "AvaClaw MiniMax Portal OAuth provider plugin (plugin: minimax-portal-auth)",
       "hasChildren": true
     },
     {
@@ -46369,7 +46369,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-msteams",
-      "help": "OpenClaw Microsoft Teams channel plugin (plugin: msteams)",
+      "help": "AvaClaw Microsoft Teams channel plugin (plugin: msteams)",
       "hasChildren": true
     },
     {
@@ -46438,7 +46438,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-nextcloud-talk",
-      "help": "OpenClaw Nextcloud Talk channel plugin (plugin: nextcloud-talk)",
+      "help": "AvaClaw Nextcloud Talk channel plugin (plugin: nextcloud-talk)",
       "hasChildren": true
     },
     {
@@ -46507,7 +46507,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-nostr",
-      "help": "OpenClaw Nostr channel plugin for NIP-04 encrypted DMs (plugin: nostr)",
+      "help": "AvaClaw Nostr channel plugin for NIP-04 encrypted DMs (plugin: nostr)",
       "hasChildren": true
     },
     {
@@ -46576,7 +46576,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-ollama-provider",
-      "help": "OpenClaw Ollama provider plugin (plugin: ollama)",
+      "help": "AvaClaw Ollama provider plugin (plugin: ollama)",
       "hasChildren": true
     },
     {
@@ -46852,7 +46852,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-sglang-provider",
-      "help": "OpenClaw SGLang provider plugin (plugin: sglang)",
+      "help": "AvaClaw SGLang provider plugin (plugin: sglang)",
       "hasChildren": true
     },
     {
@@ -46921,7 +46921,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-signal",
-      "help": "OpenClaw Signal channel plugin (plugin: signal)",
+      "help": "AvaClaw Signal channel plugin (plugin: signal)",
       "hasChildren": true
     },
     {
@@ -46990,7 +46990,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-slack",
-      "help": "OpenClaw Slack channel plugin (plugin: slack)",
+      "help": "AvaClaw Slack channel plugin (plugin: slack)",
       "hasChildren": true
     },
     {
@@ -47059,7 +47059,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-synology-chat",
-      "help": "Synology Chat channel plugin for OpenClaw (plugin: synology-chat)",
+      "help": "Synology Chat channel plugin for AvaClaw (plugin: synology-chat)",
       "hasChildren": true
     },
     {
@@ -47197,7 +47197,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-telegram",
-      "help": "OpenClaw Telegram channel plugin (plugin: telegram)",
+      "help": "AvaClaw Telegram channel plugin (plugin: telegram)",
       "hasChildren": true
     },
     {
@@ -47373,7 +47373,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-tlon",
-      "help": "OpenClaw Tlon/Urbit channel plugin (plugin: tlon)",
+      "help": "AvaClaw Tlon/Urbit channel plugin (plugin: tlon)",
       "hasChildren": true
     },
     {
@@ -47442,7 +47442,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-twitch",
-      "help": "OpenClaw Twitch channel plugin (plugin: twitch)",
+      "help": "AvaClaw Twitch channel plugin (plugin: twitch)",
       "hasChildren": true
     },
     {
@@ -47511,7 +47511,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-vllm-provider",
-      "help": "OpenClaw vLLM provider plugin (plugin: vllm)",
+      "help": "AvaClaw vLLM provider plugin (plugin: vllm)",
       "hasChildren": true
     },
     {
@@ -47580,7 +47580,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-voice-call",
-      "help": "OpenClaw voice-call plugin (plugin: voice-call)",
+      "help": "AvaClaw voice-call plugin (plugin: voice-call)",
       "hasChildren": true
     },
     {
@@ -49010,7 +49010,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-whatsapp",
-      "help": "OpenClaw WhatsApp channel plugin (plugin: whatsapp)",
+      "help": "AvaClaw WhatsApp channel plugin (plugin: whatsapp)",
       "hasChildren": true
     },
     {
@@ -49079,7 +49079,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-zalo",
-      "help": "OpenClaw Zalo channel plugin (plugin: zalo)",
+      "help": "AvaClaw Zalo channel plugin (plugin: zalo)",
       "hasChildren": true
     },
     {
@@ -49148,7 +49148,7 @@
         "advanced"
       ],
       "label": "@avadisabelle/ava-claw-zalouser",
-      "help": "OpenClaw Zalo Personal Account plugin via native zca-js integration (plugin: zalouser)",
+      "help": "AvaClaw Zalo Personal Account plugin via native zca-js integration (plugin: zalouser)",
       "hasChildren": true
     },
     {
@@ -49217,7 +49217,7 @@
         "advanced"
       ],
       "label": "Plugin Install Records",
-      "help": "CLI-managed install metadata (used by `openclaw plugins update` to locate install sources).",
+      "help": "CLI-managed install metadata (used by `avaclaw plugins update` to locate install sources).",
       "hasChildren": true
     },
     {
@@ -49255,7 +49255,7 @@
         "storage"
       ],
       "label": "Plugin Install Path",
-      "help": "Resolved install directory (usually ~/.openclaw/extensions/<id>).",
+      "help": "Resolved install directory (usually ~/.avaclaw/extensions/<id>).",
       "hasChildren": false
     },
     {
@@ -50079,7 +50079,7 @@
         "storage"
       ],
       "label": "Session Parent Fork Max Tokens",
-      "help": "Maximum parent-session token count allowed for thread/session inheritance forking. If the parent exceeds this, OpenClaw starts a fresh thread session instead of forking; set 0 to disable this protection.",
+      "help": "Maximum parent-session token count allowed for thread/session inheritance forking. If the parent exceeds this, AvaClaw starts a fresh thread session instead of forking; set 0 to disable this protection.",
       "hasChildren": false
     },
     {
@@ -55902,7 +55902,7 @@
         "advanced"
       ],
       "label": "Updates",
-      "help": "Update-channel and startup-check behavior for keeping OpenClaw runtime versions current. Use conservative channels in production and more experimental channels only in controlled environments.",
+      "help": "Update-channel and startup-check behavior for keeping AvaClaw runtime versions current. Use conservative channels in production and more experimental channels only in controlled environments.",
       "hasChildren": true
     },
     {
@@ -56206,7 +56206,7 @@
         "advanced"
       ],
       "label": "Wizard Last Run Version",
-      "help": "OpenClaw version recorded at the time of the most recent wizard run on this config. Use this when diagnosing behavior differences across version-to-version onboarding changes.",
+      "help": "AvaClaw version recorded at the time of the most recent wizard run on this config. Use this when diagnosing behavior differences across version-to-version onboarding changes.",
       "hasChildren": false
     }
   ]

@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-huggingface-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Hugging Face provider plugin",
+  "description": "AvaClaw Hugging Face provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

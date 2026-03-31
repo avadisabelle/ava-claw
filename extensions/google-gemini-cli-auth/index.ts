@@ -2,11 +2,11 @@ import {
   buildOauthProviderAuthResult,
   emptyPluginConfigSchema,
   type ProviderFetchUsageSnapshotContext,
-  type OpenClawPluginApi,
+  type AvaClawPluginApi,
   type ProviderAuthContext,
   type ProviderResolveDynamicModelContext,
   type ProviderRuntimeModel,
-} from "openclaw/plugin-sdk/google-gemini-cli-auth";
+} from "avaclaw/plugin-sdk/google-gemini-cli-auth";
 import { normalizeModelCompat } from "../../src/agents/model-compat.js";
 import { fetchGeminiUsage } from "../../src/infra/provider-usage.fetch.js";
 import { loginGeminiCliOAuth } from "./oauth.js";
@@ -19,8 +19,8 @@ const GEMINI_3_1_FLASH_PREFIX = "gemini-3.1-flash";
 const GEMINI_3_1_PRO_TEMPLATE_IDS = ["gemini-3-pro-preview"] as const;
 const GEMINI_3_1_FLASH_TEMPLATE_IDS = ["gemini-3-flash-preview"] as const;
 const ENV_VARS = [
-  "OPENCLAW_GEMINI_OAUTH_CLIENT_ID",
-  "OPENCLAW_GEMINI_OAUTH_CLIENT_SECRET",
+  "AVACLAW_GEMINI_OAUTH_CLIENT_ID",
+  "AVACLAW_GEMINI_OAUTH_CLIENT_SECRET",
   "GEMINI_CLI_OAUTH_CLIENT_ID",
   "GEMINI_CLI_OAUTH_CLIENT_SECRET",
 ];
@@ -92,7 +92,7 @@ const geminiCliPlugin = {
   name: "Google Gemini CLI Auth",
   description: "OAuth flow for Gemini CLI (Google Code Assist)",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: PROVIDER_LABEL,

@@ -69,13 +69,13 @@ Optional legacy controls:
 
 ## Where to set the key
 
-**Via config:** run `openclaw configure --section web`. It stores the key in
+**Via config:** run `avaclaw configure --section web`. It stores the key in
 `~/.avadisabelle/ava-claw.json` under `tools.web.search.perplexity.apiKey`.
 That field also accepts SecretRef objects.
 
 **Via environment:** set `PERPLEXITY_API_KEY` or `OPENROUTER_API_KEY`
 in the Gateway process environment. For a gateway install, put it in
-`~/.openclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-openclaw-load-environment-variables).
+`~/.avaclaw/.env` (or your service environment). See [Env vars](/help/faq#how-does-avaclaw-load-environment-variables).
 
 If `provider: "perplexity"` is configured and the Perplexity key SecretRef is unresolved with no env fallback, startup/reload fails fast.
 

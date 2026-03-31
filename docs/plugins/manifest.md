@@ -6,7 +6,7 @@ read_when:
 title: "Plugin Manifest"
 ---
 
-# Plugin manifest (openclaw.plugin.json)
+# Plugin manifest (avaclaw.plugin.json)
 
 This page is for the **native Ava-Claw plugin manifest** only.
 
@@ -20,13 +20,13 @@ Compatible bundle formats use different manifest files:
 - Cursor bundle: `.cursor-plugin/plugin.json`
 
 Ava-Claw auto-detects those bundle layouts too, but they are not validated
-against the `openclaw.plugin.json` schema described here.
+against the `avaclaw.plugin.json` schema described here.
 
 For compatible bundles, Ava-Claw currently reads bundle metadata plus declared
 skill roots, Claude command roots, Claude bundle `settings.json` defaults, and
 supported hook packs when the layout matches Ava-Claw runtime expectations.
 
-Every native Ava-Claw plugin **must** ship a `openclaw.plugin.json` file in the
+Every native Ava-Claw plugin **must** ship a `avaclaw.plugin.json` file in the
 **plugin root**. Ava-Claw uses this manifest to validate configuration
 **without executing plugin code**. Missing or invalid manifests are treated as
 plugin errors and block config validation.

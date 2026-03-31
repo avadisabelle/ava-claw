@@ -18,7 +18,7 @@ import type { ChannelDock } from "../channels/dock.js";
 import type { ChannelId, ChannelPlugin } from "../channels/plugins/types.js";
 import type { createVpsAwareOAuthHandlers } from "../commands/oauth-flow.js";
 import type { OnboardOptions } from "../commands/onboard-types.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import type { ModelProviderConfig } from "../config/types.js";
 import type { GatewayRequestHandler } from "../gateway/server-methods/types.js";
 import type { InternalHookHandler } from "../hooks/internal-hooks.js";
@@ -53,7 +53,7 @@ export type PluginConfigValidation =
   | { ok: true; value?: unknown }
   | { ok: false; errors: string[] };
 
-export type OpenClawPluginConfigSchema = {
+export type AvaClawPluginConfigSchema = {
   safeParse?: (value: unknown) => {
     success: boolean;
     data?: unknown;
@@ -67,8 +67,8 @@ export type OpenClawPluginConfigSchema = {
   jsonSchema?: Record<string, unknown>;
 };
 
-export type OpenClawPluginToolContext = {
-  config?: OpenClawConfig;
+export type AvaClawPluginToolContext = {
+  config?: AvaClawConfig;
   workspaceDir?: string;
   agentDir?: string;
   agentId?: string;
@@ -84,17 +84,17 @@ export type OpenClawPluginToolContext = {
   sandboxed?: boolean;
 };
 
-export type OpenClawPluginToolFactory = (
-  ctx: OpenClawPluginToolContext,
+export type AvaClawPluginToolFactory = (
+  ctx: AvaClawPluginToolContext,
 ) => AnyAgentTool | AnyAgentTool[] | null | undefined;
 
-export type OpenClawPluginToolOptions = {
+export type AvaClawPluginToolOptions = {
   name?: string;
   names?: string[];
   optional?: boolean;
 };
 
-export type OpenClawPluginHookOptions = {
+export type AvaClawPluginHookOptions = {
   entry?: HookEntry;
   name?: string;
   description?: string;
@@ -105,13 +105,13 @@ export type ProviderAuthKind = "oauth" | "api_key" | "token" | "device_code" | "
 
 export type ProviderAuthResult = {
   profiles: Array<{ profileId: string; credential: AuthProfileCredential }>;
-  configPatch?: Partial<OpenClawConfig>;
+  configPatch?: Partial<AvaClawConfig>;
   defaultModel?: string;
   notes?: string[];
 };
 
 export type ProviderAuthContext = {
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   prompter: WizardPrompter;
@@ -148,8 +148,8 @@ export type ProviderNonInteractiveApiKeyCredentialParams = {
 
 export type ProviderAuthMethodNonInteractiveContext = {
   authChoice: string;
-  config: OpenClawConfig;
-  baseConfig: OpenClawConfig;
+  config: AvaClawConfig;
+  baseConfig: AvaClawConfig;
   opts: OnboardOptions;
   runtime: RuntimeEnv;
   agentDir?: string;
@@ -170,13 +170,13 @@ export type ProviderAuthMethod = {
   run: (ctx: ProviderAuthContext) => Promise<ProviderAuthResult>;
   runNonInteractive?: (
     ctx: ProviderAuthMethodNonInteractiveContext,
-  ) => Promise<OpenClawConfig | null>;
+  ) => Promise<AvaClawConfig | null>;
 };
 
 export type ProviderCatalogOrder = "simple" | "profile" | "paired" | "late";
 
 export type ProviderCatalogContext = {
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   env: NodeJS.ProcessEnv;
@@ -222,7 +222,7 @@ export type ProviderRuntimeProviderConfig = {
  * belong in `prepareDynamicModel`.
  */
 export type ProviderResolveDynamicModelContext = {
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   provider: string;
@@ -243,12 +243,12 @@ export type ProviderPrepareDynamicModelContext = ProviderResolveDynamicModelCont
 /**
  * Last-chance rewrite hook for provider-owned transport normalization.
  *
- * Runs after OpenClaw resolves an explicit/discovered/dynamic model and before
+ * Runs after AvaClaw resolves an explicit/discovered/dynamic model and before
  * the embedded runner uses it. Typical uses: swap API ids, fix base URLs, or
  * patch provider-specific compat bits.
  */
 export type ProviderNormalizeResolvedModelContext = {
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   provider: string;
@@ -263,7 +263,7 @@ export type ProviderNormalizeResolvedModelContext = {
  * for the request.
  */
 export type ProviderPrepareRuntimeAuthContext = {
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   env: NodeJS.ProcessEnv;
@@ -296,7 +296,7 @@ export type ProviderPreparedRuntimeAuth = {
  * snapshots often need a different credential source than live inference
  * requests, and they run outside the embedded runner.
  *
- * The helper methods cover the common OpenClaw auth resolution paths:
+ * The helper methods cover the common AvaClaw auth resolution paths:
  *
  * - `resolveApiKeyFromConfigAndStore`: env/config/plain token/api_key profiles
  * - `resolveOAuthToken`: oauth/token profiles resolved through the auth store
@@ -305,7 +305,7 @@ export type ProviderPreparedRuntimeAuth = {
  * token blob, read a legacy credential file, or pick between aliases).
  */
 export type ProviderResolveUsageAuthContext = {
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   env: NodeJS.ProcessEnv;
@@ -339,7 +339,7 @@ export type ProviderResolvedUsageAuth = {
  * Return `null`/`undefined` to fall back to legacy core fetchers.
  */
 export type ProviderFetchUsageSnapshotContext = {
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   env: NodeJS.ProcessEnv;
@@ -351,14 +351,14 @@ export type ProviderFetchUsageSnapshotContext = {
 };
 
 /**
- * Provider-owned extra-param normalization before OpenClaw builds its generic
+ * Provider-owned extra-param normalization before AvaClaw builds its generic
  * stream option wrapper.
  *
  * Use this to set provider defaults or rewrite provider-specific config keys
  * into the merged `extraParams` object. Return the full next extraParams object.
  */
 export type ProviderPrepareExtraParamsContext = {
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   agentDir?: string;
   workspaceDir?: string;
   provider: string;
@@ -368,7 +368,7 @@ export type ProviderPrepareExtraParamsContext = {
 };
 
 /**
- * Provider-owned stream wrapper hook after OpenClaw applies its generic
+ * Provider-owned stream wrapper hook after AvaClaw applies its generic
  * transport-independent wrappers.
  *
  * Use this for provider-specific payload/header/model mutations that still run
@@ -381,7 +381,7 @@ export type ProviderWrapStreamFnContext = ProviderPrepareExtraParamsContext & {
 /**
  * Provider-owned prompt-cache eligibility.
  *
- * Return `true` or `false` to override OpenClaw's built-in provider cache TTL
+ * Return `true` or `false` to override AvaClaw's built-in provider cache TTL
  * detection for this provider. Return `undefined` to fall back to core rules.
  */
 export type ProviderCacheTtlEligibilityContext = {
@@ -431,7 +431,7 @@ export type ProviderPluginWizard = {
 };
 
 export type ProviderModelSelectedContext = {
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   model: string;
   prompter: WizardPrompter;
   agentDir?: string;
@@ -474,7 +474,7 @@ export type ProviderPlugin = {
   /**
    * Optional async prefetch for dynamic model resolution.
    *
-   * OpenClaw calls this only from async model resolution paths. After it
+   * AvaClaw calls this only from async model resolution paths. After it
    * completes, `resolveDynamicModel` is called again.
    */
   prepareDynamicModel?: (ctx: ProviderPrepareDynamicModelContext) => Promise<void>;
@@ -508,7 +508,7 @@ export type ProviderPlugin = {
     ctx: ProviderPrepareExtraParamsContext,
   ) => Record<string, unknown> | null | undefined;
   /**
-   * Provider-owned stream wrapper applied after generic OpenClaw wrappers.
+   * Provider-owned stream wrapper applied after generic AvaClaw wrappers.
    *
    * Typical uses: provider attribution headers, request-body rewrites, or
    * provider-specific compat payload patches that do not justify a separate
@@ -518,7 +518,7 @@ export type ProviderPlugin = {
   /**
    * Runtime auth exchange hook.
    *
-   * Called after OpenClaw resolves the raw configured credential but before the
+   * Called after AvaClaw resolves the raw configured credential but before the
    * runner stores it in runtime auth storage. This lets plugins exchange a
    * source credential (for example a GitHub token) into a short-lived runtime
    * token plus optional base URL override.
@@ -530,7 +530,7 @@ export type ProviderPlugin = {
    * Usage/billing auth resolution hook.
    *
    * Called by provider-usage surfaces (`/usage`, status snapshots, reporting)
-   * before OpenClaw falls back to legacy core auth resolution. Use this when a
+   * before AvaClaw falls back to legacy core auth resolution. Use this when a
    * provider's usage endpoint needs provider-owned token extraction, blob
    * parsing, or alias handling.
    */
@@ -565,7 +565,7 @@ export type ProviderPlugin = {
   onModelSelected?: (ctx: ProviderModelSelectedContext) => Promise<void>;
 };
 
-export type OpenClawPluginGatewayMethod = {
+export type AvaClawPluginGatewayMethod = {
   method: string;
   handler: GatewayRequestHandler;
 };
@@ -590,8 +590,8 @@ export type PluginCommandContext = {
   args?: string;
   /** The full normalized command body */
   commandBody: string;
-  /** Current OpenClaw configuration */
-  config: OpenClawConfig;
+  /** Current AvaClaw configuration */
+  config: AvaClawConfig;
   /** Raw "From" value (channel-scoped id) */
   from?: string;
   /** Raw "To" value (channel-scoped id) */
@@ -657,7 +657,7 @@ export type PluginCommandHandler = (
 /**
  * Definition for a plugin-registered command.
  */
-export type OpenClawPluginCommandDefinition = {
+export type AvaClawPluginCommandDefinition = {
   /** Command name without leading slash (e.g., "tts") */
   name: string;
   /**
@@ -781,89 +781,89 @@ export type PluginInteractiveHandlerRegistration =
   | PluginInteractiveTelegramHandlerRegistration
   | PluginInteractiveDiscordHandlerRegistration;
 
-export type OpenClawPluginHttpRouteAuth = "gateway" | "plugin";
-export type OpenClawPluginHttpRouteMatch = "exact" | "prefix";
+export type AvaClawPluginHttpRouteAuth = "gateway" | "plugin";
+export type AvaClawPluginHttpRouteMatch = "exact" | "prefix";
 
-export type OpenClawPluginHttpRouteHandler = (
+export type AvaClawPluginHttpRouteHandler = (
   req: IncomingMessage,
   res: ServerResponse,
 ) => Promise<boolean | void> | boolean | void;
 
-export type OpenClawPluginHttpRouteParams = {
+export type AvaClawPluginHttpRouteParams = {
   path: string;
-  handler: OpenClawPluginHttpRouteHandler;
-  auth: OpenClawPluginHttpRouteAuth;
-  match?: OpenClawPluginHttpRouteMatch;
+  handler: AvaClawPluginHttpRouteHandler;
+  auth: AvaClawPluginHttpRouteAuth;
+  match?: AvaClawPluginHttpRouteMatch;
   replaceExisting?: boolean;
 };
 
-export type OpenClawPluginCliContext = {
+export type AvaClawPluginCliContext = {
   program: Command;
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   workspaceDir?: string;
   logger: PluginLogger;
 };
 
-export type OpenClawPluginCliRegistrar = (ctx: OpenClawPluginCliContext) => void | Promise<void>;
+export type AvaClawPluginCliRegistrar = (ctx: AvaClawPluginCliContext) => void | Promise<void>;
 
-export type OpenClawPluginServiceContext = {
-  config: OpenClawConfig;
+export type AvaClawPluginServiceContext = {
+  config: AvaClawConfig;
   workspaceDir?: string;
   stateDir: string;
   logger: PluginLogger;
 };
 
-export type OpenClawPluginService = {
+export type AvaClawPluginService = {
   id: string;
-  start: (ctx: OpenClawPluginServiceContext) => void | Promise<void>;
-  stop?: (ctx: OpenClawPluginServiceContext) => void | Promise<void>;
+  start: (ctx: AvaClawPluginServiceContext) => void | Promise<void>;
+  stop?: (ctx: AvaClawPluginServiceContext) => void | Promise<void>;
 };
 
-export type OpenClawPluginChannelRegistration = {
+export type AvaClawPluginChannelRegistration = {
   plugin: ChannelPlugin;
   dock?: ChannelDock;
 };
 
-export type OpenClawPluginDefinition = {
+export type AvaClawPluginDefinition = {
   id?: string;
   name?: string;
   description?: string;
   version?: string;
   kind?: PluginKind;
-  configSchema?: OpenClawPluginConfigSchema;
-  register?: (api: OpenClawPluginApi) => void | Promise<void>;
-  activate?: (api: OpenClawPluginApi) => void | Promise<void>;
+  configSchema?: AvaClawPluginConfigSchema;
+  register?: (api: AvaClawPluginApi) => void | Promise<void>;
+  activate?: (api: AvaClawPluginApi) => void | Promise<void>;
 };
 
-export type OpenClawPluginModule =
-  | OpenClawPluginDefinition
-  | ((api: OpenClawPluginApi) => void | Promise<void>);
+export type AvaClawPluginModule =
+  | AvaClawPluginDefinition
+  | ((api: AvaClawPluginApi) => void | Promise<void>);
 
-export type OpenClawPluginApi = {
+export type AvaClawPluginApi = {
   id: string;
   name: string;
   version?: string;
   description?: string;
   source: string;
   rootDir?: string;
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   pluginConfig?: Record<string, unknown>;
   runtime: PluginRuntime;
   logger: PluginLogger;
   registerTool: (
-    tool: AnyAgentTool | OpenClawPluginToolFactory,
-    opts?: OpenClawPluginToolOptions,
+    tool: AnyAgentTool | AvaClawPluginToolFactory,
+    opts?: AvaClawPluginToolOptions,
   ) => void;
   registerHook: (
     events: string | string[],
     handler: InternalHookHandler,
-    opts?: OpenClawPluginHookOptions,
+    opts?: AvaClawPluginHookOptions,
   ) => void;
-  registerHttpRoute: (params: OpenClawPluginHttpRouteParams) => void;
-  registerChannel: (registration: OpenClawPluginChannelRegistration | ChannelPlugin) => void;
+  registerHttpRoute: (params: AvaClawPluginHttpRouteParams) => void;
+  registerChannel: (registration: AvaClawPluginChannelRegistration | ChannelPlugin) => void;
   registerGatewayMethod: (method: string, handler: GatewayRequestHandler) => void;
-  registerCli: (registrar: OpenClawPluginCliRegistrar, opts?: { commands?: string[] }) => void;
-  registerService: (service: OpenClawPluginService) => void;
+  registerCli: (registrar: AvaClawPluginCliRegistrar, opts?: { commands?: string[] }) => void;
+  registerService: (service: AvaClawPluginService) => void;
   registerProvider: (provider: ProviderPlugin) => void;
   registerInteractiveHandler: (registration: PluginInteractiveHandlerRegistration) => void;
   /**
@@ -871,7 +871,7 @@ export type OpenClawPluginApi = {
    * Plugin commands are processed before built-in commands and before agent invocation.
    * Use this for simple state-toggling or status commands that don't need AI reasoning.
    */
-  registerCommand: (command: OpenClawPluginCommandDefinition) => void;
+  registerCommand: (command: AvaClawPluginCommandDefinition) => void;
   /** Register a context engine implementation (exclusive slot — only one active at a time). */
   registerContextEngine: (
     id: string,
@@ -888,7 +888,7 @@ export type OpenClawPluginApi = {
 
 export type PluginOrigin = "bundled" | "global" | "workspace" | "config";
 
-export type PluginFormat = "openclaw" | "bundle";
+export type PluginFormat = "avaclaw" | "bundle";
 
 export type PluginBundleFormat = "codex" | "claude" | "cursor";
 

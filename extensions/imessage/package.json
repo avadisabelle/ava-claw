@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-imessage",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw iMessage channel plugin",
+  "description": "AvaClaw iMessage channel plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

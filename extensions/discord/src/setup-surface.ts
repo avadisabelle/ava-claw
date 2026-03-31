@@ -22,7 +22,7 @@ import {
 } from "../../../src/channels/plugins/setup-wizard.js";
 import type { ChannelSetupAdapter } from "../../../src/channels/plugins/types.adapters.js";
 import { getChatChannelMeta } from "../../../src/channels/registry.js";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AvaClawConfig } from "../../../src/config/config.js";
 import type { DiscordGuildEntry } from "../../../src/config/types.discord.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../../../src/routing/session-key.js";
 import { formatDocsLink } from "../../../src/terminal/links.js";
@@ -51,13 +51,13 @@ const DISCORD_TOKEN_HELP_LINES = [
 ];
 
 function setDiscordGuildChannelAllowlist(
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
   accountId: string,
   entries: Array<{
     guildKey: string;
     channelKey?: string;
   }>,
-): OpenClawConfig {
+): AvaClawConfig {
   const baseGuilds =
     accountId === DEFAULT_ACCOUNT_ID
       ? (cfg.channels?.discord?.guilds ?? {})
@@ -111,10 +111,10 @@ async function resolveDiscordAllowFromEntries(params: { token?: string; entries:
 }
 
 async function promptDiscordAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   prompter: WizardPrompter;
   accountId?: string;
-}): Promise<OpenClawConfig> {
+}): Promise<AvaClawConfig> {
   const accountId = resolveOnboardingAccountId({
     accountId: params.accountId,
     defaultAccountId: resolveDefaultDiscordAccountId(params.cfg),
@@ -406,9 +406,9 @@ const discordSetupPlugin = {
   },
   config: {
     listAccountIds: listDiscordAccountIds,
-    resolveAccount: (cfg: OpenClawConfig, accountId?: string | null) =>
+    resolveAccount: (cfg: AvaClawConfig, accountId?: string | null) =>
       resolveDiscordAccount({ cfg, accountId }),
-    resolveAllowFrom: ({ cfg, accountId }: { cfg: OpenClawConfig; accountId?: string | null }) => {
+    resolveAllowFrom: ({ cfg, accountId }: { cfg: AvaClawConfig; accountId?: string | null }) => {
       const resolved = resolveDiscordAccount({ cfg, accountId });
       return resolved.config.allowFrom ?? resolved.config.dm?.allowFrom;
     },

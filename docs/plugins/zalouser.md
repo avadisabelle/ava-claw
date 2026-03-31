@@ -29,7 +29,7 @@ No external `zca`/`openzca` CLI binary is required.
 ### Option A: install from npm
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-zalouser
+avaclaw plugins install @avadisabelle/ava-claw-zalouser
 ```
 
 Restart the Gateway afterwards.
@@ -37,7 +37,7 @@ Restart the Gateway afterwards.
 ### Option B: install from a local folder (dev)
 
 ```bash
-openclaw plugins install ./extensions/zalouser
+avaclaw plugins install ./extensions/zalouser
 cd ./extensions/zalouser && pnpm install
 ```
 
@@ -61,11 +61,11 @@ Channel config lives under `channels.zalouser` (not `plugins.entries.*`):
 ## CLI
 
 ```bash
-openclaw channels login --channel zalouser
-openclaw channels logout --channel zalouser
-openclaw channels status --probe
-openclaw message send --channel zalouser --target <threadId> --message "Hello from Ava-Claw"
-openclaw directory peers list --channel zalouser --query "name"
+avaclaw channels login --channel zalouser
+avaclaw channels logout --channel zalouser
+avaclaw channels status --probe
+avaclaw message send --channel zalouser --target <threadId> --message "Hello from Ava-Claw"
+avaclaw directory peers list --channel zalouser --query "name"
 ```
 
 ## Agent tool

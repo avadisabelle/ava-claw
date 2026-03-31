@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-byteplus-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw BytePlus provider plugin",
+  "description": "AvaClaw BytePlus provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

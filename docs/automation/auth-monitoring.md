@@ -8,13 +8,13 @@ title: "Auth Monitoring"
 
 # Auth monitoring
 
-Ava-Claw exposes OAuth expiry health via `openclaw models status`. Use that for
+Ava-Claw exposes OAuth expiry health via `avaclaw models status`. Use that for
 automation and alerting; scripts are optional extras for phone workflows.
 
 ## Preferred: CLI check (portable)
 
 ```bash
-openclaw models status --check
+avaclaw models status --check
 ```
 
 Exit codes:
@@ -30,11 +30,11 @@ This works in cron/systemd and requires no extra scripts.
 These live under `scripts/` and are **optional**. They assume SSH access to the
 gateway host and are tuned for systemd + Termux.
 
-- `scripts/claude-auth-status.sh` now uses `openclaw models status --json` as the
+- `scripts/claude-auth-status.sh` now uses `avaclaw models status --json` as the
   source of truth (falling back to direct file reads if the CLI is unavailable),
-  so keep `openclaw` on `PATH` for timers.
+  so keep `avaclaw` on `PATH` for timers.
 - `scripts/auth-monitor.sh`: cron/systemd timer target; sends alerts (ntfy or phone).
-- `scripts/systemd/openclaw-auth-monitor.{service,timer}`: systemd user timer.
+- `scripts/systemd/avaclaw-auth-monitor.{service,timer}`: systemd user timer.
 - `scripts/claude-auth-status.sh`: Claude Code + Ava-Claw auth checker (full/json/simple).
 - `scripts/mobile-reauth.sh`: guided re‑auth flow over SSH.
 - `scripts/termux-quick-auth.sh`: one‑tap widget status + open auth URL.

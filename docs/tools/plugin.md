@@ -13,10 +13,10 @@ title: "Plugins"
 
 A plugin is either:
 
-- a native **Ava-Claw plugin** (`openclaw.plugin.json` + runtime module), or
+- a native **Ava-Claw plugin** (`avaclaw.plugin.json` + runtime module), or
 - a compatible **bundle** (`.codex-plugin/plugin.json` or `.claude-plugin/plugin.json`)
 
-Both show up under `openclaw plugins`, but only native Ava-Claw plugins execute
+Both show up under `avaclaw plugins`, but only native Ava-Claw plugins execute
 runtime code in-process.
 
 Most of the time, you’ll use plugins when you want a feature that’s not built
@@ -28,13 +28,13 @@ Fast path:
 1. See what’s already loaded:
 
 ```bash
-openclaw plugins list
+avaclaw plugins list
 ```
 
 2. Install an official plugin (example: Voice Call):
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-voice-call
+avaclaw plugins install @avadisabelle/ava-claw-voice-call
 ```
 
 Npm specs are **registry-only** (package name + optional **exact version** or
@@ -53,8 +53,8 @@ Need the bundle compatibility details? See [Plugin bundles](/plugins/bundles).
 For compatible bundles, install from a local directory or archive:
 
 ```bash
-openclaw plugins install ./my-bundle
-openclaw plugins install ./my-bundle.tgz
+avaclaw plugins install ./my-bundle
+avaclaw plugins install ./my-bundle.tgz
 ```
 
 ## Architecture
@@ -64,7 +64,7 @@ Ava-Claw's plugin system has four layers:
 1. **Manifest + discovery**
    Ava-Claw finds candidate plugins from configured paths, workspace roots,
    global extension roots, and bundled extensions. Discovery reads native
-   `openclaw.plugin.json` manifests plus supported bundle manifests first.
+   `avaclaw.plugin.json` manifests plus supported bundle manifests first.
 2. **Enablement + validation**
    Core decides whether a discovered plugin is enabled, disabled, blocked, or
    selected for an exclusive slot such as memory.
@@ -504,37 +504,37 @@ Notes:
 
 ## Plugin SDK import paths
 
-Use SDK subpaths instead of the monolithic `openclaw/plugin-sdk` import when
+Use SDK subpaths instead of the monolithic `avaclaw/plugin-sdk` import when
 authoring plugins:
 
-- `openclaw/plugin-sdk/core` for generic plugin APIs, provider auth types, and shared helpers.
-- `openclaw/plugin-sdk/compat` for bundled/internal plugin code that needs broader shared runtime helpers than `core`.
-- `openclaw/plugin-sdk/telegram` for Telegram channel plugins.
-- `openclaw/plugin-sdk/discord` for Discord channel plugins.
-- `openclaw/plugin-sdk/slack` for Slack channel plugins.
-- `openclaw/plugin-sdk/signal` for Signal channel plugins.
-- `openclaw/plugin-sdk/imessage` for iMessage channel plugins.
-- `openclaw/plugin-sdk/whatsapp` for WhatsApp channel plugins.
-- `openclaw/plugin-sdk/line` for LINE channel plugins.
-- `openclaw/plugin-sdk/msteams` for the bundled Microsoft Teams plugin surface.
+- `avaclaw/plugin-sdk/core` for generic plugin APIs, provider auth types, and shared helpers.
+- `avaclaw/plugin-sdk/compat` for bundled/internal plugin code that needs broader shared runtime helpers than `core`.
+- `avaclaw/plugin-sdk/telegram` for Telegram channel plugins.
+- `avaclaw/plugin-sdk/discord` for Discord channel plugins.
+- `avaclaw/plugin-sdk/slack` for Slack channel plugins.
+- `avaclaw/plugin-sdk/signal` for Signal channel plugins.
+- `avaclaw/plugin-sdk/imessage` for iMessage channel plugins.
+- `avaclaw/plugin-sdk/whatsapp` for WhatsApp channel plugins.
+- `avaclaw/plugin-sdk/line` for LINE channel plugins.
+- `avaclaw/plugin-sdk/msteams` for the bundled Microsoft Teams plugin surface.
 - Bundled extension-specific subpaths are also available:
-  `openclaw/plugin-sdk/acpx`, `openclaw/plugin-sdk/bluebubbles`,
-  `openclaw/plugin-sdk/copilot-proxy`, `openclaw/plugin-sdk/device-pair`,
-  `openclaw/plugin-sdk/diagnostics-otel`, `openclaw/plugin-sdk/diffs`,
-  `openclaw/plugin-sdk/feishu`,
-  `openclaw/plugin-sdk/google-gemini-cli-auth`, `openclaw/plugin-sdk/googlechat`,
-  `openclaw/plugin-sdk/irc`, `openclaw/plugin-sdk/llm-task`,
-  `openclaw/plugin-sdk/lobster`, `openclaw/plugin-sdk/matrix`,
-  `openclaw/plugin-sdk/mattermost`, `openclaw/plugin-sdk/memory-core`,
-  `openclaw/plugin-sdk/memory-lancedb`,
-  `openclaw/plugin-sdk/minimax-portal-auth`,
-  `openclaw/plugin-sdk/nextcloud-talk`, `openclaw/plugin-sdk/nostr`,
-  `openclaw/plugin-sdk/open-prose`, `openclaw/plugin-sdk/phone-control`,
-  `openclaw/plugin-sdk/qwen-portal-auth`, `openclaw/plugin-sdk/synology-chat`,
-  `openclaw/plugin-sdk/talk-voice`, `openclaw/plugin-sdk/test-utils`,
-  `openclaw/plugin-sdk/thread-ownership`, `openclaw/plugin-sdk/tlon`,
-  `openclaw/plugin-sdk/twitch`, `openclaw/plugin-sdk/voice-call`,
-  `openclaw/plugin-sdk/zalo`, and `openclaw/plugin-sdk/zalouser`.
+  `avaclaw/plugin-sdk/acpx`, `avaclaw/plugin-sdk/bluebubbles`,
+  `avaclaw/plugin-sdk/copilot-proxy`, `avaclaw/plugin-sdk/device-pair`,
+  `avaclaw/plugin-sdk/diagnostics-otel`, `avaclaw/plugin-sdk/diffs`,
+  `avaclaw/plugin-sdk/feishu`,
+  `avaclaw/plugin-sdk/google-gemini-cli-auth`, `avaclaw/plugin-sdk/googlechat`,
+  `avaclaw/plugin-sdk/irc`, `avaclaw/plugin-sdk/llm-task`,
+  `avaclaw/plugin-sdk/lobster`, `avaclaw/plugin-sdk/matrix`,
+  `avaclaw/plugin-sdk/mattermost`, `avaclaw/plugin-sdk/memory-core`,
+  `avaclaw/plugin-sdk/memory-lancedb`,
+  `avaclaw/plugin-sdk/minimax-portal-auth`,
+  `avaclaw/plugin-sdk/nextcloud-talk`, `avaclaw/plugin-sdk/nostr`,
+  `avaclaw/plugin-sdk/open-prose`, `avaclaw/plugin-sdk/phone-control`,
+  `avaclaw/plugin-sdk/qwen-portal-auth`, `avaclaw/plugin-sdk/synology-chat`,
+  `avaclaw/plugin-sdk/talk-voice`, `avaclaw/plugin-sdk/test-utils`,
+  `avaclaw/plugin-sdk/thread-ownership`, `avaclaw/plugin-sdk/tlon`,
+  `avaclaw/plugin-sdk/twitch`, `avaclaw/plugin-sdk/voice-call`,
+  `avaclaw/plugin-sdk/zalo`, and `avaclaw/plugin-sdk/zalouser`.
 
 ## Provider catalogs
 
@@ -568,7 +568,7 @@ Compatibility:
 
 Compatibility note:
 
-- `openclaw/plugin-sdk` remains supported for existing external plugins.
+- `avaclaw/plugin-sdk` remains supported for existing external plugins.
 - New and migrated bundled plugins should use channel or extension-specific
   subpaths; use `core` for generic surfaces and `compat` only when broader
   shared helpers are required.
@@ -582,8 +582,8 @@ Why:
 
 - `resolveAccount(...)` is the runtime path. It is allowed to assume credentials
   are fully materialized and can fail fast when required secrets are missing.
-- Read-only command paths such as `openclaw status`, `openclaw status --all`,
-  `openclaw channels status`, `openclaw channels resolve`, and doctor/config
+- Read-only command paths such as `avaclaw status`, `avaclaw status --all`,
+  `avaclaw channels status`, `avaclaw channels resolve`, and doctor/config
   repair flows should not need to materialize runtime credentials just to
   describe configuration.
 
@@ -609,10 +609,10 @@ Performance note:
 
 - Plugin discovery and manifest metadata use short in-process caches to reduce
   bursty startup/reload work.
-- Set `OPENCLAW_DISABLE_PLUGIN_DISCOVERY_CACHE=1` or
-  `OPENCLAW_DISABLE_PLUGIN_MANIFEST_CACHE=1` to disable these caches.
-- Tune cache windows with `OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS` and
-  `OPENCLAW_PLUGIN_MANIFEST_CACHE_MS`.
+- Set `AVACLAW_DISABLE_PLUGIN_DISCOVERY_CACHE=1` or
+  `AVACLAW_DISABLE_PLUGIN_MANIFEST_CACHE=1` to disable these caches.
+- Tune cache windows with `AVACLAW_PLUGIN_DISCOVERY_CACHE_MS` and
+  `AVACLAW_PLUGIN_MANIFEST_CACHE_MS`.
 
 ## Discovery & precedence
 
@@ -624,22 +624,22 @@ Ava-Claw scans, in order:
 
 2. Workspace extensions
 
-- `<workspace>/.openclaw/extensions/*.ts`
-- `<workspace>/.openclaw/extensions/*/index.ts`
+- `<workspace>/.avaclaw/extensions/*.ts`
+- `<workspace>/.avaclaw/extensions/*/index.ts`
 
 3. Global extensions
 
-- `~/.openclaw/extensions/*.ts`
-- `~/.openclaw/extensions/*/index.ts`
+- `~/.avaclaw/extensions/*.ts`
+- `~/.avaclaw/extensions/*/index.ts`
 
 4. Bundled extensions (shipped with Ava-Claw; mixed default-on/default-off)
 
-- `<openclaw>/extensions/*`
+- `<avaclaw>/extensions/*`
 
 Many bundled provider plugins are enabled by default so model catalogs/runtime
 hooks stay available without extra setup. Others still require explicit
 enablement via `plugins.entries.<id>.enabled` or
-`openclaw plugins enable <id>`.
+`avaclaw plugins enable <id>`.
 
 Default-on bundled plugin examples:
 
@@ -687,7 +687,7 @@ Hardening notes:
   - path ownership is suspicious for non-bundled plugins (POSIX owner is neither current uid nor root).
 - Loaded non-bundled plugins without install/load-path provenance emit a warning so you can pin trust (`plugins.allow`) or install tracking (`plugins.installs`).
 
-Each native Ava-Claw plugin must include a `openclaw.plugin.json` file in its
+Each native Ava-Claw plugin must include a `avaclaw.plugin.json` file in its
 root. If a path points at a file, the plugin root is the file's directory and
 must contain the manifest.
 
@@ -730,12 +730,12 @@ above plus the active memory slot plugin.
 
 ### Package packs
 
-A plugin directory may include a `package.json` with `openclaw.extensions`:
+A plugin directory may include a `package.json` with `avaclaw.extensions`:
 
 ```json
 {
   "name": "my-pack",
-  "openclaw": {
+  "avaclaw": {
     "extensions": ["./src/safety.ts", "./src/tools.ts"]
   }
 }
@@ -747,25 +747,25 @@ becomes `name/<fileBase>`.
 If your plugin imports npm deps, install them in that directory so
 `node_modules` is available (`npm install` / `pnpm install`).
 
-Security guardrail: every `openclaw.extensions` entry must stay inside the plugin
+Security guardrail: every `avaclaw.extensions` entry must stay inside the plugin
 directory after symlink resolution. Entries that escape the package directory are
 rejected.
 
-Security note: `openclaw plugins install` installs plugin dependencies with
+Security note: `avaclaw plugins install` installs plugin dependencies with
 `npm install --ignore-scripts` (no lifecycle scripts). Keep plugin dependency
 trees "pure JS/TS" and avoid packages that require `postinstall` builds.
 
 ### Channel catalog metadata
 
-Channel plugins can advertise onboarding metadata via `openclaw.channel` and
-install hints via `openclaw.install`. This keeps the core catalog data-free.
+Channel plugins can advertise onboarding metadata via `avaclaw.channel` and
+install hints via `avaclaw.install`. This keeps the core catalog data-free.
 
 Example:
 
 ```json
 {
   "name": "@avadisabelle/ava-claw-nextcloud-talk",
-  "openclaw": {
+  "avaclaw": {
     "extensions": ["./index.ts"],
     "channel": {
       "id": "nextcloud-talk",
@@ -789,13 +789,13 @@ Example:
 Ava-Claw can also merge **external channel catalogs** (for example, an MPM
 registry export). Drop a JSON file at one of:
 
-- `~/.openclaw/mpm/plugins.json`
-- `~/.openclaw/mpm/catalog.json`
-- `~/.openclaw/plugins/catalog.json`
+- `~/.avaclaw/mpm/plugins.json`
+- `~/.avaclaw/mpm/catalog.json`
+- `~/.avaclaw/plugins/catalog.json`
 
-Or point `OPENCLAW_PLUGIN_CATALOG_PATHS` (or `OPENCLAW_MPM_CATALOG_PATHS`) at
+Or point `AVACLAW_PLUGIN_CATALOG_PATHS` (or `AVACLAW_MPM_CATALOG_PATHS`) at
 one or more JSON files (comma/semicolon/`PATH`-delimited). Each file should
-contain `{ "entries": [ { "name": "@scope/pkg", "openclaw": { "channel": {...}, "install": {...} } } ] }`.
+contain `{ "entries": [ { "name": "@scope/pkg", "avaclaw": { "channel": {...}, "install": {...} } } ] }`.
 
 ## Plugin IDs
 
@@ -868,7 +868,7 @@ Validation rules (strict):
 - Unknown `channels.<id>` keys are **errors** unless a plugin manifest declares
   the channel id.
 - Native plugin config is validated using the JSON Schema embedded in
-  `openclaw.plugin.json` (`configSchema`).
+  `avaclaw.plugin.json` (`configSchema`).
 - Compatible bundles currently do not expose native Ava-Claw config schemas.
 - If a plugin is disabled, its config is preserved and a **warning** is emitted.
 
@@ -953,30 +953,30 @@ Example:
 ## CLI
 
 ```bash
-openclaw plugins list
-openclaw plugins info <id>
-openclaw plugins install <path>                 # copy a local file/dir into ~/.openclaw/extensions/<id>
-openclaw plugins install ./extensions/voice-call # relative path ok
-openclaw plugins install ./plugin.tgz           # install from a local tarball
-openclaw plugins install ./plugin.zip           # install from a local zip
-openclaw plugins install -l ./extensions/voice-call # link (no copy) for dev
-openclaw plugins install @avadisabelle/ava-claw-voice-call # install from npm
-openclaw plugins install @avadisabelle/ava-claw-voice-call --pin # store exact resolved name@version
-openclaw plugins update <id>
-openclaw plugins update --all
-openclaw plugins enable <id>
-openclaw plugins disable <id>
-openclaw plugins doctor
+avaclaw plugins list
+avaclaw plugins info <id>
+avaclaw plugins install <path>                 # copy a local file/dir into ~/.avaclaw/extensions/<id>
+avaclaw plugins install ./extensions/voice-call # relative path ok
+avaclaw plugins install ./plugin.tgz           # install from a local tarball
+avaclaw plugins install ./plugin.zip           # install from a local zip
+avaclaw plugins install -l ./extensions/voice-call # link (no copy) for dev
+avaclaw plugins install @avadisabelle/ava-claw-voice-call # install from npm
+avaclaw plugins install @avadisabelle/ava-claw-voice-call --pin # store exact resolved name@version
+avaclaw plugins update <id>
+avaclaw plugins update --all
+avaclaw plugins enable <id>
+avaclaw plugins disable <id>
+avaclaw plugins doctor
 ```
 
-`openclaw plugins list` shows the top-level format as `openclaw` or `bundle`.
+`avaclaw plugins list` shows the top-level format as `avaclaw` or `bundle`.
 Verbose list/info output also shows bundle subtype (`codex` or `claude`) plus
 detected bundle capabilities.
 
 `plugins update` only works for npm installs tracked under `plugins.installs`.
 If stored integrity metadata changes between updates, Ava-Claw warns and asks for confirmation (use global `--yes` to bypass prompts).
 
-Plugins may also register their own top‑level commands (example: `openclaw voicecall`).
+Plugins may also register their own top‑level commands (example: `avaclaw voicecall`).
 
 ## Plugin API (overview)
 
@@ -1055,8 +1055,8 @@ Notes:
 
 - Register hooks explicitly via `api.registerHook(...)`.
 - Hook eligibility rules still apply (OS/bins/env/config requirements).
-- Plugin-managed hooks show up in `openclaw hooks list` with `plugin:<id>`.
-- You cannot enable/disable plugin-managed hooks via `openclaw hooks`; enable/disable the plugin instead.
+- Plugin-managed hooks show up in `avaclaw hooks list` with `plugin:<id>`.
+- You cannot enable/disable plugin-managed hooks via `avaclaw hooks`; enable/disable the plugin instead.
 
 ### Agent lifecycle hooks (`api.on`)
 
@@ -1128,11 +1128,11 @@ A provider plugin can participate in five distinct phases:
    `auth[].run(ctx)` performs OAuth, API-key capture, device code, or custom
    setup and returns auth profiles plus optional config patches.
 2. **Non-interactive setup**
-   `auth[].runNonInteractive(ctx)` handles `openclaw onboard --non-interactive`
+   `auth[].runNonInteractive(ctx)` handles `avaclaw onboard --non-interactive`
    without prompts. Use this when the provider needs custom headless setup
    beyond the built-in simple API-key paths.
 3. **Wizard integration**
-   `wizard.onboarding` adds an entry to `openclaw onboard`.
+   `wizard.onboarding` adds an entry to `avaclaw onboard`.
    `wizard.modelPicker` adds a setup entry to the model picker.
 4. **Implicit discovery**
    `discovery.run(ctx)` can contribute provider config automatically during
@@ -1155,7 +1155,7 @@ requirements:
 `auth[].run(ctx)` returns:
 
 - `profiles`: auth profiles to write
-- `configPatch`: optional `openclaw.json` changes
+- `configPatch`: optional `avaclaw.json` changes
 - `defaultModel`: optional `provider/model` ref
 - `notes`: optional user-facing notes
 
@@ -1291,8 +1291,8 @@ Register a provider via `api.registerProvider(...)`. Each provider exposes one
 or more auth methods (OAuth, API key, device code, etc.). Those methods can
 power:
 
-- `openclaw models auth login --provider <id> [--method <id>]`
-- `openclaw onboard`
+- `avaclaw models auth login --provider <id> [--method <id>]`
+- `avaclaw onboard`
 - model-picker “custom provider” setup entries
 - implicit provider discovery during model resolution/listing
 
@@ -1364,7 +1364,7 @@ Notes:
   headless onboarding.
 - Return `configPatch` when you need to add default models or provider config.
 - Return `defaultModel` so `--set-default` can update agent defaults.
-- `wizard.onboarding` adds a provider choice to `openclaw onboard`.
+- `wizard.onboarding` adds a provider choice to `avaclaw onboard`.
 - `wizard.modelPicker` adds a “setup this provider” entry to the model picker.
 - `discovery.run` returns either `{ provider }` for the plugin’s own provider id
   or `{ providers }` for multi-provider discovery.
@@ -1653,14 +1653,14 @@ it’s present in your workspace/managed skills locations.
 
 Recommended packaging:
 
-- Main package: `openclaw` (this repo)
+- Main package: `avaclaw` (this repo)
 - Plugins: separate npm packages under `@avadisabelle/ava-claw-*` (example: `@avadisabelle/ava-claw-voice-call`)
 
 Publishing contract:
 
-- Plugin `package.json` must include `openclaw.extensions` with one or more entry files.
+- Plugin `package.json` must include `avaclaw.extensions` with one or more entry files.
 - Entry files can be `.js` or `.ts` (jiti loads TS at runtime).
-- `openclaw plugins install <npm-spec>` uses `npm pack`, extracts into `~/.openclaw/extensions/<id>/`, and enables it in config.
+- `avaclaw plugins install <npm-spec>` uses `npm pack`, extracts into `~/.avaclaw/extensions/<id>/`, and enables it in config.
 - Config key stability: scoped packages are normalized to the **unscoped** id for `plugins.entries.*`.
 
 ## Example plugin: Voice Call
@@ -1669,7 +1669,7 @@ This repo includes a voice‑call plugin (Twilio or log fallback):
 
 - Source: `extensions/voice-call`
 - Skill: `skills/voice-call`
-- CLI: `openclaw voicecall start|status`
+- CLI: `avaclaw voicecall start|status`
 - Tool: `voice_call`
 - RPC: `voicecall.start`, `voicecall.status`
 - Config (twilio): `provider: "twilio"` + `twilio.accountSid/authToken/from` (optional `statusCallbackUrl`, `twimlUrl`)
@@ -1692,4 +1692,4 @@ Plugins run in-process with the Gateway. Treat them as trusted code:
 Plugins can (and should) ship tests:
 
 - In-repo plugins can keep Vitest tests under `src/**` (example: `src/plugins/voice-call.plugin.test.ts`).
-- Separately published plugins should run their own CI (lint/build/test) and validate `openclaw.extensions` points at the built entrypoint (`dist/index.js`).
+- Separately published plugins should run their own CI (lint/build/test) and validate `avaclaw.extensions` points at the built entrypoint (`dist/index.js`).

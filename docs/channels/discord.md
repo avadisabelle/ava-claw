@@ -96,12 +96,12 @@ You will need to create a new application with a bot, add the bot to your server
     Your Discord bot token is a secret (like a password). Set it on the machine running Ava-Claw before messaging your agent.
 
 ```bash
-openclaw config set channels.discord.token '"YOUR_BOT_TOKEN"' --json
-openclaw config set channels.discord.enabled true --json
-openclaw gateway
+avaclaw config set channels.discord.token '"YOUR_BOT_TOKEN"' --json
+avaclaw config set channels.discord.enabled true --json
+avaclaw gateway
 ```
 
-    If Ava-Claw is already running as a background service, use `openclaw gateway restart` instead.
+    If Ava-Claw is already running as a background service, use `avaclaw gateway restart` instead.
 
   </Step>
 
@@ -152,8 +152,8 @@ DISCORD_BOT_TOKEN=...
       <Tab title="CLI">
 
 ```bash
-openclaw pairing list discord
-openclaw pairing approve discord <CODE>
+avaclaw pairing list discord
+avaclaw pairing approve discord <CODE>
 ```
 
       </Tab>
@@ -266,19 +266,19 @@ Now create some channels on your Discord server and start chatting. Your agent c
 Discord forum and media channels only accept thread posts. Ava-Claw supports two ways to create them:
 
 - Send a message to the forum parent (`channel:<forumId>`) to auto-create a thread. The thread title uses the first non-empty line of your message.
-- Use `openclaw message thread create` to create a thread directly. Do not pass `--message-id` for forum channels.
+- Use `avaclaw message thread create` to create a thread directly. Do not pass `--message-id` for forum channels.
 
 Example: send to forum parent to create a thread
 
 ```bash
-openclaw message send --channel discord --target channel:<forumId> \
+avaclaw message send --channel discord --target channel:<forumId> \
   --message "Topic title\nBody of the post"
 ```
 
 Example: create a forum thread explicitly
 
 ```bash
-openclaw message thread create --channel discord --target channel:<forumId> \
+avaclaw message thread create --channel discord --target channel:<forumId> \
   --thread-name "Topic title" --message "Body of the post"
 ```
 
@@ -408,7 +408,7 @@ Example:
     - guild must match `channels.discord.guilds` (`id` preferred, slug accepted)
     - optional sender allowlists: `users` (stable IDs recommended) and `roles` (role IDs only); if either is configured, senders are allowed when they match `users` OR `roles`
     - direct name/tag matching is disabled by default; enable `channels.discord.dangerouslyAllowNameMatching: true` only as break-glass compatibility mode
-    - names/tags are supported for `users`, but IDs are safer; `openclaw security audit` warns when name/tag entries are used
+    - names/tags are supported for `users`, but IDs are safer; `avaclaw security audit` warns when name/tag entries are used
     - if a guild has `channels` configured, non-listed channels are denied
     - if a guild has no `channels` block, all channels in that allowlisted guild are allowed
 
@@ -707,7 +707,7 @@ Default slash command settings:
             agent: "codex",
             backend: "acpx",
             mode: "persistent",
-            cwd: "/workspace/openclaw",
+            cwd: "/workspace/avaclaw",
           },
         },
       },
@@ -891,7 +891,7 @@ Default slash command settings:
     discord: {
       activity: "Live coding",
       activityType: 1,
-      activityUrl: "https://twitch.tv/openclaw",
+      activityUrl: "https://twitch.tv/avaclaw",
     },
   },
 }
@@ -945,7 +945,7 @@ Default slash command settings:
 
     Gateway auth for this handler uses the same shared credential resolution contract as other Gateway clients:
 
-    - env-first local auth (`OPENCLAW_GATEWAY_TOKEN` / `OPENCLAW_GATEWAY_PASSWORD` then `gateway.auth.*`)
+    - env-first local auth (`AVACLAW_GATEWAY_TOKEN` / `AVACLAW_GATEWAY_PASSWORD` then `gateway.auth.*`)
     - in local mode, `gateway.remote.*` can be used as fallback only when `gateway.auth.*` is unset; configured-but-unresolved local SecretRefs fail closed
     - remote-mode support via `gateway.remote.*` when applicable
     - URL overrides are override-safe: CLI overrides do not reuse implicit credentials, and env overrides use env credentials only
@@ -1088,9 +1088,9 @@ message(action="send", channel="discord", target="channel:123", path="/path/to/a
     Useful checks:
 
 ```bash
-openclaw doctor
-openclaw channels status --probe
-openclaw logs --follow
+avaclaw doctor
+avaclaw channels status --probe
+avaclaw logs --follow
 ```
 
   </Accordion>
@@ -1174,7 +1174,7 @@ openclaw logs --follow
 
   <Accordion title="Voice STT drops with DecryptionFailed(...)">
 
-    - keep Ava-Claw current (`openclaw update`) so the Discord voice receive recovery logic is present
+    - keep Ava-Claw current (`avaclaw update`) so the Discord voice receive recovery logic is present
     - confirm `channels.discord.voice.daveEncryption=true` (default)
     - start from `channels.discord.voice.decryptionFailureTolerance=24` (upstream default) and tune only if needed
     - watch logs for:
@@ -1212,7 +1212,7 @@ High-signal Discord fields:
 
 - Treat bot tokens as secrets (`DISCORD_BOT_TOKEN` preferred in supervised environments).
 - Grant least-privilege Discord permissions.
-- If command deploy/state is stale, restart gateway and re-check with `openclaw channels status --probe`.
+- If command deploy/state is stale, restart gateway and re-check with `avaclaw channels status --probe`.
 
 ## Related
 

@@ -170,7 +170,7 @@ Post-execution obligations:
 ## RISE Compliance Notes
 
 - **Implementation-sufficient**: Another agent fork can implement ceremony governance from this spec alone
-- **Codebase-agnostic**: No dependency on OpenClaw internals — the protocol operates at the action-decision layer
+- **Codebase-agnostic**: No dependency on AvaClaw internals — the protocol operates at the action-decision layer
 - **Testable**: Each gate is independently verifiable; the protocol produces structured logs for audit
 
 ---

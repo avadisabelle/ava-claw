@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AvaClawConfig } from "../../../src/config/config.js";
 import { listSlackAccountIds, resolveSlackAccount } from "./accounts.js";
 
 function resolveInteractiveRepliesFromCapabilities(capabilities: unknown): boolean {
@@ -17,7 +17,7 @@ function resolveInteractiveRepliesFromCapabilities(capabilities: unknown): boole
 }
 
 export function isSlackInteractiveRepliesEnabled(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   accountId?: string | null;
 }): boolean {
   if (params.accountId) {

@@ -1,10 +1,10 @@
 import type {
   ChannelOnboardingAdapter,
   ChannelOnboardingDmPolicy,
-  OpenClawConfig,
+  AvaClawConfig,
   SecretInput,
   WizardPrompter,
-} from "openclaw/plugin-sdk/zalo";
+} from "avaclaw/plugin-sdk/zalo";
 import {
   buildSingleChannelSecretPromptState,
   DEFAULT_ACCOUNT_ID,
@@ -15,7 +15,7 @@ import {
   runSingleChannelSecretStep,
   resolveAccountIdForConfigure,
   setTopLevelChannelDmPolicyWithAllowFrom,
-} from "openclaw/plugin-sdk/zalo";
+} from "avaclaw/plugin-sdk/zalo";
 import { listZaloAccountIds, resolveDefaultZaloAccountId, resolveZaloAccount } from "./accounts.js";
 
 const channel = "zalo" as const;
@@ -23,24 +23,24 @@ const channel = "zalo" as const;
 type UpdateMode = "polling" | "webhook";
 
 function setZaloDmPolicy(
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
   dmPolicy: "pairing" | "allowlist" | "open" | "disabled",
 ) {
   return setTopLevelChannelDmPolicyWithAllowFrom({
     cfg,
     channel: "zalo",
     dmPolicy,
-  }) as OpenClawConfig;
+  }) as AvaClawConfig;
 }
 
 function setZaloUpdateMode(
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
   accountId: string,
   mode: UpdateMode,
   webhookUrl?: string,
   webhookSecret?: SecretInput,
   webhookPath?: string,
-): OpenClawConfig {
+): AvaClawConfig {
   const isDefault = accountId === DEFAULT_ACCOUNT_ID;
   if (mode === "polling") {
     if (isDefault) {
@@ -56,7 +56,7 @@ function setZaloUpdateMode(
           ...cfg.channels,
           zalo: rest,
         },
-      } as OpenClawConfig;
+      } as AvaClawConfig;
     }
     const accounts = { ...cfg.channels?.zalo?.accounts } as Record<string, Record<string, unknown>>;
     const existing = accounts[accountId] ?? {};
@@ -71,7 +71,7 @@ function setZaloUpdateMode(
           accounts,
         },
       },
-    } as OpenClawConfig;
+    } as AvaClawConfig;
   }
 
   if (isDefault) {
@@ -86,7 +86,7 @@ function setZaloUpdateMode(
           webhookPath,
         },
       },
-    } as OpenClawConfig;
+    } as AvaClawConfig;
   }
 
   const accounts = { ...cfg.channels?.zalo?.accounts } as Record<string, Record<string, unknown>>;
@@ -105,7 +105,7 @@ function setZaloUpdateMode(
         accounts,
       },
     },
-  } as OpenClawConfig;
+  } as AvaClawConfig;
 }
 
 async function noteZaloTokenHelp(prompter: WizardPrompter): Promise<void> {
@@ -115,17 +115,17 @@ async function noteZaloTokenHelp(prompter: WizardPrompter): Promise<void> {
       "2) Create a bot and get the token",
       "3) Token looks like 12345689:abc-xyz",
       "Tip: you can also set ZALO_BOT_TOKEN in your env.",
-      "Docs: https://docs.openclaw.ai/channels/zalo",
+      "Docs: https://docs.avaclaw.ai/channels/zalo",
     ].join("\n"),
     "Zalo bot token",
   );
 }
 
 async function promptZaloAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   prompter: WizardPrompter;
   accountId: string;
-}): Promise<OpenClawConfig> {
+}): Promise<AvaClawConfig> {
   const { cfg, prompter, accountId } = params;
   const resolved = resolveZaloAccount({ cfg, accountId });
   const existingAllowFrom = resolved.config.allowFrom ?? [];
@@ -159,7 +159,7 @@ async function promptZaloAllowFrom(params: {
           allowFrom: unique,
         },
       },
-    } as OpenClawConfig;
+    } as AvaClawConfig;
   }
 
   return {
@@ -180,7 +180,7 @@ async function promptZaloAllowFrom(params: {
         },
       },
     },
-  } as OpenClawConfig;
+  } as AvaClawConfig;
 }
 
 const dmPolicy: ChannelOnboardingDmPolicy = {
@@ -281,7 +281,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
                   enabled: true,
                 },
               },
-            } as OpenClawConfig)
+            } as AvaClawConfig)
           : cfg,
       applySet: async (cfg, value) =>
         zaloAccountId === DEFAULT_ACCOUNT_ID
@@ -295,7 +295,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
                   botToken: value,
                 },
               },
-            } as OpenClawConfig)
+            } as AvaClawConfig)
           : ({
               ...cfg,
               channels: {
@@ -313,7 +313,7 @@ export const zaloOnboardingAdapter: ChannelOnboardingAdapter = {
                   },
                 },
               },
-            } as OpenClawConfig),
+            } as AvaClawConfig),
     });
     next = tokenStep.cfg;
 

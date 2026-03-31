@@ -58,7 +58,7 @@ Use these in chat:
 Other surfaces:
 
 - **TUI/Web TUI:** `/status` + `/usage` are supported.
-- **CLI:** `openclaw status --usage` and `openclaw channels list` show
+- **CLI:** `avaclaw status --usage` and `avaclaw channels list` show
   provider quota windows (not per-response costs).
 
 ## Cost estimation (when shown)

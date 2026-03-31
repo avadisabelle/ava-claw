@@ -16,7 +16,7 @@ This endpoint is **disabled by default**. Enable it in config first.
 - Same port as the Gateway (WS + HTTP multiplex): `http://<gateway-host>:<port>/v1/responses`
 
 Under the hood, requests are executed as a normal Gateway agent run (same codepath as
-`openclaw agent`), so routing/permissions/config match your Gateway.
+`avaclaw agent`), so routing/permissions/config match your Gateway.
 
 ## Authentication, security, and routing
 
@@ -24,8 +24,8 @@ Operational behavior matches [OpenAI Chat Completions](/gateway/openai-http-api)
 
 - use `Authorization: Bearer <token>` with the normal Gateway auth config
 - treat the endpoint as full operator access for the gateway instance
-- select agents with `model: "openclaw:<agentId>"`, `model: "agent:<agentId>"`, or `x-openclaw-agent-id`
-- use `x-openclaw-session-key` for explicit session routing
+- select agents with `model: "avaclaw:<agentId>"`, `model: "agent:<agentId>"`, or `x-avaclaw-agent-id`
+- use `x-avaclaw-session-key` for explicit session routing
 
 Enable or disable this endpoint with `gateway.http.endpoints.responses.enabled`.
 
@@ -271,9 +271,9 @@ Non-streaming:
 curl -sS http://127.0.0.1:18789/v1/responses \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
-  -H 'x-openclaw-agent-id: main' \
+  -H 'x-avaclaw-agent-id: main' \
   -d '{
-    "model": "openclaw",
+    "model": "avaclaw",
     "input": "hi"
   }'
 ```
@@ -284,9 +284,9 @@ Streaming:
 curl -N http://127.0.0.1:18789/v1/responses \
   -H 'Authorization: Bearer YOUR_TOKEN' \
   -H 'Content-Type: application/json' \
-  -H 'x-openclaw-agent-id: main' \
+  -H 'x-avaclaw-agent-id: main' \
   -d '{
-    "model": "openclaw",
+    "model": "avaclaw",
     "stream": true,
     "input": "hi"
   }'

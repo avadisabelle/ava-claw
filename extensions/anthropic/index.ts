@@ -1,9 +1,9 @@
 import {
   emptyPluginConfigSchema,
-  type OpenClawPluginApi,
+  type AvaClawPluginApi,
   type ProviderResolveDynamicModelContext,
   type ProviderRuntimeModel,
-} from "openclaw/plugin-sdk/core";
+} from "avaclaw/plugin-sdk/core";
 import { normalizeModelCompat } from "../../src/agents/model-compat.js";
 import { fetchClaudeUsage } from "../../src/infra/provider-usage.fetch.js";
 
@@ -101,7 +101,7 @@ const anthropicPlugin = {
   name: "Anthropic Provider",
   description: "Bundled Anthropic provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Anthropic",

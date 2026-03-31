@@ -26,18 +26,18 @@ For Anthropic specifically, API key auth is the safe path and is recommended
 over subscription setup-token auth.
 
 1. Create an API key in your provider console.
-2. Put it on the **gateway host** (the machine running `openclaw gateway`).
+2. Put it on the **gateway host** (the machine running `avaclaw gateway`).
 
 ```bash
 export <PROVIDER>_API_KEY="..."
-openclaw models status
+avaclaw models status
 ```
 
 3. If the Gateway runs under systemd/launchd, prefer putting the key in
-   `~/.openclaw/.env` so the daemon can read it:
+   `~/.avaclaw/.env` so the daemon can read it:
 
 ```bash
-cat >> ~/.openclaw/.env <<'EOF'
+cat >> ~/.avaclaw/.env <<'EOF'
 <PROVIDER>_API_KEY=...
 EOF
 ```
@@ -45,15 +45,15 @@ EOF
 Then restart the daemon (or restart your Gateway process) and re-check:
 
 ```bash
-openclaw models status
-openclaw doctor
+avaclaw models status
+avaclaw doctor
 ```
 
 If you’d rather not manage env vars yourself, the onboarding wizard can store
-API keys for daemon use: `openclaw onboard`.
+API keys for daemon use: `avaclaw onboard`.
 
 See [Help](/help) for details on env inheritance (`env.shellEnv`,
-`~/.openclaw/.env`, systemd/launchd).
+`~/.avaclaw/.env`, systemd/launchd).
 
 ## Anthropic: setup-token (subscription auth)
 
@@ -67,13 +67,13 @@ claude setup-token
 Then paste it into Ava-Claw:
 
 ```bash
-openclaw models auth setup-token --provider anthropic
+avaclaw models auth setup-token --provider anthropic
 ```
 
 If the token was created on another machine, paste it manually:
 
 ```bash
-openclaw models auth paste-token --provider anthropic
+avaclaw models auth paste-token --provider anthropic
 ```
 
 If you see an Anthropic error like:
@@ -93,8 +93,8 @@ the policy risk is acceptable, and verify Anthropic's current terms yourself.
 Manual token entry (any provider; writes `auth-profiles.json` + updates config):
 
 ```bash
-openclaw models auth paste-token --provider anthropic
-openclaw models auth paste-token --provider openrouter
+avaclaw models auth paste-token --provider anthropic
+avaclaw models auth paste-token --provider openrouter
 ```
 
 Auth profile refs are also supported for static credentials:
@@ -105,7 +105,7 @@ Auth profile refs are also supported for static credentials:
 Automation-friendly check (exit `1` when expired/missing, `2` when expiring):
 
 ```bash
-openclaw models status --check
+avaclaw models status --check
 ```
 
 Optional ops scripts (systemd/Termux) are documented here:
@@ -116,8 +116,8 @@ Optional ops scripts (systemd/Termux) are documented here:
 ## Checking model auth status
 
 ```bash
-openclaw models status
-openclaw doctor
+avaclaw models status
+avaclaw doctor
 ```
 
 ## API key rotation behavior (gateway)
@@ -126,7 +126,7 @@ Some providers support retrying a request with alternative keys when an API call
 hits a provider rate limit.
 
 - Priority order:
-  - `OPENCLAW_LIVE_<PROVIDER>_KEY` (single override)
+  - `AVACLAW_LIVE_<PROVIDER>_KEY` (single override)
   - `<PROVIDER>_API_KEYS`
   - `<PROVIDER>_API_KEY`
   - `<PROVIDER>_API_KEY_*`
@@ -150,9 +150,9 @@ Use `/model` (or `/model list`) for a compact picker; use `/model status` for th
 Set an explicit auth profile order override for an agent (stored in that agent’s `auth-profiles.json`):
 
 ```bash
-openclaw models auth order get --provider anthropic
-openclaw models auth order set --provider anthropic anthropic:default
-openclaw models auth order clear --provider anthropic
+avaclaw models auth order get --provider anthropic
+avaclaw models auth order set --provider anthropic anthropic:default
+avaclaw models auth order clear --provider anthropic
 ```
 
 Use `--agent <id>` to target a specific agent; omit it to use the configured default agent.
@@ -165,12 +165,12 @@ If the Anthropic token profile is missing, run `claude setup-token` on the
 **gateway host**, then re-check:
 
 ```bash
-openclaw models status
+avaclaw models status
 ```
 
 ### Token expiring/expired
 
-Run `openclaw models status` to confirm which profile is expiring. If the profile
+Run `avaclaw models status` to confirm which profile is expiring. If the profile
 is missing, rerun `claude setup-token` and paste the token again.
 
 ## Requirements

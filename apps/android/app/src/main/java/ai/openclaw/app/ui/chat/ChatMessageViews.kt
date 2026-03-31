@@ -1,4 +1,4 @@
-package ai.openclaw.app.ui.chat
+package ai.avaclaw.app.ui.chat
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -25,26 +25,26 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ai.openclaw.app.chat.ChatMessage
-import ai.openclaw.app.chat.ChatMessageContent
-import ai.openclaw.app.chat.ChatPendingToolCall
-import ai.openclaw.app.tools.ToolDisplayRegistry
-import ai.openclaw.app.ui.mobileAccent
-import ai.openclaw.app.ui.mobileAccentSoft
-import ai.openclaw.app.ui.mobileBorder
-import ai.openclaw.app.ui.mobileBorderStrong
-import ai.openclaw.app.ui.mobileCallout
-import ai.openclaw.app.ui.mobileCaption1
-import ai.openclaw.app.ui.mobileCaption2
-import ai.openclaw.app.ui.mobileCardSurface
-import ai.openclaw.app.ui.mobileCodeBg
-import ai.openclaw.app.ui.mobileCodeBorder
-import ai.openclaw.app.ui.mobileCodeText
-import ai.openclaw.app.ui.mobileHeadline
-import ai.openclaw.app.ui.mobileText
-import ai.openclaw.app.ui.mobileTextSecondary
-import ai.openclaw.app.ui.mobileWarning
-import ai.openclaw.app.ui.mobileWarningSoft
+import ai.avaclaw.app.chat.ChatMessage
+import ai.avaclaw.app.chat.ChatMessageContent
+import ai.avaclaw.app.chat.ChatPendingToolCall
+import ai.avaclaw.app.tools.ToolDisplayRegistry
+import ai.avaclaw.app.ui.mobileAccent
+import ai.avaclaw.app.ui.mobileAccentSoft
+import ai.avaclaw.app.ui.mobileBorder
+import ai.avaclaw.app.ui.mobileBorderStrong
+import ai.avaclaw.app.ui.mobileCallout
+import ai.avaclaw.app.ui.mobileCaption1
+import ai.avaclaw.app.ui.mobileCaption2
+import ai.avaclaw.app.ui.mobileCardSurface
+import ai.avaclaw.app.ui.mobileCodeBg
+import ai.avaclaw.app.ui.mobileCodeBorder
+import ai.avaclaw.app.ui.mobileCodeText
+import ai.avaclaw.app.ui.mobileHeadline
+import ai.avaclaw.app.ui.mobileText
+import ai.avaclaw.app.ui.mobileTextSecondary
+import ai.avaclaw.app.ui.mobileWarning
+import ai.avaclaw.app.ui.mobileWarningSoft
 import java.util.Locale
 
 private data class ChatBubbleStyle(
@@ -190,7 +190,7 @@ fun ChatPendingToolsBubble(toolCalls: List<ChatPendingToolCall>) {
 fun ChatStreamingAssistantBubble(text: String) {
   ChatBubbleContainer(
     style = bubbleStyle("assistant").copy(borderColor = mobileAccent),
-    roleLabel = "OpenClaw · Live",
+    roleLabel = "AvaClaw · Live",
   ) {
     ChatMarkdown(text = text, textColor = mobileText)
   }
@@ -229,7 +229,7 @@ private fun roleLabel(role: String): String {
   return when (role) {
     "user" -> "You"
     "system" -> "System"
-    else -> "OpenClaw"
+    else -> "AvaClaw"
   }
 }
 

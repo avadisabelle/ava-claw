@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-llm-task",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw JSON-only LLM task plugin",
+  "description": "AvaClaw JSON-only LLM task plugin",
   "type": "module",
   "dependencies": {
     "@sinclair/typebox": "0.34.48",

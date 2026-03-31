@@ -16,16 +16,16 @@ with a Z.AI API key.
 
 ```bash
 # Coding Plan Global, recommended for Coding Plan users
-openclaw onboard --auth-choice zai-coding-global
+avaclaw onboard --auth-choice zai-coding-global
 
 # Coding Plan CN (China region), recommended for Coding Plan users
-openclaw onboard --auth-choice zai-coding-cn
+avaclaw onboard --auth-choice zai-coding-cn
 
 # General API
-openclaw onboard --auth-choice zai-global
+avaclaw onboard --auth-choice zai-global
 
 # General API CN (China region)
-openclaw onboard --auth-choice zai-cn
+avaclaw onboard --auth-choice zai-cn
 ```
 
 ## Config snippet

@@ -75,7 +75,7 @@ CMD ["node","dist/index.js"]
 
 ```bash
 docker compose build
-docker compose up -d openclaw-gateway
+docker compose up -d avaclaw-gateway
 ```
 
 If build fails with `Killed` or `exit code 137` during `pnpm install --frozen-lockfile`, the VM is out of memory.
@@ -84,9 +84,9 @@ Use a larger machine class before retrying.
 Verify binaries:
 
 ```bash
-docker compose exec openclaw-gateway which gog
-docker compose exec openclaw-gateway which goplaces
-docker compose exec openclaw-gateway which wacli
+docker compose exec avaclaw-gateway which gog
+docker compose exec avaclaw-gateway which goplaces
+docker compose exec avaclaw-gateway which wacli
 ```
 
 Expected output:
@@ -100,7 +100,7 @@ Expected output:
 Verify Gateway:
 
 ```bash
-docker compose logs -f openclaw-gateway
+docker compose logs -f avaclaw-gateway
 ```
 
 Expected output:
@@ -116,12 +116,12 @@ All long-lived state must survive restarts, rebuilds, and reboots.
 
 | Component           | Location                          | Persistence mechanism  | Notes                            |
 | ------------------- | --------------------------------- | ---------------------- | -------------------------------- |
-| Gateway config      | `/home/node/.openclaw/`           | Host volume mount      | Includes `openclaw.json`, tokens |
-| Model auth profiles | `/home/node/.openclaw/`           | Host volume mount      | OAuth tokens, API keys           |
-| Skill configs       | `/home/node/.openclaw/skills/`    | Host volume mount      | Skill-level state                |
-| Agent workspace     | `/home/node/.openclaw/workspace/` | Host volume mount      | Code and agent artifacts         |
-| WhatsApp session    | `/home/node/.openclaw/`           | Host volume mount      | Preserves QR login               |
-| Gmail keyring       | `/home/node/.openclaw/`           | Host volume + password | Requires `GOG_KEYRING_PASSWORD`  |
+| Gateway config      | `/home/node/.avaclaw/`           | Host volume mount      | Includes `avaclaw.json`, tokens |
+| Model auth profiles | `/home/node/.avaclaw/`           | Host volume mount      | OAuth tokens, API keys           |
+| Skill configs       | `/home/node/.avaclaw/skills/`    | Host volume mount      | Skill-level state                |
+| Agent workspace     | `/home/node/.avaclaw/workspace/` | Host volume mount      | Code and agent artifacts         |
+| WhatsApp session    | `/home/node/.avaclaw/`           | Host volume mount      | Preserves QR login               |
+| Gmail keyring       | `/home/node/.avaclaw/`           | Host volume + password | Requires `GOG_KEYRING_PASSWORD`  |
 | External binaries   | `/usr/local/bin/`                 | Docker image           | Must be baked at build time      |
 | Node runtime        | Container filesystem              | Docker image           | Rebuilt every image build        |
 | OS packages         | Container filesystem              | Docker image           | Do not install at runtime        |

@@ -136,7 +136,7 @@ vi.mock("../config/config.js", () => ({
 }));
 
 vi.mock("../commands/onboard-helpers.js", () => ({
-  DEFAULT_WORKSPACE: "/tmp/openclaw-workspace",
+  DEFAULT_WORKSPACE: "/tmp/avaclaw-workspace",
   applyWizardMetadata: (cfg: unknown) => cfg,
   summarizeExistingConfig: () => "summary",
   handleReset: async () => {},
@@ -219,7 +219,7 @@ describe("runOnboardingWizard", () => {
   let suiteCase = 0;
 
   beforeAll(async () => {
-    suiteRoot = await fs.mkdtemp(path.join(os.tmpdir(), "openclaw-onboard-suite-"));
+    suiteRoot = await fs.mkdtemp(path.join(os.tmpdir(), "avaclaw-onboard-suite-"));
   });
 
   afterAll(async () => {
@@ -399,8 +399,8 @@ describe("runOnboardingWizard", () => {
   });
 
   it("resolves gateway.auth.password SecretRef for local onboarding probe", async () => {
-    const previous = process.env.OPENCLAW_GATEWAY_PASSWORD;
-    process.env.OPENCLAW_GATEWAY_PASSWORD = "gateway-ref-password"; // pragma: allowlist secret
+    const previous = process.env.AVACLAW_GATEWAY_PASSWORD;
+    process.env.AVACLAW_GATEWAY_PASSWORD = "gateway-ref-password"; // pragma: allowlist secret
     probeGatewayReachable.mockClear();
     readConfigFileSnapshot.mockResolvedValueOnce({
       path: "/tmp/.avadisabelle/ava-claw.json",
@@ -416,7 +416,7 @@ describe("runOnboardingWizard", () => {
             password: {
               source: "env",
               provider: "default",
-              id: "OPENCLAW_GATEWAY_PASSWORD",
+              id: "AVACLAW_GATEWAY_PASSWORD",
             },
           },
         },
@@ -453,9 +453,9 @@ describe("runOnboardingWizard", () => {
       );
     } finally {
       if (previous === undefined) {
-        delete process.env.OPENCLAW_GATEWAY_PASSWORD;
+        delete process.env.AVACLAW_GATEWAY_PASSWORD;
       } else {
-        process.env.OPENCLAW_GATEWAY_PASSWORD = previous;
+        process.env.AVACLAW_GATEWAY_PASSWORD = previous;
       }
     }
 

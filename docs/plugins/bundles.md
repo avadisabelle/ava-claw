@@ -18,8 +18,8 @@ Today that means three closely related ecosystems:
 - Claude bundles
 - Cursor bundles
 
-Ava-Claw shows all of them as `Format: bundle` in `openclaw plugins list`.
-Verbose output and `openclaw plugins info <id>` also show the subtype
+Ava-Claw shows all of them as `Format: bundle` in `avaclaw plugins list`.
+Verbose output and `avaclaw plugins info <id>` also show the subtype
 (`codex`, `claude`, or `cursor`).
 
 Related:
@@ -72,8 +72,8 @@ Ava-Claw prefers native Ava-Claw plugin/package layouts before bundle handling.
 
 Practical effect:
 
-- `openclaw.plugin.json` wins over bundle detection
-- package installs with valid `package.json` + `openclaw.extensions` use the
+- `avaclaw.plugin.json` wins over bundle detection
+- package installs with valid `package.json` + `avaclaw.extensions` use the
   native install path
 - if a directory contains both native and bundle metadata, Ava-Claw treats it
   as native first
@@ -138,7 +138,7 @@ diagnostics/info output, but Ava-Claw does not run them yet:
 
 ## Capability reporting
 
-`openclaw plugins info <id>` shows bundle capabilities from the normalized
+`avaclaw plugins info <id>` shows bundle capabilities from the normalized
 bundle record.
 
 Supported capabilities are loaded quietly. Unsupported capabilities produce a
@@ -255,11 +255,11 @@ do expose.
 ## Install examples
 
 ```bash
-openclaw plugins install ./my-codex-bundle
-openclaw plugins install ./my-claude-bundle
-openclaw plugins install ./my-cursor-bundle
-openclaw plugins install ./my-bundle.tgz
-openclaw plugins info my-bundle
+avaclaw plugins install ./my-codex-bundle
+avaclaw plugins install ./my-claude-bundle
+avaclaw plugins install ./my-cursor-bundle
+avaclaw plugins install ./my-bundle.tgz
+avaclaw plugins info my-bundle
 ```
 
 If the directory is a native Ava-Claw plugin/package, the native install path
@@ -269,7 +269,7 @@ still wins.
 
 ### Bundle is detected but capabilities do not run
 
-Check `openclaw plugins info <id>`.
+Check `avaclaw plugins info <id>`.
 
 If the capability is listed but Ava-Claw says it is not wired yet, that is a
 real product limit, not a broken install.

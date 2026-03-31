@@ -1,6 +1,6 @@
 import { resolveWhatsAppAccount } from "../../../extensions/whatsapp/src/accounts.js";
 import type { ChannelId } from "../../channels/plugins/types.js";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import {
   loadSessionStore,
   resolveAgentMainSessionKey,
@@ -38,7 +38,7 @@ export type DeliveryTargetResolution =
     };
 
 export async function resolveDeliveryTarget(
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
   agentId: string,
   jobPayload: {
     channel?: "last" | ChannelId;

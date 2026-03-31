@@ -22,8 +22,8 @@ Tailscale provides HTTPS, routing, and (for Serve) identity headers.
 
 Set `gateway.auth.mode` to control the handshake:
 
-- `token` (default when `OPENCLAW_GATEWAY_TOKEN` is set)
-- `password` (shared secret via `OPENCLAW_GATEWAY_PASSWORD` or config)
+- `token` (default when `AVACLAW_GATEWAY_TOKEN` is set)
+- `password` (shared secret via `AVACLAW_GATEWAY_PASSWORD` or config)
 
 When `tailscale.mode = "serve"` and `gateway.auth.allowTailscale` is `true`,
 Control UI/WebSocket auth can use Tailscale identity headers
@@ -88,13 +88,13 @@ Note: loopback (`http://127.0.0.1:18789`) will **not** work in this mode.
 }
 ```
 
-Prefer `OPENCLAW_GATEWAY_PASSWORD` over committing a password to disk.
+Prefer `AVACLAW_GATEWAY_PASSWORD` over committing a password to disk.
 
 ## CLI examples
 
 ```bash
-openclaw gateway --tailscale serve
-openclaw gateway --tailscale funnel --auth password
+avaclaw gateway --tailscale serve
+avaclaw gateway --tailscale funnel --auth password
 ```
 
 ## Notes

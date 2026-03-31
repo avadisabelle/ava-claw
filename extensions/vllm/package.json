@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-vllm-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw vLLM provider plugin",
+  "description": "AvaClaw vLLM provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

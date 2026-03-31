@@ -1,12 +1,12 @@
 ---
-summary: "CLI reference for `openclaw message` (send + channel actions)"
+summary: "CLI reference for `avaclaw message` (send + channel actions)"
 read_when:
   - Adding or modifying message CLI actions
   - Changing outbound channel behavior
 title: "message"
 ---
 
-# `openclaw message`
+# `avaclaw message`
 
 Single outbound command for sending messages and channel actions
 (Discord/Google Chat/Slack/Mattermost (plugin)/Telegram/WhatsApp/Signal/iMessage/MS Teams).
@@ -14,7 +14,7 @@ Single outbound command for sending messages and channel actions
 ## Usage
 
 ```
-openclaw message <subcommand> [flags]
+avaclaw message <subcommand> [flags]
 ```
 
 Channel selection:
@@ -188,14 +188,14 @@ Name lookup:
 Send a Discord reply:
 
 ```
-openclaw message send --channel discord \
+avaclaw message send --channel discord \
   --target channel:123 --message "hi" --reply-to 456
 ```
 
 Send a Discord message with components:
 
 ```
-openclaw message send --channel discord \
+avaclaw message send --channel discord \
   --target channel:123 --message "Choose:" \
   --components '{"text":"Choose a path","blocks":[{"type":"actions","buttons":[{"label":"Approve","style":"success"},{"label":"Decline","style":"danger"}]}]}'
 ```
@@ -205,7 +205,7 @@ See [Discord components](/channels/discord#interactive-components) for the full 
 Create a Discord poll:
 
 ```
-openclaw message poll --channel discord \
+avaclaw message poll --channel discord \
   --target channel:123 \
   --poll-question "Snack?" \
   --poll-option Pizza --poll-option Sushi \
@@ -215,7 +215,7 @@ openclaw message poll --channel discord \
 Create a Telegram poll (auto-close in 2 minutes):
 
 ```
-openclaw message poll --channel telegram \
+avaclaw message poll --channel telegram \
   --target @mychat \
   --poll-question "Lunch?" \
   --poll-option Pizza --poll-option Sushi \
@@ -225,14 +225,14 @@ openclaw message poll --channel telegram \
 Send a Teams proactive message:
 
 ```
-openclaw message send --channel msteams \
+avaclaw message send --channel msteams \
   --target conversation:19:abc@thread.tacv2 --message "hi"
 ```
 
 Create a Teams poll:
 
 ```
-openclaw message poll --channel msteams \
+avaclaw message poll --channel msteams \
   --target conversation:19:abc@thread.tacv2 \
   --poll-question "Lunch?" \
   --poll-option Pizza --poll-option Sushi
@@ -241,14 +241,14 @@ openclaw message poll --channel msteams \
 React in Slack:
 
 ```
-openclaw message react --channel slack \
+avaclaw message react --channel slack \
   --target C123 --message-id 456 --emoji "✅"
 ```
 
 React in a Signal group:
 
 ```
-openclaw message react --channel signal \
+avaclaw message react --channel signal \
   --target signal:group:abc123 --message-id 1737630212345 \
   --emoji "✅" --target-author-uuid 123e4567-e89b-12d3-a456-426614174000
 ```
@@ -256,13 +256,13 @@ openclaw message react --channel signal \
 Send Telegram inline buttons:
 
 ```
-openclaw message send --channel telegram --target @mychat --message "Choose:" \
+avaclaw message send --channel telegram --target @mychat --message "Choose:" \
   --buttons '[ [{"text":"Yes","callback_data":"cmd:yes"}], [{"text":"No","callback_data":"cmd:no"}] ]'
 ```
 
 Send a Telegram image as a document to avoid compression:
 
 ```bash
-openclaw message send --channel telegram --target @mychat \
+avaclaw message send --channel telegram --target @mychat \
   --media ./diagram.png --force-document
 ```

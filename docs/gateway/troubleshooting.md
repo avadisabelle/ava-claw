@@ -16,18 +16,18 @@ Start at [/help/troubleshooting](/help/troubleshooting) if you want the fast tri
 Run these first, in this order:
 
 ```bash
-openclaw status
-openclaw gateway status
-openclaw logs --follow
-openclaw doctor
-openclaw channels status --probe
+avaclaw status
+avaclaw gateway status
+avaclaw logs --follow
+avaclaw doctor
+avaclaw channels status --probe
 ```
 
 Expected healthy signals:
 
-- `openclaw gateway status` shows `Runtime: running` and `RPC probe: ok`.
-- `openclaw doctor` reports no blocking config/service issues.
-- `openclaw channels status --probe` shows connected/ready channels.
+- `avaclaw gateway status` shows `Runtime: running` and `RPC probe: ok`.
+- `avaclaw doctor` reports no blocking config/service issues.
+- `avaclaw channels status --probe` shows connected/ready channels.
 
 ## Anthropic 429 extra usage required for long context
 
@@ -35,9 +35,9 @@ Use this when logs/errors include:
 `HTTP 429: rate_limit_error: Extra usage is required for long context requests`.
 
 ```bash
-openclaw logs --follow
-openclaw models status
-openclaw config get agents.defaults.models
+avaclaw logs --follow
+avaclaw models status
+avaclaw config get agents.defaults.models
 ```
 
 Look for:
@@ -63,11 +63,11 @@ Related:
 If channels are up but nothing answers, check routing and policy before reconnecting anything.
 
 ```bash
-openclaw status
-openclaw channels status --probe
-openclaw pairing list --channel <channel> [--account <id>]
-openclaw config get channels
-openclaw logs --follow
+avaclaw status
+avaclaw channels status --probe
+avaclaw pairing list --channel <channel> [--account <id>]
+avaclaw config get channels
+avaclaw logs --follow
 ```
 
 Look for:
@@ -93,11 +93,11 @@ Related:
 When dashboard/control UI will not connect, validate URL, auth mode, and secure context assumptions.
 
 ```bash
-openclaw gateway status
-openclaw status
-openclaw logs --follow
-openclaw doctor
-openclaw gateway status --json
+avaclaw gateway status
+avaclaw status
+avaclaw logs --follow
+avaclaw doctor
+avaclaw gateway status --json
 ```
 
 Look for:
@@ -123,17 +123,17 @@ Use `error.details.code` from the failed `connect` response to pick the next act
 
 | Detail code                  | Meaning                                                  | Recommended action                                                                                                                                                   |
 | ---------------------------- | -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AUTH_TOKEN_MISSING`         | Client did not send a required shared token.             | Paste/set token in the client and retry. For dashboard paths: `openclaw config get gateway.auth.token` then paste into Control UI settings.                          |
+| `AUTH_TOKEN_MISSING`         | Client did not send a required shared token.             | Paste/set token in the client and retry. For dashboard paths: `avaclaw config get gateway.auth.token` then paste into Control UI settings.                          |
 | `AUTH_TOKEN_MISMATCH`        | Shared token did not match gateway auth token.           | If `canRetryWithDeviceToken=true`, allow one trusted retry. If still failing, run the [token drift recovery checklist](/cli/devices#token-drift-recovery-checklist). |
 | `AUTH_DEVICE_TOKEN_MISMATCH` | Cached per-device token is stale or revoked.             | Rotate/re-approve device token using [devices CLI](/cli/devices), then reconnect.                                                                                    |
-| `PAIRING_REQUIRED`           | Device identity is known but not approved for this role. | Approve pending request: `openclaw devices list` then `openclaw devices approve <requestId>`.                                                                        |
+| `PAIRING_REQUIRED`           | Device identity is known but not approved for this role. | Approve pending request: `avaclaw devices list` then `avaclaw devices approve <requestId>`.                                                                        |
 
 Device auth v2 migration check:
 
 ```bash
-openclaw --version
-openclaw doctor
-openclaw gateway status
+avaclaw --version
+avaclaw doctor
+avaclaw gateway status
 ```
 
 If logs show nonce/signature errors, update the connecting client and verify it:
@@ -154,11 +154,11 @@ Related:
 Use this when service is installed but process does not stay up.
 
 ```bash
-openclaw gateway status
-openclaw status
-openclaw logs --follow
-openclaw doctor
-openclaw gateway status --deep
+avaclaw gateway status
+avaclaw status
+avaclaw logs --follow
+avaclaw doctor
+avaclaw gateway status --deep
 ```
 
 Look for:
@@ -169,7 +169,7 @@ Look for:
 
 Common signatures:
 
-- `Gateway start blocked: set gateway.mode=local` → local gateway mode is not enabled. Fix: set `gateway.mode="local"` in your config (or run `openclaw configure`). If you are running Ava-Claw via Podman using the dedicated `openclaw` user, the config lives at `~openclaw/.avadisabelle/ava-claw.json`.
+- `Gateway start blocked: set gateway.mode=local` → local gateway mode is not enabled. Fix: set `gateway.mode="local"` in your config (or run `avaclaw configure`). If you are running Ava-Claw via Podman using the dedicated `avaclaw` user, the config lives at `~avaclaw/.avadisabelle/ava-claw.json`.
 - `refusing to bind gateway ... without auth` → non-loopback bind without token/password.
 - `another gateway instance is already listening` / `EADDRINUSE` → port conflict.
 
@@ -184,11 +184,11 @@ Related:
 If channel state is connected but message flow is dead, focus on policy, permissions, and channel specific delivery rules.
 
 ```bash
-openclaw channels status --probe
-openclaw pairing list --channel <channel> [--account <id>]
-openclaw status --deep
-openclaw logs --follow
-openclaw config get channels
+avaclaw channels status --probe
+avaclaw pairing list --channel <channel> [--account <id>]
+avaclaw status --deep
+avaclaw logs --follow
+avaclaw config get channels
 ```
 
 Look for:
@@ -215,11 +215,11 @@ Related:
 If cron or heartbeat did not run or did not deliver, verify scheduler state first, then delivery target.
 
 ```bash
-openclaw cron status
-openclaw cron list
-openclaw cron runs --id <jobId> --limit 20
-openclaw system heartbeat last
-openclaw logs --follow
+avaclaw cron status
+avaclaw cron list
+avaclaw cron runs --id <jobId> --limit 20
+avaclaw system heartbeat last
+avaclaw logs --follow
 ```
 
 Look for:
@@ -247,11 +247,11 @@ Related:
 If a node is paired but tools fail, isolate foreground, permission, and approval state.
 
 ```bash
-openclaw nodes status
-openclaw nodes describe --node <idOrNameOrIp>
-openclaw approvals get --node <idOrNameOrIp>
-openclaw logs --follow
-openclaw status
+avaclaw nodes status
+avaclaw nodes describe --node <idOrNameOrIp>
+avaclaw approvals get --node <idOrNameOrIp>
+avaclaw logs --follow
+avaclaw status
 ```
 
 Look for:
@@ -278,11 +278,11 @@ Related:
 Use this when browser tool actions fail even though the gateway itself is healthy.
 
 ```bash
-openclaw browser status
-openclaw browser start --browser-profile openclaw
-openclaw browser profiles
-openclaw logs --follow
-openclaw doctor
+avaclaw browser status
+avaclaw browser start --browser-profile avaclaw
+avaclaw browser profiles
+avaclaw logs --follow
+avaclaw doctor
 ```
 
 Look for:
@@ -311,10 +311,10 @@ Most post-upgrade breakage is config drift or stricter defaults now being enforc
 ### 1) Auth and URL override behavior changed
 
 ```bash
-openclaw gateway status
-openclaw config get gateway.mode
-openclaw config get gateway.remote.url
-openclaw config get gateway.auth.mode
+avaclaw gateway status
+avaclaw config get gateway.mode
+avaclaw config get gateway.remote.url
+avaclaw config get gateway.auth.mode
 ```
 
 What to check:
@@ -330,10 +330,10 @@ Common signatures:
 ### 2) Bind and auth guardrails are stricter
 
 ```bash
-openclaw config get gateway.bind
-openclaw config get gateway.auth.token
-openclaw gateway status
-openclaw logs --follow
+avaclaw config get gateway.bind
+avaclaw config get gateway.auth.token
+avaclaw gateway status
+avaclaw logs --follow
 ```
 
 What to check:
@@ -349,10 +349,10 @@ Common signatures:
 ### 3) Pairing and device identity state changed
 
 ```bash
-openclaw devices list
-openclaw pairing list --channel <channel> [--account <id>]
-openclaw logs --follow
-openclaw doctor
+avaclaw devices list
+avaclaw pairing list --channel <channel> [--account <id>]
+avaclaw logs --follow
+avaclaw doctor
 ```
 
 What to check:
@@ -368,8 +368,8 @@ Common signatures:
 If the service config and runtime still disagree after checks, reinstall service metadata from the same profile/state directory:
 
 ```bash
-openclaw gateway install --force
-openclaw gateway restart
+avaclaw gateway install --force
+avaclaw gateway restart
 ```
 
 Related:

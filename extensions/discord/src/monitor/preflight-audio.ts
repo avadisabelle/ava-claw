@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../../../../src/config/config.js";
+import type { AvaClawConfig } from "../../../../src/config/config.js";
 import { logVerbose } from "../../../../src/globals.js";
 
 type DiscordAudioAttachment = {
@@ -23,7 +23,7 @@ export async function resolveDiscordPreflightAudioMentionContext(params: {
   isDirectMessage: boolean;
   shouldRequireMention: boolean;
   mentionRegexes: RegExp[];
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   abortSignal?: AbortSignal;
 }): Promise<{
   hasAudioAttachment: boolean;

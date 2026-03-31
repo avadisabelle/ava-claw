@@ -1,11 +1,11 @@
 ---
-summary: "CLI reference for `openclaw agents` (list/add/delete/bindings/bind/unbind/set identity)"
+summary: "CLI reference for `avaclaw agents` (list/add/delete/bindings/bind/unbind/set identity)"
 read_when:
   - You want multiple isolated agents (workspaces + routing + auth)
 title: "agents"
 ---
 
-# `openclaw agents`
+# `avaclaw agents`
 
 Manage isolated agents (workspaces + auth + routing).
 
@@ -17,14 +17,14 @@ Related:
 ## Examples
 
 ```bash
-openclaw agents list
-openclaw agents add work --workspace ~/.openclaw/workspace-work
-openclaw agents bindings
-openclaw agents bind --agent work --bind telegram:ops
-openclaw agents unbind --agent work --bind telegram:ops
-openclaw agents set-identity --workspace ~/.openclaw/workspace --from-identity
-openclaw agents set-identity --agent main --avatar avatars/openclaw.png
-openclaw agents delete work
+avaclaw agents list
+avaclaw agents add work --workspace ~/.avaclaw/workspace-work
+avaclaw agents bindings
+avaclaw agents bind --agent work --bind telegram:ops
+avaclaw agents unbind --agent work --bind telegram:ops
+avaclaw agents set-identity --workspace ~/.avaclaw/workspace --from-identity
+avaclaw agents set-identity --agent main --avatar avatars/avaclaw.png
+avaclaw agents delete work
 ```
 
 ## Routing bindings
@@ -34,15 +34,15 @@ Use routing bindings to pin inbound channel traffic to a specific agent.
 List bindings:
 
 ```bash
-openclaw agents bindings
-openclaw agents bindings --agent work
-openclaw agents bindings --json
+avaclaw agents bindings
+avaclaw agents bindings --agent work
+avaclaw agents bindings --json
 ```
 
 Add bindings:
 
 ```bash
-openclaw agents bind --agent work --bind telegram:ops --bind discord:guild-a
+avaclaw agents bind --agent work --bind telegram:ops --bind discord:guild-a
 ```
 
 If you omit `accountId` (`--bind <channel>`), Ava-Claw resolves it from channel defaults and plugin setup hooks when available.
@@ -57,10 +57,10 @@ Example:
 
 ```bash
 # initial channel-only binding
-openclaw agents bind --agent work --bind telegram
+avaclaw agents bind --agent work --bind telegram
 
 # later upgrade to account-scoped binding
-openclaw agents bind --agent work --bind telegram:ops
+avaclaw agents bind --agent work --bind telegram:ops
 ```
 
 After the upgrade, routing for that binding is scoped to `telegram:ops`. If you also want default-account routing, add it explicitly (for example `--bind telegram:default`).
@@ -68,15 +68,15 @@ After the upgrade, routing for that binding is scoped to `telegram:ops`. If you 
 Remove bindings:
 
 ```bash
-openclaw agents unbind --agent work --bind telegram:ops
-openclaw agents unbind --agent work --all
+avaclaw agents unbind --agent work --bind telegram:ops
+avaclaw agents unbind --agent work --all
 ```
 
 ## Identity files
 
 Each agent workspace can include an `IDENTITY.md` at the workspace root:
 
-- Example path: `~/.openclaw/workspace/IDENTITY.md`
+- Example path: `~/.avaclaw/workspace/IDENTITY.md`
 - `set-identity --from-identity` reads from the workspace root (or an explicit `--identity-file`)
 
 Avatar paths resolve relative to the workspace root.
@@ -93,13 +93,13 @@ Avatar paths resolve relative to the workspace root.
 Load from `IDENTITY.md`:
 
 ```bash
-openclaw agents set-identity --workspace ~/.openclaw/workspace --from-identity
+avaclaw agents set-identity --workspace ~/.avaclaw/workspace --from-identity
 ```
 
 Override fields explicitly:
 
 ```bash
-openclaw agents set-identity --agent main --name "Ava-Claw" --emoji "🦞" --avatar avatars/openclaw.png
+avaclaw agents set-identity --agent main --name "Ava-Claw" --emoji "🦞" --avatar avatars/avaclaw.png
 ```
 
 Config sample:
@@ -114,7 +114,7 @@ Config sample:
           name: "Ava-Claw",
           theme: "space lobster",
           emoji: "🦞",
-          avatar: "avatars/openclaw.png",
+          avatar: "avatars/avaclaw.png",
         },
       },
     ],

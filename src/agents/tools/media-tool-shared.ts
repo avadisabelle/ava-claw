@@ -1,6 +1,6 @@
 import { type Api, type Model } from "@avadisabelle/ava-pi-ai";
 import { getDefaultLocalRoots } from "../../../extensions/whatsapp/src/media.js";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import type { ImageModelConfig } from "./image-tool.helpers.js";
 import { getApiKeyForModel, normalizeWorkspaceDir, requireApiKey } from "./tool-runtime.helpers.js";
 
@@ -18,9 +18,9 @@ type TextToolResult = {
 };
 
 export function applyImageModelConfigDefaults(
-  cfg: OpenClawConfig | undefined,
+  cfg: AvaClawConfig | undefined,
   imageModelConfig: ImageModelConfig,
-): OpenClawConfig | undefined {
+): AvaClawConfig | undefined {
   if (!cfg) {
     return undefined;
   }
@@ -96,7 +96,7 @@ export function resolveModelFromRegistry(params: {
 
 export async function resolveModelRuntimeApiKey(params: {
   model: Model<Api>;
-  cfg: OpenClawConfig | undefined;
+  cfg: AvaClawConfig | undefined;
   agentDir: string;
   authStorage: {
     setRuntimeApiKey: (provider: string, apiKey: string) => void;

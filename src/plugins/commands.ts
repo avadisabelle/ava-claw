@@ -7,7 +7,7 @@
 
 import { parseDiscordTarget } from "../../extensions/discord/src/targets.js";
 import { parseTelegramTarget } from "../../extensions/telegram/src/targets.js";
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import { logVerbose } from "../globals.js";
 import {
   detachPluginConversationBinding,
@@ -15,12 +15,12 @@ import {
   requestPluginConversationBinding,
 } from "./conversation-binding.js";
 import type {
-  OpenClawPluginCommandDefinition,
+  AvaClawPluginCommandDefinition,
   PluginCommandContext,
   PluginCommandResult,
 } from "./types.js";
 
-type RegisteredPluginCommand = OpenClawPluginCommandDefinition & {
+type RegisteredPluginCommand = AvaClawPluginCommandDefinition & {
   pluginId: string;
   pluginName?: string;
   pluginRoot?: string;
@@ -117,7 +117,7 @@ export type CommandRegistrationResult = {
  * Shared by both the global registration path and snapshot (non-activating) loads.
  */
 export function validatePluginCommandDefinition(
-  command: OpenClawPluginCommandDefinition,
+  command: AvaClawPluginCommandDefinition,
 ): string | null {
   if (typeof command.handler !== "function") {
     return "Command handler must be a function";
@@ -140,7 +140,7 @@ export function validatePluginCommandDefinition(
  */
 export function registerPluginCommand(
   pluginId: string,
-  command: OpenClawPluginCommandDefinition,
+  command: AvaClawPluginCommandDefinition,
   opts?: { pluginName?: string; pluginRoot?: string },
 ): CommandRegistrationResult {
   // Prevent registration while commands are being processed
@@ -331,7 +331,7 @@ export async function executePluginCommand(params: {
   channelId?: PluginCommandContext["channelId"];
   isAuthorizedSender: boolean;
   commandBody: string;
-  config: OpenClawConfig;
+  config: AvaClawConfig;
   from?: PluginCommandContext["from"];
   to?: PluginCommandContext["to"];
   accountId?: PluginCommandContext["accountId"];
@@ -441,7 +441,7 @@ export function listPluginCommands(): Array<{
 }
 
 function resolvePluginNativeName(
-  command: OpenClawPluginCommandDefinition,
+  command: AvaClawPluginCommandDefinition,
   provider?: string,
 ): string {
   const providerName = provider?.trim().toLowerCase();

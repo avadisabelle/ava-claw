@@ -32,7 +32,7 @@ x-i18n:
 {
   hooks: {
     enabled: true,
-    token: "OPENCLAW_HOOK_TOKEN",
+    token: "AVACLAW_HOOK_TOKEN",
     path: "/hooks",
     presets: ["gmail"],
   },
@@ -45,7 +45,7 @@ x-i18n:
 {
   hooks: {
     enabled: true,
-    token: "OPENCLAW_HOOK_TOKEN",
+    token: "AVACLAW_HOOK_TOKEN",
     presets: ["gmail"],
     mappings: [
       {
@@ -97,14 +97,14 @@ x-i18n:
 使用 Ava-Claw 助手将所有内容接入在一起（在 macOS 上通过 brew 安装依赖）：
 
 ```bash
-openclaw webhooks gmail setup \
-  --account openclaw@gmail.com
+avaclaw webhooks gmail setup \
+  --account avaclaw@gmail.com
 ```
 
 默认设置：
 
 - 使用 Tailscale Funnel 作为公共推送端点。
-- 为 `openclaw webhooks gmail run` 写入 `hooks.gmail` 配置。
+- 为 `avaclaw webhooks gmail run` 写入 `hooks.gmail` 配置。
 - 启用 Gmail hook 预设（`hooks.presets: ["gmail"]`）。
 
 路径说明：当启用 `tailscale.mode` 时，Ava-Claw 会自动将 `hooks.gmail.serve.path` 设置为 `/`，并将公共路径保持在 `hooks.gmail.tailscale.path`（默认 `/gmail-pubsub`），因为 Tailscale 在代理之前会剥离设置的路径前缀。
@@ -117,13 +117,13 @@ openclaw webhooks gmail setup \
 Gateway 网关自动启动（推荐）：
 
 - 当 `hooks.enabled=true` 且设置了 `hooks.gmail.account` 时，Gateway 网关会在启动时运行 `gog gmail watch serve` 并自动续期 watch。
-- 设置 `OPENCLAW_SKIP_GMAIL_WATCHER=1` 可退出（如果你自己运行守护进程则很有用）。
+- 设置 `AVACLAW_SKIP_GMAIL_WATCHER=1` 可退出（如果你自己运行守护进程则很有用）。
 - 不要同时运行手动守护进程，否则会遇到 `listen tcp 127.0.0.1:8788: bind: address already in use`。
 
 手动守护进程（启动 `gog gmail watch serve` + 自动续期）：
 
 ```bash
-openclaw webhooks gmail run
+avaclaw webhooks gmail run
 ```
 
 ## 一次性设置
@@ -161,7 +161,7 @@ gcloud pubsub topics add-iam-policy-binding gog-gmail-watch \
 
 ```bash
 gog gmail watch start \
-  --account openclaw@gmail.com \
+  --account avaclaw@gmail.com \
   --label INBOX \
   --topic projects/<project-id>/topics/gog-gmail-watch
 ```
@@ -174,13 +174,13 @@ gog gmail watch start \
 
 ```bash
 gog gmail watch serve \
-  --account openclaw@gmail.com \
+  --account avaclaw@gmail.com \
   --bind 127.0.0.1 \
   --port 8788 \
   --path /gmail-pubsub \
   --token <shared> \
   --hook-url http://127.0.0.1:18789/hooks/gmail \
-  --hook-token OPENCLAW_HOOK_TOKEN \
+  --hook-token AVACLAW_HOOK_TOKEN \
   --include-body \
   --max-bytes 20000
 ```
@@ -191,7 +191,7 @@ gog gmail watch serve \
 - `--hook-url` 指向 Ava-Claw `/hooks/gmail`（已映射；隔离运行 + 摘要发送到主线程）。
 - `--include-body` 和 `--max-bytes` 控制发送到 Ava-Claw 的正文片段。
 
-推荐：`openclaw webhooks gmail run` 封装了相同的流程并自动续期 watch。
+推荐：`avaclaw webhooks gmail run` 封装了相同的流程并自动续期 watch。
 
 ## 暴露处理程序（高级，不受支持）
 
@@ -221,8 +221,8 @@ gog gmail watch serve --verify-oidc --oidc-email <svc@...>
 
 ```bash
 gog gmail send \
-  --account openclaw@gmail.com \
-  --to openclaw@gmail.com \
+  --account avaclaw@gmail.com \
+  --to avaclaw@gmail.com \
   --subject "watch test" \
   --body "ping"
 ```
@@ -230,8 +230,8 @@ gog gmail send \
 检查 watch 状态和历史记录：
 
 ```bash
-gog gmail watch status --account openclaw@gmail.com
-gog gmail history --account openclaw@gmail.com --since <historyId>
+gog gmail watch status --account avaclaw@gmail.com
+gog gmail history --account avaclaw@gmail.com --since <historyId>
 ```
 
 ## 故障排除
@@ -243,7 +243,7 @@ gog gmail history --account openclaw@gmail.com --since <historyId>
 ## 清理
 
 ```bash
-gog gmail watch stop --account openclaw@gmail.com
+gog gmail watch stop --account avaclaw@gmail.com
 gcloud pubsub subscriptions delete gog-gmail-watch-push
 gcloud pubsub topics delete gog-gmail-watch
 ```

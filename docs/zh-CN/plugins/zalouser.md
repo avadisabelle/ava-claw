@@ -34,7 +34,7 @@ x-i18n:
 ### 选项 A：从 npm 安装
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-zalouser
+avaclaw plugins install @avadisabelle/ava-claw-zalouser
 ```
 
 之后重启 Gateway 网关。
@@ -42,7 +42,7 @@ openclaw plugins install @avadisabelle/ava-claw-zalouser
 ### 选项 B：从本地文件夹安装（开发）
 
 ```bash
-openclaw plugins install ./extensions/zalouser
+avaclaw plugins install ./extensions/zalouser
 cd ./extensions/zalouser && pnpm install
 ```
 
@@ -74,11 +74,11 @@ zca --version
 ## CLI
 
 ```bash
-openclaw channels login --channel zalouser
-openclaw channels logout --channel zalouser
-openclaw channels status --probe
-openclaw message send --channel zalouser --target <threadId> --message "Hello from Ava-Claw"
-openclaw directory peers list --channel zalouser --query "name"
+avaclaw channels login --channel zalouser
+avaclaw channels logout --channel zalouser
+avaclaw channels status --probe
+avaclaw message send --channel zalouser --target <threadId> --message "Hello from Ava-Claw"
+avaclaw directory peers list --channel zalouser --query "name"
 ```
 
 ## 智能体工具

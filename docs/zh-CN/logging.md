@@ -36,7 +36,7 @@ Ava-Claw 在两个地方记录日志：
 ```json
 {
   "logging": {
-    "file": "/path/to/openclaw.log"
+    "file": "/path/to/avaclaw.log"
   }
 }
 ```
@@ -48,7 +48,7 @@ Ava-Claw 在两个地方记录日志：
 使用 CLI 通过 RPC 跟踪 Gateway 网关日志文件：
 
 ```bash
-openclaw logs --follow
+avaclaw logs --follow
 ```
 
 输出模式：
@@ -69,7 +69,7 @@ openclaw logs --follow
 如果 Gateway 网关无法访问，CLI 会打印一个简短提示运行：
 
 ```bash
-openclaw doctor
+avaclaw doctor
 ```
 
 ### 控制 UI（Web）
@@ -82,7 +82,7 @@ openclaw doctor
 要过滤渠道活动（WhatsApp/Telegram 等），使用：
 
 ```bash
-openclaw channels logs --channel whatsapp
+avaclaw channels logs --channel whatsapp
 ```
 
 ## 日志格式
@@ -211,7 +211,7 @@ openclaw channels logs --channel whatsapp
 环境变量覆盖（一次性）：
 
 ```
-OPENCLAW_DIAGNOSTICS=telegram.http,telegram.payload
+AVACLAW_DIAGNOSTICS=telegram.http,telegram.payload
 ```
 
 注意：
@@ -240,7 +240,7 @@ OPENCLAW_DIAGNOSTICS=telegram.http,telegram.payload
       "enabled": true,
       "endpoint": "http://otel-collector:4318",
       "protocol": "http/protobuf",
-      "serviceName": "openclaw-gateway",
+      "serviceName": "avaclaw-gateway",
       "traces": true,
       "metrics": true,
       "logs": true,
@@ -253,7 +253,7 @@ OPENCLAW_DIAGNOSTICS=telegram.http,telegram.payload
 
 注意：
 
-- 你也可以使用 `openclaw plugins enable diagnostics-otel` 启用插件。
+- 你也可以使用 `avaclaw plugins enable diagnostics-otel` 启用插件。
 - `protocol` 目前仅支持 `http/protobuf`。`grpc` 被忽略。
 - 指标包括令牌使用、成本、上下文大小、运行持续时间和消息流计数器/直方图（webhooks、队列、会话状态、队列深度/等待）。
 - 追踪/指标可以通过 `traces` / `metrics` 切换（默认：开启）。启用时，追踪包括模型使用 span 加上 webhook/消息处理 span。
@@ -264,45 +264,45 @@ OPENCLAW_DIAGNOSTICS=telegram.http,telegram.payload
 
 模型使用：
 
-- `openclaw.tokens`（计数器，属性：`openclaw.token`、`openclaw.channel`、`openclaw.provider`、`openclaw.model`）
-- `openclaw.cost.usd`（计数器，属性：`openclaw.channel`、`openclaw.provider`、`openclaw.model`）
-- `openclaw.run.duration_ms`（直方图，属性：`openclaw.channel`、`openclaw.provider`、`openclaw.model`）
-- `openclaw.context.tokens`（直方图，属性：`openclaw.context`、`openclaw.channel`、`openclaw.provider`、`openclaw.model`）
+- `avaclaw.tokens`（计数器，属性：`avaclaw.token`、`avaclaw.channel`、`avaclaw.provider`、`avaclaw.model`）
+- `avaclaw.cost.usd`（计数器，属性：`avaclaw.channel`、`avaclaw.provider`、`avaclaw.model`）
+- `avaclaw.run.duration_ms`（直方图，属性：`avaclaw.channel`、`avaclaw.provider`、`avaclaw.model`）
+- `avaclaw.context.tokens`（直方图，属性：`avaclaw.context`、`avaclaw.channel`、`avaclaw.provider`、`avaclaw.model`）
 
 消息流：
 
-- `openclaw.webhook.received`（计数器，属性：`openclaw.channel`、`openclaw.webhook`）
-- `openclaw.webhook.error`（计数器，属性：`openclaw.channel`、`openclaw.webhook`）
-- `openclaw.webhook.duration_ms`（直方图，属性：`openclaw.channel`、`openclaw.webhook`）
-- `openclaw.message.queued`（计数器，属性：`openclaw.channel`、`openclaw.source`）
-- `openclaw.message.processed`（计数器，属性：`openclaw.channel`、`openclaw.outcome`）
-- `openclaw.message.duration_ms`（直方图，属性：`openclaw.channel`、`openclaw.outcome`）
+- `avaclaw.webhook.received`（计数器，属性：`avaclaw.channel`、`avaclaw.webhook`）
+- `avaclaw.webhook.error`（计数器，属性：`avaclaw.channel`、`avaclaw.webhook`）
+- `avaclaw.webhook.duration_ms`（直方图，属性：`avaclaw.channel`、`avaclaw.webhook`）
+- `avaclaw.message.queued`（计数器，属性：`avaclaw.channel`、`avaclaw.source`）
+- `avaclaw.message.processed`（计数器，属性：`avaclaw.channel`、`avaclaw.outcome`）
+- `avaclaw.message.duration_ms`（直方图，属性：`avaclaw.channel`、`avaclaw.outcome`）
 
 队列 + 会话：
 
-- `openclaw.queue.lane.enqueue`（计数器，属性：`openclaw.lane`）
-- `openclaw.queue.lane.dequeue`（计数器，属性：`openclaw.lane`）
-- `openclaw.queue.depth`（直方图，属性：`openclaw.lane` 或 `openclaw.channel=heartbeat`）
-- `openclaw.queue.wait_ms`（直方图，属性：`openclaw.lane`）
-- `openclaw.session.state`（计数器，属性：`openclaw.state`、`openclaw.reason`）
-- `openclaw.session.stuck`（计数器，属性：`openclaw.state`）
-- `openclaw.session.stuck_age_ms`（直方图，属性：`openclaw.state`）
-- `openclaw.run.attempt`（计数器，属性：`openclaw.attempt`）
+- `avaclaw.queue.lane.enqueue`（计数器，属性：`avaclaw.lane`）
+- `avaclaw.queue.lane.dequeue`（计数器，属性：`avaclaw.lane`）
+- `avaclaw.queue.depth`（直方图，属性：`avaclaw.lane` 或 `avaclaw.channel=heartbeat`）
+- `avaclaw.queue.wait_ms`（直方图，属性：`avaclaw.lane`）
+- `avaclaw.session.state`（计数器，属性：`avaclaw.state`、`avaclaw.reason`）
+- `avaclaw.session.stuck`（计数器，属性：`avaclaw.state`）
+- `avaclaw.session.stuck_age_ms`（直方图，属性：`avaclaw.state`）
+- `avaclaw.run.attempt`（计数器，属性：`avaclaw.attempt`）
 
 ### 导出的 span（名称 + 关键属性）
 
-- `openclaw.model.usage`
-  - `openclaw.channel`、`openclaw.provider`、`openclaw.model`
-  - `openclaw.sessionKey`、`openclaw.sessionId`
-  - `openclaw.tokens.*`（input/output/cache_read/cache_write/total）
-- `openclaw.webhook.processed`
-  - `openclaw.channel`、`openclaw.webhook`、`openclaw.chatId`
-- `openclaw.webhook.error`
-  - `openclaw.channel`、`openclaw.webhook`、`openclaw.chatId`、`openclaw.error`
-- `openclaw.message.processed`
-  - `openclaw.channel`、`openclaw.outcome`、`openclaw.chatId`、`openclaw.messageId`、`openclaw.sessionKey`、`openclaw.sessionId`、`openclaw.reason`
-- `openclaw.session.stuck`
-  - `openclaw.state`、`openclaw.ageMs`、`openclaw.queueDepth`、`openclaw.sessionKey`、`openclaw.sessionId`
+- `avaclaw.model.usage`
+  - `avaclaw.channel`、`avaclaw.provider`、`avaclaw.model`
+  - `avaclaw.sessionKey`、`avaclaw.sessionId`
+  - `avaclaw.tokens.*`（input/output/cache_read/cache_write/total）
+- `avaclaw.webhook.processed`
+  - `avaclaw.channel`、`avaclaw.webhook`、`avaclaw.chatId`
+- `avaclaw.webhook.error`
+  - `avaclaw.channel`、`avaclaw.webhook`、`avaclaw.chatId`、`avaclaw.error`
+- `avaclaw.message.processed`
+  - `avaclaw.channel`、`avaclaw.outcome`、`avaclaw.chatId`、`avaclaw.messageId`、`avaclaw.sessionKey`、`avaclaw.sessionId`、`avaclaw.reason`
+- `avaclaw.session.stuck`
+  - `avaclaw.state`、`avaclaw.ageMs`、`avaclaw.queueDepth`、`avaclaw.sessionKey`、`avaclaw.sessionId`
 
 ### 采样 + 刷新
 
@@ -324,6 +324,6 @@ OPENCLAW_DIAGNOSTICS=telegram.http,telegram.payload
 
 ## 故障排除提示
 
-- **Gateway 网关无法访问？** 先运行 `openclaw doctor`。
+- **Gateway 网关无法访问？** 先运行 `avaclaw doctor`。
 - **日志为空？** 检查 Gateway 网关是否正在运行并写入 `logging.file` 中的文件路径。
 - **需要更多细节？** 将 `logging.level` 设置为 `debug` 或 `trace` 并重试。

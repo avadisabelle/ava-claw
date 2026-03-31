@@ -4,7 +4,7 @@ import { parseOptionalDelimitedEntries } from "../../channels/plugins/helpers.js
 import { getChannelPlugin, normalizeChannelId } from "../../channels/plugins/index.js";
 import { moveSingleAccountChannelSectionToDefaultAccount } from "../../channels/plugins/setup-helpers.js";
 import type { ChannelId, ChannelPlugin, ChannelSetupInput } from "../../channels/plugins/types.js";
-import { writeConfigFile, type OpenClawConfig } from "../../config/config.js";
+import { writeConfigFile, type AvaClawConfig } from "../../config/config.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../../routing/session-key.js";
 import { defaultRuntime, type RuntimeEnv } from "../../runtime.js";
 import { createClackPrompter } from "../../wizard/clack-prompter.js";
@@ -21,7 +21,7 @@ export type ChannelsAddOptions = {
   dmAllowlist?: string;
 } & Omit<ChannelSetupInput, "groupChannels" | "dmAllowlist" | "initialSyncLimit">;
 
-function resolveCatalogChannelEntry(raw: string, cfg: OpenClawConfig | null) {
+function resolveCatalogChannelEntry(raw: string, cfg: AvaClawConfig | null) {
   const trimmed = raw.trim().toLowerCase();
   if (!trimmed) {
     return undefined;
@@ -177,7 +177,7 @@ export async function channelsAddCommand(
   let catalogEntry = channel ? undefined : resolveCatalogChannelEntry(rawChannel, nextConfig);
   const resolveWorkspaceDir = () =>
     resolveAgentWorkspaceDir(nextConfig, resolveDefaultAgentId(nextConfig));
-  // May trigger loadOpenClawPlugins on cache miss (disk scan + jiti import)
+  // May trigger loadAvaClawPlugins on cache miss (disk scan + jiti import)
   const loadScopedPlugin = async (
     channelId: ChannelId,
     pluginId?: string,

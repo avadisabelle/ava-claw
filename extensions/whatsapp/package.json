@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-whatsapp",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw WhatsApp channel plugin",
+  "description": "AvaClaw WhatsApp channel plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

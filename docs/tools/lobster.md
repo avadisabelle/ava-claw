@@ -72,7 +72,7 @@ Example: map input items into tool calls:
 
 ```bash
 gog.gmail.search --query 'newer_than:1d' \
-  | openclaw.invoke --tool message --action send --each --item-key message --args-json '{"provider":"telegram","to":"..."}'
+  | avaclaw.invoke --tool message --action send --each --item-key message --args-json '{"provider":"telegram","to":"..."}'
 ```
 
 ## JSON-only LLM steps (llm-task)
@@ -104,7 +104,7 @@ Enable the tool:
 Use it in a pipeline:
 
 ```lobster
-openclaw.invoke --tool llm-task --action json --args-json '{
+avaclaw.invoke --tool llm-task --action json --args-json '{
   "prompt": "Given the input email, return intent and draft.",
   "thinking": "low",
   "input": { "subject": "Hello", "body": "Can you help?" },
@@ -154,7 +154,7 @@ Notes:
 
 ## Install Lobster
 
-Install the Lobster CLI on the **same host** that runs the Ava-Claw Gateway (see the [Lobster repo](https://github.com/openclaw/lobster)), and ensure `lobster` is on `PATH`.
+Install the Lobster CLI on the **same host** that runs the Ava-Claw Gateway (see the [Lobster repo](https://github.com/avaclaw/lobster)), and ensure `lobster` is on `PATH`.
 
 ## Enable the tool
 
@@ -199,12 +199,12 @@ Without Lobster:
 
 ```
 User: "Check my email and draft replies"
-→ openclaw calls gmail.list
+→ avaclaw calls gmail.list
 → LLM summarizes
 → User: "draft replies to #2 and #5"
 → LLM drafts
 → User: "send #2"
-→ openclaw calls gmail.send
+→ avaclaw calls gmail.send
 (repeat daily, no memory of what was triaged)
 ```
 

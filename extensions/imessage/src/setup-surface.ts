@@ -12,7 +12,7 @@ import {
 import { type ChannelSetupWizard } from "../../../src/channels/plugins/setup-wizard.js";
 import type { ChannelSetupAdapter } from "../../../src/channels/plugins/types.adapters.js";
 import { detectBinary } from "../../../src/commands/onboard-helpers.js";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AvaClawConfig } from "../../../src/config/config.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../../../src/routing/session-key.js";
 import { formatDocsLink } from "../../../src/terminal/links.js";
 import type { WizardPrompter } from "../../../src/wizard/prompts.js";
@@ -69,10 +69,10 @@ function buildIMessageSetupPatch(input: {
 }
 
 async function promptIMessageAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   prompter: WizardPrompter;
   accountId?: string;
-}): Promise<OpenClawConfig> {
+}): Promise<AvaClawConfig> {
   return promptParsedAllowFromForScopedChannel({
     cfg: params.cfg,
     channel,
@@ -227,7 +227,7 @@ export const imessageSetupWizard: ChannelSetupWizard = {
     title: "iMessage next steps",
     lines: [
       "This is still a work in progress.",
-      "Ensure OpenClaw has Full Disk Access to Messages DB.",
+      "Ensure AvaClaw has Full Disk Access to Messages DB.",
       "Grant Automation permission for Messages when prompted.",
       "List chats with: imsg chats --limit 20",
       `Docs: ${formatDocsLink("/imessage", "imessage")}`,

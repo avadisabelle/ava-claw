@@ -1,7 +1,7 @@
 {
   "name": "@avadisabelle/ava-claw-mattermost",
   "version": "2026.3.14",
-  "description": "OpenClaw Mattermost channel plugin",
+  "description": "AvaClaw Mattermost channel plugin",
   "type": "module",
   "dependencies": {
     "ws": "^8.19.0",

@@ -1,6 +1,6 @@
 export type {
   AnyAgentTool,
-  OpenClawPluginApi,
+  AvaClawPluginApi,
   ProviderDiscoveryContext,
   ProviderCatalogContext,
   ProviderCatalogResult,
@@ -16,14 +16,14 @@ export type {
   ProviderNormalizeResolvedModelContext,
   ProviderRuntimeModel,
   ProviderWrapStreamFnContext,
-  OpenClawPluginService,
+  AvaClawPluginService,
   ProviderAuthContext,
   ProviderAuthMethodNonInteractiveContext,
   ProviderAuthResult,
 } from "../plugins/types.js";
 export type { ChannelPlugin } from "../channels/plugins/types.plugin.js";
 export type { PluginRuntime } from "../plugins/runtime/types.js";
-export type { OpenClawConfig } from "../config/config.js";
+export type { AvaClawConfig } from "../config/config.js";
 export type { GatewayRequestHandlerOptions } from "../gateway/server-methods/types.js";
 export type {
   ProviderUsageSnapshot,
@@ -81,7 +81,7 @@ export {
   type PluginCommandRunOptions,
   type PluginCommandRunResult,
 } from "./run-command.js";
-export { resolvePreferredOpenClawTmpDir } from "../infra/tmp-openclaw-dir.js";
+export { resolvePreferredAvaClawTmpDir } from "../infra/tmp-avaclaw-dir.js";
 
 export { resolveGatewayBindUrl } from "../shared/gateway-bind-url.js";
 export type { GatewayBindUrlResult } from "../shared/gateway-bind-url.js";

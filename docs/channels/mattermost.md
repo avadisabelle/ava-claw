@@ -19,13 +19,13 @@ Mattermost ships as a plugin and is not bundled with the core install.
 Install via CLI (npm registry):
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-mattermost
+avaclaw plugins install @avadisabelle/ava-claw-mattermost
 ```
 
 Local checkout (when running from a git repo):
 
 ```bash
-openclaw plugins install ./extensions/mattermost
+avaclaw plugins install ./extensions/mattermost
 ```
 
 If you choose Mattermost during configure/onboarding and a git checkout is detected,
@@ -162,8 +162,8 @@ Notes:
 
 - Default: `channels.mattermost.dmPolicy = "pairing"` (unknown senders get a pairing code).
 - Approve via:
-  - `openclaw pairing list mattermost`
-  - `openclaw pairing approve mattermost <CODE>`
+  - `avaclaw pairing list mattermost`
+  - `avaclaw pairing approve mattermost <CODE>`
 - Public DMs: `channels.mattermost.dmPolicy="open"` plus `channels.mattermost.allowFrom=["*"]`.
 
 ## Channels (groups)
@@ -176,7 +176,7 @@ Notes:
 
 ## Targets for outbound delivery
 
-Use these target formats with `openclaw message send` or cron/webhooks:
+Use these target formats with `avaclaw message send` or cron/webhooks:
 
 - `channel:<id>` for a channel
 - `user:<id>` for a DM
@@ -324,7 +324,7 @@ The gateway verifies button clicks with HMAC-SHA256. External scripts must gener
 that match the gateway's verification logic:
 
 1. Derive the secret from the bot token:
-   `HMAC-SHA256(key="openclaw-mattermost-interactions", data=botToken)`
+   `HMAC-SHA256(key="avaclaw-mattermost-interactions", data=botToken)`
 2. Build the context object with all fields **except** `_token`.
 3. Serialize with **sorted keys** and **no spaces** (the gateway uses `JSON.stringify`
    with sorted keys, which produces compact output).
@@ -337,7 +337,7 @@ Python example:
 import hmac, hashlib, json
 
 secret = hmac.new(
-    b"openclaw-mattermost-interactions",
+    b"avaclaw-mattermost-interactions",
     bot_token.encode(), hashlib.sha256
 ).hexdigest()
 
@@ -363,7 +363,7 @@ Common HMAC pitfalls:
 
 The Mattermost plugin includes a directory adapter that resolves channel and user names
 via the Mattermost API. This enables `#channel-name` and `@username` targets in
-`openclaw message send` and cron/webhook deliveries.
+`avaclaw message send` and cron/webhook deliveries.
 
 No configuration is needed — the adapter uses the bot token from the account config.
 

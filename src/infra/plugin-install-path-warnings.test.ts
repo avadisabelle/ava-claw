@@ -51,32 +51,32 @@ describe("plugin install path warnings", () => {
       pluginId: "matrix",
       install: {
         source: "path",
-        sourcePath: "/tmp/openclaw-matrix-missing",
-        installPath: "/tmp/openclaw-matrix-missing",
+        sourcePath: "/tmp/avaclaw-matrix-missing",
+        installPath: "/tmp/avaclaw-matrix-missing",
       },
     });
 
     expect(issue).toEqual({
       kind: "missing-path",
       pluginId: "matrix",
-      path: "/tmp/openclaw-matrix-missing",
+      path: "/tmp/avaclaw-matrix-missing",
     });
     expect(
       formatPluginInstallPathIssue({
         issue: issue!,
         pluginLabel: "Matrix",
-        defaultInstallCommand: "openclaw plugins install @avadisabelle/ava-claw-matrix",
-        repoInstallCommand: "openclaw plugins install ./extensions/matrix",
+        defaultInstallCommand: "avaclaw plugins install @avadisabelle/ava-claw-matrix",
+        repoInstallCommand: "avaclaw plugins install ./extensions/matrix",
       }),
     ).toEqual([
-      "Matrix is installed from a custom path that no longer exists: /tmp/openclaw-matrix-missing",
-      'Reinstall with "openclaw plugins install @avadisabelle/ava-claw-matrix".',
-      'If you are running from a repo checkout, you can also use "openclaw plugins install ./extensions/matrix".',
+      "Matrix is installed from a custom path that no longer exists: /tmp/avaclaw-matrix-missing",
+      'Reinstall with "avaclaw plugins install @avadisabelle/ava-claw-matrix".',
+      'If you are running from a repo checkout, you can also use "avaclaw plugins install ./extensions/matrix".',
     ]);
   });
 
   it("uses the second candidate path when the first one is stale", async () => {
-    const { issue, pluginPath } = await detectMatrixCustomPathIssue("/tmp/openclaw-matrix-missing");
+    const { issue, pluginPath } = await detectMatrixCustomPathIssue("/tmp/avaclaw-matrix-missing");
     expect(issue).toEqual({
       kind: "custom-path",
       pluginId: "matrix",
@@ -104,15 +104,15 @@ describe("plugin install path warnings", () => {
           path: "/tmp/matrix-plugin",
         },
         pluginLabel: "Matrix",
-        defaultInstallCommand: "openclaw plugins install @avadisabelle/ava-claw-matrix",
-        repoInstallCommand: "openclaw plugins install ./extensions/matrix",
+        defaultInstallCommand: "avaclaw plugins install @avadisabelle/ava-claw-matrix",
+        repoInstallCommand: "avaclaw plugins install ./extensions/matrix",
         formatCommand: (command) => `<${command}>`,
       }),
     ).toEqual([
       "Matrix is installed from a custom path: /tmp/matrix-plugin",
       "Main updates will not automatically replace that plugin with the repo's default Matrix package.",
-      'Reinstall with "<openclaw plugins install @avadisabelle/ava-claw-matrix>" when you want to return to the standard Matrix plugin.',
-      'If you are intentionally running from a repo checkout, reinstall that checkout explicitly with "<openclaw plugins install ./extensions/matrix>" after updates.',
+      'Reinstall with "<avaclaw plugins install @avadisabelle/ava-claw-matrix>" when you want to return to the standard Matrix plugin.',
+      'If you are intentionally running from a repo checkout, reinstall that checkout explicitly with "<avaclaw plugins install ./extensions/matrix>" after updates.',
     ]);
   });
 });

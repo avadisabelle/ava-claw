@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-vercel-ai-gateway-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Vercel AI Gateway provider plugin",
+  "description": "AvaClaw Vercel AI Gateway provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

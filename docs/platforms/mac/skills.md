@@ -14,11 +14,11 @@ The macOS app surfaces Ava-Claw skills via the gateway; it does not parse skills
 
 - `skills.status` (gateway) returns all skills plus eligibility and missing requirements
   (including allowlist blocks for bundled skills).
-- Requirements are derived from `metadata.openclaw.requires` in each `SKILL.md`.
+- Requirements are derived from `metadata.avaclaw.requires` in each `SKILL.md`.
 
 ## Install actions
 
-- `metadata.openclaw.install` defines install options (brew/node/go/uv).
+- `metadata.avaclaw.install` defines install options (brew/node/go/uv).
 - The app calls `skills.install` to run installers on the gateway host.
 - The gateway surfaces only one preferred installer when multiple are provided
   (brew when available, otherwise node manager from `skills.install`, default npm).

@@ -16,7 +16,7 @@ x-i18n:
 来自社区的真实项目。看看大家正在用 Ava-Claw 构建什么。
 
 <Info>
-**想要展示你的项目？** 在 [Discord 的 #showcase 频道](https://discord.gg/clawd) 分享或在 [X 上 @openclaw](https://x.com/openclaw)。
+**想要展示你的项目？** 在 [Discord 的 #showcase 频道](https://discord.gg/clawd) 分享或在 [X 上 @avaclaw](https://x.com/avaclaw)。
 </Info>
 
 ## 🎥 Ava-Claw 实战演示
@@ -104,7 +104,7 @@ OpenCode 完成更改 → 打开 PR → Ava-Claw 审查差异并在 Telegram 中
 <Card title="几分钟内创建酒窖 Skill" icon="wine-glass" href="https://x.com/i/status/2010916352454791216">
   **@prades_maxime** • `skills` `local` `csv`
 
-向"Robby"（@openclaw）请求一个本地酒窖 skill。它请求一个示例 CSV 导出 + 存储位置，然后快速构建/测试该 skill（示例中有 962 瓶酒）。
+向"Robby"（@avaclaw）请求一个本地酒窖 skill。它请求一个示例 CSV 导出 + 存储位置，然后快速构建/测试该 skill（示例中有 962 瓶酒）。
 
   <img src="/assets/showcase/wine-cellar-skill.jpg" alt="Ava-Claw building a local wine cellar skill from CSV" />
 </Card>
@@ -344,7 +344,7 @@ Ava-Claw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <CardGroup cols={2}>
 
-<Card title="Home Assistant 插件" icon="home" href="https://github.com/ngutman/openclaw-ha-addon">
+<Card title="Home Assistant 插件" icon="home" href="https://github.com/ngutman/avaclaw-ha-addon">
   **@ngutman** • `homeassistant` `docker` `raspberry-pi`
   
   在 Home Assistant OS 上运行的 Ava-Claw Gateway 网关，支持 SSH 隧道和持久状态。
@@ -356,8 +356,8 @@ Ava-Claw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
   通过自然语言控制和自动化 Home Assistant 设备。
 </Card>
 
-<Card title="Nix 打包" icon="snowflake" href="https://github.com/openclaw/nix-openclaw">
-  **@openclaw** • `nix` `packaging` `deployment`
+<Card title="Nix 打包" icon="snowflake" href="https://github.com/avaclaw/nix-avaclaw">
+  **@avaclaw** • `nix` `packaging` `deployment`
   
   开箱即用的 nixified Ava-Claw 配置，用于可复现的部署。
 </Card>
@@ -412,7 +412,7 @@ Ava-Claw 连接到 Jira，然后即时生成一个新的 skill（在它出现在
 
 <Steps>
   <Step title="分享它">
-    在 [Discord 的 #showcase 频道](https://discord.gg/clawd) 发布或在 [Twitter 上 @openclaw](https://x.com/openclaw)
+    在 [Discord 的 #showcase 频道](https://discord.gg/clawd) 发布或在 [Twitter 上 @avaclaw](https://x.com/avaclaw)
   </Step>
   <Step title="包含详细信息">
     告诉我们它做什么，链接到仓库/演示，如果有的话分享截图

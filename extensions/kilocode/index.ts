@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 import { buildKilocodeProviderWithDiscovery } from "../../src/agents/models-config.providers.discovery.js";
 import {
   createKilocodeWrapper,
@@ -12,7 +12,7 @@ const kilocodePlugin = {
   name: "Kilo Gateway Provider",
   description: "Bundled Kilo Gateway provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Kilo Gateway",

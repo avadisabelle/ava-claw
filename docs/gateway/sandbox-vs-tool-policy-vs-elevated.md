@@ -18,10 +18,10 @@ Ava-Claw has three related (but different) controls:
 Use the inspector to see what Ava-Claw is _actually_ doing:
 
 ```bash
-openclaw sandbox explain
-openclaw sandbox explain --session agent:main:main
-openclaw sandbox explain --agent work
-openclaw sandbox explain --json
+avaclaw sandbox explain
+avaclaw sandbox explain --session agent:main:main
+avaclaw sandbox explain --agent work
+avaclaw sandbox explain --json
 ```
 
 It prints:
@@ -93,7 +93,7 @@ Available groups:
 - `group:automation`: `cron`, `gateway`
 - `group:messaging`: `message`
 - `group:nodes`: `nodes`
-- `group:openclaw`: all built-in Ava-Claw tools (excludes provider plugins)
+- `group:avaclaw`: all built-in Ava-Claw tools (excludes provider plugins)
 
 ## Elevated: exec-only “run on host”
 

@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-venice-provider",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Venice provider plugin",
+  "description": "AvaClaw Venice provider plugin",
   "type": "module",
   "ava-claw": {
     "extensions": [

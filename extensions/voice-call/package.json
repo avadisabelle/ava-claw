@@ -1,7 +1,7 @@
 {
   "name": "@avadisabelle/ava-claw-voice-call",
   "version": "2026.3.14",
-  "description": "OpenClaw voice-call plugin",
+  "description": "AvaClaw voice-call plugin",
   "type": "module",
   "dependencies": {
     "@sinclair/typebox": "0.34.48",

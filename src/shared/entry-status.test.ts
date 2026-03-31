@@ -26,18 +26,18 @@ describe("shared/entry-status", () => {
       always: false,
       metadata: {
         emoji: "🦀",
-        homepage: "https://openclaw.ai",
+        homepage: "https://avaclaw.ai",
         requires: {
           bins: ["bun"],
           anyBins: ["ffmpeg", "sox"],
-          env: ["OPENCLAW_TOKEN"],
+          env: ["AVACLAW_TOKEN"],
           config: ["gateway.bind"],
         },
         os: ["darwin"],
       },
       frontmatter: {
         emoji: "🙂",
-        homepage: "https://docs.openclaw.ai",
+        homepage: "https://docs.avaclaw.ai",
       },
       hasLocalBin: (bin) => bin === "bun",
       localPlatform: "linux",
@@ -50,18 +50,18 @@ describe("shared/entry-status", () => {
 
     expect(result).toEqual({
       emoji: "🦀",
-      homepage: "https://openclaw.ai",
+      homepage: "https://avaclaw.ai",
       required: {
         bins: ["bun"],
         anyBins: ["ffmpeg", "sox"],
-        env: ["OPENCLAW_TOKEN"],
+        env: ["AVACLAW_TOKEN"],
         config: ["gateway.bind"],
         os: ["darwin"],
       },
       missing: {
         bins: [],
         anyBins: [],
-        env: ["OPENCLAW_TOKEN"],
+        env: ["AVACLAW_TOKEN"],
         config: [],
         os: ["darwin"],
       },
@@ -99,7 +99,7 @@ describe("shared/entry-status", () => {
           },
         },
         frontmatter: {
-          website: " https://docs.openclaw.ai ",
+          website: " https://docs.avaclaw.ai ",
           emoji: "🙂",
         },
       },
@@ -110,7 +110,7 @@ describe("shared/entry-status", () => {
 
     expect(result).toEqual({
       emoji: "🙂",
-      homepage: "https://docs.openclaw.ai",
+      homepage: "https://docs.avaclaw.ai",
       required: {
         bins: ["missing-bin"],
         anyBins: [],

@@ -2,7 +2,7 @@
   "name": "@avadisabelle/ava-claw-googlechat",
   "version": "2026.3.14",
   "private": true,
-  "description": "OpenClaw Google Chat channel plugin",
+  "description": "AvaClaw Google Chat channel plugin",
   "type": "module",
   "dependencies": {
     "google-auth-library": "^10.6.1"

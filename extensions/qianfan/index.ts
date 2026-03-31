@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 import { buildQianfanProvider } from "../../src/agents/models-config.providers.static.js";
 
 const PROVIDER_ID = "qianfan";
@@ -8,7 +8,7 @@ const qianfanPlugin = {
   name: "Qianfan Provider",
   description: "Bundled Qianfan provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Qianfan",

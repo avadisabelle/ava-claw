@@ -1,4 +1,4 @@
-import type { OpenClawConfig } from "../config/config.js";
+import type { AvaClawConfig } from "../config/config.js";
 import type { AuthChoice } from "./onboard-types.js";
 
 const PREFERRED_PROVIDER_BY_AUTH_CHOICE: Partial<Record<AuthChoice, string>> = {
@@ -53,7 +53,7 @@ const PREFERRED_PROVIDER_BY_AUTH_CHOICE: Partial<Record<AuthChoice, string>> = {
 
 export async function resolvePreferredProviderForAuthChoice(params: {
   choice: AuthChoice;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   workspaceDir?: string;
   env?: NodeJS.ProcessEnv;
 }): Promise<string | undefined> {

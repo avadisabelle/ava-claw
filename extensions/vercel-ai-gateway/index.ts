@@ -1,4 +1,4 @@
-import { emptyPluginConfigSchema, type OpenClawPluginApi } from "openclaw/plugin-sdk/core";
+import { emptyPluginConfigSchema, type AvaClawPluginApi } from "avaclaw/plugin-sdk/core";
 import { buildVercelAiGatewayProvider } from "../../src/agents/models-config.providers.discovery.js";
 
 const PROVIDER_ID = "vercel-ai-gateway";
@@ -8,7 +8,7 @@ const vercelAiGatewayPlugin = {
   name: "Vercel AI Gateway Provider",
   description: "Bundled Vercel AI Gateway provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "Vercel AI Gateway",

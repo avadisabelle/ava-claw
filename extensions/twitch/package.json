@@ -1,7 +1,7 @@
 {
   "name": "@avadisabelle/ava-claw-twitch",
   "version": "2026.3.14",
-  "description": "OpenClaw Twitch channel plugin",
+  "description": "AvaClaw Twitch channel plugin",
   "type": "module",
   "dependencies": {
     "@twurple/api": "^8.0.3",

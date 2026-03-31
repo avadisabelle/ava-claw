@@ -1,22 +1,22 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { resolvePluginProviders } from "./providers.js";
 
-const loadOpenClawPluginsMock = vi.fn();
+const loadAvaClawPluginsMock = vi.fn();
 
 vi.mock("./loader.js", () => ({
-  loadOpenClawPlugins: (...args: unknown[]) => loadOpenClawPluginsMock(...args),
+  loadAvaClawPlugins: (...args: unknown[]) => loadAvaClawPluginsMock(...args),
 }));
 
 describe("resolvePluginProviders", () => {
   beforeEach(() => {
-    loadOpenClawPluginsMock.mockReset();
-    loadOpenClawPluginsMock.mockReturnValue({
+    loadAvaClawPluginsMock.mockReset();
+    loadAvaClawPluginsMock.mockReturnValue({
       providers: [{ provider: { id: "demo-provider" } }],
     });
   });
 
   it("forwards an explicit env to plugin loading", () => {
-    const env = { OPENCLAW_HOME: "/srv/openclaw-home" } as NodeJS.ProcessEnv;
+    const env = { AVACLAW_HOME: "/srv/avaclaw-home" } as NodeJS.ProcessEnv;
 
     const providers = resolvePluginProviders({
       workspaceDir: "/workspace/explicit",
@@ -24,7 +24,7 @@ describe("resolvePluginProviders", () => {
     });
 
     expect(providers).toEqual([{ id: "demo-provider" }]);
-    expect(loadOpenClawPluginsMock).toHaveBeenCalledWith(
+    expect(loadAvaClawPluginsMock).toHaveBeenCalledWith(
       expect.objectContaining({
         workspaceDir: "/workspace/explicit",
         env,
@@ -42,7 +42,7 @@ describe("resolvePluginProviders", () => {
       bundledProviderAllowlistCompat: true,
     });
 
-    expect(loadOpenClawPluginsMock).toHaveBeenCalledWith(
+    expect(loadAvaClawPluginsMock).toHaveBeenCalledWith(
       expect.objectContaining({
         config: expect.objectContaining({
           plugins: expect.objectContaining({

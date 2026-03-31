@@ -21,7 +21,7 @@ Ollama is a local LLM runtime that makes it easy to run open-source models on yo
 The fastest way to set up Ollama is through the onboarding wizard:
 
 ```bash
-openclaw onboard
+avaclaw onboard
 ```
 
 Select **Ollama** from the provider list. The wizard will:
@@ -35,7 +35,7 @@ Select **Ollama** from the provider list. The wizard will:
 Non-interactive mode is also supported:
 
 ```bash
-openclaw onboard --non-interactive \
+avaclaw onboard --non-interactive \
   --auth-choice ollama \
   --accept-risk
 ```
@@ -43,7 +43,7 @@ openclaw onboard --non-interactive \
 Optionally specify a custom base URL or model:
 
 ```bash
-openclaw onboard --non-interactive \
+avaclaw onboard --non-interactive \
   --auth-choice ollama \
   --custom-base-url "http://ollama-host:11434" \
   --custom-model-id "qwen3.5:27b" \
@@ -73,7 +73,7 @@ ollama signin
 4. Run onboarding and choose `Ollama`:
 
 ```bash
-openclaw onboard
+avaclaw onboard
 ```
 
 - `Local`: local models only
@@ -92,14 +92,14 @@ Ava-Claw currently suggests:
 export OLLAMA_API_KEY="ollama-local"
 
 # Or configure in your config file
-openclaw config set models.providers.ollama.apiKey "ollama-local"
+avaclaw config set models.providers.ollama.apiKey "ollama-local"
 ```
 
 6. Inspect or switch models:
 
 ```bash
-openclaw models list
-openclaw models set ollama/glm-4.7-flash
+avaclaw models list
+avaclaw models set ollama/glm-4.7-flash
 ```
 
 7. Or set the default in config:
@@ -130,7 +130,7 @@ To see what models are available:
 
 ```bash
 ollama list
-openclaw models list
+avaclaw models list
 ```
 
 To add a new model, simply pull it with Ollama:

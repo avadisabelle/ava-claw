@@ -29,17 +29,17 @@ Native Windows CLI flows are improving, but WSL2 is still the recommended path.
 What works well on native Windows today:
 
 - website installer via `install.ps1`
-- local CLI use such as `openclaw --version`, `openclaw doctor`, and `openclaw plugins list --json`
+- local CLI use such as `avaclaw --version`, `avaclaw doctor`, and `avaclaw plugins list --json`
 - embedded local-agent/provider smoke such as:
 
 ```powershell
-openclaw agent --local --agent main --thinking low -m "Reply with exactly WINDOWS-HATCH-OK."
+avaclaw agent --local --agent main --thinking low -m "Reply with exactly WINDOWS-HATCH-OK."
 ```
 
 Current caveats:
 
-- `openclaw onboard --non-interactive` still expects a reachable local gateway unless you pass `--skip-health`
-- `openclaw onboard --non-interactive --install-daemon` and `openclaw gateway install` try Windows Scheduled Tasks first
+- `avaclaw onboard --non-interactive` still expects a reachable local gateway unless you pass `--skip-health`
+- `avaclaw onboard --non-interactive --install-daemon` and `avaclaw gateway install` try Windows Scheduled Tasks first
 - if Scheduled Task creation is denied, Ava-Claw falls back to a per-user Startup-folder login item and starts the gateway immediately
 - if `schtasks` itself wedges or stops responding, Ava-Claw now aborts that path quickly and falls back instead of hanging forever
 - Scheduled Tasks are still preferred when available because they provide better supervisor status
@@ -47,15 +47,15 @@ Current caveats:
 If you want the native CLI only, without gateway service install, use one of these:
 
 ```powershell
-openclaw onboard --non-interactive --skip-health
-openclaw gateway run
+avaclaw onboard --non-interactive --skip-health
+avaclaw gateway run
 ```
 
 If you do want managed startup on native Windows:
 
 ```powershell
-openclaw gateway install
-openclaw gateway status --json
+avaclaw gateway install
+avaclaw gateway status --json
 ```
 
 If Scheduled Task creation is blocked, the fallback service mode still auto-starts after login through the current user's Startup folder.
@@ -70,19 +70,19 @@ If Scheduled Task creation is blocked, the fallback service mode still auto-star
 Inside WSL2:
 
 ```
-openclaw onboard --install-daemon
+avaclaw onboard --install-daemon
 ```
 
 Or:
 
 ```
-openclaw gateway install
+avaclaw gateway install
 ```
 
 Or:
 
 ```
-openclaw configure
+avaclaw configure
 ```
 
 Select **Gateway service** when prompted.
@@ -90,7 +90,7 @@ Select **Gateway service** when prompted.
 Repair/migrate:
 
 ```
-openclaw doctor
+avaclaw doctor
 ```
 
 ## Gateway auto-start before Windows login
@@ -111,7 +111,7 @@ sudo loginctl enable-linger "$(whoami)"
 Inside WSL:
 
 ```bash
-openclaw gateway install
+avaclaw gateway install
 ```
 
 ### 3) Start WSL automatically at Windows boot
@@ -133,8 +133,8 @@ wsl --list --verbose
 After a reboot (before Windows sign-in), check from WSL:
 
 ```bash
-systemctl --user is-enabled openclaw-gateway
-systemctl --user status openclaw-gateway --no-pager
+systemctl --user is-enabled avaclaw-gateway
+systemctl --user status avaclaw-gateway --no-pager
 ```
 
 ## Advanced: expose WSL services over LAN (portproxy)
@@ -177,7 +177,7 @@ Notes:
 
 - SSH from another machine targets the **Windows host IP** (example: `ssh user@windows-host -p 2222`).
 - Remote nodes must point at a **reachable** Gateway URL (not `127.0.0.1`); use
-  `openclaw status --all` to confirm.
+  `avaclaw status --all` to confirm.
 - Use `listenaddress=0.0.0.0` for LAN access; `127.0.0.1` keeps it local only.
 - If you want this automatic, register a Scheduled Task to run the refresh
   step at login.
@@ -226,11 +226,11 @@ Follow the Linux Getting Started flow inside WSL:
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
-cd openclaw
+cd avaclaw
 pnpm install
 pnpm ui:build # auto-installs UI deps on first run
 pnpm build
-openclaw onboard
+avaclaw onboard
 ```
 
 Full guide: [Getting Started](/start/getting-started)

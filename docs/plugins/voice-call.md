@@ -23,7 +23,7 @@ Quick mental model:
 - Install plugin
 - Restart Gateway
 - Configure under `plugins.entries.voice-call.config`
-- Use `openclaw voicecall ...` or the `voice_call` tool
+- Use `avaclaw voicecall ...` or the `voice_call` tool
 
 ## Where it runs (local vs remote)
 
@@ -36,7 +36,7 @@ If you use a remote Gateway, install/configure the plugin on the **machine runni
 ### Option A: install from npm (recommended)
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-voice-call
+avaclaw plugins install @avadisabelle/ava-claw-voice-call
 ```
 
 Restart the Gateway afterwards.
@@ -44,7 +44,7 @@ Restart the Gateway afterwards.
 ### Option B: install from a local folder (dev, no copying)
 
 ```bash
-openclaw plugins install ./extensions/voice-call
+avaclaw plugins install ./extensions/voice-call
 cd ./extensions/voice-call && pnpm install
 ```
 
@@ -311,13 +311,13 @@ Auto-responses use the agent system. Tune with:
 ## CLI
 
 ```bash
-openclaw voicecall call --to "+15555550123" --message "Hello from Ava-Claw"
-openclaw voicecall continue --call-id <id> --message "Any questions?"
-openclaw voicecall speak --call-id <id> --message "One moment"
-openclaw voicecall end --call-id <id>
-openclaw voicecall status --call-id <id>
-openclaw voicecall tail
-openclaw voicecall expose --mode funnel
+avaclaw voicecall call --to "+15555550123" --message "Hello from Ava-Claw"
+avaclaw voicecall continue --call-id <id> --message "Any questions?"
+avaclaw voicecall speak --call-id <id> --message "One moment"
+avaclaw voicecall end --call-id <id>
+avaclaw voicecall status --call-id <id>
+avaclaw voicecall tail
+avaclaw voicecall expose --mode funnel
 ```
 
 ## Agent tool

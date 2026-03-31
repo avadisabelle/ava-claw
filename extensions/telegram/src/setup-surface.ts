@@ -14,7 +14,7 @@ import {
 import { type ChannelSetupWizard } from "../../../src/channels/plugins/setup-wizard.js";
 import type { ChannelSetupAdapter } from "../../../src/channels/plugins/types.adapters.js";
 import { formatCliCommand } from "../../../src/cli/command-format.js";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AvaClawConfig } from "../../../src/config/config.js";
 import { hasConfiguredSecretInput } from "../../../src/config/types.secrets.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../../../src/routing/session-key.js";
 import { formatDocsLink } from "../../../src/terminal/links.js";
@@ -34,15 +34,15 @@ const TELEGRAM_TOKEN_HELP_LINES = [
   "3) Copy the token (looks like 123456:ABC...)",
   "Tip: you can also set TELEGRAM_BOT_TOKEN in your env.",
   `Docs: ${formatDocsLink("/telegram")}`,
-  "Website: https://openclaw.ai",
+  "Website: https://avaclaw.ai",
 ];
 
 const TELEGRAM_USER_ID_HELP_LINES = [
-  `1) DM your bot, then read from.id in \`${formatCliCommand("openclaw logs --follow")}\` (safest)`,
+  `1) DM your bot, then read from.id in \`${formatCliCommand("avaclaw logs --follow")}\` (safest)`,
   "2) Or call https://api.telegram.org/bot<bot_token>/getUpdates and read message.from.id",
   "3) Third-party: DM @userinfobot or @getidsbot",
   `Docs: ${formatDocsLink("/telegram")}`,
-  "Website: https://openclaw.ai",
+  "Website: https://avaclaw.ai",
 ];
 
 export function normalizeTelegramAllowFromInput(raw: string): string {
@@ -82,10 +82,10 @@ async function resolveTelegramAllowFromEntries(params: {
 }
 
 async function promptTelegramAllowFromForAccount(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   prompter: Parameters<NonNullable<ChannelOnboardingDmPolicy["promptAllowFrom"]>>[0]["prompter"];
   accountId?: string;
-}): Promise<OpenClawConfig> {
+}): Promise<AvaClawConfig> {
   const accountId = resolveOnboardingAccountId({
     accountId: params.accountId,
     defaultAccountId: resolveDefaultTelegramAccountId(params.cfg),

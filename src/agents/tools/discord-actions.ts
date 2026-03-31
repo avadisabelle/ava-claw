@@ -1,6 +1,6 @@
 import type { AgentToolResult } from "@avadisabelle/ava-pi-agent-core";
 import { createDiscordActionGate } from "../../../extensions/discord/src/accounts.js";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import { readStringParam } from "./common.js";
 import { handleDiscordGuildAction } from "./discord-actions-guild.js";
 import { handleDiscordMessagingAction } from "./discord-actions-messaging.js";
@@ -57,7 +57,7 @@ const presenceActions = new Set(["setPresence"]);
 
 export async function handleDiscordAction(
   params: Record<string, unknown>,
-  cfg: OpenClawConfig,
+  cfg: AvaClawConfig,
   options?: {
     mediaLocalRoots?: readonly string[];
   },

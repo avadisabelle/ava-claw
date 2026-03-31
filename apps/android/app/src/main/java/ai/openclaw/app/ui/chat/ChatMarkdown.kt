@@ -1,4 +1,4 @@
-package ai.openclaw.app.ui.chat
+package ai.avaclaw.app.ui.chat
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -34,12 +34,12 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ai.openclaw.app.ui.mobileAccent
-import ai.openclaw.app.ui.mobileCallout
-import ai.openclaw.app.ui.mobileCaption1
-import ai.openclaw.app.ui.mobileCodeBg
-import ai.openclaw.app.ui.mobileCodeText
-import ai.openclaw.app.ui.mobileTextSecondary
+import ai.avaclaw.app.ui.mobileAccent
+import ai.avaclaw.app.ui.mobileCallout
+import ai.avaclaw.app.ui.mobileCaption1
+import ai.avaclaw.app.ui.mobileCodeBg
+import ai.avaclaw.app.ui.mobileCodeText
+import ai.avaclaw.app.ui.mobileTextSecondary
 import org.commonmark.Extension
 import org.commonmark.ext.autolink.AutolinkExtension
 import org.commonmark.ext.gfm.strikethrough.Strikethrough

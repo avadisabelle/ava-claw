@@ -22,7 +22,7 @@ Availability: internal preview. The iOS app is not publicly distributed yet.
 - Gateway running on another device (macOS, Linux, or Windows via WSL2).
 - Network path:
   - Same LAN via Bonjour, **or**
-  - Tailnet via unicast DNS-SD (example domain: `openclaw.internal.`), **or**
+  - Tailnet via unicast DNS-SD (example domain: `avaclaw.internal.`), **or**
   - Manual host/port (fallback).
 
 ## Quick start (pair + connect)
@@ -30,7 +30,7 @@ Availability: internal preview. The iOS app is not publicly distributed yet.
 1. Start the Gateway:
 
 ```bash
-openclaw gateway --port 18789
+avaclaw gateway --port 18789
 ```
 
 2. In the iOS app, open Settings and pick a discovered gateway (or enable Manual Host and enter host/port).
@@ -38,15 +38,15 @@ openclaw gateway --port 18789
 3. Approve the pairing request on the gateway host:
 
 ```bash
-openclaw devices list
-openclaw devices approve <requestId>
+avaclaw devices list
+avaclaw devices approve <requestId>
 ```
 
 4. Verify connection:
 
 ```bash
-openclaw nodes status
-openclaw gateway call node.list --params "{}"
+avaclaw nodes status
+avaclaw gateway call node.list --params "{}"
 ```
 
 ## Relay-backed push for official builds
@@ -95,7 +95,7 @@ Expected operator flow:
 
 Compatibility note:
 
-- `OPENCLAW_APNS_RELAY_BASE_URL` still works as a temporary env override for the gateway.
+- `AVACLAW_APNS_RELAY_BASE_URL` still works as a temporary env override for the gateway.
 
 ## Authentication and trust flow
 
@@ -152,20 +152,20 @@ Local/manual builds remain on direct APNs. If you are testing those builds witho
 gateway still needs direct APNs credentials:
 
 ```bash
-export OPENCLAW_APNS_TEAM_ID="TEAMID"
-export OPENCLAW_APNS_KEY_ID="KEYID"
-export OPENCLAW_APNS_PRIVATE_KEY_P8="$(cat /path/to/AuthKey_KEYID.p8)"
+export AVACLAW_APNS_TEAM_ID="TEAMID"
+export AVACLAW_APNS_KEY_ID="KEYID"
+export AVACLAW_APNS_PRIVATE_KEY_P8="$(cat /path/to/AuthKey_KEYID.p8)"
 ```
 
 ## Discovery paths
 
 ### Bonjour (LAN)
 
-The Gateway advertises `_openclaw-gw._tcp` on `local.`. The iOS app lists these automatically.
+The Gateway advertises `_avaclaw-gw._tcp` on `local.`. The iOS app lists these automatically.
 
 ### Tailnet (cross-network)
 
-If mDNS is blocked, use a unicast DNS-SD zone (choose a domain; example: `openclaw.internal.`) and Tailscale split DNS.
+If mDNS is blocked, use a unicast DNS-SD zone (choose a domain; example: `avaclaw.internal.`) and Tailscale split DNS.
 See [Bonjour](/gateway/bonjour) for the CoreDNS example.
 
 ### Manual host/port
@@ -177,12 +177,12 @@ In Settings, enable **Manual Host** and enter the gateway host + port (default `
 The iOS node renders a WKWebView canvas. Use `node.invoke` to drive it:
 
 ```bash
-openclaw nodes invoke --node "iOS Node" --command canvas.navigate --params '{"url":"http://<gateway-host>:18789/__openclaw__/canvas/"}'
+avaclaw nodes invoke --node "iOS Node" --command canvas.navigate --params '{"url":"http://<gateway-host>:18789/__avaclaw__/canvas/"}'
 ```
 
 Notes:
 
-- The Gateway canvas host serves `/__openclaw__/canvas/` and `/__openclaw__/a2ui/`.
+- The Gateway canvas host serves `/__avaclaw__/canvas/` and `/__avaclaw__/a2ui/`.
 - It is served from the Gateway HTTP server (same port as `gateway.port`, default `18789`).
 - The iOS node auto-navigates to A2UI on connect when a canvas host URL is advertised.
 - Return to the built-in scaffold with `canvas.navigate` and `{"url":""}`.
@@ -190,11 +190,11 @@ Notes:
 ### Canvas eval / snapshot
 
 ```bash
-openclaw nodes invoke --node "iOS Node" --command canvas.eval --params '{"javaScript":"(() => { const {ctx} = window.__openclaw; ctx.clearRect(0,0,innerWidth,innerHeight); ctx.lineWidth=6; ctx.strokeStyle=\"#ff2d55\"; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(innerWidth-40, innerHeight-40); ctx.stroke(); return \"ok\"; })()"}'
+avaclaw nodes invoke --node "iOS Node" --command canvas.eval --params '{"javaScript":"(() => { const {ctx} = window.__avaclaw; ctx.clearRect(0,0,innerWidth,innerHeight); ctx.lineWidth=6; ctx.strokeStyle=\"#ff2d55\"; ctx.beginPath(); ctx.moveTo(40,40); ctx.lineTo(innerWidth-40, innerHeight-40); ctx.stroke(); return \"ok\"; })()"}'
 ```
 
 ```bash
-openclaw nodes invoke --node "iOS Node" --command canvas.snapshot --params '{"maxWidth":900,"format":"jpeg"}'
+avaclaw nodes invoke --node "iOS Node" --command canvas.snapshot --params '{"maxWidth":900,"format":"jpeg"}'
 ```
 
 ## Voice wake + talk mode
@@ -206,7 +206,7 @@ openclaw nodes invoke --node "iOS Node" --command canvas.snapshot --params '{"ma
 
 - `NODE_BACKGROUND_UNAVAILABLE`: bring the iOS app to the foreground (canvas/camera/screen commands require it).
 - `A2UI_HOST_NOT_CONFIGURED`: the Gateway did not advertise a canvas host URL; check `canvasHost` in [Gateway configuration](/gateway/configuration).
-- Pairing prompt never appears: run `openclaw devices list` and approve manually.
+- Pairing prompt never appears: run `avaclaw devices list` and approve manually.
 - Reconnect fails after reinstall: the Keychain pairing token was cleared; re-pair the node.
 
 ## Related docs

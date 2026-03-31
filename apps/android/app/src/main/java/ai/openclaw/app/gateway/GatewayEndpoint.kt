@@ -1,4 +1,4 @@
-package ai.openclaw.app.gateway
+package ai.avaclaw.app.gateway
 
 data class GatewayEndpoint(
   val stableId: String,

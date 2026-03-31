@@ -43,7 +43,7 @@ Ava-Claw 按以下顺序选择模型：
 如果你不想手动编辑配置，请运行新手引导向导：
 
 ```bash
-openclaw onboard
+avaclaw onboard
 ```
 
 它可以为常见提供商设置模型 + 认证，包括 **OpenAI Code（Codex）订阅**（OAuth）和 **Anthropic**（推荐使用 API 密钥；也支持 `claude setup-token`）。
@@ -113,27 +113,27 @@ Model "provider/model" is not allowed. Use /model to list available models.
 ## CLI 命令
 
 ```bash
-openclaw models list
-openclaw models status
-openclaw models set <provider/model>
-openclaw models set-image <provider/model>
+avaclaw models list
+avaclaw models status
+avaclaw models set <provider/model>
+avaclaw models set-image <provider/model>
 
-openclaw models aliases list
-openclaw models aliases add <alias> <provider/model>
-openclaw models aliases remove <alias>
+avaclaw models aliases list
+avaclaw models aliases add <alias> <provider/model>
+avaclaw models aliases remove <alias>
 
-openclaw models fallbacks list
-openclaw models fallbacks add <provider/model>
-openclaw models fallbacks remove <provider/model>
-openclaw models fallbacks clear
+avaclaw models fallbacks list
+avaclaw models fallbacks add <provider/model>
+avaclaw models fallbacks remove <provider/model>
+avaclaw models fallbacks clear
 
-openclaw models image-fallbacks list
-openclaw models image-fallbacks add <provider/model>
-openclaw models image-fallbacks remove <provider/model>
-openclaw models image-fallbacks clear
+avaclaw models image-fallbacks list
+avaclaw models image-fallbacks add <provider/model>
+avaclaw models image-fallbacks remove <provider/model>
+avaclaw models image-fallbacks clear
 ```
 
-`openclaw models`（无子命令）是 `models status` 的快捷方式。
+`avaclaw models`（无子命令）是 `models status` 的快捷方式。
 
 ### `models list`
 
@@ -156,12 +156,12 @@ JSON 包括 `auth.oauth`（警告窗口 + 配置文件）和 `auth.providers`（
 
 ```bash
 claude setup-token
-openclaw models status
+avaclaw models status
 ```
 
 ## 扫描（OpenRouter 免费模型）
 
-`openclaw models scan` 检查 OpenRouter 的**免费模型目录**，并可选择性地探测模型的工具和图像支持。
+`avaclaw models scan` 检查 OpenRouter 的**免费模型目录**，并可选择性地探测模型的工具和图像支持。
 
 关键标志：
 
@@ -193,4 +193,4 @@ openclaw models status
 
 ## 模型注册表（`models.json`）
 
-`models.providers` 中的自定义提供商会写入智能体目录下的 `models.json`（默认 `~/.openclaw/agents/<agentId>/models.json`）。除非 `models.mode` 设置为 `replace`，否则此文件默认会被合并。
+`models.providers` 中的自定义提供商会写入智能体目录下的 `models.json`（默认 `~/.avaclaw/agents/<agentId>/models.json`）。除非 `models.mode` 设置为 `replace`，否则此文件默认会被合并。

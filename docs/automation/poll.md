@@ -19,26 +19,26 @@ title: "Polls"
 
 ```bash
 # Telegram
-openclaw message poll --channel telegram --target 123456789 \
+avaclaw message poll --channel telegram --target 123456789 \
   --poll-question "Ship it?" --poll-option "Yes" --poll-option "No"
-openclaw message poll --channel telegram --target -1001234567890:topic:42 \
+avaclaw message poll --channel telegram --target -1001234567890:topic:42 \
   --poll-question "Pick a time" --poll-option "10am" --poll-option "2pm" \
   --poll-duration-seconds 300
 
 # WhatsApp
-openclaw message poll --target +15555550123 \
+avaclaw message poll --target +15555550123 \
   --poll-question "Lunch today?" --poll-option "Yes" --poll-option "No" --poll-option "Maybe"
-openclaw message poll --target 123456789@g.us \
+avaclaw message poll --target 123456789@g.us \
   --poll-question "Meeting time?" --poll-option "10am" --poll-option "2pm" --poll-option "4pm" --poll-multi
 
 # Discord
-openclaw message poll --channel discord --target channel:123456789 \
+avaclaw message poll --channel discord --target channel:123456789 \
   --poll-question "Snack?" --poll-option "Pizza" --poll-option "Sushi"
-openclaw message poll --channel discord --target channel:123456789 \
+avaclaw message poll --channel discord --target channel:123456789 \
   --poll-question "Plan?" --poll-option "A" --poll-option "B" --poll-duration-hours 48
 
 # MS Teams
-openclaw message poll --channel msteams --target conversation:19:abc@thread.tacv2 \
+avaclaw message poll --channel msteams --target conversation:19:abc@thread.tacv2 \
   --poll-question "Lunch?" --poll-option "Pizza" --poll-option "Sushi"
 ```
 
@@ -83,4 +83,4 @@ Use `action: "poll"` for poll creation. Poll fields passed with `action: "send"`
 
 Note: Discord has no “pick exactly N” mode; `pollMulti` maps to multi-select.
 Teams polls are rendered as Adaptive Cards and require the gateway to stay online
-to record votes in `~/.openclaw/msteams-polls.json`.
+to record votes in `~/.avaclaw/msteams-polls.json`.

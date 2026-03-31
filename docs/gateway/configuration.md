@@ -20,7 +20,7 @@ If the file is missing, Ava-Claw uses safe defaults. Common reasons to add a con
 See the [full reference](/gateway/configuration-reference) for every available field.
 
 <Tip>
-**New to configuration?** Start with `openclaw onboard` for interactive setup, or check out the [Configuration Examples](/gateway/configuration-examples) guide for complete copy-paste configs.
+**New to configuration?** Start with `avaclaw onboard` for interactive setup, or check out the [Configuration Examples](/gateway/configuration-examples) guide for complete copy-paste configs.
 </Tip>
 
 ## Minimal config
@@ -28,7 +28,7 @@ See the [full reference](/gateway/configuration-reference) for every available f
 ```json5
 // ~/.avadisabelle/ava-claw.json
 {
-  agents: { defaults: { workspace: "~/.openclaw/workspace" } },
+  agents: { defaults: { workspace: "~/.avaclaw/workspace" } },
   channels: { whatsapp: { allowFrom: ["+15555550123"] } },
 }
 ```
@@ -38,15 +38,15 @@ See the [full reference](/gateway/configuration-reference) for every available f
 <Tabs>
   <Tab title="Interactive wizard">
     ```bash
-    openclaw onboard       # full setup wizard
-    openclaw configure     # config wizard
+    avaclaw onboard       # full setup wizard
+    avaclaw configure     # config wizard
     ```
   </Tab>
   <Tab title="CLI (one-liners)">
     ```bash
-    openclaw config get agents.defaults.workspace
-    openclaw config set agents.defaults.heartbeat.every "2h"
-    openclaw config unset tools.web.search.apiKey
+    avaclaw config get agents.defaults.workspace
+    avaclaw config set agents.defaults.heartbeat.every "2h"
+    avaclaw config unset tools.web.search.apiKey
     ```
   </Tab>
   <Tab title="Control UI">
@@ -67,9 +67,9 @@ Ava-Claw only accepts configurations that fully match the schema. Unknown keys, 
 When validation fails:
 
 - The Gateway does not boot
-- Only diagnostic commands work (`openclaw doctor`, `openclaw logs`, `openclaw health`, `openclaw status`)
-- Run `openclaw doctor` to see exact issues
-- Run `openclaw doctor --fix` (or `--yes`) to apply repairs
+- Only diagnostic commands work (`avaclaw doctor`, `avaclaw logs`, `avaclaw health`, `avaclaw status`)
+- Run `avaclaw doctor` to see exact issues
+- Run `avaclaw doctor --fix` (or `--yes`) to apply repairs
 
 ## Common tasks
 
@@ -156,7 +156,7 @@ When validation fails:
           {
             id: "main",
             groupChat: {
-              mentionPatterns: ["@openclaw", "openclaw"],
+              mentionPatterns: ["@avaclaw", "avaclaw"],
             },
           },
         ],
@@ -256,7 +256,7 @@ When validation fails:
   </Accordion>
 
   <Accordion title="Enable relay-backed push for official iOS builds">
-    Relay-backed push is configured in `openclaw.json`.
+    Relay-backed push is configured in `avaclaw.json`.
 
     Set this in gateway config:
 
@@ -279,7 +279,7 @@ When validation fails:
     CLI equivalent:
 
     ```bash
-    openclaw config set gateway.push.apns.relay.baseUrl https://relay.example.com
+    avaclaw config set gateway.push.apns.relay.baseUrl https://relay.example.com
     ```
 
     What this does:
@@ -305,8 +305,8 @@ When validation fails:
 
     Compatibility note:
 
-    - `OPENCLAW_APNS_RELAY_BASE_URL` and `OPENCLAW_APNS_RELAY_TIMEOUT_MS` still work as temporary env overrides.
-    - `OPENCLAW_APNS_RELAY_ALLOW_HTTP=true` remains a loopback-only development escape hatch; do not persist HTTP relay URLs in config.
+    - `AVACLAW_APNS_RELAY_BASE_URL` and `AVACLAW_APNS_RELAY_TIMEOUT_MS` still work as temporary env overrides.
+    - `AVACLAW_APNS_RELAY_ALLOW_HTTP=true` remains a loopback-only development escape hatch; do not persist HTTP relay URLs in config.
 
     See [iOS App](/platforms/ios#relay-backed-push-for-official-builds) for the end-to-end flow and [Authentication and trust flow](/platforms/ios#authentication-and-trust-flow) for the relay security model.
 
@@ -394,8 +394,8 @@ When validation fails:
     {
       agents: {
         list: [
-          { id: "home", default: true, workspace: "~/.openclaw/workspace-home" },
-          { id: "work", workspace: "~/.openclaw/workspace-work" },
+          { id: "home", default: true, workspace: "~/.avaclaw/workspace-home" },
+          { id: "work", workspace: "~/.avaclaw/workspace-work" },
         ],
       },
       bindings: [
@@ -484,7 +484,7 @@ Control-plane write RPCs (`config.apply`, `config.patch`, `update.run`) are rate
     Validates + writes the full config and restarts the Gateway in one step.
 
     <Warning>
-    `config.apply` replaces the **entire config**. Use `config.patch` for partial updates, or `openclaw config set` for single keys.
+    `config.apply` replaces the **entire config**. Use `config.patch` for partial updates, or `avaclaw config set` for single keys.
     </Warning>
 
     Params:
@@ -498,9 +498,9 @@ Control-plane write RPCs (`config.apply`, `config.patch`, `update.run`) are rate
     Restart requests are coalesced while one is already pending/in-flight, and a 30-second cooldown applies between restart cycles.
 
     ```bash
-    openclaw gateway call config.get --params '{}'  # capture payload.hash
-    openclaw gateway call config.apply --params '{
-      "raw": "{ agents: { defaults: { workspace: \"~/.openclaw/workspace\" } } }",
+    avaclaw gateway call config.get --params '{}'  # capture payload.hash
+    avaclaw gateway call config.apply --params '{
+      "raw": "{ agents: { defaults: { workspace: \"~/.avaclaw/workspace\" } } }",
       "baseHash": "<hash>",
       "sessionKey": "agent:main:whatsapp:direct:+15555550123"
     }'
@@ -524,7 +524,7 @@ Control-plane write RPCs (`config.apply`, `config.patch`, `update.run`) are rate
     Restart behavior matches `config.apply`: coalesced pending restarts plus a 30-second cooldown between restart cycles.
 
     ```bash
-    openclaw gateway call config.patch --params '{
+    avaclaw gateway call config.patch --params '{
       "raw": "{ channels: { telegram: { groups: { \"*\": { requireMention: false } } } } }",
       "baseHash": "<hash>"
     }'
@@ -538,7 +538,7 @@ Control-plane write RPCs (`config.apply`, `config.patch`, `update.run`) are rate
 Ava-Claw reads env vars from the parent process plus:
 
 - `.env` from the current working directory (if present)
-- `~/.openclaw/.env` (global fallback)
+- `~/.avaclaw/.env` (global fallback)
 
 Neither file overrides existing env vars. You can also set inline env vars in config:
 
@@ -562,7 +562,7 @@ Neither file overrides existing env vars. You can also set inline env vars in co
 }
 ```
 
-Env var equivalent: `OPENCLAW_LOAD_SHELL_ENV=1`
+Env var equivalent: `AVACLAW_LOAD_SHELL_ENV=1`
 </Accordion>
 
 <Accordion title="Env var substitution in config values">
@@ -570,7 +570,7 @@ Env var equivalent: `OPENCLAW_LOAD_SHELL_ENV=1`
 
 ```json5
 {
-  gateway: { auth: { token: "${OPENCLAW_GATEWAY_TOKEN}" } },
+  gateway: { auth: { token: "${AVACLAW_GATEWAY_TOKEN}" } },
   models: { providers: { custom: { apiKey: "${CUSTOM_API_KEY}" } } },
 }
 ```

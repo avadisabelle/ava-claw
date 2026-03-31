@@ -24,13 +24,13 @@ Explainable: keeps core installs lighter and lets MS Teams dependencies update i
 Install via CLI (npm registry):
 
 ```bash
-openclaw plugins install @avadisabelle/ava-claw-msteams
+avaclaw plugins install @avadisabelle/ava-claw-msteams
 ```
 
 Local checkout (when running from a git repo):
 
 ```bash
-openclaw plugins install ./extensions/msteams
+avaclaw plugins install ./extensions/msteams
 ```
 
 If you choose Teams during configure/onboarding and a git checkout is detected,
@@ -159,7 +159,7 @@ Before configuring Ava-Claw, you need to create an Azure Bot resource.
 
    | Field              | Value                                                    |
    | ------------------ | -------------------------------------------------------- |
-   | **Bot handle**     | Your bot name, e.g., `openclaw-msteams` (must be unique) |
+   | **Bot handle**     | Your bot name, e.g., `avaclaw-msteams` (must be unique) |
    | **Subscription**   | Select your Azure subscription                           |
    | **Resource group** | Create new or use existing                               |
    | **Pricing tier**   | **Free** for dev/testing                                 |
@@ -241,8 +241,8 @@ This is often easier than hand-editing JSON manifests.
 ## Setup (minimal text-only)
 
 1. **Install the Microsoft Teams plugin**
-   - From npm: `openclaw plugins install @avadisabelle/ava-claw-msteams`
-   - From a local checkout: `openclaw plugins install ./extensions/msteams`
+   - From npm: `avaclaw plugins install @avadisabelle/ava-claw-msteams`
+   - From a local checkout: `avaclaw plugins install ./extensions/msteams`
 
 2. **Bot registration**
    - Create an Azure Bot (see above) and note:
@@ -603,8 +603,8 @@ Uploaded files are stored in a `/Ava-ClawShared/` folder in the configured Share
 
 Ava-Claw sends Teams polls as Adaptive Cards (there is no native Teams poll API).
 
-- CLI: `openclaw message poll --channel msteams --target conversation:<id> ...`
-- Votes are recorded by the gateway in `~/.openclaw/msteams-polls.json`.
+- CLI: `avaclaw message poll --channel msteams --target conversation:<id> ...`
+- Votes are recorded by the gateway in `~/.avaclaw/msteams-polls.json`.
 - The gateway must stay online to record votes.
 - Polls do not auto-post result summaries yet (inspect the store file if needed).
 
@@ -632,7 +632,7 @@ The `card` parameter accepts an Adaptive Card JSON object. When `card` is provid
 **CLI:**
 
 ```bash
-openclaw message send --channel msteams \
+avaclaw message send --channel msteams \
   --target "conversation:19:abc...@thread.tacv2" \
   --card '{"type":"AdaptiveCard","version":"1.5","body":[{"type":"TextBlock","text":"Hello!"}]}'
 ```
@@ -654,16 +654,16 @@ MSTeams targets use prefixes to distinguish between users and conversations:
 
 ```bash
 # Send to a user by ID
-openclaw message send --channel msteams --target "user:40a1a0ed-..." --message "Hello"
+avaclaw message send --channel msteams --target "user:40a1a0ed-..." --message "Hello"
 
 # Send to a user by display name (triggers Graph API lookup)
-openclaw message send --channel msteams --target "user:John Smith" --message "Hello"
+avaclaw message send --channel msteams --target "user:John Smith" --message "Hello"
 
 # Send to a group chat or channel
-openclaw message send --channel msteams --target "conversation:19:abc...@thread.tacv2" --message "Hello"
+avaclaw message send --channel msteams --target "conversation:19:abc...@thread.tacv2" --message "Hello"
 
 # Send an Adaptive Card to a conversation
-openclaw message send --channel msteams --target "conversation:19:abc...@thread.tacv2" \
+avaclaw message send --channel msteams --target "conversation:19:abc...@thread.tacv2" \
   --card '{"type":"AdaptiveCard","version":"1.5","body":[{"type":"TextBlock","text":"Hello"}]}'
 ```
 

@@ -11,7 +11,7 @@
 
 ## Desired Outcome
 
-Establish a delegation and autonomy model for a Mia/OpenClaw-style platform where agents can:
+Establish a delegation and autonomy model for a Mia/AvaClaw-style platform where agents can:
 
 - execute work directly when appropriate
 - delegate bounded tasks to specialized sub-agents
@@ -23,7 +23,7 @@ The goal is not maximum autonomy at all times. The goal is effective, bounded, l
 
 ## Structural Tension
 
-Current: OpenClaw already provides meaningful primitives for agent execution, session continuity, tool use, background work, and spawned sub-agents. But those primitives need a clearer conceptual model if they are to support a larger platform with companion roles, project semantics, and multiple pathways of autonomous work.
+Current: AvaClaw already provides meaningful primitives for agent execution, session continuity, tool use, background work, and spawned sub-agents. But those primitives need a clearer conceptual model if they are to support a larger platform with companion roles, project semantics, and multiple pathways of autonomous work.
 
 Desired: A rispec-defined autonomy framework where delegation is intentional, authority is scoped, task boundaries are visible, and humans can understand which agent is doing what, why, and with what freedom.
 
@@ -241,9 +241,9 @@ Delegated work should remain linked to the parent task and project context.
 
 ---
 
-## OpenClaw Mapping
+## AvaClaw Mapping
 
-OpenClaw already contains relevant primitives for this rispec, including:
+AvaClaw already contains relevant primitives for this rispec, including:
 
 - background execution
 - spawned sub-agents
@@ -292,13 +292,13 @@ A strong platform will not rely on a single monolithic agent doing everything. I
 - orchestration when complexity grows
 - consultation when judgment belongs to humans
 
-That makes delegation and autonomy a foundational rispec for any serious OpenClaw-derived creative platform.
+That makes delegation and autonomy a foundational rispec for any serious AvaClaw-derived creative platform.
 
 ---
 
 ## Provenance / Co-Sign
 
-Drafted in the Slack **"Miadi-STC"** channel through live OpenClaw-assisted discussion and rispec authoring in `mia-openclaw.rispecs`.
+Drafted in the Slack **"Miadi-STC"** channel through live AvaClaw-assisted discussion and rispec authoring in `mia-avaclaw.rispecs`.
 
 Created by model: **openai-codex/gpt-5.4**  
 Context noted by assistant: follows and complements the previously drafted foundation and human-consultation rispecs.

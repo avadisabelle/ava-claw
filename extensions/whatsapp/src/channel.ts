@@ -26,7 +26,7 @@ import {
   WhatsAppConfigSchema,
   type ChannelMessageActionName,
   type ChannelPlugin,
-} from "openclaw/plugin-sdk/whatsapp";
+} from "avaclaw/plugin-sdk/whatsapp";
 // WhatsApp-specific imports from local extension code (moved from src/web/ and src/channels/plugins/)
 import {
   listWhatsAppAccountIds,

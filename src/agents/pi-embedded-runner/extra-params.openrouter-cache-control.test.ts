@@ -2,7 +2,7 @@ import type { StreamFn } from "@avadisabelle/ava-pi-agent-core";
 import type { Context, Model } from "@avadisabelle/ava-pi-ai";
 import { createAssistantMessageEventStream } from "@avadisabelle/ava-pi-ai";
 import { describe, expect, it } from "vitest";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import { applyExtraParamsToAgent } from "./extra-params.js";
 
 type StreamPayload = {
@@ -26,7 +26,7 @@ function runOpenRouterPayload(payload: StreamPayload, modelId: string) {
         },
       },
     },
-  } satisfies OpenClawConfig;
+  } satisfies AvaClawConfig;
 
   applyExtraParamsToAgent(agent, cfg, "openrouter", modelId);
 

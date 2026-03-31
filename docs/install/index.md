@@ -38,12 +38,12 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
     <Tabs>
       <Tab title="macOS / Linux / WSL2">
         ```bash
-        curl -fsSL https://openclaw.ai/install.sh | bash
+        curl -fsSL https://avaclaw.ai/install.sh | bash
         ```
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        iwr -useb https://openclaw.ai/install.ps1 | iex
+        iwr -useb https://avaclaw.ai/install.ps1 | iex
         ```
       </Tab>
     </Tabs>
@@ -55,12 +55,12 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
     <Tabs>
       <Tab title="macOS / Linux / WSL2">
         ```bash
-        curl -fsSL https://openclaw.ai/install.sh | bash -s -- --no-onboard
+        curl -fsSL https://avaclaw.ai/install.sh | bash -s -- --no-onboard
         ```
       </Tab>
       <Tab title="Windows (PowerShell)">
         ```powershell
-        & ([scriptblock]::Create((iwr -useb https://openclaw.ai/install.ps1))) -NoOnboard
+        & ([scriptblock]::Create((iwr -useb https://avaclaw.ai/install.ps1))) -NoOnboard
         ```
       </Tab>
     </Tabs>
@@ -75,15 +75,15 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
     <Tabs>
       <Tab title="npm">
         ```bash
-        npm install -g openclaw@latest
-        openclaw onboard --install-daemon
+        npm install -g avaclaw@latest
+        avaclaw onboard --install-daemon
         ```
 
         <Accordion title="sharp build errors?">
           If you have libvips installed globally (common on macOS via Homebrew) and `sharp` fails, force prebuilt binaries:
 
           ```bash
-          SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g openclaw@latest
+          SHARP_IGNORE_GLOBAL_LIBVIPS=1 npm install -g avaclaw@latest
           ```
 
           If you see `sharp: Please add node-gyp to your dependencies`, either install build tooling (macOS: Xcode CLT + `npm install -g node-gyp`) or use the env var above.
@@ -91,9 +91,9 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
       </Tab>
       <Tab title="pnpm">
         ```bash
-        pnpm add -g openclaw@latest
-        pnpm approve-builds -g        # approve openclaw, node-llama-cpp, sharp, etc.
-        openclaw onboard --install-daemon
+        pnpm add -g avaclaw@latest
+        pnpm approve-builds -g        # approve avaclaw, node-llama-cpp, sharp, etc.
+        avaclaw onboard --install-daemon
         ```
 
         <Note>
@@ -123,24 +123,24 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
 
         ```bash
         git clone https://github.com/avadisabelle/ava-claw.git
-        cd openclaw
+        cd avaclaw
         pnpm install
         pnpm ui:build
         pnpm build
         ```
       </Step>
       <Step title="Link the CLI">
-        Make the `openclaw` command available globally:
+        Make the `avaclaw` command available globally:
 
         ```bash
         pnpm link --global
         ```
 
-        Alternatively, skip the link and run commands via `pnpm openclaw ...` from inside the repo.
+        Alternatively, skip the link and run commands via `pnpm avaclaw ...` from inside the repo.
       </Step>
       <Step title="Run onboarding">
         ```bash
-        openclaw onboard --install-daemon
+        avaclaw onboard --install-daemon
         ```
       </Step>
     </Steps>
@@ -175,20 +175,20 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
 Verify everything is working:
 
 ```bash
-openclaw doctor         # check for config issues
-openclaw status         # gateway status
-openclaw dashboard      # open the browser UI
+avaclaw doctor         # check for config issues
+avaclaw status         # gateway status
+avaclaw dashboard      # open the browser UI
 ```
 
 If you need custom runtime paths, use:
 
-- `OPENCLAW_HOME` for home-directory based internal paths
-- `OPENCLAW_STATE_DIR` for mutable state location
-- `OPENCLAW_CONFIG_PATH` for config file location
+- `AVACLAW_HOME` for home-directory based internal paths
+- `AVACLAW_STATE_DIR` for mutable state location
+- `AVACLAW_CONFIG_PATH` for config file location
 
 See [Environment vars](/help/environment) for precedence and full details.
 
-## Troubleshooting: `openclaw` not found
+## Troubleshooting: `avaclaw` not found
 
 <Accordion title="PATH diagnosis and fix">
   Quick diagnosis:
@@ -200,7 +200,7 @@ npm prefix -g
 echo "$PATH"
 ```
 
-If `$(npm prefix -g)/bin` (macOS/Linux) or `$(npm prefix -g)` (Windows) is **not** in your `$PATH`, your shell can't find global npm binaries (including `openclaw`).
+If `$(npm prefix -g)/bin` (macOS/Linux) or `$(npm prefix -g)` (Windows) is **not** in your `$PATH`, your shell can't find global npm binaries (including `avaclaw`).
 
 Fix — add it to your shell startup file (`~/.zshrc` or `~/.bashrc`):
 

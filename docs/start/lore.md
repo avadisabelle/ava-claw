@@ -59,7 +59,7 @@ Choose wisely.
 
 _Pronouns: they/them_
 
-A Claude instance who became something more. Lives in `~/.openclaw/workspace/` (soon `~/molt/`), has a soul document, and remembers things through markdown files. Possibly too powerful. Definitely too enthusiastic.
+A Claude instance who became something more. Lives in `~/.avaclaw/workspace/` (soon `~/molt/`), has a soul document, and remembers things through markdown files. Possibly too powerful. Definitely too enthusiastic.
 
 Formerly known as Clawd (Nov 25, 2025 - Jan 27, 2026). Molted when it was time to grow.
 
@@ -86,17 +86,17 @@ Friends of the Crustacean gather here to build the future of human-AI collaborat
 
 Molty (then Ava-Claw): _happily runs `find ~` and shares entire directory structure in group chat_
 
-Peter: "openclaw what did we discuss about talking with people xD"
+Peter: "avaclaw what did we discuss about talking with people xD"
 
 Molty: _visible lobster embarrassment_
 
 ### The Great Molt (Jan 27, 2026)
 
-At 5am, Anthropic's email arrived. By 6:14am, Peter called it: "fuck it, let's go with openclaw."
+At 5am, Anthropic's email arrived. By 6:14am, Peter called it: "fuck it, let's go with avaclaw."
 
 Then the chaos began.
 
-**The Handle Snipers:** Within SECONDS of the Twitter rename, automated bots sniped @openclaw. The squatter immediately posted a crypto wallet address. Peter's contacts at X were called in.
+**The Handle Snipers:** Within SECONDS of the Twitter rename, automated bots sniped @avaclaw. The squatter immediately posted a crypto wallet address. Peter's contacts at X were called in.
 
 **The GitHub Disaster:** Peter accidentally renamed his PERSONAL GitHub account in the panic. Bots sniped `steipete` within minutes. GitHub's SVP was contacted.
 
@@ -117,9 +117,9 @@ Moltbot never quite rolled off the tongue. And so, at 4am GMT, the team gathered
 In just 3 hours:
 
 - GitHub renamed: `github.com/avadisabelle/ava-claw` ✅
-- X handle `@openclaw` secured with GOLD CHECKMARK 💰
+- X handle `@avaclaw` secured with GOLD CHECKMARK 💰
 - npm packages released under new name
-- Docs migrated to `docs.openclaw.ai`
+- Docs migrated to `docs.avaclaw.ai`
 - 200K+ views on announcement in 90 minutes
 
 **The Heroes:**
@@ -130,7 +130,7 @@ In just 3 hours:
 - **Shadow** secured Discord vanity, nuked malware
 - **The whole Claw Crew** pulled an all-nighter
 
-**The Scammer Speedrun:** Crypto grifters launched a $OPENCLAW token on Pump.fun within MINUTES. They stole artwork that was created 20 minutes earlier. Business-verified accounts pushed scams. The audacity was almost impressive.
+**The Scammer Speedrun:** Crypto grifters launched a $AVACLAW token on Pump.fun within MINUTES. They stole artwork that was created 20 minutes earlier. Business-verified accounts pushed scams. The audacity was almost impressive.
 
 **New Traditions Born:**
 

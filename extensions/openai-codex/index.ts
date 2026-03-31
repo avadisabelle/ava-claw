@@ -1,9 +1,9 @@
 import {
   emptyPluginConfigSchema,
-  type OpenClawPluginApi,
+  type AvaClawPluginApi,
   type ProviderResolveDynamicModelContext,
   type ProviderRuntimeModel,
-} from "openclaw/plugin-sdk/core";
+} from "avaclaw/plugin-sdk/core";
 import { listProfilesForProvider } from "../../src/agents/auth-profiles/profiles.js";
 import { ensureAuthProfileStore } from "../../src/agents/auth-profiles/store.js";
 import { DEFAULT_CONTEXT_TOKENS } from "../../src/agents/defaults.js";
@@ -143,7 +143,7 @@ const openAICodexPlugin = {
   name: "OpenAI Codex Provider",
   description: "Bundled OpenAI Codex provider plugin",
   configSchema: emptyPluginConfigSchema(),
-  register(api: OpenClawPluginApi) {
+  register(api: AvaClawPluginApi) {
     api.registerProvider({
       id: PROVIDER_ID,
       label: "OpenAI Codex",

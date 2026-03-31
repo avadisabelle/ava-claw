@@ -1,9 +1,9 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import type { OpenClawConfig } from "../../../config/config.js";
+import type { AvaClawConfig } from "../../../config/config.js";
 import { applyNonInteractiveAuthChoice } from "./auth-choice.js";
 
 const applySimpleNonInteractiveApiKeyChoice = vi.hoisted(() =>
-  vi.fn<() => Promise<OpenClawConfig | null | undefined>>(async () => undefined),
+  vi.fn<() => Promise<AvaClawConfig | null | undefined>>(async () => undefined),
 );
 vi.mock("./auth-choice.api-key-providers.js", () => ({
   applySimpleNonInteractiveApiKeyChoice,
@@ -34,7 +34,7 @@ function createRuntime() {
 describe("applyNonInteractiveAuthChoice", () => {
   it("resolves builtin API key auth before plugin provider resolution", async () => {
     const runtime = createRuntime();
-    const nextConfig = { agents: { defaults: {} } } as OpenClawConfig;
+    const nextConfig = { agents: { defaults: {} } } as AvaClawConfig;
     const resolvedConfig = { auth: { profiles: { "openai:default": { mode: "api_key" } } } };
     applySimpleNonInteractiveApiKeyChoice.mockResolvedValueOnce(resolvedConfig as never);
 

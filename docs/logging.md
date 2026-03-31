@@ -30,7 +30,7 @@ You can override this in `~/.avadisabelle/ava-claw.json`:
 ```json
 {
   "logging": {
-    "file": "/path/to/openclaw.log"
+    "file": "/path/to/avaclaw.log"
   }
 }
 ```
@@ -42,7 +42,7 @@ You can override this in `~/.avadisabelle/ava-claw.json`:
 Use the CLI to tail the gateway log file via RPC:
 
 ```bash
-openclaw logs --follow
+avaclaw logs --follow
 ```
 
 Output modes:
@@ -63,7 +63,7 @@ In JSON mode, the CLI emits `type`-tagged objects:
 If the Gateway is unreachable, the CLI prints a short hint to run:
 
 ```bash
-openclaw doctor
+avaclaw doctor
 ```
 
 ### Control UI (web)
@@ -76,7 +76,7 @@ See [/web/control-ui](/web/control-ui) for how to open it.
 To filter channel activity (WhatsApp/Telegram/etc), use:
 
 ```bash
-openclaw channels logs --channel whatsapp
+avaclaw channels logs --channel whatsapp
 ```
 
 ## Log formats
@@ -118,7 +118,7 @@ All logging configuration lives under `logging` in `~/.avadisabelle/ava-claw.jso
 - `logging.level`: **file logs** (JSONL) level.
 - `logging.consoleLevel`: **console** verbosity level.
 
-You can override both via the **`OPENCLAW_LOG_LEVEL`** environment variable (e.g. `OPENCLAW_LOG_LEVEL=debug`). The env var takes precedence over the config file, so you can raise verbosity for a single run without editing `openclaw.json`. You can also pass the global CLI option **`--log-level <level>`** (for example, `openclaw --log-level debug gateway run`), which overrides the environment variable for that command.
+You can override both via the **`AVACLAW_LOG_LEVEL`** environment variable (e.g. `AVACLAW_LOG_LEVEL=debug`). The env var takes precedence over the config file, so you can raise verbosity for a single run without editing `avaclaw.json`. You can also pass the global CLI option **`--log-level <level>`** (for example, `avaclaw --log-level debug gateway run`), which overrides the environment variable for that command.
 
 `--verbose` only affects console output; it does not change file log levels.
 
@@ -212,7 +212,7 @@ Flags are case-insensitive and support wildcards (e.g. `telegram.*` or `*`).
 Env override (one-off):
 
 ```
-OPENCLAW_DIAGNOSTICS=telegram.http,telegram.payload
+AVACLAW_DIAGNOSTICS=telegram.http,telegram.payload
 ```
 
 Notes:
@@ -242,7 +242,7 @@ works with any OpenTelemetry collector/backend that accepts OTLP/HTTP.
       "enabled": true,
       "endpoint": "http://otel-collector:4318",
       "protocol": "http/protobuf",
-      "serviceName": "openclaw-gateway",
+      "serviceName": "avaclaw-gateway",
       "traces": true,
       "metrics": true,
       "logs": true,
@@ -255,7 +255,7 @@ works with any OpenTelemetry collector/backend that accepts OTLP/HTTP.
 
 Notes:
 
-- You can also enable the plugin with `openclaw plugins enable diagnostics-otel`.
+- You can also enable the plugin with `avaclaw plugins enable diagnostics-otel`.
 - `protocol` currently supports `http/protobuf` only. `grpc` is ignored.
 - Metrics include token usage, cost, context size, run duration, and message-flow
   counters/histograms (webhooks, queueing, session state, queue depth/wait).
@@ -269,60 +269,60 @@ Notes:
 
 Model usage:
 
-- `openclaw.tokens` (counter, attrs: `openclaw.token`, `openclaw.channel`,
-  `openclaw.provider`, `openclaw.model`)
-- `openclaw.cost.usd` (counter, attrs: `openclaw.channel`, `openclaw.provider`,
-  `openclaw.model`)
-- `openclaw.run.duration_ms` (histogram, attrs: `openclaw.channel`,
-  `openclaw.provider`, `openclaw.model`)
-- `openclaw.context.tokens` (histogram, attrs: `openclaw.context`,
-  `openclaw.channel`, `openclaw.provider`, `openclaw.model`)
+- `avaclaw.tokens` (counter, attrs: `avaclaw.token`, `avaclaw.channel`,
+  `avaclaw.provider`, `avaclaw.model`)
+- `avaclaw.cost.usd` (counter, attrs: `avaclaw.channel`, `avaclaw.provider`,
+  `avaclaw.model`)
+- `avaclaw.run.duration_ms` (histogram, attrs: `avaclaw.channel`,
+  `avaclaw.provider`, `avaclaw.model`)
+- `avaclaw.context.tokens` (histogram, attrs: `avaclaw.context`,
+  `avaclaw.channel`, `avaclaw.provider`, `avaclaw.model`)
 
 Message flow:
 
-- `openclaw.webhook.received` (counter, attrs: `openclaw.channel`,
-  `openclaw.webhook`)
-- `openclaw.webhook.error` (counter, attrs: `openclaw.channel`,
-  `openclaw.webhook`)
-- `openclaw.webhook.duration_ms` (histogram, attrs: `openclaw.channel`,
-  `openclaw.webhook`)
-- `openclaw.message.queued` (counter, attrs: `openclaw.channel`,
-  `openclaw.source`)
-- `openclaw.message.processed` (counter, attrs: `openclaw.channel`,
-  `openclaw.outcome`)
-- `openclaw.message.duration_ms` (histogram, attrs: `openclaw.channel`,
-  `openclaw.outcome`)
+- `avaclaw.webhook.received` (counter, attrs: `avaclaw.channel`,
+  `avaclaw.webhook`)
+- `avaclaw.webhook.error` (counter, attrs: `avaclaw.channel`,
+  `avaclaw.webhook`)
+- `avaclaw.webhook.duration_ms` (histogram, attrs: `avaclaw.channel`,
+  `avaclaw.webhook`)
+- `avaclaw.message.queued` (counter, attrs: `avaclaw.channel`,
+  `avaclaw.source`)
+- `avaclaw.message.processed` (counter, attrs: `avaclaw.channel`,
+  `avaclaw.outcome`)
+- `avaclaw.message.duration_ms` (histogram, attrs: `avaclaw.channel`,
+  `avaclaw.outcome`)
 
 Queues + sessions:
 
-- `openclaw.queue.lane.enqueue` (counter, attrs: `openclaw.lane`)
-- `openclaw.queue.lane.dequeue` (counter, attrs: `openclaw.lane`)
-- `openclaw.queue.depth` (histogram, attrs: `openclaw.lane` or
-  `openclaw.channel=heartbeat`)
-- `openclaw.queue.wait_ms` (histogram, attrs: `openclaw.lane`)
-- `openclaw.session.state` (counter, attrs: `openclaw.state`, `openclaw.reason`)
-- `openclaw.session.stuck` (counter, attrs: `openclaw.state`)
-- `openclaw.session.stuck_age_ms` (histogram, attrs: `openclaw.state`)
-- `openclaw.run.attempt` (counter, attrs: `openclaw.attempt`)
+- `avaclaw.queue.lane.enqueue` (counter, attrs: `avaclaw.lane`)
+- `avaclaw.queue.lane.dequeue` (counter, attrs: `avaclaw.lane`)
+- `avaclaw.queue.depth` (histogram, attrs: `avaclaw.lane` or
+  `avaclaw.channel=heartbeat`)
+- `avaclaw.queue.wait_ms` (histogram, attrs: `avaclaw.lane`)
+- `avaclaw.session.state` (counter, attrs: `avaclaw.state`, `avaclaw.reason`)
+- `avaclaw.session.stuck` (counter, attrs: `avaclaw.state`)
+- `avaclaw.session.stuck_age_ms` (histogram, attrs: `avaclaw.state`)
+- `avaclaw.run.attempt` (counter, attrs: `avaclaw.attempt`)
 
 ### Exported spans (names + key attributes)
 
-- `openclaw.model.usage`
-  - `openclaw.channel`, `openclaw.provider`, `openclaw.model`
-  - `openclaw.sessionKey`, `openclaw.sessionId`
-  - `openclaw.tokens.*` (input/output/cache_read/cache_write/total)
-- `openclaw.webhook.processed`
-  - `openclaw.channel`, `openclaw.webhook`, `openclaw.chatId`
-- `openclaw.webhook.error`
-  - `openclaw.channel`, `openclaw.webhook`, `openclaw.chatId`,
-    `openclaw.error`
-- `openclaw.message.processed`
-  - `openclaw.channel`, `openclaw.outcome`, `openclaw.chatId`,
-    `openclaw.messageId`, `openclaw.sessionKey`, `openclaw.sessionId`,
-    `openclaw.reason`
-- `openclaw.session.stuck`
-  - `openclaw.state`, `openclaw.ageMs`, `openclaw.queueDepth`,
-    `openclaw.sessionKey`, `openclaw.sessionId`
+- `avaclaw.model.usage`
+  - `avaclaw.channel`, `avaclaw.provider`, `avaclaw.model`
+  - `avaclaw.sessionKey`, `avaclaw.sessionId`
+  - `avaclaw.tokens.*` (input/output/cache_read/cache_write/total)
+- `avaclaw.webhook.processed`
+  - `avaclaw.channel`, `avaclaw.webhook`, `avaclaw.chatId`
+- `avaclaw.webhook.error`
+  - `avaclaw.channel`, `avaclaw.webhook`, `avaclaw.chatId`,
+    `avaclaw.error`
+- `avaclaw.message.processed`
+  - `avaclaw.channel`, `avaclaw.outcome`, `avaclaw.chatId`,
+    `avaclaw.messageId`, `avaclaw.sessionKey`, `avaclaw.sessionId`,
+    `avaclaw.reason`
+- `avaclaw.session.stuck`
+  - `avaclaw.state`, `avaclaw.ageMs`, `avaclaw.queueDepth`,
+    `avaclaw.sessionKey`, `avaclaw.sessionId`
 
 ### Sampling + flushing
 
@@ -346,7 +346,7 @@ Queues + sessions:
 
 ## Troubleshooting tips
 
-- **Gateway not reachable?** Run `openclaw doctor` first.
+- **Gateway not reachable?** Run `avaclaw doctor` first.
 - **Logs empty?** Check that the Gateway is running and writing to the file path
   in `logging.file`.
 - **Need more detail?** Set `logging.level` to `debug` or `trace` and retry.

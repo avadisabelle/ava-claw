@@ -203,7 +203,7 @@ const TalkSchema = z
     }
   });
 
-export const OpenClawSchema = z
+export const AvaClawSchema = z
   .object({
     $schema: z.string().optional(),
     meta: z
@@ -361,7 +361,7 @@ export const OpenClawSchema = z
                 cdpUrl: z.string().optional(),
                 driver: z
                   .union([
-                    z.literal("openclaw"),
+                    z.literal("avaclaw"),
                     z.literal("clawd"),
                     z.literal("extension"),
                     z.literal("existing-session"),

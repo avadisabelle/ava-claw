@@ -27,7 +27,7 @@ x-i18n:
 - [更新与回滚](/install/updating)
 - [配对（私信和节点）](/channels/pairing)
 - [Nix 模式](/install/nix)
-- [Ava-Claw 助手设置](/start/openclaw)
+- [Ava-Claw 助手设置](/start/avaclaw)
 - [Skills](/tools/skills)
 - [Skills 配置](/tools/skills-config)
 - [工作区模板](/reference/templates/AGENTS)

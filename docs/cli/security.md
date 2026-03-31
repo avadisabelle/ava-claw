@@ -1,12 +1,12 @@
 ---
-summary: "CLI reference for `openclaw security` (audit and fix common security footguns)"
+summary: "CLI reference for `avaclaw security` (audit and fix common security footguns)"
 read_when:
   - You want to run a quick security audit on config/state
   - You want to apply safe “fix” suggestions (chmod, tighten defaults)
 title: "security"
 ---
 
-# `openclaw security`
+# `avaclaw security`
 
 Security tools (audit + optional fixes).
 
@@ -17,10 +17,10 @@ Related:
 ## Audit
 
 ```bash
-openclaw security audit
-openclaw security audit --deep
-openclaw security audit --fix
-openclaw security audit --json
+avaclaw security audit
+avaclaw security audit --deep
+avaclaw security audit --fix
+avaclaw security audit --json
 ```
 
 The audit warns when multiple DM senders share the main session and recommends **secure DM mode**: `session.dmScope="per-channel-peer"` (or `per-account-channel-peer` for multi-account channels) for shared inboxes.
@@ -33,7 +33,7 @@ It also warns when sandbox Docker settings are configured while sandbox mode is 
 It also flags `gateway.allowRealIpFallback=true` (header-spoofing risk if proxies are misconfigured) and `discovery.mdns.mode="full"` (metadata leakage via mDNS TXT records).
 It also warns when sandbox browser uses Docker `bridge` network without `sandbox.browser.cdpSourceRange`.
 It also flags dangerous sandbox Docker network modes (including `host` and `container:*` namespace joins).
-It also warns when existing sandbox browser Docker containers have missing/stale hash labels (for example pre-migration containers missing `openclaw.browserConfigEpoch`) and recommends `openclaw sandbox recreate --browser --all`.
+It also warns when existing sandbox browser Docker containers have missing/stale hash labels (for example pre-migration containers missing `avaclaw.browserConfigEpoch`) and recommends `avaclaw sandbox recreate --browser --all`.
 It also warns when npm-based plugin/hook install records are unpinned, missing integrity metadata, or drift from currently installed package versions.
 It warns when channel allowlists rely on mutable names/emails/tags instead of stable IDs (Discord, Slack, Google Chat, MS Teams, Mattermost, IRC scopes where applicable).
 It warns when `gateway.auth.mode="none"` leaves Gateway HTTP APIs reachable without a shared secret (`/tools/invoke` plus any enabled `/v1/*` endpoint).
@@ -45,14 +45,14 @@ For the complete dangerous-parameter inventory, see the "Insecure or dangerous f
 Use `--json` for CI/policy checks:
 
 ```bash
-openclaw security audit --json | jq '.summary'
-openclaw security audit --deep --json | jq '.findings[] | select(.severity=="critical") | .checkId'
+avaclaw security audit --json | jq '.summary'
+avaclaw security audit --deep --json | jq '.findings[] | select(.severity=="critical") | .checkId'
 ```
 
 If `--fix` and `--json` are combined, output includes both fix actions and final report:
 
 ```bash
-openclaw security audit --fix --json | jq '{fix: .fix.ok, summary: .report.summary}'
+avaclaw security audit --fix --json | jq '{fix: .fix.ok, summary: .report.summary}'
 ```
 
 ## What `--fix` changes

@@ -23,11 +23,11 @@ function mkdirSafe(dir: string) {
 }
 
 function makeTempDir() {
-  return makeTrackedTempDir("openclaw-manifest-registry", tempDirs);
+  return makeTrackedTempDir("avaclaw-manifest-registry", tempDirs);
 }
 
 function writeManifest(dir: string, manifest: Record<string, unknown>) {
-  fs.writeFileSync(path.join(dir, "openclaw.plugin.json"), JSON.stringify(manifest), "utf-8");
+  fs.writeFileSync(path.join(dir, "avaclaw.plugin.json"), JSON.stringify(manifest), "utf-8");
 }
 
 function createPluginCandidate(params: {
@@ -35,7 +35,7 @@ function createPluginCandidate(params: {
   rootDir: string;
   sourceName?: string;
   origin: "bundled" | "global" | "workspace" | "config";
-  format?: "openclaw" | "bundle";
+  format?: "avaclaw" | "bundle";
   bundleFormat?: "codex" | "claude" | "cursor";
 }): PluginCandidate {
   return {
@@ -68,8 +68,8 @@ function prepareLinkedManifestFixture(params: { id: string; mode: "symlink" | "h
 } {
   const rootDir = makeTempDir();
   const outsideDir = makeTempDir();
-  const outsideManifest = path.join(outsideDir, "openclaw.plugin.json");
-  const linkedManifest = path.join(rootDir, "openclaw.plugin.json");
+  const outsideManifest = path.join(outsideDir, "avaclaw.plugin.json");
+  const linkedManifest = path.join(rootDir, "avaclaw.plugin.json");
   fs.writeFileSync(path.join(rootDir, "index.ts"), "export default function () {}", "utf-8");
   fs.writeFileSync(
     outsideManifest,
@@ -537,14 +537,14 @@ describe("loadPluginManifestRegistry", () => {
       cache: true,
       env: {
         ...process.env,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledA,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledA,
       },
     });
     const second = loadPluginManifestRegistry({
       cache: true,
       env: {
         ...process.env,
-        OPENCLAW_BUNDLED_PLUGINS_DIR: bundledB,
+        AVACLAW_BUNDLED_PLUGINS_DIR: bundledB,
       },
     });
 
@@ -590,8 +590,8 @@ describe("loadPluginManifestRegistry", () => {
       env: {
         ...process.env,
         HOME: homeA,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: path.join(homeA, ".state"),
+        AVACLAW_HOME: undefined,
+        AVACLAW_STATE_DIR: path.join(homeA, ".state"),
       },
     });
     const second = loadPluginManifestRegistry({
@@ -600,8 +600,8 @@ describe("loadPluginManifestRegistry", () => {
       env: {
         ...process.env,
         HOME: homeB,
-        OPENCLAW_HOME: undefined,
-        OPENCLAW_STATE_DIR: path.join(homeB, ".state"),
+        AVACLAW_HOME: undefined,
+        AVACLAW_STATE_DIR: path.join(homeB, ".state"),
       },
     });
 

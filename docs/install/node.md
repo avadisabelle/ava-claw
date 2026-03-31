@@ -3,7 +3,7 @@ title: "Node.js"
 summary: "Install and configure Node.js for Ava-Claw — version requirements, install options, and PATH troubleshooting"
 read_when:
   - "You need to install Node.js before installing Ava-Claw"
-  - "You installed Ava-Claw but `openclaw` is command not found"
+  - "You installed Ava-Claw but `avaclaw` is command not found"
   - "npm install -g fails with permissions or PATH issues"
 ---
 
@@ -82,13 +82,13 @@ fnm use 24
 ```
 
   <Warning>
-  Make sure your version manager is initialized in your shell startup file (`~/.zshrc` or `~/.bashrc`). If it isn't, `openclaw` may not be found in new terminal sessions because the PATH won't include Node's bin directory.
+  Make sure your version manager is initialized in your shell startup file (`~/.zshrc` or `~/.bashrc`). If it isn't, `avaclaw` may not be found in new terminal sessions because the PATH won't include Node's bin directory.
   </Warning>
 </Accordion>
 
 ## Troubleshooting
 
-### `openclaw: command not found`
+### `avaclaw: command not found`
 
 This almost always means npm's global bin directory isn't on your PATH.
 

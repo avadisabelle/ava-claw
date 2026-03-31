@@ -37,7 +37,7 @@ describe("rewritePackageExtensions", () => {
 
 describe("copyBundledPluginMetadata", () => {
   it("copies plugin manifests, package metadata, and local skill directories", () => {
-    const repoRoot = makeRepoRoot("openclaw-bundled-plugin-meta-");
+    const repoRoot = makeRepoRoot("avaclaw-bundled-plugin-meta-");
     const pluginDir = path.join(repoRoot, "extensions", "acpx");
     fs.mkdirSync(path.join(pluginDir, "skills", "acp-router"), { recursive: true });
     fs.writeFileSync(
@@ -45,20 +45,20 @@ describe("copyBundledPluginMetadata", () => {
       "# ACP Router\n",
       "utf8",
     );
-    writeJson(path.join(pluginDir, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginDir, "avaclaw.plugin.json"), {
       id: "acpx",
       configSchema: { type: "object" },
       skills: ["./skills"],
     });
     writeJson(path.join(pluginDir, "package.json"), {
       name: "@avadisabelle/ava-claw-acpx",
-      openclaw: { extensions: ["./index.ts"] },
+      avaclaw: { extensions: ["./index.ts"] },
     });
 
     copyBundledPluginMetadata({ repoRoot });
 
     expect(
-      fs.existsSync(path.join(repoRoot, "dist", "extensions", "acpx", "openclaw.plugin.json")),
+      fs.existsSync(path.join(repoRoot, "dist", "extensions", "acpx", "avaclaw.plugin.json")),
     ).toBe(true);
     expect(
       fs.readFileSync(
@@ -68,19 +68,19 @@ describe("copyBundledPluginMetadata", () => {
     ).toContain("ACP Router");
     const bundledManifest = JSON.parse(
       fs.readFileSync(
-        path.join(repoRoot, "dist", "extensions", "acpx", "openclaw.plugin.json"),
+        path.join(repoRoot, "dist", "extensions", "acpx", "avaclaw.plugin.json"),
         "utf8",
       ),
     ) as { skills?: string[] };
     expect(bundledManifest.skills).toEqual(["./skills"]);
     const packageJson = JSON.parse(
       fs.readFileSync(path.join(repoRoot, "dist", "extensions", "acpx", "package.json"), "utf8"),
-    ) as { openclaw?: { extensions?: string[] } };
-    expect(packageJson.openclaw?.extensions).toEqual(["./index.js"]);
+    ) as { avaclaw?: { extensions?: string[] } };
+    expect(packageJson.avaclaw?.extensions).toEqual(["./index.js"]);
   });
 
   it("relocates node_modules-backed skill paths into bundled-skills and rewrites the manifest", () => {
-    const repoRoot = makeRepoRoot("openclaw-bundled-plugin-node-modules-");
+    const repoRoot = makeRepoRoot("avaclaw-bundled-plugin-node-modules-");
     const pluginDir = path.join(repoRoot, "extensions", "tlon");
     const storeSkillDir = path.join(
       repoRoot,
@@ -105,14 +105,14 @@ describe("copyBundledPluginMetadata", () => {
       path.join(pluginDir, "node_modules", "@tloncorp", "tlon-skill"),
       process.platform === "win32" ? "junction" : "dir",
     );
-    writeJson(path.join(pluginDir, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginDir, "avaclaw.plugin.json"), {
       id: "tlon",
       configSchema: { type: "object" },
       skills: ["node_modules/@tloncorp/tlon-skill"],
     });
     writeJson(path.join(pluginDir, "package.json"), {
       name: "@avadisabelle/ava-claw-tlon",
-      openclaw: { extensions: ["./index.ts"] },
+      avaclaw: { extensions: ["./index.ts"] },
     });
     const staleNodeModulesSkillDir = path.join(
       repoRoot,
@@ -145,7 +145,7 @@ describe("copyBundledPluginMetadata", () => {
     );
     const bundledManifest = JSON.parse(
       fs.readFileSync(
-        path.join(repoRoot, "dist", "extensions", "tlon", "openclaw.plugin.json"),
+        path.join(repoRoot, "dist", "extensions", "tlon", "avaclaw.plugin.json"),
         "utf8",
       ),
     ) as { skills?: string[] };
@@ -153,17 +153,17 @@ describe("copyBundledPluginMetadata", () => {
   });
 
   it("omits missing declared skill paths and removes stale generated outputs", () => {
-    const repoRoot = makeRepoRoot("openclaw-bundled-plugin-missing-skill-");
+    const repoRoot = makeRepoRoot("avaclaw-bundled-plugin-missing-skill-");
     const pluginDir = path.join(repoRoot, "extensions", "tlon");
     fs.mkdirSync(pluginDir, { recursive: true });
-    writeJson(path.join(pluginDir, "openclaw.plugin.json"), {
+    writeJson(path.join(pluginDir, "avaclaw.plugin.json"), {
       id: "tlon",
       configSchema: { type: "object" },
       skills: ["node_modules/@tloncorp/tlon-skill"],
     });
     writeJson(path.join(pluginDir, "package.json"), {
       name: "@avadisabelle/ava-claw-tlon",
-      openclaw: { extensions: ["./index.ts"] },
+      avaclaw: { extensions: ["./index.ts"] },
     });
     const staleBundledSkillDir = path.join(
       repoRoot,
@@ -183,7 +183,7 @@ describe("copyBundledPluginMetadata", () => {
 
     const bundledManifest = JSON.parse(
       fs.readFileSync(
-        path.join(repoRoot, "dist", "extensions", "tlon", "openclaw.plugin.json"),
+        path.join(repoRoot, "dist", "extensions", "tlon", "avaclaw.plugin.json"),
         "utf8",
       ),
     ) as { skills?: string[] };
@@ -195,7 +195,7 @@ describe("copyBundledPluginMetadata", () => {
   });
 
   it("removes generated outputs for plugins no longer present in source", () => {
-    const repoRoot = makeRepoRoot("openclaw-bundled-plugin-removed-");
+    const repoRoot = makeRepoRoot("avaclaw-bundled-plugin-removed-");
     const staleBundledSkillDir = path.join(
       repoRoot,
       "dist",
@@ -215,7 +215,7 @@ describe("copyBundledPluginMetadata", () => {
       "node_modules",
     );
     fs.mkdirSync(staleNodeModulesDir, { recursive: true });
-    writeJson(path.join(repoRoot, "dist", "extensions", "removed-plugin", "openclaw.plugin.json"), {
+    writeJson(path.join(repoRoot, "dist", "extensions", "removed-plugin", "avaclaw.plugin.json"), {
       id: "removed-plugin",
       configSchema: { type: "object" },
       skills: ["./bundled-skills/@scope/skill"],
@@ -229,7 +229,7 @@ describe("copyBundledPluginMetadata", () => {
 
     expect(
       fs.existsSync(
-        path.join(repoRoot, "dist", "extensions", "removed-plugin", "openclaw.plugin.json"),
+        path.join(repoRoot, "dist", "extensions", "removed-plugin", "avaclaw.plugin.json"),
       ),
     ).toBe(false);
     expect(

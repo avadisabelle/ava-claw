@@ -1,5 +1,5 @@
 ---
-summary: "CLI reference for `openclaw secrets` (reload, audit, configure, apply)"
+summary: "CLI reference for `avaclaw secrets` (reload, audit, configure, apply)"
 read_when:
   - Re-resolving secret refs at runtime
   - Auditing plaintext residues and unresolved refs
@@ -7,9 +7,9 @@ read_when:
 title: "secrets"
 ---
 
-# `openclaw secrets`
+# `avaclaw secrets`
 
-Use `openclaw secrets` to manage SecretRefs and keep the active runtime snapshot healthy.
+Use `avaclaw secrets` to manage SecretRefs and keep the active runtime snapshot healthy.
 
 Command roles:
 
@@ -21,12 +21,12 @@ Command roles:
 Recommended operator loop:
 
 ```bash
-openclaw secrets audit --check
-openclaw secrets configure
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json --dry-run
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json
-openclaw secrets audit --check
-openclaw secrets reload
+avaclaw secrets audit --check
+avaclaw secrets configure
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json --dry-run
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json
+avaclaw secrets audit --check
+avaclaw secrets reload
 ```
 
 Exit code note for CI/gates:
@@ -45,8 +45,8 @@ Related:
 Re-resolve secret refs and atomically swap runtime snapshot.
 
 ```bash
-openclaw secrets reload
-openclaw secrets reload --json
+avaclaw secrets reload
+avaclaw secrets reload --json
 ```
 
 Notes:
@@ -61,7 +61,7 @@ Scan Ava-Claw state for:
 
 - plaintext secret storage
 - unresolved refs
-- precedence drift (`auth-profiles.json` credentials shadowing `openclaw.json` refs)
+- precedence drift (`auth-profiles.json` credentials shadowing `avaclaw.json` refs)
 - generated `agents/*/agent/models.json` residues (provider `apiKey` values and sensitive provider headers)
 - legacy residues (legacy auth store entries, OAuth reminders)
 
@@ -70,9 +70,9 @@ Header residue note:
 - Sensitive provider header detection is name-heuristic based (common auth/credential header names and fragments such as `authorization`, `x-api-key`, `token`, `secret`, `password`, and `credential`).
 
 ```bash
-openclaw secrets audit
-openclaw secrets audit --check
-openclaw secrets audit --json
+avaclaw secrets audit
+avaclaw secrets audit --check
+avaclaw secrets audit --json
 ```
 
 Exit behavior:
@@ -95,13 +95,13 @@ Report shape highlights:
 Build provider and SecretRef changes interactively, run preflight, and optionally apply:
 
 ```bash
-openclaw secrets configure
-openclaw secrets configure --plan-out /tmp/openclaw-secrets-plan.json
-openclaw secrets configure --apply --yes
-openclaw secrets configure --providers-only
-openclaw secrets configure --skip-provider-setup
-openclaw secrets configure --agent ops
-openclaw secrets configure --json
+avaclaw secrets configure
+avaclaw secrets configure --plan-out /tmp/avaclaw-secrets-plan.json
+avaclaw secrets configure --apply --yes
+avaclaw secrets configure --providers-only
+avaclaw secrets configure --skip-provider-setup
+avaclaw secrets configure --agent ops
+avaclaw secrets configure --json
 ```
 
 Flow:
@@ -120,7 +120,7 @@ Notes:
 
 - Requires an interactive TTY.
 - You cannot combine `--providers-only` with `--skip-provider-setup`.
-- `configure` targets secret-bearing fields in `openclaw.json` plus `auth-profiles.json` for the selected agent scope.
+- `configure` targets secret-bearing fields in `avaclaw.json` plus `auth-profiles.json` for the selected agent scope.
 - `configure` supports creating new `auth-profiles.json` mappings directly in the picker flow.
 - Canonical supported surface: [SecretRef Credential Surface](/reference/secretref-credential-surface).
 - It performs preflight resolution before apply.
@@ -140,9 +140,9 @@ Exec provider safety note:
 Apply or preflight a plan generated previously:
 
 ```bash
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json --dry-run
-openclaw secrets apply --from /tmp/openclaw-secrets-plan.json --json
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json --dry-run
+avaclaw secrets apply --from /tmp/avaclaw-secrets-plan.json --json
 ```
 
 Plan contract details (allowed target paths, validation rules, and failure semantics):
@@ -151,10 +151,10 @@ Plan contract details (allowed target paths, validation rules, and failure seman
 
 What `apply` may update:
 
-- `openclaw.json` (SecretRef targets + provider upserts/deletes)
+- `avaclaw.json` (SecretRef targets + provider upserts/deletes)
 - `auth-profiles.json` (provider-target scrubbing)
 - legacy `auth.json` residues
-- `~/.openclaw/.env` known secret keys whose values were migrated
+- `~/.avaclaw/.env` known secret keys whose values were migrated
 
 ## Why no rollback backups
 
@@ -165,9 +165,9 @@ Safety comes from strict preflight + atomic-ish apply with best-effort in-memory
 ## Example
 
 ```bash
-openclaw secrets audit --check
-openclaw secrets configure
-openclaw secrets audit --check
+avaclaw secrets audit --check
+avaclaw secrets configure
+avaclaw secrets audit --check
 ```
 
 If `audit --check` still reports plaintext findings, update the remaining reported target paths and rerun audit.

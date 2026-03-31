@@ -28,7 +28,7 @@ import {
   resolveNativeCommandsEnabled,
   resolveNativeSkillsEnabled,
 } from "../../../../src/config/commands.js";
-import type { OpenClawConfig, ReplyToMode } from "../../../../src/config/config.js";
+import type { AvaClawConfig, ReplyToMode } from "../../../../src/config/config.js";
 import { loadConfig } from "../../../../src/config/config.js";
 import { isDangerousNameMatchingEnabled } from "../../../../src/config/dangerous-name-matching.js";
 import {
@@ -95,7 +95,7 @@ import { formatThreadBindingDurationLabel } from "./thread-bindings.messages.js"
 export type MonitorDiscordOpts = {
   token?: string;
   accountId?: string;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   runtime?: RuntimeEnv;
   abortSignal?: AbortSignal;
   mediaMaxMb?: number;
@@ -180,7 +180,7 @@ function classifyAcpStatusProbeError(params: { error: unknown; isStaleRunning: b
 }
 
 async function probeDiscordAcpBindingHealth(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   sessionKey: string;
   storedState?: "idle" | "running" | "error";
   lastActivityAt?: number;

@@ -34,9 +34,9 @@ Ava-Claw has three public release lanes:
 
 ## Public references
 
-- [`.github/workflows/openclaw-npm-release.yml`](https://github.com/avadisabelle/ava-claw/blob/main/.github/workflows/openclaw-npm-release.yml)
-- [`scripts/openclaw-npm-release-check.ts`](https://github.com/avadisabelle/ava-claw/blob/main/scripts/openclaw-npm-release-check.ts)
+- [`.github/workflows/avaclaw-npm-release.yml`](https://github.com/avadisabelle/ava-claw/blob/main/.github/workflows/avaclaw-npm-release.yml)
+- [`scripts/avaclaw-npm-release-check.ts`](https://github.com/avadisabelle/ava-claw/blob/main/scripts/avaclaw-npm-release-check.ts)
 
 Maintainers use the private release docs in
-[`openclaw/maintainers/release/README.md`](https://github.com/openclaw/maintainers/blob/main/release/README.md)
+[`avaclaw/maintainers/release/README.md`](https://github.com/avaclaw/maintainers/blob/main/release/README.md)
 for the actual runbook.

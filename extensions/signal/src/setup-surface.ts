@@ -14,7 +14,7 @@ import type { ChannelSetupAdapter } from "../../../src/channels/plugins/types.ad
 import { formatCliCommand } from "../../../src/cli/command-format.js";
 import { detectBinary } from "../../../src/commands/onboard-helpers.js";
 import { installSignalCli } from "../../../src/commands/signal-install.js";
-import type { OpenClawConfig } from "../../../src/config/config.js";
+import type { AvaClawConfig } from "../../../src/config/config.js";
 import { DEFAULT_ACCOUNT_ID, normalizeAccountId } from "../../../src/routing/session-key.js";
 import { formatDocsLink } from "../../../src/terminal/links.js";
 import { normalizeE164 } from "../../../src/utils.js";
@@ -89,10 +89,10 @@ function buildSignalSetupPatch(input: {
 }
 
 async function promptSignalAllowFrom(params: {
-  cfg: OpenClawConfig;
+  cfg: AvaClawConfig;
   prompter: WizardPrompter;
   accountId?: string;
-}): Promise<OpenClawConfig> {
+}): Promise<AvaClawConfig> {
   return promptParsedAllowFromForScopedChannel({
     cfg: params.cfg,
     channel,
@@ -301,9 +301,9 @@ export const signalSetupWizard: ChannelSetupWizard = {
   completionNote: {
     title: "Signal next steps",
     lines: [
-      'Link device with: signal-cli link -n "OpenClaw"',
+      'Link device with: signal-cli link -n "AvaClaw"',
       "Scan QR in Signal -> Linked Devices",
-      `Then run: ${formatCliCommand("openclaw gateway call channels.status --params '{\"probe\":true}'")}`,
+      `Then run: ${formatCliCommand("avaclaw gateway call channels.status --params '{\"probe\":true}'")}`,
       `Docs: ${formatDocsLink("/signal", "signal")}`,
     ],
   },

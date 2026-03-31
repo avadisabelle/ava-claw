@@ -2,7 +2,7 @@ import { EventEmitter } from "node:events";
 import type { AgentMessage, AgentTool } from "@avadisabelle/ava-pi-agent-core";
 import type { SessionManager } from "@avadisabelle/ava-pi-coding-agent";
 import type { TSchema } from "@sinclair/typebox";
-import type { OpenClawConfig } from "../../config/config.js";
+import type { AvaClawConfig } from "../../config/config.js";
 import { registerUnhandledRejectionHandler } from "../../infra/unhandled-rejections.js";
 import {
   hasInterSessionUserProvenance,
@@ -523,7 +523,7 @@ export async function sanitizeSessionHistory(params: {
   modelId?: string;
   provider?: string;
   allowedToolNames?: Iterable<string>;
-  config?: OpenClawConfig;
+  config?: AvaClawConfig;
   sessionManager: SessionManager;
   sessionId: string;
   policy?: TranscriptPolicy;

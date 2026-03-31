@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { afterEach, describe, expect, it } from "vitest";
-import { clearPluginDiscoveryCache, discoverOpenClawPlugins } from "./discovery.js";
+import { clearPluginDiscoveryCache, discoverAvaClawPlugins } from "./discovery.js";
 import {
   cleanupTrackedTempDirs,
   makeTrackedTempDir,
@@ -11,25 +11,25 @@ import {
 const tempDirs: string[] = [];
 
 function makeTempDir() {
-  return makeTrackedTempDir("openclaw-plugins", tempDirs);
+  return makeTrackedTempDir("avaclaw-plugins", tempDirs);
 }
 
 const mkdirSafe = mkdirSafeDir;
 
 function buildDiscoveryEnv(stateDir: string): NodeJS.ProcessEnv {
   return {
-    OPENCLAW_STATE_DIR: stateDir,
+    AVACLAW_STATE_DIR: stateDir,
     CLAWDBOT_STATE_DIR: undefined,
-    OPENCLAW_HOME: undefined,
-    OPENCLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
+    AVACLAW_HOME: undefined,
+    AVACLAW_BUNDLED_PLUGINS_DIR: "/nonexistent/bundled/plugins",
   };
 }
 
 async function discoverWithStateDir(
   stateDir: string,
-  params: Parameters<typeof discoverOpenClawPlugins>[0],
+  params: Parameters<typeof discoverAvaClawPlugins>[0],
 ) {
-  return discoverOpenClawPlugins({ ...params, env: buildDiscoveryEnv(stateDir) });
+  return discoverAvaClawPlugins({ ...params, env: buildDiscoveryEnv(stateDir) });
 }
 
 function writePluginPackageManifest(params: {
@@ -41,7 +41,7 @@ function writePluginPackageManifest(params: {
     path.join(params.packageDir, "package.json"),
     JSON.stringify({
       name: params.packageName,
-      openclaw: { extensions: params.extensions },
+      avaclaw: { extensions: params.extensions },
     }),
     "utf-8",
   );
@@ -58,7 +58,7 @@ afterEach(() => {
   cleanupTrackedTempDirs(tempDirs);
 });
 
-describe("discoverOpenClawPlugins", () => {
+describe("discoverAvaClawPlugins", () => {
   it("discovers global and workspace extensions", async () => {
     const stateDir = makeTempDir();
     const workspaceDir = path.join(stateDir, "workspace");
@@ -67,7 +67,7 @@ describe("discoverOpenClawPlugins", () => {
     mkdirSafe(globalExt);
     fs.writeFileSync(path.join(globalExt, "alpha.ts"), "export default function () {}", "utf-8");
 
-    const workspaceExt = path.join(workspaceDir, ".openclaw", "extensions");
+    const workspaceExt = path.join(workspaceDir, ".avaclaw", "extensions");
     mkdirSafe(workspaceExt);
     fs.writeFileSync(path.join(workspaceExt, "beta.ts"), "export default function () {}", "utf-8");
 
@@ -82,11 +82,11 @@ describe("discoverOpenClawPlugins", () => {
     const stateDir = makeTempDir();
     const homeDir = makeTempDir();
     const workspaceRoot = path.join(homeDir, "workspace");
-    const workspaceExt = path.join(workspaceRoot, ".openclaw", "extensions");
+    const workspaceExt = path.join(workspaceRoot, ".avaclaw", "extensions");
     mkdirSafe(workspaceExt);
     fs.writeFileSync(path.join(workspaceExt, "tilde-workspace.ts"), "export default {}", "utf-8");
 
-    const result = discoverOpenClawPlugins({
+    const result = discoverAvaClawPlugins({
       workspaceDir: "~/workspace",
       env: {
         ...buildDiscoveryEnv(stateDir),
@@ -295,7 +295,7 @@ describe("discoverOpenClawPlugins", () => {
     );
 
     expect(legacy).toBeDefined();
-    expect(legacy?.format).toBe("openclaw");
+    expect(legacy?.format).toBe("avaclaw");
     expect(
       result.diagnostics.some((entry) => entry.source?.endsWith(".claude-plugin/plugin.json")),
     ).toBe(true);
@@ -316,7 +316,7 @@ describe("discoverOpenClawPlugins", () => {
     );
 
     expect(legacy).toBeDefined();
-    expect(legacy?.format).toBe("openclaw");
+    expect(legacy?.format).toBe("avaclaw");
     expect(
       result.diagnostics.some((entry) => entry.source?.endsWith(".codex-plugin/plugin.json")),
     ).toBe(true);
@@ -416,7 +416,7 @@ describe("discoverOpenClawPlugins", () => {
       outsideManifest,
       JSON.stringify({
         name: "@avadisabelle/ava-claw-pack",
-        openclaw: { extensions: ["./entry.ts"] },
+        avaclaw: { extensions: ["./entry.ts"] },
       }),
       "utf-8",
     );
@@ -460,12 +460,12 @@ describe("discoverOpenClawPlugins", () => {
       fs.writeFileSync(path.join(packDir, "index.ts"), "export default function () {}", "utf-8");
       fs.chmodSync(packDir, 0o777);
 
-      const result = discoverOpenClawPlugins({
+      const result = discoverAvaClawPlugins({
         env: {
           ...process.env,
-          OPENCLAW_STATE_DIR: stateDir,
+          AVACLAW_STATE_DIR: stateDir,
           CLAWDBOT_STATE_DIR: undefined,
-          OPENCLAW_BUNDLED_PLUGINS_DIR: bundledDir,
+          AVACLAW_BUNDLED_PLUGINS_DIR: bundledDir,
         },
       });
 
@@ -508,30 +508,30 @@ describe("discoverOpenClawPlugins", () => {
     const pluginPath = path.join(globalExt, "cached.ts");
     fs.writeFileSync(pluginPath, "export default function () {}", "utf-8");
 
-    const first = discoverOpenClawPlugins({
+    const first = discoverAvaClawPlugins({
       env: {
         ...buildDiscoveryEnv(stateDir),
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
     expect(first.candidates.some((candidate) => candidate.idHint === "cached")).toBe(true);
 
     fs.rmSync(pluginPath, { force: true });
 
-    const second = discoverOpenClawPlugins({
+    const second = discoverAvaClawPlugins({
       env: {
         ...buildDiscoveryEnv(stateDir),
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
     expect(second.candidates.some((candidate) => candidate.idHint === "cached")).toBe(true);
 
     clearPluginDiscoveryCache();
 
-    const third = discoverOpenClawPlugins({
+    const third = discoverAvaClawPlugins({
       env: {
         ...buildDiscoveryEnv(stateDir),
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
     expect(third.candidates.some((candidate) => candidate.idHint === "cached")).toBe(false);
@@ -547,16 +547,16 @@ describe("discoverOpenClawPlugins", () => {
     fs.writeFileSync(path.join(globalExtA, "alpha.ts"), "export default function () {}", "utf-8");
     fs.writeFileSync(path.join(globalExtB, "beta.ts"), "export default function () {}", "utf-8");
 
-    const first = discoverOpenClawPlugins({
+    const first = discoverAvaClawPlugins({
       env: {
         ...buildDiscoveryEnv(stateDirA),
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
-    const second = discoverOpenClawPlugins({
+    const second = discoverAvaClawPlugins({
       env: {
         ...buildDiscoveryEnv(stateDirB),
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
 
@@ -577,20 +577,20 @@ describe("discoverOpenClawPlugins", () => {
     fs.writeFileSync(pluginA, "export default {}", "utf-8");
     fs.writeFileSync(pluginB, "export default {}", "utf-8");
 
-    const first = discoverOpenClawPlugins({
+    const first = discoverAvaClawPlugins({
       extraPaths: ["~/plugins/demo.ts"],
       env: {
         ...buildDiscoveryEnv(stateDir),
         HOME: homeA,
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
-    const second = discoverOpenClawPlugins({
+    const second = discoverAvaClawPlugins({
       extraPaths: ["~/plugins/demo.ts"],
       env: {
         ...buildDiscoveryEnv(stateDir),
         HOME: homeB,
-        OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+        AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
       },
     });
 
@@ -610,14 +610,14 @@ describe("discoverOpenClawPlugins", () => {
 
     const env = {
       ...buildDiscoveryEnv(stateDir),
-      OPENCLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
+      AVACLAW_PLUGIN_DISCOVERY_CACHE_MS: "5000",
     };
 
-    const first = discoverOpenClawPlugins({
+    const first = discoverAvaClawPlugins({
       extraPaths: [pluginA, pluginB],
       env,
     });
-    const second = discoverOpenClawPlugins({
+    const second = discoverAvaClawPlugins({
       extraPaths: [pluginB, pluginA],
       env,
     });

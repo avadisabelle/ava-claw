@@ -15,12 +15,12 @@ Ava-Claw uses **[AgentSkills](https://agentskills.io)-compatible** skill folders
 Skills are loaded from **three** places:
 
 1. **Bundled skills**: shipped with the install (npm package or Ava-Claw.app)
-2. **Managed/local skills**: `~/.openclaw/skills`
+2. **Managed/local skills**: `~/.avaclaw/skills`
 3. **Workspace skills**: `<workspace>/skills`
 
 If a skill name conflicts, precedence is:
 
-`<workspace>/skills` (highest) → `~/.openclaw/skills` → bundled skills (lowest)
+`<workspace>/skills` (highest) → `~/.avaclaw/skills` → bundled skills (lowest)
 
 Additionally, you can configure extra skill folders (lowest precedence) via
 `skills.load.extraDirs` in `~/.avadisabelle/ava-claw.json`.
@@ -30,7 +30,7 @@ Additionally, you can configure extra skill folders (lowest precedence) via
 In **multi-agent** setups, each agent has its own workspace. That means:
 
 - **Per-agent skills** live in `<workspace>/skills` for that agent only.
-- **Shared skills** live in `~/.openclaw/skills` (managed/local) and are visible
+- **Shared skills** live in `~/.avaclaw/skills` (managed/local) and are visible
   to **all agents** on the same machine.
 - **Shared folders** can also be added via `skills.load.extraDirs` (lowest
   precedence) if you want a common skills pack used by multiple agents.
@@ -41,9 +41,9 @@ applies: workspace wins, then managed/local, then bundled.
 ## Plugins + skills
 
 Plugins can ship their own skills by listing `skills` directories in
-`openclaw.plugin.json` (paths relative to the plugin root). Plugin skills load
+`avaclaw.plugin.json` (paths relative to the plugin root). Plugin skills load
 when the plugin is enabled and participate in the normal skill precedence rules.
-You can gate them via `metadata.openclaw.requires.config` on the plugin’s config
+You can gate them via `metadata.avaclaw.requires.config` on the plugin’s config
 entry. See [Plugins](/tools/plugin) for discovery/config and [Tools](/tools) for the
 tool surface those skills teach.
 
@@ -93,7 +93,7 @@ Notes:
 - `metadata` should be a **single-line JSON object**.
 - Use `{baseDir}` in instructions to reference the skill folder path.
 - Optional frontmatter keys:
-  - `homepage` — URL surfaced as “Website” in the macOS Skills UI (also supported via `metadata.openclaw.homepage`).
+  - `homepage` — URL surfaced as “Website” in the macOS Skills UI (also supported via `metadata.avaclaw.homepage`).
   - `user-invocable` — `true|false` (default: `true`). When `true`, the skill is exposed as a user slash command.
   - `disable-model-invocation` — `true|false` (default: `false`). When `true`, the skill is excluded from the model prompt (still available via user invocation).
   - `command-dispatch` — `tool` (optional). When set to `tool`, the slash command bypasses the model and dispatches directly to a tool.
@@ -113,7 +113,7 @@ name: nano-banana-pro
 description: Generate or edit images via Gemini 3 Pro Image
 metadata:
   {
-    "openclaw":
+    "avaclaw":
       {
         "requires": { "bins": ["uv"], "env": ["GEMINI_API_KEY"], "config": ["browser.enabled"] },
         "primaryEnv": "GEMINI_API_KEY",
@@ -122,7 +122,7 @@ metadata:
 ---
 ```
 
-Fields under `metadata.openclaw`:
+Fields under `metadata.avaclaw`:
 
 - `always: true` — always include the skill (skip other gates).
 - `emoji` — optional emoji used by the macOS Skills UI.
@@ -131,7 +131,7 @@ Fields under `metadata.openclaw`:
 - `requires.bins` — list; each must exist on `PATH`.
 - `requires.anyBins` — list; at least one must exist on `PATH`.
 - `requires.env` — list; env var must exist **or** be provided in config.
-- `requires.config` — list of `openclaw.json` paths that must be truthy.
+- `requires.config` — list of `avaclaw.json` paths that must be truthy.
 - `primaryEnv` — env var name associated with `skills.entries.<name>.apiKey`.
 - `install` — optional array of installer specs used by the macOS Skills UI (brew/node/go/uv/download).
 
@@ -153,7 +153,7 @@ name: gemini
 description: Use Gemini CLI for coding assistance and Google search lookups.
 metadata:
   {
-    "openclaw":
+    "avaclaw":
       {
         "emoji": "♊️",
         "requires": { "bins": ["gemini"] },
@@ -177,13 +177,13 @@ Notes:
 - If multiple installers are listed, the gateway picks a **single** preferred option (brew when available, otherwise node).
 - If all installers are `download`, Ava-Claw lists each entry so you can see the available artifacts.
 - Installer specs can include `os: ["darwin"|"linux"|"win32"]` to filter options by platform.
-- Node installs honor `skills.install.nodeManager` in `openclaw.json` (default: npm; options: npm/pnpm/yarn/bun).
+- Node installs honor `skills.install.nodeManager` in `avaclaw.json` (default: npm; options: npm/pnpm/yarn/bun).
   This only affects **skill installs**; the Gateway runtime should still be Node
   (Bun is not recommended for WhatsApp/Telegram).
 - Go installs: if `go` is missing and `brew` is available, the gateway installs Go via Homebrew first and sets `GOBIN` to Homebrew’s `bin` when possible.
-- Download installs: `url` (required), `archive` (`tar.gz` | `tar.bz2` | `zip`), `extract` (default: auto when archive detected), `stripComponents`, `targetDir` (default: `~/.openclaw/tools/<skillKey>`).
+- Download installs: `url` (required), `archive` (`tar.gz` | `tar.bz2` | `zip`), `extract` (default: auto when archive detected), `stripComponents`, `targetDir` (default: `~/.avaclaw/tools/<skillKey>`).
 
-If no `metadata.openclaw` is present, the skill is always eligible (unless
+If no `metadata.avaclaw` is present, the skill is always eligible (unless
 disabled in config or blocked by `skills.allowBundled` for bundled skills).
 
 ## Config overrides (`~/.avadisabelle/ava-claw.json`)
@@ -215,13 +215,13 @@ Bundled/managed skills can be toggled and supplied with env values:
 Note: if the skill name contains hyphens, quote the key (JSON5 allows quoted keys).
 
 Config keys match the **skill name** by default. If a skill defines
-`metadata.openclaw.skillKey`, use that key under `skills.entries`.
+`metadata.avaclaw.skillKey`, use that key under `skills.entries`.
 
 Rules:
 
 - `enabled: false` disables the skill even if it’s bundled/installed.
 - `env`: injected **only if** the variable isn’t already set in the process.
-- `apiKey`: convenience for skills that declare `metadata.openclaw.primaryEnv`.
+- `apiKey`: convenience for skills that declare `metadata.avaclaw.primaryEnv`.
   Supports plaintext string or SecretRef object (`{ source, provider, id }`).
 - `config`: optional bag for custom per-skill fields; custom keys must live here.
 - `allowBundled`: optional allowlist for **bundled** skills only. If set, only
@@ -287,7 +287,7 @@ Notes:
 ## Managed skills lifecycle
 
 Ava-Claw ships a baseline set of skills as **bundled skills** as part of the
-install (npm package or Ava-Claw.app). `~/.openclaw/skills` exists for local
+install (npm package or Ava-Claw.app). `~/.avaclaw/skills` exists for local
 overrides (for example, pinning/patching a skill without changing the bundled
 copy). Workspace skills are user-owned and override both on name conflicts.
 
