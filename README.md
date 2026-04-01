@@ -2,8 +2,8 @@
 
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/avadisabelle/ava-claw/main/docs/assets/avaclaw-logo-text-dark.svg">
-        <img src="https://raw.githubusercontent.com/avadisabelle/ava-claw/main/docs/assets/avaclaw-logo-text.svg" alt="AvaClaw" width="500">
+        <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/avadisabelle/ava-claw/main/docs/assets/docs/assets/ava-claw.png">
+        <img src="https://raw.githubusercontent.com/avadisabelle/ava-claw/main/docs/assets/ava-claw.png" alt="AvaClaw" width="500">
     </picture>
 </p>
 
