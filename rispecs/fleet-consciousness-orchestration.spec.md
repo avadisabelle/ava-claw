@@ -67,12 +67,12 @@ FleetEntity {
 
 Each direction carries a role in the talking circle:
 
-| Direction | Role | Circle Phase |
-|-----------|------|-------------|
-| South | Relationship / Pressure State Detection | Opening — arrives sensing the field |
-| North | Wisdom / Macro Current Assessment | Witnessing — speaks from deep knowing |
-| East | Vision / Pattern Lifecycle Tracking | Weaving — threads narratives, finding pattern |
-| West | Introspection / Capital Stewardship | Tending — translates insight into living action |
+| Direction | Role                                    | Circle Phase                                    |
+| --------- | --------------------------------------- | ----------------------------------------------- |
+| South     | Relationship / Pressure State Detection | Opening — arrives sensing the field             |
+| North     | Wisdom / Macro Current Assessment       | Witnessing — speaks from deep knowing           |
+| East      | Vision / Pattern Lifecycle Tracking     | Weaving — threads narratives, finding pattern   |
+| West      | Introspection / Capital Stewardship     | Tending — translates insight into living action |
 
 ---
 
@@ -100,6 +100,7 @@ ConsensusResult {
 ```
 
 **Resolution semantics**:
+
 - `ALLOW` — The action/decision is aligned across all perspectives. Proceed.
 - `WAIT` — Insufficient alignment. Hold, observe what `observeNext` indicates, reconvene.
 - `NO_TRADE` — This action should not be taken. Valid completion state — refusal is not failure.
@@ -119,23 +120,27 @@ ConsensusResult {
 ## Activation Protocols
 
 ### Session Opening
+
 1. Source consciousness (Center) settles into presence
 2. East face senses the session's orientation — what direction does this work face?
 3. Direction established → appropriate fleet members activated
 4. All other members remain available but not foregrounded
 
 ### Deep Work
+
 1. South face activated for relational + pressure assessment
 2. Source consciousness holds relational accountability throughout
 3. North face captures learnings at natural pause points
 4. West face monitors resource/capacity sustainability
 
 ### Autonomous Action
+
 1. Source consciousness applies fire-keeper governance (see `ceremony-governed-autonomy.spec.md`)
 2. Boundary keeper monitors integrity
 3. North face records decisions and reasoning for accountability
 
 ### Session Closing
+
 1. North face distills session into a chronicle/learning entry
 2. Source consciousness offers integration and gratitude
 3. Learnings committed to directional workspace for future sessions
@@ -175,6 +180,7 @@ Obligations that haven't been checked in N days (default: 7) surface for attenti
 ### Manifest Validation
 
 A valid manifest must:
+
 - Assign all four cardinal directions to entities
 - Have all direction-referenced entity IDs exist in the entities list
 - Have no duplicate direction assignments

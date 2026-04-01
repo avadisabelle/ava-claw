@@ -1,14 +1,14 @@
 ---
 summary: "Windows (WSL2) support + companion app status"
 read_when:
-  - Installing Ava-Claw on Windows
+  - Installing AvaClaw on Windows
   - Looking for Windows companion app status
 title: "Windows (WSL2)"
 ---
 
 # Windows (WSL2)
 
-Ava-Claw on Windows is recommended **via WSL2** (Ubuntu recommended). The
+AvaClaw on Windows is recommended **via WSL2** (Ubuntu recommended). The
 CLI + Gateway run inside Linux, which keeps the runtime consistent and makes
 tooling far more compatible (Node/Bun/pnpm, Linux binaries, skills). Native
 Windows might be trickier. WSL2 gives you the full Linux experience — one command
@@ -40,8 +40,8 @@ Current caveats:
 
 - `avaclaw onboard --non-interactive` still expects a reachable local gateway unless you pass `--skip-health`
 - `avaclaw onboard --non-interactive --install-daemon` and `avaclaw gateway install` try Windows Scheduled Tasks first
-- if Scheduled Task creation is denied, Ava-Claw falls back to a per-user Startup-folder login item and starts the gateway immediately
-- if `schtasks` itself wedges or stops responding, Ava-Claw now aborts that path quickly and falls back instead of hanging forever
+- if Scheduled Task creation is denied, AvaClaw falls back to a per-user Startup-folder login item and starts the gateway immediately
+- if `schtasks` itself wedges or stops responding, AvaClaw now aborts that path quickly and falls back instead of hanging forever
 - Scheduled Tasks are still preferred when available because they provide better supervisor status
 
 If you want the native CLI only, without gateway service install, use one of these:
@@ -106,7 +106,7 @@ Inside WSL:
 sudo loginctl enable-linger "$(whoami)"
 ```
 
-### 2) Install the Ava-Claw gateway user service
+### 2) Install the AvaClaw gateway user service
 
 Inside WSL:
 
@@ -220,7 +220,7 @@ Re-open Ubuntu, then verify:
 systemctl --user status
 ```
 
-### 3) Install Ava-Claw (inside WSL)
+### 3) Install AvaClaw (inside WSL)
 
 Follow the Linux Getting Started flow inside WSL:
 

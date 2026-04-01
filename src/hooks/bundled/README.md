@@ -140,7 +140,7 @@ avaclaw hooks disable command-logger
 
 ## Configuration
 
-Hooks can be configured in `~/.avadisabelle/ava-claw.json`:
+Hooks can be configured in `~/.avaclaw/avaclaw.json`:
 
 ```json
 {

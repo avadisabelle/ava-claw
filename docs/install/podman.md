@@ -1,5 +1,5 @@
 ---
-summary: "Run Ava-Claw in a rootless Podman container"
+summary: "Run AvaClaw in a rootless Podman container"
 read_when:
   - You want a containerized gateway with Podman instead of Docker
 title: "Podman"
@@ -7,7 +7,7 @@ title: "Podman"
 
 # Podman
 
-Run the Ava-Claw gateway in a **rootless** Podman container. Uses the same image as Docker (build from the repo [Dockerfile](https://github.com/avadisabelle/ava-claw/blob/main/Dockerfile)).
+Run the AvaClaw gateway in a **rootless** Podman container. Uses the same image as Docker (build from the repo [Dockerfile](https://github.com/avadisabelle/ava-claw/blob/main/Dockerfile)).
 
 ## Requirements
 
@@ -22,7 +22,7 @@ Run the Ava-Claw gateway in a **rootless** Podman container. Uses the same image
 ./setup-podman.sh
 ```
 
-This also creates a minimal `~avaclaw/.avadisabelle/ava-claw.json` (sets `gateway.mode="local"`) so the gateway can start without running the wizard.
+This also creates a minimal `~avaclaw/.avaclaw/avaclaw.json` (sets `gateway.mode="local"`) so the gateway can start without running the wizard.
 
 By default the container is **not** installed as a systemd service, you start it manually (see below). For a production-style setup with auto-start and restarts, install it as a systemd Quadlet user service instead:
 
@@ -83,12 +83,12 @@ To add quadlet **after** an initial setup that did not use it, re-run: `./setup-
   sudo -u avaclaw /home/avaclaw/run-avaclaw-podman.sh setup
   ```
 
-- **Config:** Only `avaclaw` and root can access `/home/avaclaw/.avaclaw`. To edit config: use the Control UI once the gateway is running, or `sudo -u avaclaw $EDITOR /home/avaclaw/.avadisabelle/ava-claw.json`.
+- **Config:** Only `avaclaw` and root can access `/home/avaclaw/.avaclaw`. To edit config: use the Control UI once the gateway is running, or `sudo -u avaclaw $EDITOR /home/avaclaw/.avaclaw/avaclaw.json`.
 
 ## Environment and config
 
 - **Token:** Stored in `~avaclaw/.avaclaw/.env` as `AVACLAW_GATEWAY_TOKEN`. `setup-podman.sh` and `run-avaclaw-podman.sh` generate it if missing (uses `openssl`, `python3`, or `od`).
-- **Optional:** In that `.env` you can set provider keys (e.g. `GROQ_API_KEY`, `OLLAMA_API_KEY`) and other Ava-Claw env vars.
+- **Optional:** In that `.env` you can set provider keys (e.g. `GROQ_API_KEY`, `OLLAMA_API_KEY`) and other AvaClaw env vars.
 - **Host ports:** By default the script maps `18789` (gateway) and `18790` (bridge). Override the **host** port mapping with `AVACLAW_PODMAN_GATEWAY_HOST_PORT` and `AVACLAW_PODMAN_BRIDGE_HOST_PORT` when launching.
 - **Gateway bind:** By default, `run-avaclaw-podman.sh` starts the gateway with `--bind loopback` for safe local access. To expose on LAN, set `AVACLAW_GATEWAY_BIND=lan` and configure `gateway.controlUi.allowedOrigins` (or explicitly enable host-header fallback) in `avaclaw.json`.
 - **Paths:** Host config and workspace default to `~avaclaw/.avaclaw` and `~avaclaw/.avaclaw/workspace`. Override the host paths used by the launch script with `AVACLAW_CONFIG_DIR` and `AVACLAW_WORKSPACE_DIR`.
@@ -111,7 +111,7 @@ To add quadlet **after** an initial setup that did not use it, re-run: `./setup-
 ## Troubleshooting
 
 - **Permission denied (EACCES) on config or auth-profiles:** The container defaults to `--userns=keep-id` and runs as the same uid/gid as the host user running the script. Ensure your host `AVACLAW_CONFIG_DIR` and `AVACLAW_WORKSPACE_DIR` are owned by that user.
-- **Gateway start blocked (missing `gateway.mode=local`):** Ensure `~avaclaw/.avadisabelle/ava-claw.json` exists and sets `gateway.mode="local"`. `setup-podman.sh` creates this file if missing.
+- **Gateway start blocked (missing `gateway.mode=local`):** Ensure `~avaclaw/.avaclaw/avaclaw.json` exists and sets `gateway.mode="local"`. `setup-podman.sh` creates this file if missing.
 - **Rootless Podman fails for user avaclaw:** Check `/etc/subuid` and `/etc/subgid` contain a line for `avaclaw` (e.g. `avaclaw:100000:65536`). Add it if missing and restart.
 - **Container name in use:** The launch script uses `podman run --replace`, so the existing container is replaced when you start again. To clean up manually: `podman rm -f avaclaw`.
 - **Script not found when running as avaclaw:** Ensure `setup-podman.sh` was run so that `run-avaclaw-podman.sh` is copied to avaclaw’s home (e.g. `/home/avaclaw/run-avaclaw-podman.sh`).

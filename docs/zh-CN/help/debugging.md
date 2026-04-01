@@ -105,9 +105,9 @@ AVACLAW_PROFILE=dev avaclaw gateway --dev --reset
 avaclaw gateway stop
 ```
 
-## 原始流日志（Ava-Claw）
+## 原始流日志（AvaClaw）
 
-Ava-Claw 可以在任何过滤/格式化之前记录**原始助手流**。
+AvaClaw 可以在任何过滤/格式化之前记录**原始助手流**。
 这是查看推理是否作为纯文本增量到达（或作为单独的思考块）的最佳方式。
 
 通过 CLI 启用：

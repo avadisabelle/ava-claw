@@ -7,7 +7,7 @@ title: "Credits"
 
 ## The name
 
-Ava-Claw = CLAW + TARDIS, because every space lobster needs a time and space machine.
+AvaClaw = CLAW + TARDIS, because every space lobster needs a time and space machine.
 
 ## Credits
 

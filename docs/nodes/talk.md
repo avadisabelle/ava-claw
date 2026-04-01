@@ -47,7 +47,7 @@ Supported keys:
 - `seed`, `normalize`, `lang`, `output_format`, `latency_tier`
 - `once`
 
-## Config (`~/.avadisabelle/ava-claw.json`)
+## Config (`~/.avaclaw/avaclaw.json`)
 
 ```json5
 {

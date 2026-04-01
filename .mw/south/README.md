@@ -1,6 +1,6 @@
 # 🌿 South — Relationships & Growth
 
-*Where vision gathers form through connection*
+_Where vision gathers form through connection_
 
 ---
 
@@ -28,7 +28,7 @@ Example: `260321-fleet-activation-architecture.md`
 
 Before placing anything here, ask:
 
-> *What relationships does this work need to honor? What must be gathered before building?*
+> _What relationships does this work need to honor? What must be gathered before building?_
 
 ## Connection to Fleet
 

@@ -76,7 +76,7 @@ avaclaw pairing approve whatsapp <CODE>
 </Steps>
 
 <Note>
-Ava-Claw recommends running WhatsApp on a separate number when possible. (The channel metadata and onboarding flow are optimized for that setup, but personal-number setups are also supported.)
+AvaClaw recommends running WhatsApp on a separate number when possible. (The channel metadata and onboarding flow are optimized for that setup, but personal-number setups are also supported.)
 </Note>
 
 ## Deployment patterns
@@ -85,7 +85,7 @@ Ava-Claw recommends running WhatsApp on a separate number when possible. (The ch
   <Accordion title="Dedicated number (recommended)">
     This is the cleanest operational mode:
 
-    - separate WhatsApp identity for Ava-Claw
+    - separate WhatsApp identity for AvaClaw
     - clearer DM allowlists and routing boundaries
     - lower chance of self-chat confusion
 
@@ -116,7 +116,7 @@ Ava-Claw recommends running WhatsApp on a separate number when possible. (The ch
   </Accordion>
 
   <Accordion title="WhatsApp Web-only channel scope">
-    The messaging platform channel is WhatsApp Web-based (`Baileys`) in current Ava-Claw channel architecture.
+    The messaging platform channel is WhatsApp Web-based (`Baileys`) in current AvaClaw channel architecture.
 
     There is no separate Twilio WhatsApp messaging channel in the built-in chat-channel registry.
 

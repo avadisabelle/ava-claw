@@ -37,7 +37,7 @@ avaclaw onboard --opencode-go-api-key "$OPENCODE_API_KEY"
 
 ## Routing behavior
 
-Ava-Claw handles per-model routing automatically when the model ref uses `opencode-go/...`.
+AvaClaw handles per-model routing automatically when the model ref uses `opencode-go/...`.
 
 ## Notes
 

@@ -4,12 +4,12 @@ read_when:
   - Adding agent-controlled browser automation
   - Debugging why avaclaw is interfering with your own Chrome
   - Implementing browser settings + lifecycle in the macOS app
-title: "Browser (Ava-Claw-managed)"
+title: "Browser (AvaClaw-managed)"
 ---
 
 # Browser (avaclaw-managed)
 
-Ava-Claw can run a **dedicated Chrome/Brave/Edge/Chromium profile** that the agent controls.
+AvaClaw can run a **dedicated Chrome/Brave/Edge/Chromium profile** that the agent controls.
 It is isolated from your personal browser and is managed through a small local
 control service inside the Gateway (loopback only).
 
@@ -49,7 +49,7 @@ Gateway.
 - `user`: built-in Chrome MCP attach profile for your **real signed-in Chrome**
   session.
 - `chrome-relay`: extension relay to your **system browser** (requires the
-  Ava-Claw extension to be attached to a tab).
+  AvaClaw extension to be attached to a tab).
 
 For agent browser tool calls:
 
@@ -64,7 +64,7 @@ Set `browser.defaultProfile: "avaclaw"` if you want managed mode by default.
 
 ## Configuration
 
-Browser settings live in `~/.avadisabelle/ava-claw.json`.
+Browser settings live in `~/.avaclaw/avaclaw.json`.
 
 ```json5
 {
@@ -119,7 +119,7 @@ Notes:
 - `browser.ssrfPolicy.allowPrivateNetwork` remains supported as a legacy alias for compatibility.
 - `attachOnly: true` means “never launch a local browser; only attach if it is already running.”
 - `color` + per-profile `color` tint the browser UI so you can see which profile is active.
-- Default profile is `avaclaw` (Ava-Claw-managed standalone browser). Use `defaultProfile: "user"` to opt into the signed-in user browser, or `defaultProfile: "chrome-relay"` for the extension relay.
+- Default profile is `avaclaw` (AvaClaw-managed standalone browser). Use `defaultProfile: "user"` to opt into the signed-in user browser, or `defaultProfile: "chrome-relay"` for the extension relay.
 - Auto-detect order: system default browser if Chromium-based; otherwise Chrome → Brave → Edge → Chromium → Chrome Canary.
 - Local `avaclaw` profiles auto-assign `cdpPort`/`cdpUrl` — set those only for remote CDP.
 - `driver: "existing-session"` uses Chrome DevTools MCP instead of raw CDP. Do
@@ -128,7 +128,7 @@ Notes:
 ## Use Brave (or another Chromium-based browser)
 
 If your **system default** browser is Chromium-based (Chrome/Brave/Edge/etc),
-Ava-Claw uses it automatically. Set `browser.executablePath` to override
+AvaClaw uses it automatically. Set `browser.executablePath` to override
 auto-detection:
 
 CLI example:
@@ -165,20 +165,20 @@ avaclaw config set browser.executablePath "/usr/bin/google-chrome"
 - **Local control (default):** the Gateway starts the loopback control service and can launch a local browser.
 - **Remote control (node host):** run a node host on the machine that has the browser; the Gateway proxies browser actions to it.
 - **Remote CDP:** set `browser.profiles.<name>.cdpUrl` (or `browser.cdpUrl`) to
-  attach to a remote Chromium-based browser. In this case, Ava-Claw will not launch a local browser.
+  attach to a remote Chromium-based browser. In this case, AvaClaw will not launch a local browser.
 
 Remote CDP URLs can include auth:
 
 - Query tokens (e.g., `https://provider.example?token=<token>`)
 - HTTP Basic auth (e.g., `https://user:pass@provider.example`)
 
-Ava-Claw preserves the auth when calling `/json/*` endpoints and when connecting
+AvaClaw preserves the auth when calling `/json/*` endpoints and when connecting
 to the CDP WebSocket. Prefer environment variables or secrets managers for
 tokens instead of committing them to config files.
 
 ## Node browser proxy (zero-config default)
 
-If you run a **node host** on the machine that has your browser, Ava-Claw can
+If you run a **node host** on the machine that has your browser, AvaClaw can
 auto-route browser tool calls to that node without any extra browser config.
 This is the default path for remote gateways.
 
@@ -193,7 +193,7 @@ Notes:
 ## Browserless (hosted remote CDP)
 
 [Browserless](https://browserless.io) is a hosted Chromium service that exposes
-CDP endpoints over HTTPS. You can point a Ava-Claw browser profile at a
+CDP endpoints over HTTPS. You can point a AvaClaw browser profile at a
 Browserless region endpoint and authenticate with your API key.
 
 Example:
@@ -223,11 +223,11 @@ Notes:
 ## Direct WebSocket CDP providers
 
 Some hosted browser services expose a **direct WebSocket** endpoint rather than
-the standard HTTP-based CDP discovery (`/json/version`). Ava-Claw supports both:
+the standard HTTP-based CDP discovery (`/json/version`). AvaClaw supports both:
 
-- **HTTP(S) endpoints** (e.g. Browserless) — Ava-Claw calls `/json/version` to
+- **HTTP(S) endpoints** (e.g. Browserless) — AvaClaw calls `/json/version` to
   discover the WebSocket debugger URL, then connects.
-- **WebSocket endpoints** (`ws://` / `wss://`) — Ava-Claw connects directly,
+- **WebSocket endpoints** (`ws://` / `wss://`) — AvaClaw connects directly,
   skipping `/json/version`. Use this for services like
   [Browserbase](https://www.browserbase.com) or any provider that hands you a
   WebSocket URL.
@@ -272,7 +272,7 @@ Notes:
 Key ideas:
 
 - Browser control is loopback-only; access flows through the Gateway’s auth or node pairing.
-- If browser control is enabled and no auth is configured, Ava-Claw auto-generates `gateway.auth.token` on startup and persists it to config.
+- If browser control is enabled and no auth is configured, AvaClaw auto-generates `gateway.auth.token` on startup and persists it to config.
 - Keep the Gateway and any node hosts on a private network (Tailscale); avoid public exposure.
 - Treat remote CDP URLs/tokens as secrets; prefer env vars or a secrets manager.
 
@@ -283,7 +283,7 @@ Remote CDP tips:
 
 ## Profiles (multi-browser)
 
-Ava-Claw supports multiple named profiles (routing configs). Profiles can be:
+AvaClaw supports multiple named profiles (routing configs). Profiles can be:
 
 - **avaclaw-managed**: a dedicated Chromium-based browser instance with its own user data directory + CDP port
 - **remote**: an explicit CDP URL (Chromium-based browser running elsewhere)
@@ -302,7 +302,7 @@ All control endpoints accept `?profile=<name>`; the CLI uses `--browser-profile`
 
 ## Chrome extension relay (use your existing Chrome)
 
-Ava-Claw can also drive **your existing Chrome tabs** (no separate “avaclaw” Chrome instance) via a local CDP relay + a Chrome extension.
+AvaClaw can also drive **your existing Chrome tabs** (no separate “avaclaw” Chrome instance) via a local CDP relay + a Chrome extension.
 
 Full guide: [Chrome extension](/tools/chrome-extension)
 
@@ -310,7 +310,7 @@ Flow:
 
 - The Gateway runs locally (same machine) or a node host runs on the browser machine.
 - A local **relay server** listens at a loopback `cdpUrl` (default: `http://127.0.0.1:18792`).
-- You click the **Ava-Claw Browser Relay** extension icon on a tab to attach (it does not auto-attach).
+- You click the **AvaClaw Browser Relay** extension icon on a tab to attach (it does not auto-attach).
 - The agent controls that tab via the normal `browser` tool, by selecting the right profile.
 
 If the Gateway runs elsewhere, run a node host on the browser machine so the Gateway can proxy browser actions.
@@ -360,7 +360,7 @@ Notes:
 
 ## Chrome existing-session via MCP
 
-Ava-Claw can also attach to a running Chrome profile through the official
+AvaClaw can also attach to a running Chrome profile through the official
 Chrome DevTools MCP server. This reuses the tabs and login state already open in
 that Chrome profile.
 
@@ -380,7 +380,7 @@ Then in Chrome:
 
 1. Open `chrome://inspect/#remote-debugging`
 2. Enable remote debugging
-3. Keep Chrome running and approve the connection prompt when Ava-Claw attaches
+3. Keep Chrome running and approve the connection prompt when AvaClaw attaches
 
 Live attach smoke test:
 
@@ -419,9 +419,9 @@ Notes:
 
 - This path is higher-risk than the isolated `avaclaw` profile because it can
   act inside your signed-in browser session.
-- Ava-Claw does not launch Chrome for this driver; it attaches to an existing
+- AvaClaw does not launch Chrome for this driver; it attaches to an existing
   session only.
-- Ava-Claw uses the official Chrome DevTools MCP `--autoConnect` flow here, not
+- AvaClaw uses the official Chrome DevTools MCP `--autoConnect` flow here, not
   the legacy default-profile remote debugging port workflow.
 - Existing-session screenshots support page captures and `--ref` element
   captures from snapshots, but not CSS `--element` selectors.
@@ -451,7 +451,7 @@ WSL2 / cross-namespace example:
 
 ## Browser selection
 
-When launching locally, Ava-Claw picks the first available:
+When launching locally, AvaClaw picks the first available:
 
 1. Chrome
 2. Brave
@@ -500,7 +500,7 @@ For the Chrome extension relay driver, ARIA snapshots and screenshots require Pl
 
 If you see `Playwright is not available in this gateway build`, install the full
 Playwright package (not `playwright-core`) and restart the gateway, or reinstall
-Ava-Claw with browser support.
+AvaClaw with browser support.
 
 #### Docker Playwright install
 
@@ -614,10 +614,10 @@ Notes:
 
 - `upload` and `dialog` are **arming** calls; run them before the click/press
   that triggers the chooser/dialog.
-- Download and trace output paths are constrained to Ava-Claw temp roots:
+- Download and trace output paths are constrained to AvaClaw temp roots:
   - traces: `/tmp/avaclaw` (fallback: `${os.tmpdir()}/avaclaw`)
   - downloads: `/tmp/avaclaw/downloads` (fallback: `${os.tmpdir()}/avaclaw/downloads`)
-- Upload paths are constrained to an Ava-Claw temp uploads root:
+- Upload paths are constrained to an AvaClaw temp uploads root:
   - uploads: `/tmp/avaclaw/uploads` (fallback: `${os.tmpdir()}/avaclaw/uploads`)
 - `upload` can also set file inputs directly via `--input-ref` or `--element`.
 - `snapshot`:
@@ -634,7 +634,7 @@ Notes:
 
 ## Snapshots and refs
 
-Ava-Claw supports two “snapshot” styles:
+AvaClaw supports two “snapshot” styles:
 
 - **AI snapshot (numeric refs)**: `avaclaw browser snapshot` (default; `--format ai`)
   - Output: a text snapshot that includes numeric refs.

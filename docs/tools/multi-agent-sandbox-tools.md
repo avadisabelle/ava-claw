@@ -234,7 +234,7 @@ Tool policies (global, agent, sandbox) support `group:*` entries that expand to 
 - `group:automation`: `cron`, `gateway`
 - `group:messaging`: `message`
 - `group:nodes`: `nodes`
-- `group:avaclaw`: all built-in Ava-Claw tools (excludes provider plugins)
+- `group:avaclaw`: all built-in AvaClaw tools (excludes provider plugins)
 
 ### Elevated Mode
 

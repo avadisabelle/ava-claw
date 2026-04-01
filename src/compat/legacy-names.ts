@@ -1,6 +1,6 @@
-export const PROJECT_NAME = "ava-claw" as const;
+export const PROJECT_NAME = "avaclaw" as const;
 
-export const LEGACY_PROJECT_NAMES = ["avaclaw"] as const;
+export const LEGACY_PROJECT_NAMES = ["ava-claw"] as const;
 
 export const MANIFEST_KEY = PROJECT_NAME;
 

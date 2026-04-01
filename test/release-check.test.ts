@@ -48,7 +48,7 @@ describe("collectBundledExtensionRootDependencyGapErrors", () => {
             packageJson: {
               dependencies: { "google-auth-library": "^1.0.0" },
               avaclaw: {
-                install: { npmSpec: "@avadisabelle/ava-claw-googlechat" },
+                install: { npmSpec: "ava-claw-googlechat" },
                 releaseChecks: {
                   rootDependencyMirrorAllowlist: ["google-auth-library"],
                 },
@@ -59,7 +59,7 @@ describe("collectBundledExtensionRootDependencyGapErrors", () => {
             id: "feishu",
             packageJson: {
               dependencies: { "@larksuiteoapi/node-sdk": "^1.59.0" },
-              avaclaw: { install: { npmSpec: "@avadisabelle/ava-claw-feishu" } },
+              avaclaw: { install: { npmSpec: "ava-claw-feishu" } },
             },
           },
         ],
@@ -79,7 +79,7 @@ describe("collectBundledExtensionRootDependencyGapErrors", () => {
             packageJson: {
               dependencies: { "google-auth-library": "^1.0.0", undici: "^7.0.0" },
               avaclaw: {
-                install: { npmSpec: "@avadisabelle/ava-claw-googlechat" },
+                install: { npmSpec: "ava-claw-googlechat" },
                 releaseChecks: {
                   rootDependencyMirrorAllowlist: ["google-auth-library"],
                 },
@@ -103,7 +103,7 @@ describe("collectBundledExtensionRootDependencyGapErrors", () => {
             packageJson: {
               dependencies: { "google-auth-library": "^1.0.0" },
               avaclaw: {
-                install: { npmSpec: "@avadisabelle/ava-claw-googlechat" },
+                install: { npmSpec: "ava-claw-googlechat" },
                 releaseChecks: {
                   rootDependencyMirrorAllowlist: ["google-auth-library"],
                 },
@@ -143,7 +143,7 @@ describe("collectBundledExtensionManifestErrors", () => {
           id: "broken",
           packageJson: {
             avaclaw: {
-              install: { npmSpec: "@avadisabelle/ava-claw-broken" },
+              install: { npmSpec: "ava-claw-broken" },
               releaseChecks: {
                 rootDependencyMirrorAllowlist: ["ok", ""],
               },

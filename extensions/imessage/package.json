@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-imessage",
+  "name": "ava-claw-imessage",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw iMessage channel plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

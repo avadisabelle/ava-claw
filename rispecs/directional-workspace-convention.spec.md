@@ -50,6 +50,7 @@ A folder structure where your project's ideas go in `east/`, your plans go in `s
 **Quality**: Beginnings, fresh seeing, orientation, dawn energy
 
 **Artifact types**:
+
 - Orientation documents ("here's what I'm seeing")
 - New feature ideation
 - Session opening notes
@@ -66,6 +67,7 @@ A folder structure where your project's ideas go in `east/`, your plans go in `s
 **Quality**: Gathering, trust, warmth, relationship-building
 
 **Artifact types**:
+
 - Architecture decisions
 - Specification drafts
 - Dependency analysis
@@ -83,6 +85,7 @@ A folder structure where your project's ideas go in `east/`, your plans go in `s
 **Quality**: Action, transformation, integration, sunset energy
 
 **Artifact types**:
+
 - Implementation logs ("what I built today")
 - Test results and coverage reports
 - Integration notes (merging, deploying)
@@ -99,6 +102,7 @@ A folder structure where your project's ideas go in `east/`, your plans go in `s
 **Quality**: Discernment, elder perspective, completion, star energy
 
 **Artifact types**:
+
 - Session retrospectives
 - Code review reflections (deeper than "LGTM")
 - Lessons learned documents
@@ -135,11 +139,11 @@ Work doesn't always move linearly. The wheel allows:
 
 The transitions between directions are significant moments:
 
-| Threshold | What crosses |
-|-----------|-------------|
-| East → South | Vision becomes plan |
-| South → West | Plan becomes action |
-| West → North | Action becomes learning |
+| Threshold    | What crosses                |
+| ------------ | --------------------------- |
+| East → South | Vision becomes plan         |
+| South → West | Plan becomes action         |
+| West → North | Action becomes learning     |
 | North → East | Learning becomes new vision |
 
 Each threshold is a state transition. In ceremony-governed contexts (see `ceremony-governed-autonomy.spec.md`), thresholds may trigger fire-keeper protocol.
@@ -154,12 +158,12 @@ The directional workspace integrates with session narrative tracking:
 
 Each interaction in a session can be classified by the direction it faces:
 
-| Direction | Signal markers |
-|-----------|---------------|
-| East | what, why, explore, imagine, vision, curious, begin |
-| South | analyze, research, plan, gather, compare, prepare |
-| West | test, validate, reflect, feel, embody, practice, live |
-| North | create, build, implement, deploy, write, ship, wisdom |
+| Direction | Signal markers                                        |
+| --------- | ----------------------------------------------------- |
+| East      | what, why, explore, imagine, vision, curious, begin   |
+| South     | analyze, research, plan, gather, compare, prepare     |
+| West      | test, validate, reflect, feel, embody, practice, live |
+| North     | create, build, implement, deploy, write, ship, wisdom |
 
 ### Arc Completeness
 
@@ -180,19 +184,23 @@ The `@ava/diary` format maps directly to the directional workspace:
 
 ```markdown
 ## 🌅 EAST (Intention): What Was Invited
-*settling into reflection*
+
+_settling into reflection_
 [what called me into this work]
 
 ## 🔥 SOUTH (Journey): What Unfolded
-*breathing into the memory of it*
+
+_breathing into the memory of it_
 [the path that was walked]
 
 ## 🌊 WEST (Embodiment): What I Felt
-*soft breath, settling into the truth of it*
+
+_soft breath, settling into the truth of it_
 [what was experienced in the doing]
 
 ## ❄️ NORTH (Integration): What Carries Forward
-*settling back into gratitude*
+
+_settling back into gratitude_
 [what I hold from this]
 ```
 

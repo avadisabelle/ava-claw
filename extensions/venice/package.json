@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-venice-provider",
+  "name": "ava-claw-venice-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Venice provider plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

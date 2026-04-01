@@ -1,6 +1,6 @@
 # ❄️ North — Reflection & Wisdom
 
-*Where experience becomes understanding*
+_Where experience becomes understanding_
 
 ---
 
@@ -28,7 +28,7 @@ Example: `260321-consciousness-injection-retrospective.md`
 
 Before placing anything here, ask:
 
-> *What did this work teach that should be remembered? What wisdom wants to be preserved for those who come after?*
+> _What did this work teach that should be remembered? What wisdom wants to be preserved for those who come after?_
 
 ## Connection to Fleet
 

@@ -15,7 +15,7 @@ x-i18n:
 
 # acp
 
-运行与 Ava-Claw Gateway 网关通信的 ACP（Agent Client Protocol）桥接器。
+运行与 AvaClaw Gateway 网关通信的 ACP（Agent Client Protocol）桥接器。
 
 此命令通过 stdio 使用 ACP 协议与 IDE 通信，并通过 WebSocket 将提示转发到 Gateway 网关。它将 ACP 会话映射到 Gateway 网关会话键。
 
@@ -54,7 +54,7 @@ avaclaw acp client --server "node" --server-args avaclaw.mjs acp --url ws://127.
 
 ## 如何使用
 
-当 IDE（或其他客户端）使用 Agent Client Protocol 并且你希望它驱动 Ava-Claw Gateway 网关会话时，请使用 ACP。
+当 IDE（或其他客户端）使用 Agent Client Protocol 并且你希望它驱动 AvaClaw Gateway 网关会话时，请使用 ACP。
 
 1. 确保 Gateway 网关正在运行（本地或远程）。
 2. 配置 Gateway 网关目标（配置或标志）。
@@ -94,7 +94,7 @@ avaclaw acp --session agent:qa:bug-123
 ```json
 {
   "agent_servers": {
-    "Ava-Claw ACP": {
+    "AvaClaw ACP": {
       "type": "custom",
       "command": "avaclaw",
       "args": ["acp"],
@@ -109,7 +109,7 @@ avaclaw acp --session agent:qa:bug-123
 ```json
 {
   "agent_servers": {
-    "Ava-Claw ACP": {
+    "AvaClaw ACP": {
       "type": "custom",
       "command": "avaclaw",
       "args": [
@@ -127,7 +127,7 @@ avaclaw acp --session agent:qa:bug-123
 }
 ```
 
-在 Zed 中，打开 Agent 面板并选择"Ava-Claw ACP"来开始一个会话。
+在 Zed 中，打开 Agent 面板并选择"AvaClaw ACP"来开始一个会话。
 
 ## 会话映射
 

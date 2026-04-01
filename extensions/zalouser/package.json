@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-zalouser",
+  "name": "ava-claw-zalouser",
   "version": "2026.3.14",
   "description": "AvaClaw Zalo Personal Account plugin via native zca-js integration",
   "type": "module",
@@ -8,7 +8,7 @@
     "zca-js": "2.1.1",
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -26,7 +26,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-zalouser",
+      "npmSpec": "ava-claw-zalouser",
       "localPath": "extensions/zalouser",
       "defaultChoice": "npm"
     },

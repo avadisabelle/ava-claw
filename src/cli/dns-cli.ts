@@ -153,7 +153,7 @@ export function registerDnsCli(program: Command) {
         }).trimEnd(),
       );
       defaultRuntime.log("");
-      defaultRuntime.log(theme.heading("Recommended ~/.avadisabelle/ava-claw.json:"));
+      defaultRuntime.log(theme.heading("Recommended ~/.avaclaw/avaclaw.json:"));
       defaultRuntime.log(
         JSON.stringify(
           {
@@ -254,7 +254,7 @@ export function registerDnsCli(program: Command) {
         defaultRuntime.log("");
         defaultRuntime.log(
           theme.muted(
-            "Note: enable discovery.wideArea.enabled in ~/.avadisabelle/ava-claw.json on the gateway and restart the gateway so it writes the DNS-SD zone.",
+            "Note: enable discovery.wideArea.enabled in ~/.avaclaw/avaclaw.json on the gateway and restart the gateway so it writes the DNS-SD zone.",
           ),
         );
       }

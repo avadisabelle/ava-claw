@@ -1,14 +1,14 @@
 ---
 summary: "Zalo personal account support via native zca-js (QR login), capabilities, and configuration"
 read_when:
-  - Setting up Zalo Personal for Ava-Claw
+  - Setting up Zalo Personal for AvaClaw
   - Debugging Zalo Personal login or message flow
 title: "Zalo Personal"
 ---
 
 # Zalo Personal (unofficial)
 
-Status: experimental. This integration automates a **personal Zalo account** via native `zca-js` inside Ava-Claw.
+Status: experimental. This integration automates a **personal Zalo account** via native `zca-js` inside AvaClaw.
 
 > **Warning:** This is an unofficial integration and may result in account suspension/ban. Use at your own risk.
 
@@ -16,7 +16,7 @@ Status: experimental. This integration automates a **personal Zalo account** via
 
 Zalo Personal ships as a plugin and is not bundled with the core install.
 
-- Install via CLI: `avaclaw plugins install @avadisabelle/ava-claw-zalouser`
+- Install via CLI: `avaclaw plugins install ava-claw-zalouser`
 - Or from a source checkout: `avaclaw plugins install ./extensions/zalouser`
 - Details: [Plugins](/tools/plugin)
 
@@ -90,7 +90,7 @@ Approve via:
   - `channels.zalouser.groupAllowFrom` (controls which senders in allowed groups can trigger the bot)
 - Block all groups: `channels.zalouser.groupPolicy = "disabled"`.
 - The configure wizard can prompt for group allowlists.
-- On startup, Ava-Claw resolves group/user names in allowlists to IDs and logs the mapping.
+- On startup, AvaClaw resolves group/user names in allowlists to IDs and logs the mapping.
 - Group allowlist matching is ID-only by default. Unresolved names are ignored for auth unless `channels.zalouser.dangerouslyAllowNameMatching: true` is enabled.
 - `channels.zalouser.dangerouslyAllowNameMatching: true` is a break-glass compatibility mode that re-enables mutable group-name matching.
 - If `groupAllowFrom` is unset, runtime falls back to `allowFrom` for group sender checks.
@@ -119,7 +119,7 @@ Example:
 - Resolution order: exact group id/name -> normalized group slug -> `*` -> default (`true`).
 - This applies both to allowlisted groups and open group mode.
 - Authorized control commands (for example `/new`) can bypass mention gating.
-- When a group message is skipped because mention is required, Ava-Claw stores it as pending group history and includes it on the next processed group message.
+- When a group message is skipped because mention is required, AvaClaw stores it as pending group history and includes it on the next processed group message.
 - Group history limit defaults to `messages.groupChat.historyLimit` (fallback `50`). You can override per account with `channels.zalouser.historyLimit`.
 
 Example:
@@ -140,7 +140,7 @@ Example:
 
 ## Multi-account
 
-Accounts map to `zalouser` profiles in Ava-Claw state. Example:
+Accounts map to `zalouser` profiles in AvaClaw state. Example:
 
 ```json5
 {
@@ -158,11 +158,11 @@ Accounts map to `zalouser` profiles in Ava-Claw state. Example:
 
 ## Typing, reactions, and delivery acknowledgements
 
-- Ava-Claw sends a typing event before dispatching a reply (best-effort).
+- AvaClaw sends a typing event before dispatching a reply (best-effort).
 - Message reaction action `react` is supported for `zalouser` in channel actions.
   - Use `remove: true` to remove a specific reaction emoji from a message.
   - Reaction semantics: [Reactions](/tools/reactions)
-- For inbound messages that include event metadata, Ava-Claw sends delivered + seen acknowledgements (best-effort).
+- For inbound messages that include event metadata, AvaClaw sends delivered + seen acknowledgements (best-effort).
 
 ## Troubleshooting
 
@@ -178,4 +178,4 @@ Accounts map to `zalouser` profiles in Ava-Claw state. Example:
 **Upgraded from old CLI-based setup:**
 
 - Remove any old external `zca` process assumptions.
-- The channel now runs fully in Ava-Claw without external CLI binaries.
+- The channel now runs fully in AvaClaw without external CLI binaries.

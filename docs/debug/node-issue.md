@@ -2,7 +2,7 @@
 summary: Node + tsx "__name is not a function" crash notes and workarounds
 read_when:
   - Debugging Node-only dev scripts or watch mode failures
-  - Investigating tsx/esbuild loader crashes in Ava-Claw
+  - Investigating tsx/esbuild loader crashes in AvaClaw
 title: "Node + tsx Crash"
 ---
 
@@ -10,7 +10,7 @@ title: "Node + tsx Crash"
 
 ## Summary
 
-Running Ava-Claw via Node with `tsx` fails at startup with:
+Running AvaClaw via Node with `tsx` fails at startup with:
 
 ```
 [avaclaw] Failed to start CLI: TypeError: __name is not a function

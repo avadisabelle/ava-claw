@@ -95,7 +95,7 @@ function writeHookPackManifest(params: {
   fs.writeFileSync(
     path.join(params.pkgDir, "package.json"),
     JSON.stringify({
-      name: "@avadisabelle/ava-claw-test-hooks",
+      name: "ava-claw-test-hooks",
       version: "0.0.1",
       avaclaw: { hooks: params.hooks },
       ...(params.dependencies ? { dependencies: params.dependencies } : {}),
@@ -340,8 +340,8 @@ describe("installHooksFromNpmSpec", () => {
           code: 0,
           stdout: JSON.stringify([
             {
-              id: "@avadisabelle/ava-claw-test-hooks@0.0.1",
-              name: "@avadisabelle/ava-claw-test-hooks",
+              id: "ava-claw-test-hooks@0.0.1",
+              name: "ava-claw-test-hooks",
               version: "0.0.1",
               filename: packedName,
               integrity: "sha512-hook-test",
@@ -359,7 +359,7 @@ describe("installHooksFromNpmSpec", () => {
 
     const hooksDir = path.join(stateDir, "hooks");
     const result = await installHooksFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-test-hooks@0.0.1",
+      spec: "ava-claw-test-hooks@0.0.1",
       hooksDir,
       logger: { info: () => {}, warn: () => {} },
     });
@@ -368,13 +368,13 @@ describe("installHooksFromNpmSpec", () => {
       return;
     }
     expect(result.hookPackId).toBe("test-hooks");
-    expect(result.npmResolution?.resolvedSpec).toBe("@avadisabelle/ava-claw-test-hooks@0.0.1");
+    expect(result.npmResolution?.resolvedSpec).toBe("ava-claw-test-hooks@0.0.1");
     expect(result.npmResolution?.integrity).toBe("sha512-hook-test");
     expect(fs.existsSync(path.join(result.targetDir, "hooks", "one-hook", "HOOK.md"))).toBe(true);
 
     expectSingleNpmPackIgnoreScriptsCall({
       calls: run.mock.calls,
-      expectedSpec: "@avadisabelle/ava-claw-test-hooks@0.0.1",
+      expectedSpec: "ava-claw-test-hooks@0.0.1",
     });
 
     expect(packTmpDir).not.toBe("");
@@ -388,8 +388,8 @@ describe("installHooksFromNpmSpec", () => {
   it("aborts when integrity drift callback rejects the fetched artifact", async () => {
     const run = vi.mocked(runCommandWithTimeout);
     mockNpmPackMetadataResult(run, {
-      id: "@avadisabelle/ava-claw-test-hooks@0.0.1",
-      name: "@avadisabelle/ava-claw-test-hooks",
+      id: "ava-claw-test-hooks@0.0.1",
+      name: "ava-claw-test-hooks",
       version: "0.0.1",
       filename: "test-hooks-0.0.1.tgz",
       integrity: "sha512-new",
@@ -398,7 +398,7 @@ describe("installHooksFromNpmSpec", () => {
 
     const onIntegrityDrift = vi.fn(async () => false);
     const result = await installHooksFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-test-hooks@0.0.1",
+      spec: "ava-claw-test-hooks@0.0.1",
       expectedIntegrity: "sha512-old",
       onIntegrityDrift,
     });
@@ -413,8 +413,8 @@ describe("installHooksFromNpmSpec", () => {
   it("rejects bare npm specs that resolve to prerelease versions", async () => {
     const run = vi.mocked(runCommandWithTimeout);
     mockNpmPackMetadataResult(run, {
-      id: "@avadisabelle/ava-claw-test-hooks@0.0.2-beta.1",
-      name: "@avadisabelle/ava-claw-test-hooks",
+      id: "ava-claw-test-hooks@0.0.2-beta.1",
+      name: "ava-claw-test-hooks",
       version: "0.0.2-beta.1",
       filename: "test-hooks-0.0.2-beta.1.tgz",
       integrity: "sha512-beta",
@@ -422,13 +422,13 @@ describe("installHooksFromNpmSpec", () => {
     });
 
     const result = await installHooksFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-test-hooks",
+      spec: "ava-claw-test-hooks",
       logger: { info: () => {}, warn: () => {} },
     });
     expect(result.ok).toBe(false);
     if (!result.ok) {
       expect(result.error).toContain("prerelease version 0.0.2-beta.1");
-      expect(result.error).toContain('"@avadisabelle/ava-claw-test-hooks@beta"');
+      expect(result.error).toContain('"ava-claw-test-hooks@beta"');
     }
   });
 });

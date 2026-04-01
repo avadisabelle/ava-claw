@@ -1,4 +1,4 @@
-# @avadisabelle/ava-claw-twitch
+# ava-claw-twitch
 
 Twitch channel plugin for AvaClaw.
 
@@ -11,7 +11,7 @@ avaclaw plugins install ./extensions/twitch
 ## Install (npm)
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-twitch
+avaclaw plugins install ava-claw-twitch
 ```
 
 Onboarding: select Twitch and confirm the install prompt to fetch the plugin automatically.

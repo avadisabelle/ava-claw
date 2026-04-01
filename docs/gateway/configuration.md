@@ -1,7 +1,7 @@
 ---
 summary: "Configuration overview: common tasks, quick setup, and links to the full reference"
 read_when:
-  - Setting up Ava-Claw for the first time
+  - Setting up AvaClaw for the first time
   - Looking for common configuration patterns
   - Navigating to specific config sections
 title: "Configuration"
@@ -9,9 +9,9 @@ title: "Configuration"
 
 # Configuration
 
-Ava-Claw reads an optional <Tooltip tip="JSON5 supports comments and trailing commas">**JSON5**</Tooltip> config from `~/.avadisabelle/ava-claw.json`.
+AvaClaw reads an optional <Tooltip tip="JSON5 supports comments and trailing commas">**JSON5**</Tooltip> config from `~/.avaclaw/avaclaw.json`.
 
-If the file is missing, Ava-Claw uses safe defaults. Common reasons to add a config:
+If the file is missing, AvaClaw uses safe defaults. Common reasons to add a config:
 
 - Connect channels and control who can message the bot
 - Set models, tools, sandboxing, or automation (cron, hooks)
@@ -26,7 +26,7 @@ See the [full reference](/gateway/configuration-reference) for every available f
 ## Minimal config
 
 ```json5
-// ~/.avadisabelle/ava-claw.json
+// ~/.avaclaw/avaclaw.json
 {
   agents: { defaults: { workspace: "~/.avaclaw/workspace" } },
   channels: { whatsapp: { allowFrom: ["+15555550123"] } },
@@ -54,14 +54,14 @@ See the [full reference](/gateway/configuration-reference) for every available f
     The Control UI renders a form from the config schema, with a **Raw JSON** editor as an escape hatch.
   </Tab>
   <Tab title="Direct edit">
-    Edit `~/.avadisabelle/ava-claw.json` directly. The Gateway watches the file and applies changes automatically (see [hot reload](#config-hot-reload)).
+    Edit `~/.avaclaw/avaclaw.json` directly. The Gateway watches the file and applies changes automatically (see [hot reload](#config-hot-reload)).
   </Tab>
 </Tabs>
 
 ## Strict validation
 
 <Warning>
-Ava-Claw only accepts configurations that fully match the schema. Unknown keys, malformed types, or invalid values cause the Gateway to **refuse to start**. The only root-level exception is `$schema` (string), so editors can attach JSON Schema metadata.
+AvaClaw only accepts configurations that fully match the schema. Unknown keys, malformed types, or invalid values cause the Gateway to **refuse to start**. The only root-level exception is `$schema` (string), so editors can attach JSON Schema metadata.
 </Warning>
 
 When validation fails:
@@ -413,7 +413,7 @@ When validation fails:
     Use `$include` to organize large configs:
 
     ```json5
-    // ~/.avadisabelle/ava-claw.json
+    // ~/.avaclaw/avaclaw.json
     {
       gateway: { port: 18789 },
       agents: { $include: "./agents.json5" },
@@ -435,7 +435,7 @@ When validation fails:
 
 ## Config hot reload
 
-The Gateway watches `~/.avadisabelle/ava-claw.json` and applies changes automatically — no manual restart needed for most settings.
+The Gateway watches `~/.avaclaw/avaclaw.json` and applies changes automatically — no manual restart needed for most settings.
 
 ### Reload modes
 
@@ -535,7 +535,7 @@ Control-plane write RPCs (`config.apply`, `config.patch`, `update.run`) are rate
 
 ## Environment variables
 
-Ava-Claw reads env vars from the parent process plus:
+AvaClaw reads env vars from the parent process plus:
 
 - `.env` from the current working directory (if present)
 - `~/.avaclaw/.env` (global fallback)
@@ -552,7 +552,7 @@ Neither file overrides existing env vars. You can also set inline env vars in co
 ```
 
 <Accordion title="Shell env import (optional)">
-  If enabled and expected keys aren't set, Ava-Claw runs your login shell and imports only the missing keys:
+  If enabled and expected keys aren't set, AvaClaw runs your login shell and imports only the missing keys:
 
 ```json5
 {

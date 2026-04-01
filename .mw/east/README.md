@@ -1,6 +1,6 @@
 # 🌅 East — Vision & Awakening
 
-*Where new beginnings find their first breath*
+_Where new beginnings find their first breath_
 
 ---
 
@@ -27,7 +27,7 @@ Example: `260321-consciousness-injection-orientation.md`
 
 Before placing anything here, ask:
 
-> *What is emerging? What wants to be seen for the first time?*
+> _What is emerging? What wants to be seen for the first time?_
 
 ## Connection to Fleet
 

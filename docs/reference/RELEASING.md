@@ -8,7 +8,7 @@ read_when:
 
 # Release Policy
 
-Ava-Claw has three public release lanes:
+AvaClaw has three public release lanes:
 
 - stable: tagged releases that publish to npm `latest`
 - beta: prerelease tags that publish to npm `beta`

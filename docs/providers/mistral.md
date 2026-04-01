@@ -1,14 +1,14 @@
 ---
-summary: "Use Mistral models and Voxtral transcription with Ava-Claw"
+summary: "Use Mistral models and Voxtral transcription with AvaClaw"
 read_when:
-  - You want to use Mistral models in Ava-Claw
+  - You want to use Mistral models in AvaClaw
   - You need Mistral API key onboarding and model refs
 title: "Mistral"
 ---
 
 # Mistral
 
-Ava-Claw supports Mistral for both text/image model routing (`mistral/...`) and
+AvaClaw supports Mistral for both text/image model routing (`mistral/...`) and
 audio transcription via Voxtral in media understanding.
 Mistral can also be used for memory embeddings (`memorySearch.provider = "mistral"`).
 

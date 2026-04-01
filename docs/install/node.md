@@ -1,15 +1,15 @@
 ---
 title: "Node.js"
-summary: "Install and configure Node.js for Ava-Claw — version requirements, install options, and PATH troubleshooting"
+summary: "Install and configure Node.js for AvaClaw — version requirements, install options, and PATH troubleshooting"
 read_when:
-  - "You need to install Node.js before installing Ava-Claw"
-  - "You installed Ava-Claw but `avaclaw` is command not found"
+  - "You need to install Node.js before installing AvaClaw"
+  - "You installed AvaClaw but `avaclaw` is command not found"
   - "npm install -g fails with permissions or PATH issues"
 ---
 
 # Node.js
 
-Ava-Claw requires **Node 22.16 or newer**. **Node 24 is the default and recommended runtime** for installs, CI, and release workflows. Node 22 remains supported via the active LTS line. The [installer script](/install#install-methods) will detect and install Node automatically — this page is for when you want to set up Node yourself and make sure everything is wired up correctly (versions, PATH, global installs).
+AvaClaw requires **Node 22.16 or newer**. **Node 24 is the default and recommended runtime** for installs, CI, and release workflows. Node 22 remains supported via the active LTS line. The [installer script](/install#install-methods) will detect and install Node automatically — this page is for when you want to set up Node yourself and make sure everything is wired up correctly (versions, PATH, global installs).
 
 ## Check your version
 

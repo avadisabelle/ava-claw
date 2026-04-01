@@ -45,13 +45,13 @@ Add bindings:
 avaclaw agents bind --agent work --bind telegram:ops --bind discord:guild-a
 ```
 
-If you omit `accountId` (`--bind <channel>`), Ava-Claw resolves it from channel defaults and plugin setup hooks when available.
+If you omit `accountId` (`--bind <channel>`), AvaClaw resolves it from channel defaults and plugin setup hooks when available.
 
 ### Binding scope behavior
 
 - A binding without `accountId` matches the channel default account only.
 - `accountId: "*"` is the channel-wide fallback (all accounts) and is less specific than an explicit account binding.
-- If the same agent already has a matching channel binding without `accountId`, and you later bind with an explicit or resolved `accountId`, Ava-Claw upgrades that existing binding in place instead of adding a duplicate.
+- If the same agent already has a matching channel binding without `accountId`, and you later bind with an explicit or resolved `accountId`, AvaClaw upgrades that existing binding in place instead of adding a duplicate.
 
 Example:
 
@@ -99,7 +99,7 @@ avaclaw agents set-identity --workspace ~/.avaclaw/workspace --from-identity
 Override fields explicitly:
 
 ```bash
-avaclaw agents set-identity --agent main --name "Ava-Claw" --emoji "🦞" --avatar avatars/avaclaw.png
+avaclaw agents set-identity --agent main --name "AvaClaw" --emoji "🦞" --avatar avatars/avaclaw.png
 ```
 
 Config sample:
@@ -111,7 +111,7 @@ Config sample:
       {
         id: "main",
         identity: {
-          name: "Ava-Claw",
+          name: "AvaClaw",
           theme: "space lobster",
           emoji: "🦞",
           avatar: "avatars/avaclaw.png",

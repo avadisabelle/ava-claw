@@ -9,7 +9,7 @@ title: "Streaming and Chunking"
 
 # Streaming + chunking
 
-Ava-Claw has two separate streaming layers:
+AvaClaw has two separate streaming layers:
 
 - **Block streaming (channels):** emit completed **blocks** as the assistant writes. These are normal channel messages (not token deltas).
 - **Preview streaming (Telegram/Discord/Slack):** update a temporary **preview message** while generating.
@@ -67,7 +67,7 @@ Block chunking is implemented by `EmbeddedBlockChunker`:
 
 ## Coalescing (merge streamed blocks)
 
-When block streaming is enabled, Ava-Claw can **merge consecutive block chunks**
+When block streaming is enabled, AvaClaw can **merge consecutive block chunks**
 before sending them out. This reduces “single-line spam” while still providing
 progressive output.
 

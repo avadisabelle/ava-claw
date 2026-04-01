@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-nostr",
+  "name": "ava-claw-nostr",
   "version": "2026.3.14",
   "description": "AvaClaw Nostr channel plugin for NIP-04 encrypted DMs",
   "type": "module",
@@ -7,7 +7,7 @@
     "nostr-tools": "^2.23.3",
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -22,7 +22,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-nostr",
+      "npmSpec": "ava-claw-nostr",
       "localPath": "extensions/nostr",
       "defaultChoice": "npm"
     },

@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-opencode-go-provider",
+  "name": "ava-claw-opencode-go-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw OpenCode Go provider plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

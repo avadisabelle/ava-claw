@@ -26,7 +26,7 @@ inside a sandbox workspace under `~/.avaclaw/sandboxes`, not your host workspace
 - Default: `~/.avaclaw/workspace`
 - If `AVACLAW_PROFILE` is set and not `"default"`, the default becomes
   `~/.avaclaw/workspace-<profile>`.
-- Override in `~/.avadisabelle/ava-claw.json`:
+- Override in `~/.avaclaw/avaclaw.json`:
 
 ```json5
 {
@@ -63,7 +63,7 @@ If you intentionally keep multiple workspaces, make sure
 
 ## Workspace file map (what each file means)
 
-These are the standard files Ava-Claw expects inside the workspace:
+These are the standard files AvaClaw expects inside the workspace:
 
 - `AGENTS.md`
   - Operating instructions for the agent and how it should use memory.
@@ -116,7 +116,7 @@ See [Memory](/concepts/memory) for the workflow and automatic memory flush.
 - `canvas/` (optional)
   - Canvas UI files for node displays (for example `canvas/index.html`).
 
-If any bootstrap file is missing, Ava-Claw injects a "missing file" marker into
+If any bootstrap file is missing, AvaClaw injects a "missing file" marker into
 the session and continues. Large bootstrap files are truncated when injected;
 adjust limits with `agents.defaults.bootstrapMaxChars` (default: 20000) and
 `agents.defaults.bootstrapTotalMaxChars` (default: 150000).
@@ -127,7 +127,7 @@ files.
 
 These live under `~/.avaclaw/` and should NOT be committed to the workspace repo:
 
-- `~/.avadisabelle/ava-claw.json` (config)
+- `~/.avaclaw/avaclaw.json` (config)
 - `~/.avaclaw/credentials/` (OAuth tokens, API keys)
 - `~/.avaclaw/agents/<agentId>/sessions/` (session transcripts + metadata)
 - `~/.avaclaw/skills/` (managed skills)
@@ -223,7 +223,7 @@ Suggested `.gitignore` starter:
 ## Moving the workspace to a new machine
 
 1. Clone the repo to the desired path (default `~/.avaclaw/workspace`).
-2. Set `agents.defaults.workspace` to that path in `~/.avadisabelle/ava-claw.json`.
+2. Set `agents.defaults.workspace` to that path in `~/.avaclaw/avaclaw.json`.
 3. Run `avaclaw setup --workspace <path>` to seed any missing files.
 4. If you need sessions, copy `~/.avaclaw/agents/<agentId>/sessions/` from the
    old machine separately.

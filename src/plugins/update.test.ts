@@ -95,7 +95,7 @@ describe("updateNpmInstalledPlugins", () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: false,
       code: "npm_package_not_found",
-      error: "Package not found on npm: @avadisabelle/ava-claw-missing.",
+      error: "Package not found on npm: ava-claw-missing.",
     });
 
     const { updateNpmInstalledPlugins } = await import("./update.js");
@@ -105,7 +105,7 @@ describe("updateNpmInstalledPlugins", () => {
           installs: {
             missing: {
               source: "npm",
-              spec: "@avadisabelle/ava-claw-missing",
+              spec: "ava-claw-missing",
               installPath: "/tmp/missing",
             },
           },
@@ -119,8 +119,7 @@ describe("updateNpmInstalledPlugins", () => {
       {
         pluginId: "missing",
         status: "error",
-        message:
-          "Failed to check missing: npm package not found for @avadisabelle/ava-claw-missing.",
+        message: "Failed to check missing: npm package not found for ava-claw-missing.",
       },
     ]);
   });
@@ -161,7 +160,7 @@ describe("updateNpmInstalledPlugins", () => {
   it("migrates legacy unscoped install keys when a scoped npm package updates", async () => {
     installPluginFromNpmSpecMock.mockResolvedValue({
       ok: true,
-      pluginId: "@avadisabelle/ava-claw-voice-call",
+      pluginId: "ava-claw-voice-call",
       targetDir: "/tmp/avaclaw-voice-call",
       version: "0.0.2",
       extensions: ["index.ts"],
@@ -183,7 +182,7 @@ describe("updateNpmInstalledPlugins", () => {
           installs: {
             "voice-call": {
               source: "npm",
-              spec: "@avadisabelle/ava-claw-voice-call",
+              spec: "ava-claw-voice-call",
               installPath: "/tmp/voice-call",
             },
           },
@@ -194,21 +193,21 @@ describe("updateNpmInstalledPlugins", () => {
 
     expect(installPluginFromNpmSpecMock).toHaveBeenCalledWith(
       expect.objectContaining({
-        spec: "@avadisabelle/ava-claw-voice-call",
+        spec: "ava-claw-voice-call",
         expectedPluginId: "voice-call",
       }),
     );
-    expect(result.config.plugins?.allow).toEqual(["@avadisabelle/ava-claw-voice-call"]);
-    expect(result.config.plugins?.deny).toEqual(["@avadisabelle/ava-claw-voice-call"]);
-    expect(result.config.plugins?.slots?.memory).toBe("@avadisabelle/ava-claw-voice-call");
-    expect(result.config.plugins?.entries?.["@avadisabelle/ava-claw-voice-call"]).toEqual({
+    expect(result.config.plugins?.allow).toEqual(["ava-claw-voice-call"]);
+    expect(result.config.plugins?.deny).toEqual(["ava-claw-voice-call"]);
+    expect(result.config.plugins?.slots?.memory).toBe("ava-claw-voice-call");
+    expect(result.config.plugins?.entries?.["ava-claw-voice-call"]).toEqual({
       enabled: false,
       hooks: { allowPromptInjection: false },
     });
     expect(result.config.plugins?.entries?.["voice-call"]).toBeUndefined();
-    expect(result.config.plugins?.installs?.["@avadisabelle/ava-claw-voice-call"]).toMatchObject({
+    expect(result.config.plugins?.installs?.["ava-claw-voice-call"]).toMatchObject({
       source: "npm",
-      spec: "@avadisabelle/ava-claw-voice-call",
+      spec: "ava-claw-voice-call",
       installPath: "/tmp/avaclaw-voice-call",
       version: "0.0.2",
     });
@@ -230,7 +229,7 @@ describe("syncPluginsForUpdateChannel", () => {
           {
             pluginId: "feishu",
             localPath: "/app/extensions/feishu",
-            npmSpec: "@avadisabelle/ava-claw-feishu",
+            npmSpec: "ava-claw-feishu",
           },
         ],
       ]),
@@ -247,7 +246,7 @@ describe("syncPluginsForUpdateChannel", () => {
               source: "path",
               sourcePath: "/app/extensions/feishu",
               installPath: "/app/extensions/feishu",
-              spec: "@avadisabelle/ava-claw-feishu",
+              spec: "ava-claw-feishu",
             },
           },
         },
@@ -269,7 +268,7 @@ describe("syncPluginsForUpdateChannel", () => {
           {
             pluginId: "feishu",
             localPath: "/app/extensions/feishu",
-            npmSpec: "@avadisabelle/ava-claw-feishu",
+            npmSpec: "ava-claw-feishu",
           },
         ],
       ]),
@@ -286,7 +285,7 @@ describe("syncPluginsForUpdateChannel", () => {
               source: "path",
               sourcePath: "/app/extensions/feishu",
               installPath: "/tmp/old-feishu",
-              spec: "@avadisabelle/ava-claw-feishu",
+              spec: "ava-claw-feishu",
             },
           },
         },
@@ -299,7 +298,7 @@ describe("syncPluginsForUpdateChannel", () => {
       source: "path",
       sourcePath: "/app/extensions/feishu",
       installPath: "/app/extensions/feishu",
-      spec: "@avadisabelle/ava-claw-feishu",
+      spec: "ava-claw-feishu",
     });
     expect(installPluginFromNpmSpecMock).not.toHaveBeenCalled();
   });
@@ -331,7 +330,7 @@ describe("syncPluginsForUpdateChannel", () => {
           {
             pluginId: "feishu",
             localPath: `${bundledHome}/plugins/feishu`,
-            npmSpec: "@avadisabelle/ava-claw-feishu",
+            npmSpec: "ava-claw-feishu",
           },
         ],
       ]),
@@ -356,7 +355,7 @@ describe("syncPluginsForUpdateChannel", () => {
                 source: "path",
                 sourcePath: "~/plugins/feishu",
                 installPath: "~/plugins/feishu",
-                spec: "@avadisabelle/ava-claw-feishu",
+                spec: "ava-claw-feishu",
               },
             },
           },

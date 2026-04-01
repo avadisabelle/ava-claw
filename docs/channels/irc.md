@@ -1,18 +1,18 @@
 ---
 title: IRC
-description: Connect Ava-Claw to IRC channels and direct messages.
+description: Connect AvaClaw to IRC channels and direct messages.
 summary: "IRC plugin setup, access controls, and troubleshooting"
 read_when:
-  - You want to connect Ava-Claw to IRC channels or DMs
+  - You want to connect AvaClaw to IRC channels or DMs
   - You are configuring IRC allowlists, group policy, or mention gating
 ---
 
-Use IRC when you want Ava-Claw in classic channels (`#room`) and direct messages.
+Use IRC when you want AvaClaw in classic channels (`#room`) and direct messages.
 IRC ships as an extension plugin, but it is configured in the main config under `channels.irc`.
 
 ## Quick start
 
-1. Enable IRC config in `~/.avadisabelle/ava-claw.json`.
+1. Enable IRC config in `~/.avaclaw/avaclaw.json`.
 2. Set at least:
 
 ```json
@@ -88,7 +88,7 @@ Example (allow anyone in `#tuirc-dev` to talk to the bot):
 
 ## Reply triggering (mentions)
 
-Even if a channel is allowed (via `groupPolicy` + `groups`) and the sender is allowed, Ava-Claw defaults to **mention-gating** in group contexts.
+Even if a channel is allowed (via `groupPolicy` + `groups`) and the sender is allowed, AvaClaw defaults to **mention-gating** in group contexts.
 
 That means you may see logs like `drop channel … (missing-mention)` unless the message includes a mention pattern that matches the bot.
 

@@ -28,26 +28,26 @@ describe("bundled plugin sources", () => {
         {
           origin: "global",
           rootDir: "/global/feishu",
-          packageName: "@avadisabelle/ava-claw-feishu",
-          packageManifest: { install: { npmSpec: "@avadisabelle/ava-claw-feishu" } },
+          packageName: "ava-claw-feishu",
+          packageManifest: { install: { npmSpec: "ava-claw-feishu" } },
         },
         {
           origin: "bundled",
           rootDir: "/app/extensions/feishu",
-          packageName: "@avadisabelle/ava-claw-feishu",
-          packageManifest: { install: { npmSpec: "@avadisabelle/ava-claw-feishu" } },
+          packageName: "ava-claw-feishu",
+          packageManifest: { install: { npmSpec: "ava-claw-feishu" } },
         },
         {
           origin: "bundled",
           rootDir: "/app/extensions/feishu-dup",
-          packageName: "@avadisabelle/ava-claw-feishu",
-          packageManifest: { install: { npmSpec: "@avadisabelle/ava-claw-feishu" } },
+          packageName: "ava-claw-feishu",
+          packageManifest: { install: { npmSpec: "ava-claw-feishu" } },
         },
         {
           origin: "bundled",
           rootDir: "/app/extensions/msteams",
-          packageName: "@avadisabelle/ava-claw-msteams",
-          packageManifest: { install: { npmSpec: "@avadisabelle/ava-claw-msteams" } },
+          packageName: "ava-claw-msteams",
+          packageManifest: { install: { npmSpec: "ava-claw-msteams" } },
         },
       ],
       diagnostics: [],
@@ -73,7 +73,7 @@ describe("bundled plugin sources", () => {
     expect(map.get("feishu")).toEqual({
       pluginId: "feishu",
       localPath: "/app/extensions/feishu",
-      npmSpec: "@avadisabelle/ava-claw-feishu",
+      npmSpec: "ava-claw-feishu",
     });
   });
 
@@ -83,8 +83,8 @@ describe("bundled plugin sources", () => {
         {
           origin: "bundled",
           rootDir: "/app/extensions/feishu",
-          packageName: "@avadisabelle/ava-claw-feishu",
-          packageManifest: { install: { npmSpec: "@avadisabelle/ava-claw-feishu" } },
+          packageName: "ava-claw-feishu",
+          packageManifest: { install: { npmSpec: "ava-claw-feishu" } },
         },
       ],
       diagnostics: [],
@@ -92,10 +92,10 @@ describe("bundled plugin sources", () => {
     loadPluginManifestMock.mockReturnValue({ ok: true, manifest: { id: "feishu" } });
 
     const resolved = findBundledPluginSource({
-      lookup: { kind: "npmSpec", value: "@avadisabelle/ava-claw-feishu" },
+      lookup: { kind: "npmSpec", value: "ava-claw-feishu" },
     });
     const missing = findBundledPluginSource({
-      lookup: { kind: "npmSpec", value: "@avadisabelle/ava-claw-not-found" },
+      lookup: { kind: "npmSpec", value: "ava-claw-not-found" },
     });
 
     expect(resolved?.pluginId).toBe("feishu");
@@ -137,8 +137,8 @@ describe("bundled plugin sources", () => {
         {
           origin: "bundled",
           rootDir: "/app/extensions/diffs",
-          packageName: "@avadisabelle/ava-claw-diffs",
-          packageManifest: { install: { npmSpec: "@avadisabelle/ava-claw-diffs" } },
+          packageName: "ava-claw-diffs",
+          packageManifest: { install: { npmSpec: "ava-claw-diffs" } },
         },
       ],
       diagnostics: [],
@@ -164,7 +164,7 @@ describe("bundled plugin sources", () => {
         {
           pluginId: "feishu",
           localPath: "/app/extensions/feishu",
-          npmSpec: "@avadisabelle/ava-claw-feishu",
+          npmSpec: "ava-claw-feishu",
         },
       ],
     ]);
@@ -177,12 +177,12 @@ describe("bundled plugin sources", () => {
     ).toEqual({
       pluginId: "feishu",
       localPath: "/app/extensions/feishu",
-      npmSpec: "@avadisabelle/ava-claw-feishu",
+      npmSpec: "ava-claw-feishu",
     });
     expect(
       findBundledPluginSourceInMap({
         bundled,
-        lookup: { kind: "npmSpec", value: "@avadisabelle/ava-claw-feishu" },
+        lookup: { kind: "npmSpec", value: "ava-claw-feishu" },
       })?.pluginId,
     ).toBe("feishu");
   });

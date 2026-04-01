@@ -21,7 +21,7 @@ agent (with a session switcher for other sessions).
 - Auto‑open for testing:
 
   ```bash
-  dist/Ava-Claw.app/Contents/MacOS/Ava-Claw --webchat
+  dist/AvaClaw.app/Contents/MacOS/AvaClaw --webchat
   ```
 
 - Logs: `./scripts/clawlog.sh` (subsystem `ai.avaclaw`, category `WebChatSwiftUI`).

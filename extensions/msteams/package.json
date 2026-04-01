@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-msteams",
+  "name": "ava-claw-msteams",
   "version": "2026.3.14",
   "description": "AvaClaw Microsoft Teams channel plugin",
   "type": "module",
@@ -7,7 +7,7 @@
     "@microsoft/agents-hosting": "^1.3.1",
     "express": "^5.2.1"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -24,7 +24,7 @@
       "order": 60
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-msteams",
+      "npmSpec": "ava-claw-msteams",
       "localPath": "extensions/msteams",
       "defaultChoice": "npm"
     },

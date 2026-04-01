@@ -1,10 +1,10 @@
 ---
 read_when:
-  - 你想让 Ava-Claw 与你的主 macOS 环境隔离
+  - 你想让 AvaClaw 与你的主 macOS 环境隔离
   - 你想在沙箱中集成 iMessage（BlueBubbles）
   - 你想要一个可重置、可克隆的 macOS 环境
   - 你想比较本地与托管 macOS VM 选项
-summary: 在沙箱隔离的 macOS VM（本地或托管）中运行 Ava-Claw，当你需要隔离或 iMessage 时
+summary: 在沙箱隔离的 macOS VM（本地或托管）中运行 AvaClaw，当你需要隔离或 iMessage 时
 title: macOS 虚拟机
 x-i18n:
   generated_at: "2026-02-03T07:53:09Z"
@@ -15,7 +15,7 @@ x-i18n:
   workflow: 15
 ---
 
-# 在 macOS 虚拟机上运行 Ava-Claw（沙箱隔离）
+# 在 macOS 虚拟机上运行 AvaClaw（沙箱隔离）
 
 ## 推荐默认方案（大多数用户）
 
@@ -29,7 +29,7 @@ x-i18n:
 
 ### 在你的 Apple Silicon Mac 上运行本地 VM（Lume）
 
-使用 [Lume](https://cua.ai/docs/lume) 在你现有的 Apple Silicon Mac 上的沙箱 macOS VM 中运行 Ava-Claw。
+使用 [Lume](https://cua.ai/docs/lume) 在你现有的 Apple Silicon Mac 上的沙箱 macOS VM 中运行 AvaClaw。
 
 这为你提供：
 
@@ -55,7 +55,7 @@ x-i18n:
 2. `lume create avaclaw --os macos --ipsw latest`
 3. 完成设置助手，启用远程登录（SSH）
 4. `lume run avaclaw --no-display`
-5. SSH 进入，安装 Ava-Claw，配置渠道
+5. SSH 进入，安装 AvaClaw，配置渠道
 6. 完成
 
 ---
@@ -139,7 +139,7 @@ ssh youruser@192.168.64.X
 
 ---
 
-## 6) 安装 Ava-Claw
+## 6) 安装 AvaClaw
 
 在 VM 内：
 
@@ -157,7 +157,7 @@ avaclaw onboard --install-daemon
 编辑配置文件：
 
 ```bash
-nano ~/.avadisabelle/ava-claw.json
+nano ~/.avaclaw/avaclaw.json
 ```
 
 添加你的渠道：
@@ -193,7 +193,7 @@ lume stop avaclaw
 lume run avaclaw --no-display
 ```
 
-VM 在后台运行。Ava-Claw 的守护进程保持 Gateway 网关运行。
+VM 在后台运行。AvaClaw 的守护进程保持 Gateway 网关运行。
 
 检查状态：
 
@@ -205,7 +205,7 @@ ssh youruser@192.168.64.X "avaclaw status"
 
 ## 额外：iMessage 集成
 
-这是在 macOS 上运行的杀手级功能。使用 [BlueBubbles](https://bluebubbles.app) 将 iMessage 添加到 Ava-Claw。
+这是在 macOS 上运行的杀手级功能。使用 [BlueBubbles](https://bluebubbles.app) 将 iMessage 添加到 AvaClaw。
 
 在 VM 内：
 
@@ -214,7 +214,7 @@ ssh youruser@192.168.64.X "avaclaw status"
 3. 启用 Web API 并设置密码
 4. 将 BlueBubbles webhooks 指向你的 Gateway 网关（示例：`https://your-gateway-host:3000/bluebubbles-webhook?password=<password>`）
 
-添加到你的 Ava-Claw 配置：
+添加到你的 AvaClaw 配置：
 
 ```json
 {

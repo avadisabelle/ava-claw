@@ -87,7 +87,7 @@ avaclaw node run --host 127.0.0.1 --port 18790 --display-name "Build Node"
 
 注意事项：
 
-- 令牌是 Gateway 网关配置中的 `gateway.auth.token`（Gateway 网关主机上的 `~/.avadisabelle/ava-claw.json`）。
+- 令牌是 Gateway 网关配置中的 `gateway.auth.token`（Gateway 网关主机上的 `~/.avaclaw/avaclaw.json`）。
 - `avaclaw node run` 读取 `AVACLAW_GATEWAY_TOKEN` 进行认证。
 
 ### 启动节点主机（服务）
@@ -259,7 +259,7 @@ avaclaw nodes location get --node <idOrNameOrIp> --accuracy precise --max-age 15
 低级调用：
 
 ```bash
-avaclaw nodes invoke --node <idOrNameOrIp> --command sms.send --params '{"to":"+15555550123","message":"Hello from Ava-Claw"}'
+avaclaw nodes invoke --node <idOrNameOrIp> --command sms.send --params '{"to":"+15555550123","message":"Hello from AvaClaw"}'
 ```
 
 注意事项：
@@ -321,7 +321,7 @@ avaclaw config unset agents.list[0].tools.exec.node
 
 ## 无头节点主机（跨平台）
 
-Ava-Claw 可以运行**无头节点主机**（无 UI），它连接到 Gateway 网关
+AvaClaw 可以运行**无头节点主机**（无 UI），它连接到 Gateway 网关
 WebSocket 并暴露 `system.run` / `system.which`。这在 Linux/Windows
 上或在服务器旁运行最小节点时很有用。
 

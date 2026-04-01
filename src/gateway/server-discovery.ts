@@ -40,7 +40,7 @@ export function resolveBonjourCliPath(opts: ResolveBonjourCliPathOptions = {}): 
 
   const execPath = opts.execPath ?? process.execPath;
   const execDir = path.dirname(execPath);
-  for (const binName of ["ava-claw", "avaclaw"]) {
+  for (const binName of ["avaclaw", "ava-claw"]) {
     const siblingCli = path.join(execDir, binName);
     if (isFile(siblingCli)) {
       return siblingCli;
@@ -58,7 +58,7 @@ export function resolveBonjourCliPath(opts: ResolveBonjourCliPathOptions = {}): 
   if (isFile(distCli)) {
     return distCli;
   }
-  for (const binName of ["ava-claw", "avaclaw"]) {
+  for (const binName of ["avaclaw", "ava-claw"]) {
     const binCli = path.join(cwd, "bin", binName);
     if (isFile(binCli)) {
       return binCli;

@@ -1,16 +1,16 @@
 ---
 title: "Default AGENTS.md"
-summary: "Default Ava-Claw agent instructions and skills roster for the personal assistant setup"
+summary: "Default AvaClaw agent instructions and skills roster for the personal assistant setup"
 read_when:
-  - Starting a new Ava-Claw agent session
+  - Starting a new AvaClaw agent session
   - Enabling or auditing default skills
 ---
 
-# AGENTS.md — Ava-Claw Personal Assistant (default)
+# AGENTS.md — AvaClaw Personal Assistant (default)
 
 ## First run (recommended)
 
-Ava-Claw uses a dedicated workspace directory for the agent. Default: `~/.avaclaw/workspace` (configurable via `agents.defaults.workspace`).
+AvaClaw uses a dedicated workspace directory for the agent. Default: `~/.avaclaw/workspace` (configurable via `agents.defaults.workspace`).
 
 1. Create the workspace (if it doesn’t already exist):
 
@@ -89,7 +89,7 @@ git commit -m "Add Clawd workspace"
 # Optional: add a private remote + push
 ```
 
-## What Ava-Claw Does
+## What AvaClaw Does
 
 - Runs WhatsApp gateway + Pi coding agent so the assistant can read/write chats, fetch context, and run skills via the host Mac.
 - macOS app manages permissions (screen recording, notifications, microphone) and exposes the `avaclaw` CLI via its bundled binary.
@@ -121,6 +121,6 @@ git commit -m "Add Clawd workspace"
 - Run installs from the Skills tab; it hides the button if a binary is already present.
 - Keep heartbeats enabled so the assistant can schedule reminders, monitor inboxes, and trigger camera captures.
 - Canvas UI runs full-screen with native overlays. Avoid placing critical controls in the top-left/top-right/bottom edges; add explicit gutters in the layout and don’t rely on safe-area insets.
-- For browser-driven verification, use `avaclaw browser` (tabs/status/screenshot) with the Ava-Claw-managed Chrome profile.
+- For browser-driven verification, use `avaclaw browser` (tabs/status/screenshot) with the AvaClaw-managed Chrome profile.
 - For DOM inspection, use `avaclaw browser eval|query|dom|snapshot` (and `--json`/`--out` when you need machine output).
 - For interactions, use `avaclaw browser click|type|hover|drag|select|upload|press|wait|navigate|back|evaluate|run` (click/type require snapshot refs; use `evaluate` for CSS selectors).

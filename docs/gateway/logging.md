@@ -10,7 +10,7 @@ title: "Logging"
 
 For a user-facing overview (CLI + Control UI + config), see [/logging](/logging).
 
-Ava-Claw has two log “surfaces”:
+AvaClaw has two log “surfaces”:
 
 - **Console output** (what you see in the terminal / Debug UI).
 - **File logs** (JSON lines) written by the gateway logger.
@@ -19,7 +19,7 @@ Ava-Claw has two log “surfaces”:
 
 - Default rolling log file is under `/tmp/avaclaw/` (one file per day): `avaclaw-YYYY-MM-DD.log`
   - Date uses the gateway host's local timezone.
-- The log file path and level can be configured via `~/.avadisabelle/ava-claw.json`:
+- The log file path and level can be configured via `~/.avaclaw/avaclaw.json`:
   - `logging.file`
   - `logging.level`
 

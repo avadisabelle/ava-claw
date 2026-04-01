@@ -3,7 +3,7 @@ read_when:
   - 你想要带安全加固的自动化服务器部署
   - 你需要带 VPN 访问的防火墙隔离设置
   - 你正在部署到远程 Debian/Ubuntu 服务器
-summary: 使用 Ansible、Tailscale VPN 和防火墙隔离进行自动化、加固的 Ava-Claw 安装
+summary: 使用 Ansible、Tailscale VPN 和防火墙隔离进行自动化、加固的 AvaClaw 安装
 title: Ansible
 x-i18n:
   generated_at: "2026-02-03T07:49:29Z"
@@ -16,7 +16,7 @@ x-i18n:
 
 # Ansible 安装
 
-将 Ava-Claw 部署到生产服务器的推荐方式是通过 **[avaclaw-ansible](https://github.com/avadisabelle/ava-claw-ansible)** — 一个安全优先架构的自动化安装程序。
+将 AvaClaw 部署到生产服务器的推荐方式是通过 **[avaclaw-ansible](https://github.com/avadisabelle/ava-claw-ansible)** — 一个安全优先架构的自动化安装程序。
 
 ## 快速开始
 
@@ -54,7 +54,7 @@ Ansible playbook 安装并配置：
 2. **UFW 防火墙**（仅允许 SSH + Tailscale 端口）
 3. **Docker CE + Compose V2**（用于智能体沙箱）
 4. **Node.js 22.x + pnpm**（运行时依赖）
-5. **Ava-Claw**（基于主机，非容器化）
+5. **AvaClaw**（基于主机，非容器化）
 6. **Systemd 服务**（带安全加固的自动启动）
 
 注意：Gateway 网关**直接在主机上运行**（不在 Docker 中），但智能体沙箱使用 Docker 进行隔离。详情参见[沙箱隔离](/gateway/sandboxing)。
@@ -69,7 +69,7 @@ sudo -i -u avaclaw
 
 安装后脚本将引导你完成：
 
-1. **新手引导向导**：配置 Ava-Claw 设置
+1. **新手引导向导**：配置 AvaClaw 设置
 2. **提供商登录**：连接 WhatsApp/Telegram/Discord/Signal
 3. **Gateway 网关测试**：验证安装
 4. **Tailscale 设置**：连接到你的 VPN mesh
@@ -138,9 +138,9 @@ ansible-galaxy collection install -r requirements.yml
 # ansible-playbook playbook.yml --ask-become-pass
 ```
 
-## 更新 Ava-Claw
+## 更新 AvaClaw
 
-Ansible 安装程序设置 Ava-Claw 为手动更新。标准更新流程参见[更新](/install/updating)。
+Ansible 安装程序设置 AvaClaw 为手动更新。标准更新流程参见[更新](/install/updating)。
 
 要重新运行 Ansible playbook（例如，用于配置更改）：
 

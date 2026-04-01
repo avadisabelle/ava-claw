@@ -17,7 +17,7 @@ x-i18n:
 
 最后更新：2026-01-21
 
-Ava-Claw 提供三个更新渠道：
+AvaClaw 提供三个更新渠道：
 
 - **stable**：npm dist-tag `latest`。
 - **beta**：npm dist-tag `beta`（测试中的构建）。
@@ -49,7 +49,7 @@ avaclaw update --channel dev
 
 这会通过相应的 npm dist-tag（`latest`、`beta`、`dev`）进行更新。
 
-当你使用 `--channel` **显式**切换渠道时，Ava-Claw 还会对齐安装方式：
+当你使用 `--channel` **显式**切换渠道时，AvaClaw 还会对齐安装方式：
 
 - `dev` 确保有一个 git checkout（默认 `~/avaclaw`，可通过 `AVACLAW_GIT_DIR` 覆盖），
   更新它，并从该 checkout 安装全局 CLI。
@@ -59,7 +59,7 @@ avaclaw update --channel dev
 
 ## 插件和渠道
 
-当你使用 `avaclaw update` 切换渠道时，Ava-Claw 还会同步插件来源：
+当你使用 `avaclaw update` 切换渠道时，AvaClaw 还会同步插件来源：
 
 - `dev` 优先使用 git checkout 中的内置插件。
 - `stable` 和 `beta` 恢复 npm 安装的插件包。

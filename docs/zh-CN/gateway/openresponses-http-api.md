@@ -15,7 +15,7 @@ x-i18n:
 
 # OpenResponses API（HTTP）
 
-Ava-Claw 的 Gateway 网关可以提供兼容 OpenResponses 的 `POST /v1/responses` 端点。
+AvaClaw 的 Gateway 网关可以提供兼容 OpenResponses 的 `POST /v1/responses` 端点。
 
 此端点**默认禁用**。请先在配置中启用。
 
@@ -42,7 +42,7 @@ Ava-Claw 的 Gateway 网关可以提供兼容 OpenResponses 的 `POST /v1/respon
 - `model: "avaclaw:<agentId>"`（示例：`"avaclaw:main"`、`"avaclaw:beta"`）
 - `model: "agent:<agentId>"`（别名）
 
-或通过头指定特定的 Ava-Claw 智能体：
+或通过头指定特定的 AvaClaw 智能体：
 
 - `x-avaclaw-agent-id: <agentId>`（默认：`main`）
 

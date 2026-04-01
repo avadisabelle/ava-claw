@@ -1,19 +1,19 @@
 ---
-summary: "Run Ava-Claw Gateway 24/7 on a GCP Compute Engine VM (Docker) with durable state"
+summary: "Run AvaClaw Gateway 24/7 on a GCP Compute Engine VM (Docker) with durable state"
 read_when:
-  - You want Ava-Claw running 24/7 on GCP
+  - You want AvaClaw running 24/7 on GCP
   - You want a production-grade, always-on Gateway on your own VM
   - You want full control over persistence, binaries, and restart behavior
 title: "GCP"
 ---
 
-# Ava-Claw on GCP Compute Engine (Docker, Production VPS Guide)
+# AvaClaw on GCP Compute Engine (Docker, Production VPS Guide)
 
 ## Goal
 
-Run a persistent Ava-Claw Gateway on a GCP Compute Engine VM using Docker, with durable state, baked-in binaries, and safe restart behavior.
+Run a persistent AvaClaw Gateway on a GCP Compute Engine VM using Docker, with durable state, baked-in binaries, and safe restart behavior.
 
-If you want "Ava-Claw 24/7 for ~$5-12/mo", this is a reliable setup on Google Cloud.
+If you want "AvaClaw 24/7 for ~$5-12/mo", this is a reliable setup on Google Cloud.
 Pricing varies by machine type and region; pick the smallest VM that fits your workload and scale up if you hit OOMs.
 
 ## What are we doing (simple terms)?
@@ -21,7 +21,7 @@ Pricing varies by machine type and region; pick the smallest VM that fits your w
 - Create a GCP project and enable billing
 - Create a Compute Engine VM
 - Install Docker (isolated app runtime)
-- Start the Ava-Claw Gateway in Docker
+- Start the AvaClaw Gateway in Docker
 - Persist `~/.avaclaw` + `~/.avaclaw/workspace` on the host (survives restarts/rebuilds)
 - Access the Control UI from your laptop via an SSH tunnel
 
@@ -42,7 +42,7 @@ For the generic Docker flow, see [Docker](/install/docker).
 2. Create Compute Engine VM (e2-small, Debian 12, 20GB)
 3. SSH into the VM
 4. Install Docker
-5. Clone Ava-Claw repository
+5. Clone AvaClaw repository
 6. Create persistent host directories
 7. Configure `.env` and `docker-compose.yml`
 8. Bake required binaries, build, and launch
@@ -89,7 +89,7 @@ All steps can be done via the web UI at [https://console.cloud.google.com](https
 **CLI:**
 
 ```bash
-gcloud projects create my-avaclaw-project --name="Ava-Claw Gateway"
+gcloud projects create my-avaclaw-project --name="AvaClaw Gateway"
 gcloud config set project my-avaclaw-project
 ```
 
@@ -188,7 +188,7 @@ docker compose version
 
 ---
 
-## 6) Clone the Ava-Claw repository
+## 6) Clone the AvaClaw repository
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
@@ -381,7 +381,7 @@ For automation or CI/CD pipelines, create a dedicated service account with minim
 
    ```bash
    gcloud iam service-accounts create avaclaw-deploy \
-     --display-name="Ava-Claw Deployment"
+     --display-name="AvaClaw Deployment"
    ```
 
 2. Grant Compute Instance Admin role (or narrower custom role):

@@ -1,7 +1,7 @@
 ---
-summary: "Uninstall Ava-Claw completely (CLI, service, state, workspace)"
+summary: "Uninstall AvaClaw completely (CLI, service, state, workspace)"
 read_when:
-  - You want to remove Ava-Claw from a machine
+  - You want to remove AvaClaw from a machine
   - The gateway service is still running after uninstall
 title: "Uninstall"
 ---
@@ -67,7 +67,7 @@ bun remove -g avaclaw
 6. If you installed the macOS app:
 
 ```bash
-rm -rf /Applications/Ava-Claw.app
+rm -rf /Applications/AvaClaw.app
 ```
 
 Notes:
@@ -102,11 +102,11 @@ systemctl --user daemon-reload
 
 ### Windows (Scheduled Task)
 
-Default task name is `Ava-Claw Gateway` (or `Ava-Claw Gateway (<profile>)`).
+Default task name is `AvaClaw Gateway` (or `AvaClaw Gateway (<profile>)`).
 The task script lives under your state dir.
 
 ```powershell
-schtasks /Delete /F /TN "Ava-Claw Gateway"
+schtasks /Delete /F /TN "AvaClaw Gateway"
 Remove-Item -Force "$env:USERPROFILE\.avaclaw\gateway.cmd"
 ```
 

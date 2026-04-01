@@ -1,18 +1,18 @@
 ---
-summary: "Deploy Ava-Claw Gateway to a Kubernetes cluster with Kustomize"
+summary: "Deploy AvaClaw Gateway to a Kubernetes cluster with Kustomize"
 read_when:
-  - You want to run Ava-Claw on a Kubernetes cluster
-  - You want to test Ava-Claw in a Kubernetes environment
+  - You want to run AvaClaw on a Kubernetes cluster
+  - You want to test AvaClaw in a Kubernetes environment
 title: "Kubernetes"
 ---
 
-# Ava-Claw on Kubernetes
+# AvaClaw on Kubernetes
 
-A minimal starting point for running Ava-Claw on Kubernetes — not a production-ready deployment. It covers the core resources and is meant to be adapted to your environment.
+A minimal starting point for running AvaClaw on Kubernetes — not a production-ready deployment. It covers the core resources and is meant to be adapted to your environment.
 
 ## Why not Helm?
 
-Ava-Claw is a single container with some config files. The interesting customization is in agent content (markdown files, skills, config overrides), not infrastructure templating. Kustomize handles overlays without the overhead of a Helm chart. If your deployment grows more complex, a Helm chart can be layered on top of these manifests.
+AvaClaw is a single container with some config files. The interesting customization is in agent content (markdown files, skills, config overrides), not infrastructure templating. Kustomize handles overlays without the overhead of a Helm chart. If your deployment grows more complex, a Helm chart can be layered on top of these manifests.
 
 ## What you need
 

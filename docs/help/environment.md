@@ -1,5 +1,5 @@
 ---
-summary: "Where Ava-Claw loads environment variables and the precedence order"
+summary: "Where AvaClaw loads environment variables and the precedence order"
 read_when:
   - You need to know which env vars are loaded, and in what order
   - You are debugging missing API keys in the Gateway
@@ -9,14 +9,14 @@ title: "Environment Variables"
 
 # Environment variables
 
-Ava-Claw pulls environment variables from multiple sources. The rule is **never override existing values**.
+AvaClaw pulls environment variables from multiple sources. The rule is **never override existing values**.
 
 ## Precedence (highest → lowest)
 
 1. **Process environment** (what the Gateway process already has from the parent shell/daemon).
 2. **`.env` in the current working directory** (dotenv default; does not override).
 3. **Global `.env`** at `~/.avaclaw/.env` (aka `$AVACLAW_STATE_DIR/.env`; does not override).
-4. **Config `env` block** in `~/.avadisabelle/ava-claw.json` (applied only if missing).
+4. **Config `env` block** in `~/.avaclaw/avaclaw.json` (applied only if missing).
 5. **Optional login-shell import** (`env.shellEnv.enabled` or `AVACLAW_LOAD_SHELL_ENV=1`), applied only for missing expected keys.
 
 If the config file is missing entirely, step 4 is skipped; shell import still runs if enabled.
@@ -58,7 +58,7 @@ Env var equivalents:
 
 ## Runtime-injected env vars
 
-Ava-Claw also injects context markers into spawned child processes:
+AvaClaw also injects context markers into spawned child processes:
 
 - `AVACLAW_SHELL=exec`: set for commands run through the `exec` tool.
 - `AVACLAW_SHELL=acp`: set for ACP runtime backend process spawns (for example `acpx`).
@@ -72,7 +72,7 @@ to apply context-specific rules.
 
 - `AVACLAW_THEME=light`: force the light TUI palette when your terminal has a light background.
 - `AVACLAW_THEME=dark`: force the dark TUI palette.
-- `COLORFGBG`: if your terminal exports it, Ava-Claw uses the background color hint to auto-pick the TUI palette.
+- `COLORFGBG`: if your terminal exports it, AvaClaw uses the background color hint to auto-pick the TUI palette.
 
 ## Env var substitution in config
 
@@ -94,7 +94,7 @@ See [Configuration: Env var substitution](/gateway/configuration#env-var-substit
 
 ## Secret refs vs `${ENV}` strings
 
-Ava-Claw supports two env-driven patterns:
+AvaClaw supports two env-driven patterns:
 
 - `${VAR}` string substitution in config values.
 - SecretRef objects (`{ source: "env", provider: "default", id: "VAR" }`) for fields that support secrets references.
@@ -103,11 +103,11 @@ Both resolve from process env at activation time. SecretRef details are document
 
 ## Path-related env vars
 
-| Variable              | Purpose                                                                                                                                                                         |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `AVACLAW_HOME`        | Override the home directory used for all internal path resolution (`~/.avaclaw/`, agent dirs, sessions, credentials). Useful when running Ava-Claw as a dedicated service user. |
-| `AVACLAW_STATE_DIR`   | Override the state directory (default `~/.avaclaw`).                                                                                                                            |
-| `AVACLAW_CONFIG_PATH` | Override the config file path (default `~/.avadisabelle/ava-claw.json`).                                                                                                        |
+| Variable              | Purpose                                                                                                                                                                        |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `AVACLAW_HOME`        | Override the home directory used for all internal path resolution (`~/.avaclaw/`, agent dirs, sessions, credentials). Useful when running AvaClaw as a dedicated service user. |
+| `AVACLAW_STATE_DIR`   | Override the state directory (default `~/.avaclaw`).                                                                                                                           |
+| `AVACLAW_CONFIG_PATH` | Override the config file path (default `~/.avaclaw/avaclaw.json`).                                                                                                             |
 
 ## Logging
 

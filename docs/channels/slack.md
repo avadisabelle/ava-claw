@@ -34,7 +34,7 @@ Status: production-ready for DMs + channels via Slack app integrations. Default 
         - install app and copy **Bot Token** (`xoxb-...`)
       </Step>
 
-      <Step title="Configure Ava-Claw">
+      <Step title="Configure AvaClaw">
 
 ```json5
 {
@@ -92,7 +92,7 @@ avaclaw gateway
 
       </Step>
 
-      <Step title="Configure Ava-Claw HTTP mode">
+      <Step title="Configure AvaClaw HTTP mode">
 
 ```json5
 {
@@ -264,8 +264,8 @@ These directives compile into Slack Block Kit and route clicks or selections bac
 Notes:
 
 - This is Slack-specific UI. Other channels do not translate Slack Block Kit directives into their own button systems.
-- The interactive callback values are Ava-Claw-generated opaque tokens, not raw agent-authored values.
-- If generated interactive blocks would exceed Slack Block Kit limits, Ava-Claw falls back to the original text reply instead of sending an invalid blocks payload.
+- The interactive callback values are AvaClaw-generated opaque tokens, not raw agent-authored values.
+- If generated interactive blocks would exceed Slack Block Kit limits, AvaClaw falls back to the original text reply instead of sending an invalid blocks payload.
 
 Default slash command settings:
 
@@ -358,7 +358,7 @@ Available action groups in current Slack tooling:
 
 ## Ack reactions
 
-`ackReaction` sends an acknowledgement emoji while Ava-Claw is processing an inbound message.
+`ackReaction` sends an acknowledgement emoji while AvaClaw is processing an inbound message.
 
 Resolution order:
 
@@ -374,7 +374,7 @@ Notes:
 
 ## Typing reaction fallback
 
-`typingReaction` adds a temporary reaction to the inbound Slack message while Ava-Claw is processing a reply, then removes it when the run finishes. This is a useful fallback when Slack native assistant typing is unavailable, especially in DMs.
+`typingReaction` adds a temporary reaction to the inbound Slack message while AvaClaw is processing a reply, then removes it when the run finishes. This is a useful fallback when Slack native assistant typing is unavailable, especially in DMs.
 
 Resolution order:
 
@@ -394,12 +394,12 @@ Notes:
 ```json
 {
   "display_information": {
-    "name": "Ava-Claw",
-    "description": "Slack connector for Ava-Claw"
+    "name": "AvaClaw",
+    "description": "Slack connector for AvaClaw"
   },
   "features": {
     "bot_user": {
-      "display_name": "Ava-Claw",
+      "display_name": "AvaClaw",
       "always_online": false
     },
     "app_home": {
@@ -409,7 +409,7 @@ Notes:
     "slash_commands": [
       {
         "command": "/avaclaw",
-        "description": "Send a message to Ava-Claw",
+        "description": "Send a message to AvaClaw",
         "should_escape": false
       }
     ]
@@ -540,7 +540,7 @@ avaclaw pairing list slack
 
 ## Text streaming
 
-Ava-Claw supports Slack native text streaming via the Agents and AI Apps API.
+AvaClaw supports Slack native text streaming via the Agents and AI Apps API.
 
 `channels.slack.streaming` controls live preview behavior:
 
@@ -577,7 +577,7 @@ Legacy keys:
 - Later text chunks append to the same stream (`chat.appendStream`).
 - End of reply finalizes stream (`chat.stopStream`).
 - Media and non-text payloads fall back to normal delivery.
-- If streaming fails mid-reply, Ava-Claw falls back to normal delivery for remaining payloads.
+- If streaming fails mid-reply, AvaClaw falls back to normal delivery for remaining payloads.
 
 ## Configuration reference pointers
 

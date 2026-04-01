@@ -8,7 +8,7 @@ title: "setup"
 
 # `avaclaw setup`
 
-Initialize `~/.avadisabelle/ava-claw.json` and the agent workspace.
+Initialize `~/.avaclaw/avaclaw.json` and the agent workspace.
 
 Related:
 

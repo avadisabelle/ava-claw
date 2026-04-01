@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-open-prose",
+  "name": "ava-claw-open-prose",
   "version": "2026.3.14",
   "private": true,
   "description": "OpenProse VM skill pack plugin (slash command + telemetry).",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

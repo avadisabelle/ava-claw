@@ -9,7 +9,7 @@ title: "Android App"
 
 # Android App (Node)
 
-> **Note:** The Android app has not been publicly released yet. The source code is available in the [Ava-Claw repository](https://github.com/avadisabelle/ava-claw) under `apps/android`. You can build it yourself using Java 17 and the Android SDK (`./gradlew :app:assembleDebug`). See [apps/android/README.md](https://github.com/avadisabelle/ava-claw/blob/main/apps/android/README.md) for build instructions.
+> **Note:** The Android app has not been publicly released yet. The source code is available in the [AvaClaw repository](https://github.com/avadisabelle/ava-claw) under `apps/android`. You can build it yourself using Java 17 and the Android SDK (`./gradlew :app:assembleDebug`). See [apps/android/README.md](https://github.com/avadisabelle/ava-claw/blob/main/apps/android/README.md) for build instructions.
 
 ## Support snapshot
 
@@ -50,7 +50,7 @@ Confirm in logs you see something like:
 
 For tailnet-only setups (recommended for Vienna ⇄ London), bind the gateway to the tailnet IP:
 
-- Set `gateway.bind: "tailnet"` in `~/.avadisabelle/ava-claw.json` on the gateway host.
+- Set `gateway.bind: "tailnet"` in `~/.avaclaw/avaclaw.json` on the gateway host.
 - Restart the Gateway / macOS menubar app.
 
 ### 2) Verify discovery (optional)

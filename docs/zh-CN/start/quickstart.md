@@ -1,7 +1,7 @@
 ---
 read_when:
   - 你希望以最快的方式从安装到运行一个可用的 Gateway 网关
-summary: 安装 Ava-Claw，完成 Gateway 网关新手引导，并配对你的第一个渠道。
+summary: 安装 AvaClaw，完成 Gateway 网关新手引导，并配对你的第一个渠道。
 title: 快速开始
 x-i18n:
   generated_at: "2026-02-04T17:53:21Z"
@@ -13,7 +13,7 @@ x-i18n:
 ---
 
 <Note>
-Ava-Claw 需要 Node 22 或更新版本。
+AvaClaw 需要 Node 22 或更新版本。
 </Note>
 
 ## 安装
@@ -84,5 +84,5 @@ avaclaw gateway --port 19001
 需要一个正在运行的 Gateway 网关。
 
 ```bash
-avaclaw message send --target +15555550123 --message "Hello from Ava-Claw"
+avaclaw message send --target +15555550123 --message "Hello from AvaClaw"
 ```

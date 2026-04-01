@@ -1,6 +1,6 @@
-# Contributing to the Ava-Claw Threat Model
+# Contributing to the AvaClaw Threat Model
 
-Thanks for helping make Ava-Claw more secure. This threat model is a living document and we welcome contributions from anyone - you don't need to be a security expert.
+Thanks for helping make AvaClaw more secure. This threat model is a living document and we welcome contributions from anyone - you don't need to be a security expert.
 
 ## Ways to Contribute
 
@@ -11,7 +11,7 @@ Spotted an attack vector or risk we haven't covered? Open an issue on [avaclaw/t
 **Helpful to include (but not required):**
 
 - The attack scenario and how it could be exploited
-- Which parts of Ava-Claw are affected (CLI, gateway, channels, ClawHub, MCP servers, etc.)
+- Which parts of AvaClaw are affected (CLI, gateway, channels, ClawHub, MCP servers, etc.)
 - How severe you think it is (low / medium / high / critical)
 - Any links to related research, CVEs, or real-world examples
 
@@ -77,7 +77,7 @@ If you're unsure about the risk level, just describe the impact and we'll assess
 - [ATLAS Website](https://atlas.mitre.org/)
 - [ATLAS Techniques](https://atlas.mitre.org/techniques/)
 - [ATLAS Case Studies](https://atlas.mitre.org/studies/)
-- [Ava-Claw Threat Model](/security/THREAT-MODEL-ATLAS)
+- [AvaClaw Threat Model](/security/THREAT-MODEL-ATLAS)
 
 ## Contact
 
@@ -87,4 +87,4 @@ If you're unsure about the risk level, just describe the impact and we'll assess
 
 ## Recognition
 
-Contributors to the threat model are recognized in the threat model acknowledgments, release notes, and the Ava-Claw security hall of fame for significant contributions.
+Contributors to the threat model are recognized in the threat model acknowledgments, release notes, and the AvaClaw security hall of fame for significant contributions.

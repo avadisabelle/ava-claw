@@ -8,7 +8,7 @@ title: "Bonjour Discovery"
 
 # Bonjour / mDNS discovery
 
-Ava-Claw uses Bonjour (mDNS / DNS‑SD) as a **LAN‑only convenience** to discover
+AvaClaw uses Bonjour (mDNS / DNS‑SD) as a **LAN‑only convenience** to discover
 an active Gateway (WebSocket endpoint). It is best‑effort and does **not** replace SSH or
 Tailnet-based connectivity.
 
@@ -26,7 +26,7 @@ High‑level steps:
 3. Configure Tailscale **split DNS** so your chosen domain resolves via that
    DNS server for clients (including iOS).
 
-Ava-Claw supports any discovery domain; `avaclaw.internal.` is just an example.
+AvaClaw supports any discovery domain; `avaclaw.internal.` is just an example.
 iOS/Android nodes browse both `local.` and your configured wide‑area domain.
 
 ### Gateway config (recommended)
@@ -73,7 +73,7 @@ access, bind explicitly and keep auth enabled.
 
 For tailnet‑only setups:
 
-- Set `gateway.bind: "tailnet"` in `~/.avadisabelle/ava-claw.json`.
+- Set `gateway.bind: "tailnet"` in `~/.avaclaw/avaclaw.json`.
 - Restart the Gateway (or restart the macOS menubar app).
 
 ## What advertises
@@ -166,7 +166,7 @@ sequences (e.g. spaces become `\032`).
 ## Disabling / configuration
 
 - `AVACLAW_DISABLE_BONJOUR=1` disables advertising (legacy: `AVACLAW_DISABLE_BONJOUR`).
-- `gateway.bind` in `~/.avadisabelle/ava-claw.json` controls the Gateway bind mode.
+- `gateway.bind` in `~/.avaclaw/avaclaw.json` controls the Gateway bind mode.
 - `AVACLAW_SSH_PORT` overrides the SSH port advertised in TXT (legacy: `AVACLAW_SSH_PORT`).
 - `AVACLAW_TAILNET_DNS` publishes a MagicDNS hint in TXT (legacy: `AVACLAW_TAILNET_DNS`).
 - `AVACLAW_CLI_PATH` overrides the advertised CLI path (legacy: `AVACLAW_CLI_PATH`).

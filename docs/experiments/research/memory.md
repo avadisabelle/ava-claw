@@ -2,7 +2,7 @@
 summary: "Research notes: offline memory system for Clawd workspaces (Markdown source-of-truth + derived index)"
 read_when:
   - Designing workspace memory (~/.avaclaw/workspace) beyond daily Markdown logs
-  - Deciding: standalone CLI vs deep Ava-Claw integration
+  - Deciding: standalone CLI vs deep AvaClaw integration
   - Adding offline recall + reflection (retain/recall/reflect)
 title: "Workspace Memory Research"
 ---
@@ -168,11 +168,11 @@ Opinion evolution (simple, explainable):
 
 ## CLI integration: standalone vs deep integration
 
-Recommendation: **deep integration in Ava-Claw**, but keep a separable core library.
+Recommendation: **deep integration in AvaClaw**, but keep a separable core library.
 
-### Why integrate into Ava-Claw?
+### Why integrate into AvaClaw?
 
-- Ava-Claw already knows:
+- AvaClaw already knows:
   - the workspace path (`agents.defaults.workspace`)
   - the session model + heartbeats
   - logging + troubleshooting patterns

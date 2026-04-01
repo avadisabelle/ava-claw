@@ -14,7 +14,7 @@ x-i18n:
 
 # OpenAI Chat Completions（HTTP）
 
-Ava-Claw 的 Gateway 网关可以提供一个小型的 OpenAI 兼容 Chat Completions 端点。
+AvaClaw 的 Gateway 网关可以提供一个小型的 OpenAI 兼容 Chat Completions 端点。
 
 此端点**默认禁用**。请先在配置中启用它。
 
@@ -41,7 +41,7 @@ Ava-Claw 的 Gateway 网关可以提供一个小型的 OpenAI 兼容 Chat Comple
 - `model: "avaclaw:<agentId>"`（例如：`"avaclaw:main"`、`"avaclaw:beta"`）
 - `model: "agent:<agentId>"`（别名）
 
-或通过头指定特定的 Ava-Claw 智能体：
+或通过头指定特定的 AvaClaw 智能体：
 
 - `x-avaclaw-agent-id: <agentId>`（默认：`main`）
 

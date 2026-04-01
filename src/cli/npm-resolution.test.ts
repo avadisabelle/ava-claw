@@ -11,52 +11,52 @@ import {
 describe("npm-resolution helpers", () => {
   it("keeps original spec when pin is disabled", () => {
     const result = resolvePinnedNpmSpec({
-      rawSpec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      rawSpec: "ava-claw-plugin-alpha@latest",
       pin: false,
-      resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
     });
     expect(result).toEqual({
-      recordSpec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      recordSpec: "ava-claw-plugin-alpha@latest",
     });
   });
 
   it("warns when pin is enabled but resolved spec is missing", () => {
     const result = resolvePinnedNpmSpec({
-      rawSpec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      rawSpec: "ava-claw-plugin-alpha@latest",
       pin: true,
     });
     expect(result).toEqual({
-      recordSpec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      recordSpec: "ava-claw-plugin-alpha@latest",
       pinWarning: "Could not resolve exact npm version for --pin; storing original npm spec.",
     });
   });
 
   it("returns pinned spec notice when resolved spec is available", () => {
     const result = resolvePinnedNpmSpec({
-      rawSpec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      rawSpec: "ava-claw-plugin-alpha@latest",
       pin: true,
-      resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
     });
     expect(result).toEqual({
-      recordSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
-      pinNotice: "Pinned npm install record to @avadisabelle/ava-claw-plugin-alpha@1.2.3.",
+      recordSpec: "ava-claw-plugin-alpha@1.2.3",
+      pinNotice: "Pinned npm install record to ava-claw-plugin-alpha@1.2.3.",
     });
   });
 
   it("maps npm resolution metadata to install fields", () => {
     expect(
       mapNpmResolutionMetadata({
-        name: "@avadisabelle/ava-claw-plugin-alpha",
+        name: "ava-claw-plugin-alpha",
         version: "1.2.3",
-        resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+        resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
         integrity: "sha512-abc",
         shasum: "deadbeef",
         resolvedAt: "2026-02-21T00:00:00.000Z",
       }),
     ).toEqual({
-      resolvedName: "@avadisabelle/ava-claw-plugin-alpha",
+      resolvedName: "ava-claw-plugin-alpha",
       resolvedVersion: "1.2.3",
-      resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
       integrity: "sha512-abc",
       shasum: "deadbeef",
       resolvedAt: "2026-02-21T00:00:00.000Z",
@@ -66,24 +66,24 @@ describe("npm-resolution helpers", () => {
   it("builds common npm install record fields", () => {
     expect(
       buildNpmInstallRecordFields({
-        spec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+        spec: "ava-claw-plugin-alpha@1.2.3",
         installPath: "/tmp/avaclaw/extensions/alpha",
         version: "1.2.3",
         resolution: {
-          name: "@avadisabelle/ava-claw-plugin-alpha",
+          name: "ava-claw-plugin-alpha",
           version: "1.2.3",
-          resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+          resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
           integrity: "sha512-abc",
         },
       }),
     ).toEqual({
       source: "npm",
-      spec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      spec: "ava-claw-plugin-alpha@1.2.3",
       installPath: "/tmp/avaclaw/extensions/alpha",
       version: "1.2.3",
-      resolvedName: "@avadisabelle/ava-claw-plugin-alpha",
+      resolvedName: "ava-claw-plugin-alpha",
       resolvedVersion: "1.2.3",
-      resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
       integrity: "sha512-abc",
       shasum: undefined,
       resolvedAt: undefined,
@@ -110,14 +110,14 @@ describe("npm-resolution helpers", () => {
     const logs: string[] = [];
     const warns: string[] = [];
     const record = resolvePinnedNpmInstallRecord({
-      rawSpec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      rawSpec: "ava-claw-plugin-alpha@latest",
       pin: true,
       installPath: "/tmp/avaclaw/extensions/alpha",
       version: "1.2.3",
       resolution: {
-        name: "@avadisabelle/ava-claw-plugin-alpha",
+        name: "ava-claw-plugin-alpha",
         version: "1.2.3",
-        resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+        resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
       },
       log: (message) => logs.push(message),
       warn: (message) => warns.push(message),
@@ -125,26 +125,24 @@ describe("npm-resolution helpers", () => {
 
     expect(record).toEqual({
       source: "npm",
-      spec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      spec: "ava-claw-plugin-alpha@1.2.3",
       installPath: "/tmp/avaclaw/extensions/alpha",
       version: "1.2.3",
-      resolvedName: "@avadisabelle/ava-claw-plugin-alpha",
+      resolvedName: "ava-claw-plugin-alpha",
       resolvedVersion: "1.2.3",
-      resolvedSpec: "@avadisabelle/ava-claw-plugin-alpha@1.2.3",
+      resolvedSpec: "ava-claw-plugin-alpha@1.2.3",
       integrity: undefined,
       shasum: undefined,
       resolvedAt: undefined,
     });
-    expect(logs).toEqual([
-      "Pinned npm install record to @avadisabelle/ava-claw-plugin-alpha@1.2.3.",
-    ]);
+    expect(logs).toEqual(["Pinned npm install record to ava-claw-plugin-alpha@1.2.3."]);
     expect(warns).toEqual([]);
   });
 
   it("resolves pinned install record for CLI and formats warning output", () => {
     const logs: string[] = [];
     const record = resolvePinnedNpmInstallRecordForCli(
-      "@avadisabelle/ava-claw-plugin-alpha@latest",
+      "ava-claw-plugin-alpha@latest",
       true,
       "/tmp/avaclaw/extensions/alpha",
       "1.2.3",
@@ -155,7 +153,7 @@ describe("npm-resolution helpers", () => {
 
     expect(record).toEqual({
       source: "npm",
-      spec: "@avadisabelle/ava-claw-plugin-alpha@latest",
+      spec: "ava-claw-plugin-alpha@latest",
       installPath: "/tmp/avaclaw/extensions/alpha",
       version: "1.2.3",
       resolvedName: undefined,

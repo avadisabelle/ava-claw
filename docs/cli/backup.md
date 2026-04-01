@@ -1,14 +1,14 @@
 ---
 summary: "CLI reference for `avaclaw backup` (create local backup archives)"
 read_when:
-  - You want a first-class backup archive for local Ava-Claw state
+  - You want a first-class backup archive for local AvaClaw state
   - You want to preview which paths would be included before reset or uninstall
 title: "backup"
 ---
 
 # `avaclaw backup`
 
-Create a local backup archive for Ava-Claw state, config, credentials, sessions, and optionally workspaces.
+Create a local backup archive for AvaClaw state, config, credentials, sessions, and optionally workspaces.
 
 ```bash
 avaclaw backup create
@@ -24,7 +24,7 @@ avaclaw backup verify ./2026-03-09T00-00-00.000Z-avaclaw-backup.tar.gz
 
 - The archive includes a `manifest.json` file with the resolved source paths and archive layout.
 - Default output is a timestamped `.tar.gz` archive in the current working directory.
-- If the current working directory is inside a backed-up source tree, Ava-Claw falls back to your home directory for the default archive location.
+- If the current working directory is inside a backed-up source tree, AvaClaw falls back to your home directory for the default archive location.
 - Existing archive files are never overwritten.
 - Output paths inside the source state/workspace trees are rejected to avoid self-inclusion.
 - `avaclaw backup verify <archive>` validates that the archive contains exactly one root manifest, rejects traversal-style archive paths, and checks that every manifest-declared payload exists in the tarball.
@@ -33,16 +33,16 @@ avaclaw backup verify ./2026-03-09T00-00-00.000Z-avaclaw-backup.tar.gz
 
 ## What gets backed up
 
-`avaclaw backup create` plans backup sources from your local Ava-Claw install:
+`avaclaw backup create` plans backup sources from your local AvaClaw install:
 
-- The state directory returned by Ava-Claw's local state resolver, usually `~/.avaclaw`
+- The state directory returned by AvaClaw's local state resolver, usually `~/.avaclaw`
 - The active config file path
 - The OAuth / credentials directory
 - Workspace directories discovered from the current config, unless you pass `--no-include-workspace`
 
-If you use `--only-config`, Ava-Claw skips state, credentials, and workspace discovery and archives only the active config file path.
+If you use `--only-config`, AvaClaw skips state, credentials, and workspace discovery and archives only the active config file path.
 
-Ava-Claw canonicalizes paths before building the archive. If config, credentials, or a workspace already live inside the state directory, they are not duplicated as separate top-level backup sources. Missing paths are skipped.
+AvaClaw canonicalizes paths before building the archive. If config, credentials, or a workspace already live inside the state directory, they are not duplicated as separate top-level backup sources. Missing paths are skipped.
 
 The archive payload stores file contents from those source trees, and the embedded `manifest.json` records the resolved absolute source paths plus the archive layout used for each asset.
 
@@ -62,14 +62,14 @@ If you only need a copy of the config file itself, `--only-config` also works wh
 
 ## Size and performance
 
-Ava-Claw does not enforce a built-in maximum backup size or per-file size limit.
+AvaClaw does not enforce a built-in maximum backup size or per-file size limit.
 
 Practical limits come from the local machine and destination filesystem:
 
 - Available space for the temporary archive write plus the final archive
 - Time to walk large workspace trees and compress them into a `.tar.gz`
 - Time to rescan the archive if you use `avaclaw backup create --verify` or run `avaclaw backup verify`
-- Filesystem behavior at the destination path. Ava-Claw prefers a no-overwrite hard-link publish step and falls back to exclusive copy when hard links are unsupported
+- Filesystem behavior at the destination path. AvaClaw prefers a no-overwrite hard-link publish step and falls back to exclusive copy when hard links are unsupported
 
 Large workspaces are usually the main driver of archive size. If you want a smaller or faster backup, use `--no-include-workspace`.
 

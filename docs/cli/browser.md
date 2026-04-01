@@ -9,7 +9,7 @@ title: "browser"
 
 # `avaclaw browser`
 
-Manage Ava-Claw’s browser control server and run browser actions (tabs, snapshots, screenshots, navigation, clicks, typing).
+Manage AvaClaw’s browser control server and run browser actions (tabs, snapshots, screenshots, navigation, clicks, typing).
 
 Related:
 
@@ -37,7 +37,7 @@ avaclaw browser --browser-profile avaclaw snapshot
 
 Profiles are named browser routing configs. In practice:
 
-- `avaclaw`: launches/attaches to a dedicated Ava-Claw-managed Chrome instance (isolated user data dir).
+- `avaclaw`: launches/attaches to a dedicated AvaClaw-managed Chrome instance (isolated user data dir).
 - `user`: controls your existing signed-in Chrome session via Chrome DevTools MCP.
 - `chrome-relay`: controls your existing Chrome tab(s) via the Chrome extension relay.
 

@@ -253,7 +253,7 @@ describe("applyPluginAutoEnable", () => {
       JSON.stringify({
         entries: [
           {
-            name: "@avadisabelle/ava-claw-env-secondary",
+            name: "ava-claw-env-secondary",
             avaclaw: {
               channel: {
                 id: "env-secondary",
@@ -264,7 +264,7 @@ describe("applyPluginAutoEnable", () => {
                 preferOver: ["env-primary"],
               },
               install: {
-                npmSpec: "@avadisabelle/ava-claw-env-secondary",
+                npmSpec: "ava-claw-env-secondary",
               },
             },
           },

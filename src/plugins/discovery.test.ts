@@ -164,7 +164,7 @@ describe("discoverAvaClawPlugins", () => {
 
     writePluginPackageManifest({
       packageDir: globalExt,
-      packageName: "@avadisabelle/ava-claw-voice-call",
+      packageName: "ava-claw-voice-call",
       extensions: ["./src/index.ts"],
     });
     fs.writeFileSync(
@@ -186,7 +186,7 @@ describe("discoverAvaClawPlugins", () => {
 
     writePluginPackageManifest({
       packageDir: globalExt,
-      packageName: "@avadisabelle/ava-claw-ollama-provider",
+      packageName: "ava-claw-ollama-provider",
       extensions: ["./src/index.ts"],
     });
     fs.writeFileSync(
@@ -209,7 +209,7 @@ describe("discoverAvaClawPlugins", () => {
 
     writePluginPackageManifest({
       packageDir: packDir,
-      packageName: "@avadisabelle/ava-claw-demo-plugin-dir",
+      packageName: "ava-claw-demo-plugin-dir",
       extensions: ["./index.js"],
     });
     fs.writeFileSync(path.join(packDir, "index.js"), "module.exports = {}", "utf-8");
@@ -330,7 +330,7 @@ describe("discoverAvaClawPlugins", () => {
 
     writePluginPackageManifest({
       packageDir: globalExt,
-      packageName: "@avadisabelle/ava-claw-escape-pack",
+      packageName: "ava-claw-escape-pack",
       extensions: ["../../outside.js"],
     });
     fs.writeFileSync(outside, "export default function () {}", "utf-8");
@@ -357,7 +357,7 @@ describe("discoverAvaClawPlugins", () => {
 
     writePluginPackageManifest({
       packageDir: globalExt,
-      packageName: "@avadisabelle/ava-claw-pack",
+      packageName: "ava-claw-pack",
       extensions: ["./linked/escape.ts"],
     });
 
@@ -390,7 +390,7 @@ describe("discoverAvaClawPlugins", () => {
 
     writePluginPackageManifest({
       packageDir: globalExt,
-      packageName: "@avadisabelle/ava-claw-pack",
+      packageName: "ava-claw-pack",
       extensions: ["./escape.ts"],
     });
 
@@ -415,7 +415,7 @@ describe("discoverAvaClawPlugins", () => {
     fs.writeFileSync(
       outsideManifest,
       JSON.stringify({
-        name: "@avadisabelle/ava-claw-pack",
+        name: "ava-claw-pack",
         avaclaw: { extensions: ["./entry.ts"] },
       }),
       "utf-8",

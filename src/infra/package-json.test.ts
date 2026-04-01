@@ -9,12 +9,12 @@ describe("package-json helpers", () => {
     await withTempDir({ prefix: "avaclaw-package-json-" }, async (root) => {
       await fs.writeFile(
         path.join(root, "package.json"),
-        JSON.stringify({ version: " 1.2.3 ", name: "  @avadisabelle/ava-claw-demo  " }),
+        JSON.stringify({ version: " 1.2.3 ", name: "  ava-claw-demo  " }),
         "utf8",
       );
 
       await expect(readPackageVersion(root)).resolves.toBe("1.2.3");
-      await expect(readPackageName(root)).resolves.toBe("@avadisabelle/ava-claw-demo");
+      await expect(readPackageName(root)).resolves.toBe("ava-claw-demo");
     });
   });
 
@@ -37,7 +37,7 @@ describe("package-json helpers", () => {
 
       await fs.writeFile(
         path.join(root, "package.json"),
-        JSON.stringify({ version: "   ", name: "@avadisabelle/ava-claw-demo" }),
+        JSON.stringify({ version: "   ", name: "ava-claw-demo" }),
         "utf8",
       );
       await expect(readPackageVersion(root)).resolves.toBeNull();

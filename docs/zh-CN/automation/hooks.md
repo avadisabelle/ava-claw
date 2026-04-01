@@ -15,14 +15,14 @@ x-i18n:
 
 # Hooks
 
-Hooks 提供了一个可扩展的事件驱动系统，用于响应智能体命令和事件自动执行操作。Hooks 从目录中自动发现，可以通过 CLI 命令管理，类似于 Ava-Claw 中 Skills 的工作方式。
+Hooks 提供了一个可扩展的事件驱动系统，用于响应智能体命令和事件自动执行操作。Hooks 从目录中自动发现，可以通过 CLI 命令管理，类似于 AvaClaw 中 Skills 的工作方式。
 
 ## 入门指南
 
 Hooks 是在事件发生时运行的小脚本。有两种类型：
 
 - **Hooks**（本页）：当智能体事件触发时在 Gateway 网关内运行，如 `/new`、`/reset`、`/stop` 或生命周期事件。
-- **Webhooks**：外部 HTTP webhooks，让其他系统触发 Ava-Claw 中的工作。参见 [Webhook Hooks](/automation/webhook) 或使用 `avaclaw webhooks` 获取 Gmail 助手命令。
+- **Webhooks**：外部 HTTP webhooks，让其他系统触发 AvaClaw 中的工作。参见 [Webhook Hooks](/automation/webhook) 或使用 `avaclaw webhooks` 获取 Gmail 助手命令。
 
 Hooks 也可以捆绑在插件中；参见 [插件](/tools/plugin#plugin-hooks)。
 
@@ -42,13 +42,13 @@ hooks 系统允许你：
 - 在发出 `/new` 时将会话上下文保存到记忆
 - 记录所有命令以供审计
 - 在智能体生命周期事件上触发自定义自动化
-- 在不修改核心代码的情况下扩展 Ava-Claw 的行为
+- 在不修改核心代码的情况下扩展 AvaClaw 的行为
 
 ## 入门
 
 ### 捆绑的 Hooks
 
-Ava-Claw 附带三个自动发现的捆绑 hooks：
+AvaClaw 附带三个自动发现的捆绑 hooks：
 
 - **💾 session-memory**：当你发出 `/new` 时将会话上下文保存到智能体工作区（默认 `~/.avaclaw/workspace/memory/`）
 - **📝 command-logger**：将所有命令事件记录到 `~/.avaclaw/logs/commands.log`
@@ -88,7 +88,7 @@ Hooks 从三个目录自动发现（按优先级顺序）：
 
 1. **工作区 hooks**：`<workspace>/hooks/`（每智能体，最高优先级）
 2. **托管 hooks**：`~/.avaclaw/hooks/`（用户安装，跨工作区共享）
-3. **捆绑 hooks**：`<avaclaw>/dist/hooks/bundled/`（随 Ava-Claw 附带）
+3. **捆绑 hooks**：`<avaclaw>/dist/hooks/bundled/`（随 AvaClaw 附带）
 
 托管 hook 目录可以是**单个 hook** 或 **hook 包**（包目录）。
 
@@ -219,7 +219,7 @@ export default myHandler;
     senderId?: string,
     workspaceDir?: string,
     bootstrapFiles?: WorkspaceBootstrapFile[],
-    cfg?: Ava-ClawConfig
+    cfg?: AvaClawConfig
   }
 }
 ```
@@ -247,7 +247,7 @@ export default myHandler;
 
 ### 工具结果 Hooks（插件 API）
 
-这些 hooks 不是事件流监听器；它们让插件在 Ava-Claw 持久化工具结果之前同步调整它们。
+这些 hooks 不是事件流监听器；它们让插件在 AvaClaw 持久化工具结果之前同步调整它们。
 
 - **`tool_result_persist`**：在工具结果写入会话记录之前转换它们。必须是同步的；返回更新后的工具结果负载或 `undefined` 保持原样。参见 [智能体循环](/concepts/agent-loop)。
 

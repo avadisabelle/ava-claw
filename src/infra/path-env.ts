@@ -61,8 +61,8 @@ function candidateBinDirs(opts: EnsureAvaClawPathOpts): { prepend: string[]; app
   // Bundled macOS app: `avaclaw` lives next to the executable (process.execPath).
   try {
     const execDir = path.dirname(execPath);
-    const siblingCli = path.join(execDir, "ava-claw");
-    const legacySiblingCli = path.join(execDir, "avaclaw");
+    const siblingCli = path.join(execDir, "avaclaw");
+    const legacySiblingCli = path.join(execDir, "ava-claw");
     if (isExecutable(siblingCli) || isExecutable(legacySiblingCli)) {
       prepend.push(execDir);
     }
@@ -78,8 +78,8 @@ function candidateBinDirs(opts: EnsureAvaClawPathOpts): { prepend: string[]; app
   if (allowProjectLocalBin) {
     const localBinDir = path.join(cwd, "node_modules", ".bin");
     if (
-      isExecutable(path.join(localBinDir, "ava-claw")) ||
-      isExecutable(path.join(localBinDir, "avaclaw"))
+      isExecutable(path.join(localBinDir, "avaclaw")) ||
+      isExecutable(path.join(localBinDir, "ava-claw"))
     ) {
       append.push(localBinDir);
     }

@@ -1,5 +1,5 @@
 ---
-summary: "Curated links to the most used Ava-Claw docs."
+summary: "Curated links to the most used AvaClaw docs."
 read_when:
   - You want quick access to key docs pages
 title: "Docs directory"
@@ -21,7 +21,7 @@ For a complete map of the docs, see [Docs hubs](/start/hubs).
 - [Updating and rollback](/install/updating)
 - [Pairing (DM and nodes)](/channels/pairing)
 - [Nix mode](/install/nix)
-- [Ava-Claw assistant setup](/start/avaclaw)
+- [AvaClaw assistant setup](/start/avaclaw)
 - [Skills](/tools/skills)
 - [Skills config](/tools/skills-config)
 - [Workspace templates](/reference/templates/AGENTS)

@@ -45,7 +45,7 @@ x-i18n:
 
 ## 配置
 
-在 `~/.avadisabelle/ava-claw.json` 中按提供商设置重试策略：
+在 `~/.avaclaw/avaclaw.json` 中按提供商设置重试策略：
 
 ```json5
 {

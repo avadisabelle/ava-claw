@@ -2,12 +2,12 @@
 export const GATEWAY_LAUNCH_AGENT_LABEL = "ai.avaclaw.gateway";
 export const GATEWAY_SYSTEMD_SERVICE_NAME = "avaclaw-gateway";
 export const GATEWAY_WINDOWS_TASK_NAME = "AvaClaw Gateway";
-export const GATEWAY_SERVICE_MARKER = "ava-claw";
+export const GATEWAY_SERVICE_MARKER = "avaclaw";
 export const GATEWAY_SERVICE_KIND = "gateway";
 export const NODE_LAUNCH_AGENT_LABEL = "ai.avaclaw.node";
 export const NODE_SYSTEMD_SERVICE_NAME = "avaclaw-node";
 export const NODE_WINDOWS_TASK_NAME = "AvaClaw Node";
-export const NODE_SERVICE_MARKER = "ava-claw";
+export const NODE_SERVICE_MARKER = "avaclaw";
 export const NODE_SERVICE_KIND = "node";
 export const NODE_WINDOWS_TASK_SCRIPT_NAME = "node.cmd";
 export const LEGACY_GATEWAY_LAUNCH_AGENT_LABELS: string[] = [];

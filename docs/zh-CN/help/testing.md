@@ -16,7 +16,7 @@ x-i18n:
 
 # 测试
 
-Ava-Claw 包含三个 Vitest 测试套件（单元/集成、端到端、实时）以及一小组 Docker 运行器。
+AvaClaw 包含三个 Vitest 测试套件（单元/集成、端到端、实时）以及一小组 Docker 运行器。
 
 本文档是一份"我们如何测试"的指南：
 
@@ -242,8 +242,8 @@ AVACLAW_LIVE_CLI_BACKEND=1 \
 - `google-antigravity/...` 使用 Antigravity OAuth 桥接（Cloud Code Assist 风格的智能体端点）。
 - `google-gemini-cli/...` 使用你机器上的本地 Gemini CLI（独立的认证 + 工具怪癖）。
 - Gemini API 与 Gemini CLI：
-  - API：Ava-Claw 通过 HTTP 调用 Google 托管的 Gemini API（API 密钥/配置文件认证）；这是大多数用户说的"Gemini"。
-  - CLI：Ava-Claw 调用本地 `gemini` 二进制文件；它有自己的认证，行为可能不同（流式传输/工具支持/版本差异）。
+  - API：AvaClaw 通过 HTTP 调用 Google 托管的 Gemini API（API 密钥/配置文件认证）；这是大多数用户说的"Gemini"。
+  - CLI：AvaClaw 调用本地 `gemini` 二进制文件；它有自己的认证，行为可能不同（流式传输/工具支持/版本差异）。
 
 ## 实时测试：模型矩阵（我们覆盖什么）
 
@@ -307,7 +307,7 @@ AVACLAW_LIVE_CLI_BACKEND=1 \
 - 如果实时测试说"无凭证"，用调试 `avaclaw models list`/模型选择相同的方式调试。
 
 - 配置文件存储：`~/.avaclaw/credentials/`（首选；测试中"配置文件密钥"的含义）
-- 配置：`~/.avadisabelle/ava-claw.json`（或 `AVACLAW_CONFIG_PATH`）
+- 配置：`~/.avaclaw/avaclaw.json`（或 `AVACLAW_CONFIG_PATH`）
 
 如果你想依赖环境变量密钥（例如在 `~/.profile` 中导出的），在 `source ~/.profile` 后运行本地测试，或使用下面的 Docker 运行器（它们可以将 `~/.profile` 挂载到容器中）。
 

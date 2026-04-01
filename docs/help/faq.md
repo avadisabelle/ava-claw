@@ -1,5 +1,5 @@
 ---
-summary: "Frequently asked questions about Ava-Claw setup, configuration, and usage"
+summary: "Frequently asked questions about AvaClaw setup, configuration, and usage"
 read_when:
   - Answering common setup, install, onboarding, or runtime support questions
   - Triaging user-reported issues before deeper debugging
@@ -14,7 +14,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 
 - [Quick start and first-run setup]
   - [Im stuck what's the fastest way to get unstuck?](#im-stuck-whats-the-fastest-way-to-get-unstuck)
-  - [What's the recommended way to install and set up Ava-Claw?](#whats-the-recommended-way-to-install-and-set-up-avaclaw)
+  - [What's the recommended way to install and set up AvaClaw?](#whats-the-recommended-way-to-install-and-set-up-avaclaw)
   - [How do I open the dashboard after onboarding?](#how-do-i-open-the-dashboard-after-onboarding)
   - [How do I authenticate the dashboard (token) on localhost vs remote?](#how-do-i-authenticate-the-dashboard-token-on-localhost-vs-remote)
   - [What runtime do I need?](#what-runtime-do-i-need)
@@ -32,10 +32,10 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [Windows install says git not found or avaclaw not recognized](#windows-install-says-git-not-found-or-avaclaw-not-recognized)
   - [Windows exec output shows garbled Chinese text what should I do](#windows-exec-output-shows-garbled-chinese-text-what-should-i-do)
   - [The docs didn't answer my question - how do I get a better answer?](#the-docs-didnt-answer-my-question-how-do-i-get-a-better-answer)
-  - [How do I install Ava-Claw on Linux?](#how-do-i-install-avaclaw-on-linux)
-  - [How do I install Ava-Claw on a VPS?](#how-do-i-install-avaclaw-on-a-vps)
+  - [How do I install AvaClaw on Linux?](#how-do-i-install-avaclaw-on-linux)
+  - [How do I install AvaClaw on a VPS?](#how-do-i-install-avaclaw-on-a-vps)
   - [Where are the cloud/VPS install guides?](#where-are-the-cloudvps-install-guides)
-  - [Can I ask Ava-Claw to update itself?](#can-i-ask-avaclaw-to-update-itself)
+  - [Can I ask AvaClaw to update itself?](#can-i-ask-avaclaw-to-update-itself)
   - [What does the onboarding wizard actually do?](#what-does-the-onboarding-wizard-actually-do)
   - [Do I need a Claude or OpenAI subscription to run this?](#do-i-need-a-claude-or-openai-subscription-to-run-this)
   - [Can I use Claude Max subscription without an API key](#can-i-use-claude-max-subscription-without-an-api-key)
@@ -51,24 +51,24 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [How do I keep hosted model traffic in a specific region?](#how-do-i-keep-hosted-model-traffic-in-a-specific-region)
   - [Do I have to buy a Mac Mini to install this?](#do-i-have-to-buy-a-mac-mini-to-install-this)
   - [Do I need a Mac mini for iMessage support?](#do-i-need-a-mac-mini-for-imessage-support)
-  - [If I buy a Mac mini to run Ava-Claw, can I connect it to my MacBook Pro?](#if-i-buy-a-mac-mini-to-run-avaclaw-can-i-connect-it-to-my-macbook-pro)
+  - [If I buy a Mac mini to run AvaClaw, can I connect it to my MacBook Pro?](#if-i-buy-a-mac-mini-to-run-avaclaw-can-i-connect-it-to-my-macbook-pro)
   - [Can I use Bun?](#can-i-use-bun)
   - [Telegram: what goes in `allowFrom`?](#telegram-what-goes-in-allowfrom)
-  - [Can multiple people use one WhatsApp number with different Ava-Claw instances?](#can-multiple-people-use-one-whatsapp-number-with-different-avaclaw-instances)
+  - [Can multiple people use one WhatsApp number with different AvaClaw instances?](#can-multiple-people-use-one-whatsapp-number-with-different-avaclaw-instances)
   - [Can I run a "fast chat" agent and an "Opus for coding" agent?](#can-i-run-a-fast-chat-agent-and-an-opus-for-coding-agent)
   - [Does Homebrew work on Linux?](#does-homebrew-work-on-linux)
   - [What's the difference between the hackable (git) install and npm install?](#whats-the-difference-between-the-hackable-git-install-and-npm-install)
   - [Can I switch between npm and git installs later?](#can-i-switch-between-npm-and-git-installs-later)
   - [Should I run the Gateway on my laptop or a VPS?](#should-i-run-the-gateway-on-my-laptop-or-a-vps)
-  - [How important is it to run Ava-Claw on a dedicated machine?](#how-important-is-it-to-run-avaclaw-on-a-dedicated-machine)
+  - [How important is it to run AvaClaw on a dedicated machine?](#how-important-is-it-to-run-avaclaw-on-a-dedicated-machine)
   - [What are the minimum VPS requirements and recommended OS?](#what-are-the-minimum-vps-requirements-and-recommended-os)
-  - [Can I run Ava-Claw in a VM and what are the requirements](#can-i-run-avaclaw-in-a-vm-and-what-are-the-requirements)
-- [What is Ava-Claw?](#what-is-avaclaw)
-  - [What is Ava-Claw, in one paragraph?](#what-is-avaclaw-in-one-paragraph)
+  - [Can I run AvaClaw in a VM and what are the requirements](#can-i-run-avaclaw-in-a-vm-and-what-are-the-requirements)
+- [What is AvaClaw?](#what-is-avaclaw)
+  - [What is AvaClaw, in one paragraph?](#what-is-avaclaw-in-one-paragraph)
   - [What's the value proposition?](#whats-the-value-proposition)
   - [I just set it up what should I do first](#i-just-set-it-up-what-should-i-do-first)
-  - [What are the top five everyday use cases for Ava-Claw](#what-are-the-top-five-everyday-use-cases-for-avaclaw)
-  - [Can Ava-Claw help with lead gen outreach ads and blogs for a SaaS](#can-avaclaw-help-with-lead-gen-outreach-ads-and-blogs-for-a-saas)
+  - [What are the top five everyday use cases for AvaClaw](#what-are-the-top-five-everyday-use-cases-for-avaclaw)
+  - [Can AvaClaw help with lead gen outreach ads and blogs for a SaaS](#can-avaclaw-help-with-lead-gen-outreach-ads-and-blogs-for-a-saas)
   - [What are the advantages vs Claude Code for web development?](#what-are-the-advantages-vs-claude-code-for-web-development)
 - [Skills and automation](#skills-and-automation)
   - [How do I customize skills without keeping the repo dirty?](#how-do-i-customize-skills-without-keeping-the-repo-dirty)
@@ -77,7 +77,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [The bot freezes while doing heavy work. How do I offload that?](#the-bot-freezes-while-doing-heavy-work-how-do-i-offload-that)
   - [Cron or reminders do not fire. What should I check?](#cron-or-reminders-do-not-fire-what-should-i-check)
   - [How do I install skills on Linux?](#how-do-i-install-skills-on-linux)
-  - [Can Ava-Claw run tasks on a schedule or continuously in the background?](#can-avaclaw-run-tasks-on-a-schedule-or-continuously-in-the-background)
+  - [Can AvaClaw run tasks on a schedule or continuously in the background?](#can-avaclaw-run-tasks-on-a-schedule-or-continuously-in-the-background)
   - [Can I run Apple macOS-only skills from Linux?](#can-i-run-apple-macos-only-skills-from-linux)
   - [Do you have a Notion or HeyGen integration?](#do-you-have-a-notion-or-heygen-integration)
   - [How do I install the Chrome extension for browser takeover?](#how-do-i-install-the-chrome-extension-for-browser-takeover)
@@ -89,11 +89,11 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [Does memory persist forever? What are the limits?](#does-memory-persist-forever-what-are-the-limits)
   - [Does semantic memory search require an OpenAI API key?](#does-semantic-memory-search-require-an-openai-api-key)
 - [Where things live on disk](#where-things-live-on-disk)
-  - [Is all data used with Ava-Claw saved locally?](#is-all-data-used-with-avaclaw-saved-locally)
-  - [Where does Ava-Claw store its data?](#where-does-avaclaw-store-its-data)
+  - [Is all data used with AvaClaw saved locally?](#is-all-data-used-with-avaclaw-saved-locally)
+  - [Where does AvaClaw store its data?](#where-does-avaclaw-store-its-data)
   - [Where should AGENTS.md / SOUL.md / USER.md / MEMORY.md live?](#where-should-agentsmd-soulmd-usermd-memorymd-live)
   - [What's the recommended backup strategy?](#whats-the-recommended-backup-strategy)
-  - [How do I completely uninstall Ava-Claw?](#how-do-i-completely-uninstall-avaclaw)
+  - [How do I completely uninstall AvaClaw?](#how-do-i-completely-uninstall-avaclaw)
   - [Can agents work outside the workspace?](#can-agents-work-outside-the-workspace)
   - [I'm in remote mode - where is the session store?](#im-in-remote-mode-where-is-the-session-store)
 - [Config basics](#config-basics)
@@ -105,13 +105,13 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [How do I enable web search (and web fetch)?](#how-do-i-enable-web-search-and-web-fetch)
   - [config.apply wiped my config. How do I recover and avoid this?](#configapply-wiped-my-config-how-do-i-recover-and-avoid-this)
   - [How do I run a central Gateway with specialized workers across devices?](#how-do-i-run-a-central-gateway-with-specialized-workers-across-devices)
-  - [Can the Ava-Claw browser run headless?](#can-the-avaclaw-browser-run-headless)
+  - [Can the AvaClaw browser run headless?](#can-the-avaclaw-browser-run-headless)
   - [How do I use Brave for browser control?](#how-do-i-use-brave-for-browser-control)
 - [Remote gateways and nodes](#remote-gateways-and-nodes)
   - [How do commands propagate between Telegram, the gateway, and nodes?](#how-do-commands-propagate-between-telegram-the-gateway-and-nodes)
   - [How can my agent access my computer if the Gateway is hosted remotely?](#how-can-my-agent-access-my-computer-if-the-gateway-is-hosted-remotely)
   - [Tailscale is connected but I get no replies. What now?](#tailscale-is-connected-but-i-get-no-replies-what-now)
-  - [Can two Ava-Claw instances talk to each other (local + VPS)?](#can-two-avaclaw-instances-talk-to-each-other-local-vps)
+  - [Can two AvaClaw instances talk to each other (local + VPS)?](#can-two-avaclaw-instances-talk-to-each-other-local-vps)
   - [Do I need separate VPSes for multiple agents](#do-i-need-separate-vpses-for-multiple-agents)
   - [Is there a benefit to using a node on my personal laptop instead of SSH from a VPS?](#is-there-a-benefit-to-using-a-node-on-my-personal-laptop-instead-of-ssh-from-a-vps)
   - [Do nodes run a gateway service?](#do-nodes-run-a-gateway-service)
@@ -121,21 +121,21 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [How do I connect a Mac node to a remote Gateway (Tailscale Serve)?](#how-do-i-connect-a-mac-node-to-a-remote-gateway-tailscale-serve)
   - [Should I install on a second laptop or just add a node?](#should-i-install-on-a-second-laptop-or-just-add-a-node)
 - [Env vars and .env loading](#env-vars-and-env-loading)
-  - [How does Ava-Claw load environment variables?](#how-does-avaclaw-load-environment-variables)
+  - [How does AvaClaw load environment variables?](#how-does-avaclaw-load-environment-variables)
   - ["I started the Gateway via the service and my env vars disappeared." What now?](#i-started-the-gateway-via-the-service-and-my-env-vars-disappeared-what-now)
   - [I set `COPILOT_GITHUB_TOKEN`, but models status shows "Shell env: off." Why?](#i-set-copilotgithubtoken-but-models-status-shows-shell-env-off-why)
 - [Sessions and multiple chats](#sessions-and-multiple-chats)
   - [How do I start a fresh conversation?](#how-do-i-start-a-fresh-conversation)
   - [Do sessions reset automatically if I never send `/new`?](#do-sessions-reset-automatically-if-i-never-send-new)
-  - [Is there a way to make a team of Ava-Claw instances one CEO and many agents](#is-there-a-way-to-make-a-team-of-avaclaw-instances-one-ceo-and-many-agents)
+  - [Is there a way to make a team of AvaClaw instances one CEO and many agents](#is-there-a-way-to-make-a-team-of-avaclaw-instances-one-ceo-and-many-agents)
   - [Why did context get truncated mid-task? How do I prevent it?](#why-did-context-get-truncated-midtask-how-do-i-prevent-it)
-  - [How do I completely reset Ava-Claw but keep it installed?](#how-do-i-completely-reset-avaclaw-but-keep-it-installed)
+  - [How do I completely reset AvaClaw but keep it installed?](#how-do-i-completely-reset-avaclaw-but-keep-it-installed)
   - [I'm getting "context too large" errors - how do I reset or compact?](#im-getting-context-too-large-errors-how-do-i-reset-or-compact)
   - [Why am I seeing "LLM request rejected: messages.content.tool_use.input field required"?](#why-am-i-seeing-llm-request-rejected-messagescontenttool_useinput-field-required)
   - [Why am I getting heartbeat messages every 30 minutes?](#why-am-i-getting-heartbeat-messages-every-30-minutes)
   - [Do I need to add a "bot account" to a WhatsApp group?](#do-i-need-to-add-a-bot-account-to-a-whatsapp-group)
   - [How do I get the JID of a WhatsApp group?](#how-do-i-get-the-jid-of-a-whatsapp-group)
-  - [Why doesn't Ava-Claw reply in a group?](#why-doesnt-avaclaw-reply-in-a-group)
+  - [Why doesn't AvaClaw reply in a group?](#why-doesnt-avaclaw-reply-in-a-group)
   - [Do groups/threads share context with DMs?](#do-groupsthreads-share-context-with-dms)
   - [How many workspaces and agents can I create?](#how-many-workspaces-and-agents-can-i-create)
   - [Can I run multiple bots or chats at the same time (Slack), and how should I set that up?](#can-i-run-multiple-bots-or-chats-at-the-same-time-slack-and-how-should-i-set-that-up)
@@ -144,7 +144,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [What model do you recommend?](#what-model-do-you-recommend)
   - [How do I switch models without wiping my config?](#how-do-i-switch-models-without-wiping-my-config)
   - [Can I use self-hosted models (llama.cpp, vLLM, Ollama)?](#can-i-use-selfhosted-models-llamacpp-vllm-ollama)
-  - [What do Ava-Claw, Flawd, and Krill use for models?](#what-do-avaclaw-flawd-and-krill-use-for-models)
+  - [What do AvaClaw, Flawd, and Krill use for models?](#what-do-avaclaw-flawd-and-krill-use-for-models)
   - [How do I switch models on the fly (without restarting)?](#how-do-i-switch-models-on-the-fly-without-restarting)
   - [Can I use GPT 5.2 for daily tasks and Codex 5.3 for coding](#can-i-use-gpt-52-for-daily-tasks-and-codex-53-for-coding)
   - [Why do I see "Model … is not allowed" and then no reply?](#why-do-i-see-model-is-not-allowed-and-then-no-reply)
@@ -168,7 +168,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
   - [Why does `avaclaw gateway status` say `Runtime: running` but `RPC probe: failed`?](#why-does-avaclaw-gateway-status-say-runtime-running-but-rpc-probe-failed)
   - [Why does `avaclaw gateway status` show `Config (cli)` and `Config (service)` different?](#why-does-avaclaw-gateway-status-show-config-cli-and-config-service-different)
   - [What does "another gateway instance is already listening" mean?](#what-does-another-gateway-instance-is-already-listening-mean)
-  - [How do I run Ava-Claw in remote mode (client connects to a Gateway elsewhere)?](#how-do-i-run-avaclaw-in-remote-mode-client-connects-to-a-gateway-elsewhere)
+  - [How do I run AvaClaw in remote mode (client connects to a Gateway elsewhere)?](#how-do-i-run-avaclaw-in-remote-mode-client-connects-to-a-gateway-elsewhere)
   - [The Control UI says "unauthorized" (or keeps reconnecting). What now?](#the-control-ui-says-unauthorized-or-keeps-reconnecting-what-now)
   - [I set `gateway.bind: "tailnet"` but it can't bind / nothing listens](#i-set-gatewaybind-tailnet-but-it-cant-bind-nothing-listens)
   - [Can I run multiple Gateways on the same host?](#can-i-run-multiple-gateways-on-the-same-host)
@@ -176,7 +176,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 - [Logging and debugging](#logging-and-debugging)
   - [Where are logs?](#where-are-logs)
   - [How do I start/stop/restart the Gateway service?](#how-do-i-startstoprestart-the-gateway-service)
-  - [I closed my terminal on Windows - how do I restart Ava-Claw?](#i-closed-my-terminal-on-windows-how-do-i-restart-avaclaw)
+  - [I closed my terminal on Windows - how do I restart AvaClaw?](#i-closed-my-terminal-on-windows-how-do-i-restart-avaclaw)
   - [The Gateway is up but replies never arrive. What should I check?](#the-gateway-is-up-but-replies-never-arrive-what-should-i-check)
   - ["Disconnected from gateway: no reason" - what now?](#disconnected-from-gateway-no-reason-what-now)
   - [Telegram setMyCommands fails. What should I check?](#telegram-setmycommands-fails-what-should-i-check)
@@ -187,7 +187,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
 - [Media and attachments](#media-and-attachments)
   - [My skill generated an image/PDF, but nothing was sent](#my-skill-generated-an-imagepdf-but-nothing-was-sent)
 - [Security and access control](#security-and-access-control)
-  - [Is it safe to expose Ava-Claw to inbound DMs?](#is-it-safe-to-expose-avaclaw-to-inbound-dms)
+  - [Is it safe to expose AvaClaw to inbound DMs?](#is-it-safe-to-expose-avaclaw-to-inbound-dms)
   - [Is prompt injection only a concern for public bots?](#is-prompt-injection-only-a-concern-for-public-bots)
   - [Should my bot have its own email GitHub account or phone number](#should-my-bot-have-its-own-email-github-account-or-phone-number)
   - [Can I give it autonomy over my text messages and is that safe](#can-i-give-it-autonomy-over-my-text-messages-and-is-that-safe)
@@ -243,7 +243,7 @@ Quick answers plus deeper troubleshooting for real-world setups (local dev, VPS,
    If RPC is down, fall back to:
 
    ```bash
-   tail -f "$(ls -t /tmp/avadisabelle/ava-claw-*.log | head -1)"
+   tail -f "$(ls -t /tmp/avadisabelle/avaclaw-*.log | head -1)"
    ```
 
    File logs are separate from service logs; see [Logging](/logging) and [Troubleshooting](/gateway/troubleshooting).
@@ -284,7 +284,7 @@ the hackable (git) install:
 curl -fsSL https://avaclaw.ai/install.sh | bash -s -- --install-method git
 ```
 
-This installs Ava-Claw **from a git checkout**, so the agent can read the code + docs and
+This installs AvaClaw **from a git checkout**, so the agent can read the code + docs and
 reason about the exact version you are running. You can always switch back to stable later
 by re-running the installer without `--install-method git`.
 
@@ -315,7 +315,7 @@ Other useful CLI checks: `avaclaw status --all`, `avaclaw logs --follow`,
 Quick debug loop: [First 60 seconds if something's broken](#first-60-seconds-if-somethings-broken).
 Install docs: [Install](/install), [Installer flags](/install/installer), [Updating](/install/updating).
 
-### What's the recommended way to install and set up Ava-Claw
+### What's the recommended way to install and set up AvaClaw
 
 The repo recommends running from source and using the onboarding wizard:
 
@@ -420,7 +420,7 @@ Yes. Copy the **state directory** and **workspace**, then run Doctor once. This
 keeps your bot "exactly the same" (memory, session history, auth, and channel
 state) as long as you copy **both** locations:
 
-1. Install Ava-Claw on the new machine.
+1. Install AvaClaw on the new machine.
 2. Copy `$AVACLAW_STATE_DIR` (default: `~/.avaclaw`) from the old machine.
 3. Copy your workspace (default: `~/.avaclaw/workspace`).
 4. Run `avaclaw doctor` and restart the Gateway service.
@@ -610,7 +610,7 @@ Then restart the Gateway and retry your command:
 avaclaw gateway restart
 ```
 
-If you still reproduce this on latest Ava-Claw, track/report it in:
+If you still reproduce this on latest AvaClaw, track/report it in:
 
 - [Issue #30640](https://github.com/avadisabelle/ava-claw/issues/30640)
 
@@ -625,7 +625,7 @@ curl -fsSL https://avaclaw.ai/install.sh | bash -s -- --install-method git
 
 More detail: [Install](/install) and [Installer flags](/install/installer).
 
-### How do I install Ava-Claw on Linux
+### How do I install AvaClaw on Linux
 
 Short answer: follow the Linux guide, then run the onboarding wizard.
 
@@ -633,7 +633,7 @@ Short answer: follow the Linux guide, then run the onboarding wizard.
 - Full walkthrough: [Getting Started](/start/getting-started).
 - Installer + updates: [Install & updates](/install/updating).
 
-### How do I install Ava-Claw on a VPS
+### How do I install AvaClaw on a VPS
 
 Any Linux VPS works. Install on the server, then use SSH/Tailscale to reach the Gateway.
 
@@ -660,7 +660,7 @@ Gateway in the cloud.
 Hub: [Platforms](/platforms). Remote access: [Gateway remote](/gateway/remote).
 Nodes: [Nodes](/nodes), [Nodes CLI](/cli/nodes).
 
-### Can I ask Ava-Claw to update itself
+### Can I ask AvaClaw to update itself
 
 Short answer: **possible, not recommended**. The update flow can restart the
 Gateway (which drops the active session), may need a clean git checkout, and
@@ -700,13 +700,13 @@ It also warns if your configured model is unknown or missing auth.
 
 ### Do I need a Claude or OpenAI subscription to run this
 
-No. You can run Ava-Claw with **API keys** (Anthropic/OpenAI/others) or with
+No. You can run AvaClaw with **API keys** (Anthropic/OpenAI/others) or with
 **local-only models** so your data stays on your device. Subscriptions (Claude
 Pro/Max or OpenAI Codex) are optional ways to authenticate those providers.
 
 If you choose Anthropic subscription auth, decide for yourself whether to use it:
 Anthropic has blocked some subscription usage outside Claude Code in the past.
-OpenAI Codex OAuth is explicitly supported for external tools like Ava-Claw.
+OpenAI Codex OAuth is explicitly supported for external tools like AvaClaw.
 
 Docs: [Anthropic](/providers/anthropic), [OpenAI](/providers/openai),
 [Local models](/gateway/local-models), [Models](/concepts/models).
@@ -737,7 +737,7 @@ Copy the token it prints, then choose **Anthropic token (paste setup-token)** in
 
 ### Do you support Claude subscription auth (Claude Pro or Max)
 
-Yes - via **setup-token**. Ava-Claw no longer reuses Claude Code CLI OAuth tokens; use a setup-token or an Anthropic API key. Generate the token anywhere and paste it on the gateway host. See [Anthropic](/providers/anthropic) and [OAuth](/concepts/oauth).
+Yes - via **setup-token**. AvaClaw no longer reuses Claude Code CLI OAuth tokens; use a setup-token or an Anthropic API key. Generate the token anywhere and paste it on the gateway host. See [Anthropic](/providers/anthropic) and [OAuth](/concepts/oauth).
 
 Important: this is technical compatibility, not a policy guarantee. Anthropic
 has blocked some subscription usage outside Claude Code in the past.
@@ -757,7 +757,7 @@ Anthropic's 1M context beta (`context1m: true`). That only works when your
 credential is eligible for long-context billing (API key billing or subscription
 with Extra Usage enabled).
 
-Tip: set a **fallback model** so Ava-Claw can keep replying while a provider is rate-limited.
+Tip: set a **fallback model** so AvaClaw can keep replying while a provider is rate-limited.
 See [Models](/cli/models), [OAuth](/concepts/oauth), and
 [/gateway/troubleshooting#anthropic-429-extra-usage-required-for-long-context](/gateway/troubleshooting#anthropic-429-extra-usage-required-for-long-context).
 
@@ -767,13 +767,13 @@ Yes - via pi-ai's **Amazon Bedrock (Converse)** provider with **manual config**.
 
 ### How does Codex auth work
 
-Ava-Claw supports **OpenAI Code (Codex)** via OAuth (ChatGPT sign-in). The wizard can run the OAuth flow and will set the default model to `openai-codex/gpt-5.4` when appropriate. See [Model providers](/concepts/model-providers) and [Wizard](/start/wizard).
+AvaClaw supports **OpenAI Code (Codex)** via OAuth (ChatGPT sign-in). The wizard can run the OAuth flow and will set the default model to `openai-codex/gpt-5.4` when appropriate. See [Model providers](/concepts/model-providers) and [Wizard](/start/wizard).
 
 ### Do you support OpenAI subscription auth Codex OAuth
 
-Yes. Ava-Claw fully supports **OpenAI Code (Codex) subscription OAuth**.
+Yes. AvaClaw fully supports **OpenAI Code (Codex) subscription OAuth**.
 OpenAI explicitly allows subscription OAuth usage in external tools/workflows
-like Ava-Claw. The onboarding wizard can run the OAuth flow for you.
+like AvaClaw. The onboarding wizard can run the OAuth flow for you.
 
 See [OAuth](/concepts/oauth), [Model providers](/concepts/model-providers), and [Wizard](/start/wizard).
 
@@ -790,7 +790,7 @@ This stores OAuth tokens in auth profiles on the gateway host. Details: [Model p
 
 ### Is a local model OK for casual chats
 
-Usually no. Ava-Claw needs large context + strong safety; small cards truncate and leak. If you must, run the **largest** MiniMax M2.5 build you can locally (LM Studio) and see [/gateway/local-models](/gateway/local-models). Smaller/quantized models increase prompt-injection risk - see [Security](/gateway/security).
+Usually no. AvaClaw needs large context + strong safety; small cards truncate and leak. If you must, run the **largest** MiniMax M2.5 build you can locally (LM Studio) and see [/gateway/local-models](/gateway/local-models). Smaller/quantized models increase prompt-injection risk - see [Security](/gateway/security).
 
 ### How do I keep hosted model traffic in a specific region
 
@@ -798,7 +798,7 @@ Pick region-pinned endpoints. OpenRouter exposes US-hosted options for MiniMax, 
 
 ### Do I have to buy a Mac Mini to install this
 
-No. Ava-Claw runs on macOS or Linux (Windows via WSL2). A Mac mini is optional - some people
+No. AvaClaw runs on macOS or Linux (Windows via WSL2). A Mac mini is optional - some people
 buy one as an always-on host, but a small VPS, home server, or Raspberry Pi-class box works too.
 
 You only need a Mac **for macOS-only tools**. For iMessage, use [BlueBubbles](/channels/bluebubbles) (recommended) - the BlueBubbles server runs on any Mac, and the Gateway can run on Linux or elsewhere. If you want other macOS-only tools, run the Gateway on a Mac or pair a macOS node.
@@ -818,7 +818,7 @@ Common setups:
 Docs: [BlueBubbles](/channels/bluebubbles), [Nodes](/nodes),
 [Mac remote mode](/platforms/mac/remote).
 
-### If I buy a Mac mini to run Ava-Claw can I connect it to my MacBook Pro
+### If I buy a Mac mini to run AvaClaw can I connect it to my MacBook Pro
 
 Yes. The **Mac mini can run the Gateway**, and your MacBook Pro can connect as a
 **node** (companion device). Nodes don't run the Gateway - they provide extra
@@ -844,7 +844,7 @@ without WhatsApp/Telegram.
 
 `channels.telegram.allowFrom` is **the human sender's Telegram user ID** (numeric). It is not the bot username.
 
-The onboarding wizard accepts `@username` input and resolves it to a numeric ID, but Ava-Claw authorization uses numeric IDs only.
+The onboarding wizard accepts `@username` input and resolves it to a numeric ID, but AvaClaw authorization uses numeric IDs only.
 
 Safer (no third-party bot):
 
@@ -860,7 +860,7 @@ Third-party (less private):
 
 See [/channels/telegram](/channels/telegram#access-control-dms--groups).
 
-### Can multiple people use one WhatsApp number with different Ava-Claw instances
+### Can multiple people use one WhatsApp number with different AvaClaw instances
 
 Yes, via **multi-agent routing**. Bind each sender's WhatsApp **DM** (peer `kind: "direct"`, sender E.164 like `+15551234567`) to a different `agentId`, so each person gets their own workspace and session store. Replies still come from the **same WhatsApp account**, and DM access control (`channels.whatsapp.dmPolicy` / `channels.whatsapp.allowFrom`) is global per WhatsApp account. See [Multi-Agent Routing](/concepts/multi-agent) and [WhatsApp](/channels/whatsapp).
 
@@ -879,7 +879,7 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install <formula>
 ```
 
-If you run Ava-Claw via systemd, ensure the service PATH includes `/home/linuxbrew/.linuxbrew/bin` (or your brew prefix) so `brew`-installed tools resolve in non-login shells.
+If you run AvaClaw via systemd, ensure the service PATH includes `/home/linuxbrew/.linuxbrew/bin` (or your brew prefix) so `brew`-installed tools resolve in non-login shells.
 Recent builds also prepend common user bin dirs on Linux systemd services (for example `~/.local/bin`, `~/.npm-global/bin`, `~/.local/share/pnpm`, `~/.bun/bin`) and honor `PNPM_HOME`, `NPM_CONFIG_PREFIX`, `BUN_INSTALL`, `VOLTA_HOME`, `ASDF_DATA_DIR`, `NVM_DIR`, and `FNM_DIR` when set.
 
 ### What's the difference between the hackable git install and npm install
@@ -894,7 +894,7 @@ Docs: [Getting started](/start/getting-started), [Updating](/install/updating).
 ### Can I switch between npm and git installs later
 
 Yes. Install the other flavor, then run Doctor so the gateway service points at the new entrypoint.
-This **does not delete your data** - it only changes the Ava-Claw code install. Your state
+This **does not delete your data** - it only changes the AvaClaw code install. Your state
 (`~/.avaclaw`) and workspace (`~/.avaclaw/workspace`) stay untouched.
 
 From npm → git:
@@ -935,11 +935,11 @@ lowest friction and you're okay with sleep/restarts, run it locally.
 - **Pros:** always-on, stable network, no laptop sleep issues, easier to keep running.
 - **Cons:** often run headless (use screenshots), remote file access only, you must SSH for updates.
 
-**Ava-Claw-specific note:** WhatsApp/Telegram/Slack/Mattermost (plugin)/Discord all work fine from a VPS. The only real trade-off is **headless browser** vs a visible window. See [Browser](/tools/browser).
+**AvaClaw-specific note:** WhatsApp/Telegram/Slack/Mattermost (plugin)/Discord all work fine from a VPS. The only real trade-off is **headless browser** vs a visible window. See [Browser](/tools/browser).
 
 **Recommended default:** VPS if you had gateway disconnects before. Local is great when you're actively using the Mac and want local file access or UI automation with a visible browser.
 
-### How important is it to run Ava-Claw on a dedicated machine
+### How important is it to run AvaClaw on a dedicated machine
 
 Not required, but **recommended for reliability and isolation**.
 
@@ -951,7 +951,7 @@ For security guidance, read [Security](/gateway/security).
 
 ### What are the minimum VPS requirements and recommended OS
 
-Ava-Claw is lightweight. For a basic Gateway + one chat channel:
+AvaClaw is lightweight. For a basic Gateway + one chat channel:
 
 - **Absolute minimum:** 1 vCPU, 1GB RAM, ~500MB disk.
 - **Recommended:** 1-2 vCPU, 2GB RAM or more for headroom (logs, media, multiple channels). Node tools and browser automation can be resource hungry.
@@ -960,7 +960,7 @@ OS: use **Ubuntu LTS** (or any modern Debian/Ubuntu). The Linux install path is 
 
 Docs: [Linux](/platforms/linux), [VPS hosting](/vps).
 
-### Can I run Ava-Claw in a VM and what are the requirements
+### Can I run AvaClaw in a VM and what are the requirements
 
 Yes. Treat a VM the same as a VPS: it needs to be always on, reachable, and have enough
 RAM for the Gateway and any channels you enable.
@@ -975,15 +975,15 @@ If you are on Windows, **WSL2 is the easiest VM style setup** and has the best t
 compatibility. See [Windows](/platforms/windows), [VPS hosting](/vps).
 If you are running macOS in a VM, see [macOS VM](/install/macos-vm).
 
-## What is Ava-Claw?
+## What is AvaClaw?
 
-### What is Ava-Claw in one paragraph
+### What is AvaClaw in one paragraph
 
-Ava-Claw is a personal AI assistant you run on your own devices. It replies on the messaging surfaces you already use (WhatsApp, Telegram, Slack, Mattermost (plugin), Discord, Google Chat, Signal, iMessage, WebChat) and can also do voice + a live Canvas on supported platforms. The **Gateway** is the always-on control plane; the assistant is the product.
+AvaClaw is a personal AI assistant you run on your own devices. It replies on the messaging surfaces you already use (WhatsApp, Telegram, Slack, Mattermost (plugin), Discord, Google Chat, Signal, iMessage, WebChat) and can also do voice + a live Canvas on supported platforms. The **Gateway** is the always-on control plane; the assistant is the product.
 
 ### What's the value proposition
 
-Ava-Claw is not "just a Claude wrapper." It's a **local-first control plane** that lets you run a
+AvaClaw is not "just a Claude wrapper." It's a **local-first control plane** that lets you run a
 capable assistant on **your own hardware**, reachable from the chat apps you already use, with
 stateful sessions, memory, and tools - without handing control of your workflows to a hosted
 SaaS.
@@ -1016,7 +1016,7 @@ Good first projects:
 It can handle large tasks, but it works best when you split them into phases and
 use sub agents for parallel work.
 
-### What are the top five everyday use cases for Ava-Claw
+### What are the top five everyday use cases for AvaClaw
 
 Everyday wins usually look like:
 
@@ -1026,21 +1026,21 @@ Everyday wins usually look like:
 - **Browser automation:** filling forms, collecting data, and repeating web tasks.
 - **Cross device coordination:** send a task from your phone, let the Gateway run it on a server, and get the result back in chat.
 
-### Can Ava-Claw help with lead gen outreach ads and blogs for a SaaS
+### Can AvaClaw help with lead gen outreach ads and blogs for a SaaS
 
 Yes for **research, qualification, and drafting**. It can scan sites, build shortlists,
 summarize prospects, and write outreach or ad copy drafts.
 
 For **outreach or ad runs**, keep a human in the loop. Avoid spam, follow local laws and
 platform policies, and review anything before it is sent. The safest pattern is to let
-Ava-Claw draft and you approve.
+AvaClaw draft and you approve.
 
 Docs: [Security](/gateway/security).
 
 ### What are the advantages vs Claude Code for web development
 
-Ava-Claw is a **personal assistant** and coordination layer, not an IDE replacement. Use
-Claude Code or Codex for the fastest direct coding loop inside a repo. Use Ava-Claw when you
+AvaClaw is a **personal assistant** and coordination layer, not an IDE replacement. Use
+Claude Code or Codex for the fastest direct coding loop inside a repo. Use AvaClaw when you
 want durable memory, cross-device access, and tool orchestration.
 
 Advantages:
@@ -1057,11 +1057,11 @@ Showcase: [https://avaclaw.ai/showcase](https://avaclaw.ai/showcase)
 
 ### How do I customize skills without keeping the repo dirty
 
-Use managed overrides instead of editing the repo copy. Put your changes in `~/.avaclaw/skills/<name>/SKILL.md` (or add a folder via `skills.load.extraDirs` in `~/.avadisabelle/ava-claw.json`). Precedence is `<workspace>/skills` > `~/.avaclaw/skills` > bundled, so managed overrides win without touching git. Only upstream-worthy edits should live in the repo and go out as PRs.
+Use managed overrides instead of editing the repo copy. Put your changes in `~/.avaclaw/skills/<name>/SKILL.md` (or add a folder via `skills.load.extraDirs` in `~/.avaclaw/avaclaw.json`). Precedence is `<workspace>/skills` > `~/.avaclaw/skills` > bundled, so managed overrides win without touching git. Only upstream-worthy edits should live in the repo and go out as PRs.
 
 ### Can I load skills from a custom folder
 
-Yes. Add extra directories via `skills.load.extraDirs` in `~/.avadisabelle/ava-claw.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.avaclaw/skills` → bundled → `skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which Ava-Claw treats as `<workspace>/skills`.
+Yes. Add extra directories via `skills.load.extraDirs` in `~/.avaclaw/avaclaw.json` (lowest precedence). Default precedence remains: `<workspace>/skills` → `~/.avaclaw/skills` → bundled → `skills.load.extraDirs`. `clawhub` installs into `./skills` by default, which AvaClaw treats as `<workspace>/skills`.
 
 ### How can I use different models for different tasks
 
@@ -1141,7 +1141,7 @@ npm i -g clawhub
 pnpm add -g clawhub
 ```
 
-### Can Ava-Claw run tasks on a schedule or continuously in the background
+### Can AvaClaw run tasks on a schedule or continuously in the background
 
 Yes. Use the Gateway scheduler:
 
@@ -1162,7 +1162,7 @@ You have three supported patterns:
 Run the Gateway where the macOS binaries exist, then connect from Linux in [remote mode](#how-do-i-run-avaclaw-in-remote-mode-client-connects-to-a-gateway-elsewhere) or over Tailscale. The skills load normally because the Gateway host is macOS.
 
 **Option B - use a macOS node (no SSH).**
-Run the Gateway on Linux, pair a macOS node (menubar app), and set **Node Run Commands** to "Always Ask" or "Always Allow" on the Mac. Ava-Claw can treat macOS-only skills as eligible when the required binaries exist on the node. The agent runs those skills via the `nodes` tool. If you choose "Always Ask", approving "Always Allow" in the prompt adds that command to the allowlist.
+Run the Gateway on Linux, pair a macOS node (menubar app), and set **Node Run Commands** to "Always Ask" or "Always Allow" on the Mac. AvaClaw can treat macOS-only skills as eligible when the required binaries exist on the node. The agent runs those skills via the `nodes` tool. If you choose "Always Ask", approving "Always Allow" in the prompt adds that command to the allowlist.
 
 **Option C - proxy macOS binaries over SSH (advanced).**
 Keep the Gateway on Linux, but make the required CLI binaries resolve to SSH wrappers that run on a Mac. Then override the skill to allow Linux so it stays eligible.
@@ -1212,7 +1212,7 @@ clawhub install <skill-slug>
 clawhub update --all
 ```
 
-ClawHub installs into `./skills` under your current directory (or falls back to your configured Ava-Claw workspace); Ava-Claw treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.avaclaw/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [ClawHub](/tools/clawhub).
+ClawHub installs into `./skills` under your current directory (or falls back to your configured AvaClaw workspace); AvaClaw treats that as `<workspace>/skills` on the next session. For shared skills across agents, place them in `~/.avaclaw/skills/<name>/SKILL.md`. Some skills expect binaries installed via Homebrew; on Linux that means Linuxbrew (see the Homebrew Linux FAQ entry above). See [Skills](/tools/skills) and [ClawHub](/tools/clawhub).
 
 ### How do I install the Chrome extension for browser takeover
 
@@ -1266,12 +1266,12 @@ Set `agents.defaults.sandbox.docker.binds` to `["host:path:mode"]` (e.g., `"/hom
 
 ### How does memory work
 
-Ava-Claw memory is just Markdown files in the agent workspace:
+AvaClaw memory is just Markdown files in the agent workspace:
 
 - Daily notes in `memory/YYYY-MM-DD.md`
 - Curated long-term notes in `MEMORY.md` (main/private sessions only)
 
-Ava-Claw also runs a **silent pre-compaction memory flush** to remind the model
+AvaClaw also runs a **silent pre-compaction memory flush** to remind the model
 to write durable notes before auto-compaction. This only runs when the workspace
 is writable (read-only sandboxes skip it). See [Memory](/concepts/memory).
 
@@ -1293,12 +1293,12 @@ does **not** grant embeddings access, so **signing in with Codex (OAuth or the
 Codex CLI login)** does not help for semantic memory search. OpenAI embeddings
 still need a real API key (`OPENAI_API_KEY` or `models.providers.openai.apiKey`).
 
-If you don't set a provider explicitly, Ava-Claw auto-selects a provider when it
+If you don't set a provider explicitly, AvaClaw auto-selects a provider when it
 can resolve an API key (auth profiles, `models.providers.*.apiKey`, or env vars).
 It prefers OpenAI if an OpenAI key resolves, otherwise Gemini if a Gemini key
 resolves, then Voyage, then Mistral. If no remote key is available, memory
 search stays disabled until you configure it. If you have a local model path
-configured and present, Ava-Claw
+configured and present, AvaClaw
 prefers `local`. Ollama is supported when you explicitly set
 `memorySearch.provider = "ollama"`.
 
@@ -1319,9 +1319,9 @@ Docs: [Memory](/concepts/memory), [Context](/concepts/context).
 
 ## Where things live on disk
 
-### Is all data used with Ava-Claw saved locally
+### Is all data used with AvaClaw saved locally
 
-No - **Ava-Claw's state is local**, but **external services still see what you send them**.
+No - **AvaClaw's state is local**, but **external services still see what you send them**.
 
 - **Local by default:** sessions, memory files, config, and workspace live on the Gateway host
   (`~/.avaclaw` + your workspace directory).
@@ -1333,7 +1333,7 @@ No - **Ava-Claw's state is local**, but **external services still see what you s
 
 Related: [Agent workspace](/concepts/agent-workspace), [Memory](/concepts/memory).
 
-### Where does Ava-Claw store its data
+### Where does AvaClaw store its data
 
 Everything lives under `$AVACLAW_STATE_DIR` (default: `~/.avaclaw`):
 
@@ -1392,7 +1392,7 @@ separately (see the migration question above).
 
 Docs: [Agent workspace](/concepts/agent-workspace).
 
-### How do I completely uninstall Ava-Claw
+### How do I completely uninstall AvaClaw
 
 See the dedicated guide: [Uninstall](/install/uninstall).
 
@@ -1403,7 +1403,7 @@ Relative paths resolve inside the workspace, but absolute paths can access other
 host locations unless sandboxing is enabled. If you need isolation, use
 [`agents.defaults.sandbox`](/gateway/sandboxing) or per-agent sandbox settings. If you
 want a repo to be the default working directory, point that agent's
-`workspace` to the repo root. The Ava-Claw repo is just source code; keep the
+`workspace` to the repo root. The AvaClaw repo is just source code; keep the
 workspace separate unless you intentionally want the agent to work inside it.
 
 Example (repo as default cwd):
@@ -1426,7 +1426,7 @@ Session state is owned by the **gateway host**. If you're in remote mode, the se
 
 ### What format is the config Where is it
 
-Ava-Claw reads an optional **JSON5** config from `$AVACLAW_CONFIG_PATH` (default: `~/.avadisabelle/ava-claw.json`):
+AvaClaw reads an optional **JSON5** config from `$AVACLAW_CONFIG_PATH` (default: `~/.avaclaw/avaclaw.json`):
 
 ```
 $AVACLAW_CONFIG_PATH
@@ -1459,7 +1459,7 @@ Notes:
 
 ### Why do I need a token on localhost now
 
-Ava-Claw enforces token auth by default, including loopback. If no token is configured, gateway startup auto-generates one and saves it to `gateway.auth.token`, so **local WS clients must authenticate**. This blocks other local processes from calling the Gateway.
+AvaClaw enforces token auth by default, including loopback. If no token is configured, gateway startup auto-generates one and saves it to `gateway.auth.token`, so **local WS clients must authenticate**. This blocks other local processes from calling the Gateway.
 
 If you **really** want open loopback, set `gateway.auth.mode: "none"` explicitly in your config. Doctor can generate a token for you any time: `avaclaw doctor --generate-gateway-token`.
 
@@ -1485,7 +1485,7 @@ Set `cli.banner.taglineMode` in config:
 ```
 
 - `off`: hides tagline text but keeps the banner title/version line.
-- `default`: uses `All your chats, one Ava-Claw.` every time.
+- `default`: uses `All your chats, one AvaClaw.` every time.
 - `random`: rotating funny/seasonal taglines (default behavior).
 - If you want no banner at all, set env `AVACLAW_HIDE_BANNER=1`.
 
@@ -1540,7 +1540,7 @@ The common pattern is **one Gateway** (e.g. Raspberry Pi) plus **nodes** and **a
 
 Docs: [Nodes](/nodes), [Remote access](/gateway/remote), [Multi-Agent Routing](/concepts/multi-agent), [Sub-agents](/tools/subagents), [TUI](/web/tui).
 
-### Can the Ava-Claw browser run headless
+### Can the AvaClaw browser run headless
 
 Yes. It's a config option:
 
@@ -1621,7 +1621,7 @@ Then verify auth and routing:
 
 Docs: [Tailscale](/gateway/tailscale), [Remote access](/gateway/remote), [Channels](/channels).
 
-### Can two Ava-Claw instances talk to each other local VPS
+### Can two AvaClaw instances talk to each other local VPS
 
 Yes. There is no built-in "bot-to-bot" bridge, but you can wire it up in a few
 reliable ways:
@@ -1702,7 +1702,7 @@ else is removed.
 
 Recover:
 
-- Restore from backup (git or a copied `~/.avadisabelle/ava-claw.json`).
+- Restore from backup (git or a copied `~/.avaclaw/avaclaw.json`).
 - If you have no backup, re-run `avaclaw doctor` and reconfigure channels/models.
 - If this was unexpected, file a bug and include your last known config or any backup.
 - A local coding agent can often reconstruct a working config from logs or history.
@@ -1772,9 +1772,9 @@ Docs: [Gateway protocol](/gateway/protocol), [Discovery](/gateway/discovery), [m
 
 ## Env vars and .env loading
 
-### How does Ava-Claw load environment variables
+### How does AvaClaw load environment variables
 
-Ava-Claw reads env vars from the parent process (shell, launchd/systemd, CI, etc.) and additionally loads:
+AvaClaw reads env vars from the parent process (shell, launchd/systemd, CI, etc.) and additionally loads:
 
 - `.env` from the current working directory
 - a global fallback `.env` from `~/.avaclaw/.env` (aka `$AVACLAW_STATE_DIR/.env`)
@@ -1818,7 +1818,7 @@ This runs your login shell and imports only missing expected keys (never overrid
 ### I set COPILOTGITHUBTOKEN but models status shows Shell env off Why
 
 `avaclaw models status` reports whether **shell env import** is enabled. "Shell env: off"
-does **not** mean your env vars are missing - it just means Ava-Claw won't load
+does **not** mean your env vars are missing - it just means AvaClaw won't load
 your login shell automatically.
 
 If the Gateway runs as a service (launchd/systemd), it won't inherit your shell
@@ -1862,7 +1862,7 @@ transcripts - it just starts a new session.
 }
 ```
 
-### Is there a way to make a team of Ava-Claw instances one CEO and many agents
+### Is there a way to make a team of AvaClaw instances one CEO and many agents
 
 Yes, via **multi-agent routing** and **sub-agents**. You can create one coordinator
 agent and several worker agents with their own workspaces and models.
@@ -1887,7 +1887,7 @@ What helps:
 - Use sub-agents for long or parallel work so the main chat stays smaller.
 - Pick a model with a larger context window if this happens often.
 
-### How do I completely reset Ava-Claw but keep it installed
+### How do I completely reset AvaClaw but keep it installed
 
 Use the reset command:
 
@@ -1964,14 +1964,14 @@ Heartbeats run every **30m** by default. Tune or disable them:
 ```
 
 If `HEARTBEAT.md` exists but is effectively empty (only blank lines and markdown
-headers like `# Heading`), Ava-Claw skips the heartbeat run to save API calls.
+headers like `# Heading`), AvaClaw skips the heartbeat run to save API calls.
 If the file is missing, the heartbeat still runs and the model decides what to do.
 
 Per-agent overrides use `agents.list[].heartbeat`. Docs: [Heartbeat](/gateway/heartbeat).
 
 ### Do I need to add a bot account to a WhatsApp group
 
-No. Ava-Claw runs on **your own account**, so if you're in the group, Ava-Claw can see it.
+No. AvaClaw runs on **your own account**, so if you're in the group, AvaClaw can see it.
 By default, group replies are blocked until you allow senders (`groupPolicy: "allowlist"`).
 
 If you want only **you** to be able to trigger group replies:
@@ -2006,7 +2006,7 @@ avaclaw directory groups list --channel whatsapp
 
 Docs: [WhatsApp](/channels/whatsapp), [Directory](/cli/directory), [Logs](/cli/logs).
 
-### Why doesn't Ava-Claw reply in a group
+### Why doesn't AvaClaw reply in a group
 
 Two common causes:
 
@@ -2056,13 +2056,13 @@ Docs: [Multi-Agent Routing](/concepts/multi-agent), [Slack](/channels/slack),
 
 ### What is the default model
 
-Ava-Claw's default model is whatever you set as:
+AvaClaw's default model is whatever you set as:
 
 ```
 agents.defaults.model.primary
 ```
 
-Models are referenced as `provider/model` (example: `anthropic/claude-opus-4-6`). If you omit the provider, Ava-Claw currently assumes `anthropic` as a temporary deprecation fallback - but you should still **explicitly** set `provider/model`.
+Models are referenced as `provider/model` (example: `anthropic/claude-opus-4-6`). If you omit the provider, AvaClaw currently assumes `anthropic` as a temporary deprecation fallback - but you should still **explicitly** set `provider/model`.
 
 ### What model do you recommend
 
@@ -2118,14 +2118,14 @@ Safe options:
 - `/model` in chat (quick, per-session)
 - `avaclaw models set ...` (updates just model config)
 - `avaclaw configure --section model` (interactive)
-- edit `agents.defaults.model` in `~/.avadisabelle/ava-claw.json`
+- edit `agents.defaults.model` in `~/.avaclaw/avaclaw.json`
 
 Avoid `config.apply` with a partial object unless you intend to replace the whole config.
 If you did overwrite config, restore from backup or re-run `avaclaw doctor` to repair.
 
 Docs: [Models](/concepts/models), [Configure](/cli/configure), [Config](/cli/config), [Doctor](/gateway/doctor).
 
-### What do Ava-Claw, Flawd, and Krill use for models
+### What do AvaClaw, Flawd, and Krill use for models
 
 - These deployments can differ and may change over time; there is no fixed provider recommendation.
 - Check the current runtime setting on each gateway with `avaclaw models status`.
@@ -2257,7 +2257,7 @@ Docs: [Models](/concepts/models), [Multi-Agent Routing](/concepts/multi-agent), 
 
 ### Are opus sonnet gpt builtin shortcuts
 
-Yes. Ava-Claw ships a few default shorthands (only applied when the model exists in `agents.defaults.models`):
+Yes. AvaClaw ships a few default shorthands (only applied when the model exists in `agents.defaults.models`):
 
 - `opus` → `anthropic/claude-opus-4-6`
 - `sonnet` → `anthropic/claude-sonnet-4-6`
@@ -2347,7 +2347,7 @@ Failover happens in two stages:
 1. **Auth profile rotation** within the same provider.
 2. **Model fallback** to the next model in `agents.defaults.model.fallbacks`.
 
-Cooldowns apply to failing profiles (exponential backoff), so Ava-Claw can keep responding even when a provider is rate-limited or temporarily failing.
+Cooldowns apply to failing profiles (exponential backoff), so AvaClaw can keep responding even when a provider is rate-limited or temporarily failing.
 
 ### What does this error mean
 
@@ -2390,7 +2390,7 @@ can't find it in its auth store.
 
 ### Why did it also try Google Gemini and fail
 
-If your model config includes Google Gemini as a fallback (or you switched to a Gemini shorthand), Ava-Claw will try it during model fallback. If you haven't configured Google credentials, you'll see `No API key found for provider "google"`.
+If your model config includes Google Gemini as a fallback (or you switched to a Gemini shorthand), AvaClaw will try it during model fallback. If you haven't configured Google credentials, you'll see `No API key found for provider "google"`.
 
 Fix: either provide Google auth, or remove/avoid Google models in `agents.defaults.model.fallbacks` / aliases so fallback doesn't route there.
 
@@ -2399,7 +2399,7 @@ Fix: either provide Google auth, or remove/avoid Google models in `agents.defaul
 Cause: the session history contains **thinking blocks without signatures** (often from
 an aborted/partial stream). Google Antigravity requires signatures for thinking blocks.
 
-Fix: Ava-Claw now strips unsigned thinking blocks for Google Antigravity Claude. If it still appears, start a **new session** or set `/thinking off` for that agent.
+Fix: AvaClaw now strips unsigned thinking blocks for Google Antigravity Claude. If it still appears, start a **new session** or set `/thinking off` for that agent.
 
 ## Auth profiles: what they are and how to manage them
 
@@ -2415,7 +2415,7 @@ An auth profile is a named credential record (OAuth or API key) tied to a provid
 
 ### What are typical profile IDs
 
-Ava-Claw uses provider-prefixed IDs like:
+AvaClaw uses provider-prefixed IDs like:
 
 - `anthropic:default` (common when no email identity exists)
 - `anthropic:<email>` for OAuth identities
@@ -2425,7 +2425,7 @@ Ava-Claw uses provider-prefixed IDs like:
 
 Yes. Config supports optional metadata for profiles and an ordering per provider (`auth.order.<provider>`). This does **not** store secrets; it maps IDs to provider/mode and sets rotation order.
 
-Ava-Claw may temporarily skip a profile if it's in a short **cooldown** (rate limits/timeouts/auth failures) or a longer **disabled** state (billing/insufficient credits). To inspect this, run `avaclaw models status --json` and check `auth.unusableProfiles`. Tuning: `auth.cooldowns.billingBackoffHours*`.
+AvaClaw may temporarily skip a profile if it's in a short **cooldown** (rate limits/timeouts/auth failures) or a longer **disabled** state (billing/insufficient credits). To inspect this, run `avaclaw models status --json` and check `auth.unusableProfiles`. Tuning: `auth.cooldowns.billingBackoffHours*`.
 
 You can also set a **per-agent** order override (stored in that agent's `auth-profiles.json`) via the CLI:
 
@@ -2451,7 +2451,7 @@ avaclaw models auth order set --provider anthropic --agent main anthropic:defaul
 
 ### OAuth vs API key what's the difference
 
-Ava-Claw supports both:
+AvaClaw supports both:
 
 - **OAuth** often leverages subscription access (where applicable).
 - **API keys** use pay-per-token billing.
@@ -2494,11 +2494,11 @@ Run that from the same `--profile` / environment you want the service to use.
 
 ### What does another gateway instance is already listening mean
 
-Ava-Claw enforces a runtime lock by binding the WebSocket listener immediately on startup (default `ws://127.0.0.1:18789`). If the bind fails with `EADDRINUSE`, it throws `GatewayLockError` indicating another instance is already listening.
+AvaClaw enforces a runtime lock by binding the WebSocket listener immediately on startup (default `ws://127.0.0.1:18789`). If the bind fails with `EADDRINUSE`, it throws `GatewayLockError` indicating another instance is already listening.
 
 Fix: stop the other instance, free the port, or run with `avaclaw gateway --port <port>`.
 
-### How do I run Ava-Claw in remote mode client connects to a Gateway elsewhere
+### How do I run AvaClaw in remote mode client connects to a Gateway elsewhere
 
 Set `gateway.mode: "remote"` and point to a remote WebSocket URL, optionally with a token/password:
 
@@ -2569,7 +2569,7 @@ Quick setup (recommended):
 - Set a unique `gateway.port` in each profile config (or pass `--port` for manual runs).
 - Install a per-profile service: `avaclaw --profile <name> gateway install`.
 
-Profiles also suffix service names (`ai.avaclaw.<profile>`; legacy `com.avaclaw.*`, `avaclaw-gateway-<profile>.service`, `Ava-Claw Gateway (<profile>)`).
+Profiles also suffix service names (`ai.avaclaw.<profile>`; legacy `com.avaclaw.*`, `avaclaw-gateway-<profile>.service`, `AvaClaw Gateway (<profile>)`).
 Full guide: [Multiple gateways](/gateway/multiple-gateways).
 
 ### What does invalid handshake code 1008 mean
@@ -2605,7 +2605,7 @@ Protocol details: [Gateway protocol](/gateway/protocol).
 File logs (structured):
 
 ```
-/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log
+/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log
 ```
 
 You can set a stable path via `logging.file`. File log level is controlled by `logging.level`. Console verbosity is controlled by `--verbose` and `logging.consoleLevel`.
@@ -2620,7 +2620,7 @@ Service/supervisor logs (when the gateway runs via launchd/systemd):
 
 - macOS: `$AVACLAW_STATE_DIR/logs/gateway.log` and `gateway.err.log` (default: `~/.avaclaw/logs/...`; profiles use `~/.avaclaw-<profile>/logs/...`)
 - Linux: `journalctl --user -u avaclaw-gateway[-<profile>].service -n 200 --no-pager`
-- Windows: `schtasks /Query /TN "Ava-Claw Gateway (<profile>)" /V /FO LIST`
+- Windows: `schtasks /Query /TN "AvaClaw Gateway (<profile>)" /V /FO LIST`
 
 See [Troubleshooting](/gateway/troubleshooting#log-locations) for more.
 
@@ -2635,7 +2635,7 @@ avaclaw gateway restart
 
 If you run the gateway manually, `avaclaw gateway --force` can reclaim the port. See [Gateway](/gateway).
 
-### I closed my terminal on Windows how do I restart Ava-Claw
+### I closed my terminal on Windows how do I restart AvaClaw
 
 There are **two Windows install modes**:
 
@@ -2722,7 +2722,7 @@ avaclaw channels logs --channel telegram
 
 Then match the error:
 
-- `BOT_COMMANDS_TOO_MUCH`: the Telegram menu has too many entries. Ava-Claw already trims to the Telegram limit and retries with fewer commands, but some menu entries still need to be dropped. Reduce plugin/skill/custom commands, or disable `channels.telegram.commands.native` if you do not need the menu.
+- `BOT_COMMANDS_TOO_MUCH`: the Telegram menu has too many entries. AvaClaw already trims to the Telegram limit and retries with fewer commands, but some menu entries still need to be dropped. Reduce plugin/skill/custom commands, or disable `channels.telegram.commands.native` if you do not need the menu.
 - `TypeError: fetch failed`, `Network request for 'setMyCommands' failed!`, or similar network errors: if you are on a VPS or behind a proxy, confirm outbound HTTPS is allowed and DNS works for `api.telegram.org`.
 
 If the Gateway is remote, make sure you are looking at logs on the Gateway host.
@@ -2780,7 +2780,7 @@ Start the Gateway with `--verbose` to get more console detail. Then inspect the 
 
 ### My skill generated an imagePDF but nothing was sent
 
-Outbound attachments from the agent must include a `MEDIA:<path-or-url>` line (on its own line). See [Ava-Claw assistant setup](/start/avaclaw) and [Agent send](/tools/agent-send).
+Outbound attachments from the agent must include a `MEDIA:<path-or-url>` line (on its own line). See [AvaClaw assistant setup](/start/avaclaw) and [Agent send](/tools/agent-send).
 
 CLI sending:
 
@@ -2797,7 +2797,7 @@ See [Images](/nodes/images).
 
 ## Security and access control
 
-### Is it safe to expose Ava-Claw to inbound DMs
+### Is it safe to expose AvaClaw to inbound DMs
 
 Treat inbound DMs as untrusted input. Defaults are designed to reduce risk:
 
@@ -2870,7 +2870,7 @@ for that account.
 
 ### WhatsApp will it message my contacts How does pairing work
 
-No. Default WhatsApp DM policy is **pairing**. Unknown senders only get a pairing code and their message is **not processed**. Ava-Claw only replies to chats it receives or to explicit sends you trigger.
+No. Default WhatsApp DM policy is **pairing**. Unknown senders only get a pairing code and their message is **not processed**. AvaClaw only replies to chats it receives or to explicit sends you trigger.
 
 Approve pairing with:
 
@@ -2946,7 +2946,7 @@ Most commands must be sent as a **standalone** message that starts with `/`, but
 
 ### How do I send a Discord message from Telegram Crosscontext messaging denied
 
-Ava-Claw blocks **cross-provider** messaging by default. If a tool call is bound
+AvaClaw blocks **cross-provider** messaging by default. If a tool call is bound
 to Telegram, it won't send to Discord unless you explicitly allow it.
 
 Enable cross-provider messaging for the agent:
@@ -2987,7 +2987,7 @@ You can add options like `debounce:2s cap:25 drop:summarize` for followup modes.
 
 **Q: "What's the default model for Anthropic with an API key?"**
 
-**A:** In Ava-Claw, credentials and model selection are separate. Setting `ANTHROPIC_API_KEY` (or storing an Anthropic API key in auth profiles) enables authentication, but the actual default model is whatever you configure in `agents.defaults.model.primary` (for example, `anthropic/claude-sonnet-4-5` or `anthropic/claude-opus-4-6`). If you see `No credentials found for profile "anthropic:default"`, it means the Gateway couldn't find Anthropic credentials in the expected `auth-profiles.json` for the agent that's running.
+**A:** In AvaClaw, credentials and model selection are separate. Setting `ANTHROPIC_API_KEY` (or storing an Anthropic API key in auth profiles) enables authentication, but the actual default model is whatever you configure in `agents.defaults.model.primary` (for example, `anthropic/claude-sonnet-4-5` or `anthropic/claude-opus-4-6`). If you see `No credentials found for profile "anthropic:default"`, it means the Gateway couldn't find Anthropic credentials in the expected `auth-profiles.json` for the agent that's running.
 
 ---
 

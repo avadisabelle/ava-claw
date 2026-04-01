@@ -1,14 +1,14 @@
 ---
 summary: "Zalo Personal plugin: QR login + messaging via native zca-js (plugin install + channel config + tool)"
 read_when:
-  - You want Zalo Personal (unofficial) support in Ava-Claw
+  - You want Zalo Personal (unofficial) support in AvaClaw
   - You are configuring or developing the zalouser plugin
 title: "Zalo Personal Plugin"
 ---
 
 # Zalo Personal (plugin)
 
-Zalo Personal support for Ava-Claw via a plugin, using native `zca-js` to automate a normal Zalo user account.
+Zalo Personal support for AvaClaw via a plugin, using native `zca-js` to automate a normal Zalo user account.
 
 > **Warning:** Unofficial automation may lead to account suspension/ban. Use at your own risk.
 
@@ -29,7 +29,7 @@ No external `zca`/`openzca` CLI binary is required.
 ### Option A: install from npm
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-zalouser
+avaclaw plugins install ava-claw-zalouser
 ```
 
 Restart the Gateway afterwards.
@@ -64,7 +64,7 @@ Channel config lives under `channels.zalouser` (not `plugins.entries.*`):
 avaclaw channels login --channel zalouser
 avaclaw channels logout --channel zalouser
 avaclaw channels status --probe
-avaclaw message send --channel zalouser --target <threadId> --message "Hello from Ava-Claw"
+avaclaw message send --channel zalouser --target <threadId> --message "Hello from AvaClaw"
 avaclaw directory peers list --channel zalouser --query "name"
 ```
 

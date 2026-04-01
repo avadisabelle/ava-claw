@@ -1,5 +1,5 @@
 ---
-summary: "Model providers (LLMs) supported by Ava-Claw"
+summary: "Model providers (LLMs) supported by AvaClaw"
 read_when:
   - You want to choose a model provider
   - You need a quick overview of supported LLM backends
@@ -8,7 +8,7 @@ title: "Model Providers"
 
 # Model Providers
 
-Ava-Claw can use many LLM providers. Pick a provider, authenticate, then set the
+AvaClaw can use many LLM providers. Pick a provider, authenticate, then set the
 default model as `provider/model`.
 
 Looking for chat channel docs (WhatsApp/Telegram/Discord/Slack/Mattermost (plugin)/etc.)? See [Channels](/channels).

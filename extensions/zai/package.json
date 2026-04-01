@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-zai-provider",
+  "name": "ava-claw-zai-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Z.AI provider plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

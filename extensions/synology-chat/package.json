@@ -1,12 +1,12 @@
 {
-  "name": "@avadisabelle/ava-claw-synology-chat",
+  "name": "ava-claw-synology-chat",
   "version": "2026.3.14",
   "description": "Synology Chat channel plugin for AvaClaw",
   "type": "module",
   "dependencies": {
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -20,7 +20,7 @@
       "order": 90
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-synology-chat",
+      "npmSpec": "ava-claw-synology-chat",
       "localPath": "extensions/synology-chat",
       "defaultChoice": "npm"
     }

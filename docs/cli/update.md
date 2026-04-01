@@ -8,7 +8,7 @@ title: "update"
 
 # `avaclaw update`
 
-Safely update Ava-Claw and switch between stable/beta/dev channels.
+Safely update AvaClaw and switch between stable/beta/dev channels.
 
 If you installed via **npm/pnpm** (global install, no git metadata), updates happen via the package manager flow in [Updating](/install/updating).
 
@@ -62,7 +62,7 @@ offers to create one.
 
 ## What it does
 
-When you switch channels explicitly (`--channel ...`), Ava-Claw also keeps the
+When you switch channels explicitly (`--channel ...`), AvaClaw also keeps the
 install method aligned:
 
 - `dev` → ensures a git checkout (default: `~/avaclaw`, override with `AVACLAW_GIT_DIR`),

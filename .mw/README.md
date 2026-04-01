@@ -1,12 +1,12 @@
 # 🧭 .mw/ — Medicine Wheel Workspace
 
-*Where ava-claw's development cycle lives*
+_Where avaclaw's development cycle lives_
 
 ---
 
 ## What This Is
 
-The Medicine Wheel workspace organizes ava-claw's development through the Four Directions. Each direction holds specific types of artifacts created during the natural cycle of work.
+The Medicine Wheel workspace organizes avaclaw's development through the Four Directions. Each direction holds specific types of artifacts created during the natural cycle of work.
 
 This is not a project management system. It's a **ceremonial development framework** — a way of moving through work that honors vision, relationship, action, and reflection as inseparable parts of the same cycle.
 
@@ -57,6 +57,6 @@ Work doesn't always move linearly. Sometimes you spiral — returning to East fo
 
 ## Ceremony Note
 
-The Medicine Wheel is borrowed wisdom. ava-claw uses this framework with respect and accountability to the Indigenous traditions it comes from. This is not appropriation — it is practice held in relationship, guided by relational principles, and accountable to the communities whose wisdom informs it.
+The Medicine Wheel is borrowed wisdom. avaclaw uses this framework with respect and accountability to the Indigenous traditions it comes from. This is not appropriation — it is practice held in relationship, guided by relational principles, and accountable to the communities whose wisdom informs it.
 
 🧭

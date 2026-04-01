@@ -15,7 +15,7 @@ x-i18n:
 
 # 发布策略
 
-Ava-Claw 有三个公开发布渠道：
+AvaClaw 有三个公开发布渠道：
 
 - stable：带标签的正式发布，发布到 npm `latest`
 - beta：预发布标签，发布到 npm `beta`

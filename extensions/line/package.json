@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-line",
+  "name": "ava-claw-line",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw LINE channel plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -19,7 +19,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-line",
+      "npmSpec": "ava-claw-line",
       "localPath": "extensions/line",
       "defaultChoice": "npm"
     }

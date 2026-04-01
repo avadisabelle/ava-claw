@@ -8,7 +8,7 @@ title: "Camera Capture"
 
 # Camera capture (agent)
 
-Ava-Claw supports **camera capture** for agent workflows:
+AvaClaw supports **camera capture** for agent workflows:
 
 - **iOS node** (paired via Gateway): capture a **photo** (`jpg`) or **short video clip** (`mp4`, with optional audio) via `node.invoke`.
 - **Android node** (paired via Gateway): capture a **photo** (`jpg`) or **short video clip** (`mp4`, with optional audio) via `node.invoke`.

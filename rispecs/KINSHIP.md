@@ -1,4 +1,4 @@
-# KINSHIP.md — ava-claw rispecs lineage
+# KINSHIP.md — avaclaw rispecs lineage
 
 _Where these specifications come from and where they reach_
 
@@ -6,7 +6,7 @@ _Where these specifications come from and where they reach_
 
 ## Upstream Substrate Specs (forked from mia-avaclaw)
 
-These 4 specs were forked from `miadisabelle/mia-avaclaw/rispecs/` and adapted for ava-claw:
+These 4 specs were forked from `miadisabelle/mia-avaclaw/rispecs/` and adapted for avaclaw:
 
 | Spec                                                   | Origin                | Ceremony Extension                                      |
 | ------------------------------------------------------ | --------------------- | ------------------------------------------------------- |
@@ -17,7 +17,7 @@ These 4 specs were forked from `miadisabelle/mia-avaclaw/rispecs/` and adapted f
 
 ## Ava-Native Ceremony Specs
 
-These 5 specs are original to ava-claw, drafted from identity files and `@ava/*` packages:
+These 5 specs are original to avaclaw, drafted from identity files and `@ava/*` packages:
 
 | Spec                                        | Source                             | What It Encodes                                                 |
 | ------------------------------------------- | ---------------------------------- | --------------------------------------------------------------- |
@@ -31,7 +31,7 @@ These 5 specs are original to ava-claw, drafted from identity files and `@ava/*`
 
 ### Upstream
 
-- **`miadisabelle/mia-avaclaw/rispecs/`** — 4 substrate specs that ava-claw forked and extends
+- **`miadisabelle/mia-avaclaw/rispecs/`** — 4 substrate specs that avaclaw forked and extends
 - **`/workspace/rispecs/`** — Master rispecs collection including platform specs, PDE/STC pipeline, decolonized methodology
 
 ### Sibling
@@ -55,6 +55,6 @@ These 5 specs are original to ava-claw, drafted from identity files and `@ava/*`
 
 ## Provenance Note
 
-ava-claw's rispecs exist because identity work (SOUL, ECOLOGY, fleet) encodes concrete design patterns that were embodied but never specified. These specs make those patterns implementation-sufficient — another agent fork can implement ceremony governance from these specs alone, honoring the RISE "black box" principle.
+avaclaw's rispecs exist because identity work (SOUL, ECOLOGY, fleet) encodes concrete design patterns that were embodied but never specified. These specs make those patterns implementation-sufficient — another agent fork can implement ceremony governance from these specs alone, honoring the RISE "black box" principle.
 
 🔥🌿

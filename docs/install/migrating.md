@@ -1,14 +1,14 @@
 ---
-summary: "Move (migrate) a Ava-Claw install from one machine to another"
+summary: "Move (migrate) a AvaClaw install from one machine to another"
 read_when:
-  - You are moving Ava-Claw to a new laptop/server
+  - You are moving AvaClaw to a new laptop/server
   - You want to preserve sessions, auth, and channel logins (WhatsApp, etc.)
 title: "Migration Guide"
 ---
 
-# Migrating Ava-Claw to a new machine
+# Migrating AvaClaw to a new machine
 
-This guide migrates a Ava-Claw Gateway from one machine to another **without redoing onboarding**.
+This guide migrates a AvaClaw Gateway from one machine to another **without redoing onboarding**.
 
 The migration is simple conceptually:
 
@@ -87,7 +87,7 @@ tar -czf avaclaw-workspace.tgz .avaclaw/workspace
 
 If you have multiple profiles/state dirs (e.g. `~/.avaclaw-main`, `~/.avaclaw-work`), archive each.
 
-### Step 1 — Install Ava-Claw on the new machine
+### Step 1 — Install AvaClaw on the new machine
 
 On the **new** machine, install the CLI (and Node if needed):
 
@@ -189,4 +189,4 @@ On the new machine, confirm:
 
 - [Doctor](/gateway/doctor)
 - [Gateway troubleshooting](/gateway/troubleshooting)
-- [Where does Ava-Claw store its data?](/help/faq#where-does-avaclaw-store-its-data)
+- [Where does AvaClaw store its data?](/help/faq#where-does-avaclaw-store-its-data)

@@ -1,5 +1,5 @@
 ---
-summary: "Install Ava-Claw — installer script, npm/pnpm, from source, Docker, and more"
+summary: "Install AvaClaw — installer script, npm/pnpm, from source, Docker, and more"
 read_when:
   - You need an install method other than the Getting Started quickstart
   - You want to deploy to a cloud platform
@@ -18,17 +18,17 @@ Already followed [Getting Started](/start/getting-started)? You're all set — t
 - `pnpm` only if you build from source
 
 <Note>
-On Windows, we strongly recommend running Ava-Claw under [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).
+On Windows, we strongly recommend running AvaClaw under [WSL2](https://learn.microsoft.com/en-us/windows/wsl/install).
 </Note>
 
 ## Install methods
 
 <Tip>
-The **installer script** is the recommended way to install Ava-Claw. It handles Node detection, installation, and onboarding in one step.
+The **installer script** is the recommended way to install AvaClaw. It handles Node detection, installation, and onboarding in one step.
 </Tip>
 
 <Warning>
-For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possible. Prefer a clean base OS image (for example Ubuntu LTS), then install Ava-Claw yourself with the installer script.
+For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possible. Prefer a clean base OS image (for example Ubuntu LTS), then install AvaClaw yourself with the installer script.
 </Warning>
 
 <AccordionGroup>
@@ -70,7 +70,7 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
   </Accordion>
 
   <Accordion title="npm / pnpm" icon="package">
-    If you already manage Node yourself, we recommend Node 24. Ava-Claw still supports Node 22 LTS, currently `22.16+`, for compatibility:
+    If you already manage Node yourself, we recommend Node 24. AvaClaw still supports Node 22 LTS, currently `22.16+`, for compatibility:
 
     <Tabs>
       <Tab title="npm">
@@ -119,7 +119,7 @@ For VPS/cloud hosts, avoid third-party "1-click" marketplace images when possibl
 
     <Steps>
       <Step title="Clone and build">
-        Clone the [Ava-Claw repo](https://github.com/avadisabelle/ava-claw) and build:
+        Clone the [AvaClaw repo](https://github.com/avadisabelle/ava-claw) and build:
 
         ```bash
         git clone https://github.com/avadisabelle/ava-claw.git
@@ -217,12 +217,12 @@ Then open a new terminal (or `rehash` in zsh / `hash -r` in bash).
 
 <CardGroup cols={3}>
   <Card title="Updating" href="/install/updating" icon="refresh-cw">
-    Keep Ava-Claw up to date.
+    Keep AvaClaw up to date.
   </Card>
   <Card title="Migrating" href="/install/migrating" icon="arrow-right">
     Move to a new machine.
   </Card>
   <Card title="Uninstall" href="/install/uninstall" icon="trash-2">
-    Remove Ava-Claw completely.
+    Remove AvaClaw completely.
   </Card>
 </CardGroup>

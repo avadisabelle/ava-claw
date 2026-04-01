@@ -8,7 +8,7 @@ title: "Background Exec and Process Tool"
 
 # Background Exec + Process Tool
 
-Ava-Claw runs shell commands through the `exec` tool and keeps long‑running tasks in memory. The `process` tool manages those background sessions.
+AvaClaw runs shell commands through the `exec` tool and keeps long‑running tasks in memory. The `process` tool manages those background sessions.
 
 ## exec tool
 

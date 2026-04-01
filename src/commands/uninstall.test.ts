@@ -29,7 +29,7 @@ describe("uninstallCommand", () => {
     vi.clearAllMocks();
     resolveCleanupPlanFromDisk.mockReturnValue({
       stateDir: "/tmp/.avaclaw",
-      configPath: "/tmp/.avadisabelle/ava-claw.json",
+      configPath: "/tmp/.avaclaw/avaclaw.json",
       oauthDir: "/tmp/.avaclaw/credentials",
       configInsideState: true,
       oauthInsideState: true,

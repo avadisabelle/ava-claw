@@ -38,7 +38,7 @@ title: "Retry Policy"
 
 ## Configuration
 
-Set retry policy per provider in `~/.avadisabelle/ava-claw.json`:
+Set retry policy per provider in `~/.avaclaw/avaclaw.json`:
 
 ```json5
 {

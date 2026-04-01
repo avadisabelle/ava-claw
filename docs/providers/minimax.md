@@ -1,7 +1,7 @@
 ---
-summary: "Use MiniMax M2.5 in Ava-Claw"
+summary: "Use MiniMax M2.5 in AvaClaw"
 read_when:
-  - You want MiniMax models in Ava-Claw
+  - You want MiniMax models in AvaClaw
   - You need MiniMax setup guidance
 title: "MiniMax"
 ---

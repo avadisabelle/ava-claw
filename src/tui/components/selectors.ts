@@ -1,4 +1,9 @@
-import { type SelectItem, SelectList, type SettingItem, SettingsList } from "@avadisabelle/ava-pi-tui";
+import {
+  type SelectItem,
+  SelectList,
+  type SettingItem,
+  SettingsList,
+} from "@avadisabelle/ava-pi-tui";
 import {
   filterableSelectListTheme,
   searchableSelectListTheme,

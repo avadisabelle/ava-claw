@@ -1,14 +1,14 @@
 ---
-summary: "Ava-Claw macOS companion app (menu bar + gateway broker)"
+summary: "AvaClaw macOS companion app (menu bar + gateway broker)"
 read_when:
   - Implementing macOS app features
   - Changing gateway lifecycle or node bridging on macOS
 title: "macOS App"
 ---
 
-# Ava-Claw macOS Companion (menu bar + gateway broker)
+# AvaClaw macOS Companion (menu bar + gateway broker)
 
-The macOS app is the **menu‑bar companion** for Ava-Claw. It owns permissions,
+The macOS app is the **menu‑bar companion** for AvaClaw. It owns permissions,
 manages/attaches to the Gateway locally (launchd or manual), and exposes macOS
 capabilities to the agent as a node.
 
@@ -138,14 +138,14 @@ Safety:
 
 ## Onboarding flow (typical)
 
-1. Install and launch **Ava-Claw.app**.
+1. Install and launch **AvaClaw.app**.
 2. Complete the permissions checklist (TCC prompts).
 3. Ensure **Local** mode is active and the Gateway is running.
 4. Install the CLI if you want terminal access.
 
 ## State dir placement (macOS)
 
-Avoid putting your Ava-Claw state dir in iCloud or other cloud-synced folders.
+Avoid putting your AvaClaw state dir in iCloud or other cloud-synced folders.
 Sync-backed paths can add latency and occasionally cause file-lock/sync races for
 sessions and credentials.
 
@@ -165,7 +165,7 @@ it will warn and recommend moving back to a local path.
 ## Build & dev workflow (native)
 
 - `cd apps/macos && swift build`
-- `swift run Ava-Claw` (or Xcode)
+- `swift run AvaClaw` (or Xcode)
 - Package app: `scripts/package-mac-app.sh`
 
 ## Debug gateway connectivity (macOS CLI)

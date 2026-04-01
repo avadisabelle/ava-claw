@@ -1,6 +1,6 @@
 ---
 read_when:
-  - 你想从终端搜索实时 Ava-Claw 文档
+  - 你想从终端搜索实时 AvaClaw 文档
 summary: "`avaclaw docs` 的 CLI 参考（搜索实时文档索引）"
 title: docs
 x-i18n:

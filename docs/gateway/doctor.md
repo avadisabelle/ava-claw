@@ -8,7 +8,7 @@ title: "Doctor"
 
 # Doctor
 
-`avaclaw doctor` is the repair + migration tool for Ava-Claw. It fixes stale
+`avaclaw doctor` is the repair + migration tool for AvaClaw. It fixes stale
 config/state, checks health, and provides actionable repair steps.
 
 ## Quick start
@@ -53,7 +53,7 @@ Scan system services for extra gateway installs (launchd/systemd/schtasks).
 If you want to review changes before writing, open the config file first:
 
 ```bash
-cat ~/.avadisabelle/ava-claw.json
+cat ~/.avaclaw/avaclaw.json
 ```
 
 ## What it does (summary)
@@ -105,7 +105,7 @@ Doctor will:
 
 - Explain which legacy keys were found.
 - Show the migration it applied.
-- Rewrite `~/.avadisabelle/ava-claw.json` with the updated schema.
+- Rewrite `~/.avaclaw/avaclaw.json` with the updated schema.
 
 The Gateway also auto-runs doctor migrations on startup when it detects a
 legacy config format, so stale configs are repaired without manual intervention.
@@ -207,7 +207,7 @@ Doctor checks:
   split between installs).
 - **Remote mode reminder**: if `gateway.mode=remote`, doctor reminds you to run
   it on the remote host (the state lives there).
-- **Config file permissions**: warns if `~/.avadisabelle/ava-claw.json` is
+- **Config file permissions**: warns if `~/.avaclaw/avaclaw.json` is
   group/world readable and offers to tighten to `600`.
 
 ### 5) Model auth health (OAuth expiry)
@@ -236,9 +236,9 @@ switch to legacy names if the current image is missing.
 ### 8) Gateway service migrations and cleanup hints
 
 Doctor detects legacy gateway services (launchd/systemd/schtasks) and
-offers to remove them and install the Ava-Claw service using the current gateway
+offers to remove them and install the AvaClaw service using the current gateway
 port. It can also scan for extra gateway-like services and print cleanup hints.
-Profile-named Ava-Claw gateway services are considered first-class and are not
+Profile-named AvaClaw gateway services are considered first-class and are not
 flagged as "extra."
 
 ### 9) Security warnings

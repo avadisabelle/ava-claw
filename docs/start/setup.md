@@ -1,5 +1,5 @@
 ---
-summary: "Advanced setup and development workflows for Ava-Claw"
+summary: "Advanced setup and development workflows for AvaClaw"
 read_when:
   - Setting up a new machine
   - You want “latest + greatest” without breaking your personal setup
@@ -17,7 +17,7 @@ Last updated: 2026-01-01
 
 ## TL;DR
 
-- **Tailoring lives outside the repo:** `~/.avaclaw/workspace` (workspace) + `~/.avadisabelle/ava-claw.json` (config).
+- **Tailoring lives outside the repo:** `~/.avaclaw/workspace` (workspace) + `~/.avaclaw/avaclaw.json` (config).
 - **Stable workflow:** install the macOS app; let it run the bundled Gateway.
 - **Bleeding edge workflow:** run the Gateway yourself via `pnpm gateway:watch`, then let the macOS app attach in Local mode.
 
@@ -31,7 +31,7 @@ Last updated: 2026-01-01
 
 If you want “100% tailored to me” _and_ easy updates, keep your customization in:
 
-- **Config:** `~/.avadisabelle/ava-claw.json` (JSON/JSON5-ish)
+- **Config:** `~/.avaclaw/avaclaw.json` (JSON/JSON5-ish)
 - **Workspace:** `~/.avaclaw/workspace` (skills, prompts, memories; make it a private git repo)
 
 Bootstrap once:
@@ -58,7 +58,7 @@ node avaclaw.mjs gateway --port 18789 --verbose
 
 ## Stable workflow (macOS app first)
 
-1. Install + launch **Ava-Claw.app** (menu bar).
+1. Install + launch **AvaClaw.app** (menu bar).
 2. Complete the onboarding/permissions checklist (TCC prompts).
 3. Ensure Gateway is **Local** and running (the app manages it).
 4. Link surfaces (example: WhatsApp):
@@ -101,7 +101,7 @@ config, and bundled-plugin metadata changes.
 
 ### 2) Point the macOS app at your running Gateway
 
-In **Ava-Claw.app**:
+In **AvaClaw.app**:
 
 - Connection Mode: **Local**
   The app will attach to the running gateway on the configured port.
@@ -162,5 +162,5 @@ user service (no lingering needed). See [Gateway runbook](/gateway) for the syst
 - [Gateway runbook](/gateway) (flags, supervision, ports)
 - [Gateway configuration](/gateway/configuration) (config schema + examples)
 - [Discord](/channels/discord) and [Telegram](/channels/telegram) (reply tags + replyToMode settings)
-- [Ava-Claw assistant setup](/start/avaclaw)
+- [AvaClaw assistant setup](/start/avaclaw)
 - [macOS app](/platforms/macos) (gateway lifecycle)

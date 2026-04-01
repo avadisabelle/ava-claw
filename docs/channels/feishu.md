@@ -8,20 +8,20 @@ title: Feishu
 
 # Feishu bot
 
-Feishu (Lark) is a team chat platform used by companies for messaging and collaboration. This plugin connects Ava-Claw to a Feishu/Lark bot using the platform’s WebSocket event subscription so messages can be received without exposing a public webhook URL.
+Feishu (Lark) is a team chat platform used by companies for messaging and collaboration. This plugin connects AvaClaw to a Feishu/Lark bot using the platform’s WebSocket event subscription so messages can be received without exposing a public webhook URL.
 
 ---
 
 ## Bundled plugin
 
-Feishu ships bundled with current Ava-Claw releases, so no separate plugin install
+Feishu ships bundled with current AvaClaw releases, so no separate plugin install
 is required.
 
 If you are using an older build or a custom install that does not include bundled
 Feishu, install it manually:
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-feishu
+avaclaw plugins install ava-claw-feishu
 ```
 
 ---
@@ -32,7 +32,7 @@ There are two ways to add the Feishu channel:
 
 ### Method 1: onboarding wizard (recommended)
 
-If you just installed Ava-Claw, run the wizard:
+If you just installed AvaClaw, run the wizard:
 
 ```bash
 avaclaw onboard
@@ -41,7 +41,7 @@ avaclaw onboard
 The wizard guides you through:
 
 1. Creating a Feishu app and collecting credentials
-2. Configuring app credentials in Ava-Claw
+2. Configuring app credentials in AvaClaw
 3. Starting the gateway
 
 ✅ **After configuration**, check gateway status:
@@ -161,7 +161,7 @@ In **Event Subscription**:
 
 ---
 
-## Step 2: Configure Ava-Claw
+## Step 2: Configure AvaClaw
 
 ### Configure with the wizard (recommended)
 
@@ -173,7 +173,7 @@ Choose **Feishu** and paste your App ID + App Secret.
 
 ### Configure via config file
 
-Edit `~/.avadisabelle/ava-claw.json`:
+Edit `~/.avaclaw/avaclaw.json`:
 
 ```json5
 {

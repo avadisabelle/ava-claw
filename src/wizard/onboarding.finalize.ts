@@ -357,7 +357,7 @@ export async function finalizeOnboardingWizard(
     await prompter.note(
       [
         "Gateway token: shared auth for the Gateway + Control UI.",
-        "Stored in: ~/.avadisabelle/ava-claw.json (gateway.auth.token) or AVACLAW_GATEWAY_TOKEN.",
+        "Stored in: ~/.avaclaw/avaclaw.json (gateway.auth.token) or AVACLAW_GATEWAY_TOKEN.",
         `View token: ${formatCliCommand("avaclaw config get gateway.auth.token")}`,
         `Generate token: ${formatCliCommand("avaclaw doctor --generate-gateway-token")}`,
         "Web UI keeps dashboard URL tokens in memory for the current tab and strips them from the URL after load.",

@@ -1,12 +1,12 @@
 ---
-summary: "SSH tunnel setup for Ava-Claw.app connecting to a remote gateway"
+summary: "SSH tunnel setup for AvaClaw.app connecting to a remote gateway"
 read_when: "Connecting the macOS app to a remote gateway over SSH"
 title: "Remote Gateway Setup"
 ---
 
-# Running Ava-Claw.app with a Remote Gateway
+# Running AvaClaw.app with a Remote Gateway
 
-Ava-Claw.app uses SSH tunneling to connect to a remote gateway. This guide shows you how to set it up.
+AvaClaw.app uses SSH tunneling to connect to a remote gateway. This guide shows you how to set it up.
 
 ## Overview
 
@@ -14,7 +14,7 @@ Ava-Claw.app uses SSH tunneling to connect to a remote gateway. This guide shows
 flowchart TB
     subgraph Client["Client Machine"]
         direction TB
-        A["Ava-Claw.app"]
+        A["AvaClaw.app"]
         B["ws://127.0.0.1:18789\n(local port)"]
         T["SSH Tunnel"]
 
@@ -67,11 +67,11 @@ launchctl setenv AVACLAW_GATEWAY_TOKEN "<your-token>"
 ssh -N remote-gateway &
 ```
 
-### Step 5: Restart Ava-Claw.app
+### Step 5: Restart AvaClaw.app
 
 ```bash
-# Quit Ava-Claw.app (⌘Q), then reopen:
-open /path/to/Ava-Claw.app
+# Quit AvaClaw.app (⌘Q), then reopen:
+open /path/to/AvaClaw.app
 ```
 
 The app will now connect to the remote gateway through the SSH tunnel.
@@ -155,4 +155,4 @@ launchctl bootout gui/$UID/ai.avaclaw.ssh-tunnel
 | `KeepAlive`                          | Automatically restarts tunnel if it crashes                  |
 | `RunAtLoad`                          | Starts tunnel when the agent loads                           |
 
-Ava-Claw.app connects to `ws://127.0.0.1:18789` on your client machine. The SSH tunnel forwards that connection to port 18789 on the remote machine where the Gateway is running.
+AvaClaw.app connects to `ws://127.0.0.1:18789` on your client machine. The SSH tunnel forwards that connection to port 18789 on the remote machine where the Gateway is running.

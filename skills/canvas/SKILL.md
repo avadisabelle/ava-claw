@@ -57,7 +57,7 @@ This is why localhost URLs don't work - the node receives the Tailscale hostname
 
 ## Configuration
 
-In `~/.avadisabelle/ava-claw.json`:
+In `~/.avaclaw/avaclaw.json`:
 
 ```json
 {
@@ -106,7 +106,7 @@ HTML
 Check how your gateway is bound:
 
 ```bash
-cat ~/.avadisabelle/ava-claw.json | jq '.gateway.bind'
+cat ~/.avaclaw/avaclaw.json | jq '.gateway.bind'
 ```
 
 Then construct the URL:
@@ -156,7 +156,7 @@ canvas action:hide node:<node-id>
 
 **Debug steps:**
 
-1. Check server bind: `cat ~/.avadisabelle/ava-claw.json | jq '.gateway.bind'`
+1. Check server bind: `cat ~/.avaclaw/avaclaw.json | jq '.gateway.bind'`
 2. Check what port canvas is on: `lsof -i :18793`
 3. Test URL directly: `curl http://<hostname>:18793/__avaclaw__/canvas/<file>.html`
 

@@ -1,5 +1,5 @@
 ---
-summary: "Setup guide for developers working on the Ava-Claw macOS app"
+summary: "Setup guide for developers working on the AvaClaw macOS app"
 read_when:
   - Setting up the macOS development environment
 title: "macOS Dev Setup"
@@ -7,7 +7,7 @@ title: "macOS Dev Setup"
 
 # macOS Developer Setup
 
-This guide covers the necessary steps to build and run the Ava-Claw macOS application from source.
+This guide covers the necessary steps to build and run the AvaClaw macOS application from source.
 
 ## Prerequisites
 
@@ -26,7 +26,7 @@ pnpm install
 
 ## 2. Build and Package the App
 
-To build the macOS app and package it into `dist/Ava-Claw.app`, run:
+To build the macOS app and package it into `dist/AvaClaw.app`, run:
 
 ```bash
 ./scripts/package-mac-app.sh
@@ -45,7 +45,7 @@ The macOS app expects a global `avaclaw` CLI install to manage background tasks.
 
 **To install it (recommended):**
 
-1. Open the Ava-Claw app.
+1. Open the AvaClaw app.
 2. Go to the **General** settings tab.
 3. Click **"Install CLI"**.
 

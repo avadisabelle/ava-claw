@@ -1,5 +1,5 @@
 ---
-summary: "VPS hosting hub for Ava-Claw (Oracle/Fly/Hetzner/GCP/exe.dev)"
+summary: "VPS hosting hub for AvaClaw (Oracle/Fly/Hetzner/GCP/exe.dev)"
 read_when:
   - You want to run the Gateway in the cloud
   - You need a quick map of VPS/hosting guides

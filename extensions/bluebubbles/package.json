@@ -1,12 +1,12 @@
 {
-  "name": "@avadisabelle/ava-claw-bluebubbles",
+  "name": "ava-claw-bluebubbles",
   "version": "2026.3.14",
   "description": "AvaClaw BlueBubbles channel plugin",
   "type": "module",
   "dependencies": {
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -28,7 +28,7 @@
       "order": 75
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-bluebubbles",
+      "npmSpec": "ava-claw-bluebubbles",
       "localPath": "extensions/bluebubbles",
       "defaultChoice": "npm"
     }

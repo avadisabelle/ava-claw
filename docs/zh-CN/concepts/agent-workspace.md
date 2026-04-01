@@ -28,7 +28,7 @@ x-i18n:
 - 默认：`~/.avaclaw/workspace`
 - 如果设置了 `AVACLAW_PROFILE` 且不是 `"default"`，默认值变为
   `~/.avaclaw/workspace-<profile>`。
-- 在 `~/.avadisabelle/ava-claw.json` 中覆盖：
+- 在 `~/.avaclaw/avaclaw.json` 中覆盖：
 
 ```json5
 {
@@ -57,7 +57,7 @@ x-i18n:
 
 ## 工作区文件映射（每个文件的含义）
 
-这些是 Ava-Claw 在工作区内期望的标准文件：
+这些是 AvaClaw 在工作区内期望的标准文件：
 
 - `AGENTS.md`
   - 智能体的操作指南以及它应该如何使用记忆。
@@ -110,14 +110,14 @@ x-i18n:
 - `canvas/`（可选）
   - 用于节点显示的 Canvas UI 文件（例如 `canvas/index.html`）。
 
-如果任何引导文件缺失，Ava-Claw 会在会话中注入"缺失文件"标记并继续。大型引导文件在注入时会被截断；使用 `agents.defaults.bootstrapMaxChars` 调整限制（默认：20000）。
+如果任何引导文件缺失，AvaClaw 会在会话中注入"缺失文件"标记并继续。大型引导文件在注入时会被截断；使用 `agents.defaults.bootstrapMaxChars` 调整限制（默认：20000）。
 `avaclaw setup` 可以重新创建缺失的默认值而不覆盖现有文件。
 
 ## 工作区中不包含的内容
 
 这些位于 `~/.avaclaw/` 下，不应提交到工作区仓库：
 
-- `~/.avadisabelle/ava-claw.json`（配置）
+- `~/.avaclaw/avaclaw.json`（配置）
 - `~/.avaclaw/credentials/`（OAuth token、API 密钥）
 - `~/.avaclaw/agents/<agentId>/sessions/`（会话记录 + 元数据）
 - `~/.avaclaw/skills/`（托管的 Skills）
@@ -208,7 +208,7 @@ git push
 ## 将工作区迁移到新机器
 
 1. 将仓库克隆到所需路径（默认 `~/.avaclaw/workspace`）。
-2. 在 `~/.avadisabelle/ava-claw.json` 中将 `agents.defaults.workspace` 设置为该路径。
+2. 在 `~/.avaclaw/avaclaw.json` 中将 `agents.defaults.workspace` 设置为该路径。
 3. 运行 `avaclaw setup --workspace <path>` 来填充任何缺失的文件。
 4. 如果你需要会话，请单独从旧机器复制 `~/.avaclaw/agents/<agentId>/sessions/`。
 

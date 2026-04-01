@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-huggingface-provider",
+  "name": "ava-claw-huggingface-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Hugging Face provider plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

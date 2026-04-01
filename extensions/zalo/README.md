@@ -1,4 +1,4 @@
-# @avadisabelle/ava-claw-zalo
+# ava-claw-zalo
 
 Zalo channel plugin for AvaClaw (Bot API).
 
@@ -11,7 +11,7 @@ avaclaw plugins install ./extensions/zalo
 ## Install (npm)
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-zalo
+avaclaw plugins install ava-claw-zalo
 ```
 
 Onboarding: select Zalo and confirm the install prompt to fetch the plugin automatically.

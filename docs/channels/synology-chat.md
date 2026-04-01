@@ -1,7 +1,7 @@
 ---
-summary: "Synology Chat webhook setup and Ava-Claw config"
+summary: "Synology Chat webhook setup and AvaClaw config"
 read_when:
-  - Setting up Synology Chat with Ava-Claw
+  - Setting up Synology Chat with AvaClaw
   - Debugging Synology Chat webhook routing
 title: "Synology Chat"
 ---
@@ -30,10 +30,10 @@ Details: [Plugins](/tools/plugin)
 2. In Synology Chat integrations:
    - Create an incoming webhook and copy its URL.
    - Create an outgoing webhook with your secret token.
-3. Point the outgoing webhook URL to your Ava-Claw gateway:
+3. Point the outgoing webhook URL to your AvaClaw gateway:
    - `https://gateway-host/webhook/synology` by default.
    - Or your custom `channels.synology-chat.webhookPath`.
-4. Configure `channels.synology-chat` in Ava-Claw.
+4. Configure `channels.synology-chat` in AvaClaw.
 5. Restart gateway and send a DM to the Synology Chat bot.
 
 Minimal config:
@@ -86,7 +86,7 @@ Use numeric Synology Chat user IDs as targets.
 Examples:
 
 ```bash
-avaclaw message send --channel synology-chat --target 123456 --text "Hello from Ava-Claw"
+avaclaw message send --channel synology-chat --target 123456 --text "Hello from AvaClaw"
 avaclaw message send --channel synology-chat --target synology-chat:123456 --text "Hello again"
 ```
 

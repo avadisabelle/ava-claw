@@ -7,19 +7,19 @@ title: "Groups"
 
 # Groups
 
-Ava-Claw treats group chats consistently across surfaces: WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Microsoft Teams, Zalo.
+AvaClaw treats group chats consistently across surfaces: WhatsApp, Telegram, Discord, Slack, Signal, iMessage, Microsoft Teams, Zalo.
 
 ## Beginner intro (2 minutes)
 
-Ava-Claw “lives” on your own messaging accounts. There is no separate WhatsApp bot user.
-If **you** are in a group, Ava-Claw can see that group and respond there.
+AvaClaw “lives” on your own messaging accounts. There is no separate WhatsApp bot user.
+If **you** are in a group, AvaClaw can see that group and respond there.
 
 Default behavior:
 
 - Groups are restricted (`groupPolicy: "allowlist"`).
 - Replies require a mention unless you explicitly disable mention gating.
 
-Translation: allowlisted senders can trigger Ava-Claw by mentioning it.
+Translation: allowlisted senders can trigger AvaClaw by mentioning it.
 
 > TL;DR
 >

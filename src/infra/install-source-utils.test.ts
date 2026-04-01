@@ -254,17 +254,16 @@ describe("packNpmSpecToArchive", () => {
     const cwd = await createFixtureDir();
     mockPackCommandResult({
       stdout: "",
-      stderr:
-        "npm error code E404\nnpm error 404  '@avadisabelle/ava-claw-whatsapp@*' is not in this registry.",
+      stderr: "npm error code E404\nnpm error 404  'ava-claw-whatsapp@*' is not in this registry.",
       code: 1,
     });
 
-    const result = await runPack("@avadisabelle/ava-claw-whatsapp", cwd);
+    const result = await runPack("ava-claw-whatsapp", cwd);
 
     expect(result.ok).toBe(false);
     if (!result.ok) {
       expect(result.error).toContain("Package not found on npm");
-      expect(result.error).toContain("@avadisabelle/ava-claw-whatsapp");
+      expect(result.error).toContain("ava-claw-whatsapp");
       expect(result.error).toContain("docs.avaclaw.ai/tools/plugin");
     }
   });
@@ -291,18 +290,18 @@ describe("packNpmSpecToArchive", () => {
         "npm notice creating package\n" +
         JSON.stringify([
           {
-            id: "@avadisabelle/ava-claw-plugin-demo@2.0.0",
+            id: "ava-claw-plugin-demo@2.0.0",
             filename: "avaclaw-plugin-demo-2.0.0.tgz",
           },
         ]),
     });
 
-    const result = await runPack("@avadisabelle/ava-claw-plugin-demo@2.0.0", cwd);
+    const result = await runPack("ava-claw-plugin-demo@2.0.0", cwd);
     expect(result).toEqual({
       ok: true,
       archivePath: path.join(cwd, "avaclaw-plugin-demo-2.0.0.tgz"),
       metadata: {
-        resolvedSpec: "@avadisabelle/ava-claw-plugin-demo@2.0.0",
+        resolvedSpec: "ava-claw-plugin-demo@2.0.0",
       },
     });
   });

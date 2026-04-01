@@ -57,7 +57,7 @@ const DYNAMIC_ARCHIVE_TEMPLATE_PRESETS = [
     outName: "bad.tgz",
     withDistIndex: false,
     packageJson: {
-      name: "@avadisabelle/ava-claw-nope",
+      name: "ava-claw-nope",
       version: "0.0.1",
     } as Record<string, unknown>,
   },
@@ -310,7 +310,7 @@ function setupDualFormatInstallFixture(params: { bundleFormat: "codex" | "claude
   fs.writeFileSync(
     path.join(pluginDir, "package.json"),
     JSON.stringify({
-      name: "@avadisabelle/ava-claw-native-dual",
+      name: "ava-claw-native-dual",
       version: "0.0.1",
       avaclaw: { extensions: ["./dist/index.js"] },
       dependencies: { "left-pad": "1.3.0" },
@@ -451,7 +451,7 @@ beforeAll(async () => {
   fs.writeFileSync(
     path.join(installPluginFromDirTemplateDir, "package.json"),
     JSON.stringify({
-      name: "@avadisabelle/ava-claw-test-plugin",
+      name: "ava-claw-test-plugin",
       version: "0.0.1",
       avaclaw: { extensions: ["./dist/index.js"] },
       dependencies: { "left-pad": "1.3.0" },
@@ -469,7 +469,7 @@ beforeAll(async () => {
   fs.writeFileSync(
     path.join(manifestInstallTemplateDir, "package.json"),
     JSON.stringify({
-      name: "@avadisabelle/ava-claw-cognee-avaclaw",
+      name: "ava-claw-cognee-avaclaw",
       version: "0.0.1",
       avaclaw: { extensions: ["./dist/index.js"] },
     }),
@@ -516,7 +516,7 @@ describe("installPluginFromArchive", () => {
     expectSuccessfulArchiveInstall({
       result,
       stateDir,
-      pluginId: "@avadisabelle/ava-claw-voice-call",
+      pluginId: "ava-claw-voice-call",
     });
   });
 
@@ -556,7 +556,7 @@ describe("installPluginFromArchive", () => {
       archivePath,
       extensionsDir,
     });
-    expectSuccessfulArchiveInstall({ result, stateDir, pluginId: "@avadisabelle/ava-claw-zipper" });
+    expectSuccessfulArchiveInstall({ result, stateDir, pluginId: "ava-claw-zipper" });
   });
 
   it("allows updates when mode is update", async () => {
@@ -610,7 +610,7 @@ describe("installPluginFromArchive", () => {
 
   it("rejects packages without avaclaw.extensions", async () => {
     const result = await installArchivePackageAndReturnResult({
-      packageJson: { name: "@avadisabelle/ava-claw-nope", version: "0.0.1" },
+      packageJson: { name: "ava-claw-nope", version: "0.0.1" },
       outName: "bad.tgz",
     });
     expect(result.ok).toBe(false);
@@ -626,7 +626,7 @@ describe("installPluginFromArchive", () => {
     fs.writeFileSync(
       path.join(pluginDir, "package.json"),
       JSON.stringify({
-        name: "@avadisabelle/ava-claw-legacy-entry-fallback",
+        name: "ava-claw-legacy-entry-fallback",
         version: "0.0.1",
       }),
       "utf-8",
@@ -807,7 +807,7 @@ describe("installPluginFromDir", () => {
     expect(
       infoMessages.some((msg) =>
         msg.includes(
-          'Plugin manifest id "memory-cognee" differs from npm package name "@avadisabelle/ava-claw-cognee-avaclaw"',
+          'Plugin manifest id "memory-cognee" differs from npm package name "ava-claw-cognee-avaclaw"',
         ),
       ),
     ).toBe(true);
@@ -836,7 +836,7 @@ describe("installPluginFromDir", () => {
       extensionsDir,
     });
 
-    expectInstalledWithPluginId(res, extensionsDir, "@avadisabelle/ava-claw-test-plugin");
+    expectInstalledWithPluginId(res, extensionsDir, "ava-claw-test-plugin");
   });
 
   it("accepts legacy unscoped expected ids for scoped package names without manifest ids", async () => {
@@ -848,7 +848,7 @@ describe("installPluginFromDir", () => {
       expectedPluginId: "test-plugin",
     });
 
-    expectInstalledWithPluginId(res, extensionsDir, "@avadisabelle/ava-claw-test-plugin");
+    expectInstalledWithPluginId(res, extensionsDir, "ava-claw-test-plugin");
   });
 
   it("rejects bare @ as an invalid scoped id", () => {
@@ -1083,8 +1083,8 @@ describe("installPluginFromNpmSpec", () => {
           code: 0,
           stdout: JSON.stringify([
             {
-              id: "@avadisabelle/ava-claw-voice-call@0.0.1",
-              name: "@avadisabelle/ava-claw-voice-call",
+              id: "ava-claw-voice-call@0.0.1",
+              name: "ava-claw-voice-call",
               version: "0.0.1",
               filename: packedName,
               integrity: "sha512-plugin-test",
@@ -1101,7 +1101,7 @@ describe("installPluginFromNpmSpec", () => {
     });
 
     const result = await installPluginFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-voice-call@0.0.1",
+      spec: "ava-claw-voice-call@0.0.1",
       extensionsDir,
       logger: { info: () => {}, warn: () => {} },
     });
@@ -1109,12 +1109,12 @@ describe("installPluginFromNpmSpec", () => {
     if (!result.ok) {
       return;
     }
-    expect(result.npmResolution?.resolvedSpec).toBe("@avadisabelle/ava-claw-voice-call@0.0.1");
+    expect(result.npmResolution?.resolvedSpec).toBe("ava-claw-voice-call@0.0.1");
     expect(result.npmResolution?.integrity).toBe("sha512-plugin-test");
 
     expectSingleNpmPackIgnoreScriptsCall({
       calls: run.mock.calls,
-      expectedSpec: "@avadisabelle/ava-claw-voice-call@0.0.1",
+      expectedSpec: "ava-claw-voice-call@0.0.1",
     });
 
     expect(packTmpDir).not.toBe("");
@@ -1133,8 +1133,8 @@ describe("installPluginFromNpmSpec", () => {
   it("aborts when integrity drift callback rejects the fetched artifact", async () => {
     const run = vi.mocked(runCommandWithTimeout);
     mockNpmPackMetadataResult(run, {
-      id: "@avadisabelle/ava-claw-voice-call@0.0.1",
-      name: "@avadisabelle/ava-claw-voice-call",
+      id: "ava-claw-voice-call@0.0.1",
+      name: "ava-claw-voice-call",
       version: "0.0.1",
       filename: "voice-call-0.0.1.tgz",
       integrity: "sha512-new",
@@ -1143,7 +1143,7 @@ describe("installPluginFromNpmSpec", () => {
 
     const onIntegrityDrift = vi.fn(async () => false);
     const result = await installPluginFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-voice-call@0.0.1",
+      spec: "ava-claw-voice-call@0.0.1",
       expectedIntegrity: "sha512-old",
       onIntegrityDrift,
     });
@@ -1167,7 +1167,7 @@ describe("installPluginFromNpmSpec", () => {
     });
 
     const result = await installPluginFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-not-found",
+      spec: "ava-claw-not-found",
       logger: { info: () => {}, warn: () => {} },
     });
     expect(result.ok).toBe(false);
@@ -1179,8 +1179,8 @@ describe("installPluginFromNpmSpec", () => {
   it("rejects bare npm specs that resolve to prerelease versions", async () => {
     const run = vi.mocked(runCommandWithTimeout);
     mockNpmPackMetadataResult(run, {
-      id: "@avadisabelle/ava-claw-voice-call@0.0.2-beta.1",
-      name: "@avadisabelle/ava-claw-voice-call",
+      id: "ava-claw-voice-call@0.0.2-beta.1",
+      name: "ava-claw-voice-call",
       version: "0.0.2-beta.1",
       filename: "voice-call-0.0.2-beta.1.tgz",
       integrity: "sha512-beta",
@@ -1188,13 +1188,13 @@ describe("installPluginFromNpmSpec", () => {
     });
 
     const result = await installPluginFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-voice-call",
+      spec: "ava-claw-voice-call",
       logger: { info: () => {}, warn: () => {} },
     });
     expect(result.ok).toBe(false);
     if (!result.ok) {
       expect(result.error).toContain("prerelease version 0.0.2-beta.1");
-      expect(result.error).toContain('"@avadisabelle/ava-claw-voice-call@beta"');
+      expect(result.error).toContain('"ava-claw-voice-call@beta"');
     }
   });
 
@@ -1211,8 +1211,8 @@ describe("installPluginFromNpmSpec", () => {
           code: 0,
           stdout: JSON.stringify([
             {
-              id: "@avadisabelle/ava-claw-voice-call@0.0.2-beta.1",
-              name: "@avadisabelle/ava-claw-voice-call",
+              id: "ava-claw-voice-call@0.0.2-beta.1",
+              name: "ava-claw-voice-call",
               version: "0.0.2-beta.1",
               filename: packedName,
               integrity: "sha512-beta",
@@ -1233,7 +1233,7 @@ describe("installPluginFromNpmSpec", () => {
       version: "0.0.1",
     });
     const result = await installPluginFromNpmSpec({
-      spec: "@avadisabelle/ava-claw-voice-call@beta",
+      spec: "ava-claw-voice-call@beta",
       extensionsDir,
       logger: { info: () => {}, warn: () => {} },
     });
@@ -1242,12 +1242,10 @@ describe("installPluginFromNpmSpec", () => {
       return;
     }
     expect(result.npmResolution?.version).toBe("0.0.2-beta.1");
-    expect(result.npmResolution?.resolvedSpec).toBe(
-      "@avadisabelle/ava-claw-voice-call@0.0.2-beta.1",
-    );
+    expect(result.npmResolution?.resolvedSpec).toBe("ava-claw-voice-call@0.0.2-beta.1");
     expectSingleNpmPackIgnoreScriptsCall({
       calls: run.mock.calls,
-      expectedSpec: "@avadisabelle/ava-claw-voice-call@beta",
+      expectedSpec: "ava-claw-voice-call@beta",
     });
     expect(packTmpDir).not.toBe("");
   });

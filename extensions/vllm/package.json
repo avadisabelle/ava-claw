@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-vllm-provider",
+  "name": "ava-claw-vllm-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw vLLM provider plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

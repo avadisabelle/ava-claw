@@ -1,8 +1,8 @@
 ---
 read_when:
-  - 你想从机器上移除 Ava-Claw
+  - 你想从机器上移除 AvaClaw
   - 卸载后 Gateway 网关服务仍在运行
-summary: 完全卸载 Ava-Claw（CLI、服务、状态、工作区）
+summary: 完全卸载 AvaClaw（CLI、服务、状态、工作区）
 title: 卸载
 x-i18n:
   generated_at: "2026-02-03T07:50:10Z"
@@ -74,7 +74,7 @@ bun remove -g avaclaw
 6. 如果你安装了 macOS 应用：
 
 ```bash
-rm -rf /Applications/Ava-Claw.app
+rm -rf /Applications/AvaClaw.app
 ```
 
 注意事项：
@@ -109,11 +109,11 @@ systemctl --user daemon-reload
 
 ### Windows（计划任务）
 
-默认任务名称是 `Ava-Claw Gateway`（或 `Ava-Claw Gateway (<profile>)`）。
+默认任务名称是 `AvaClaw Gateway`（或 `AvaClaw Gateway (<profile>)`）。
 任务脚本位于你的状态目录下。
 
 ```powershell
-schtasks /Delete /F /TN "Ava-Claw Gateway"
+schtasks /Delete /F /TN "AvaClaw Gateway"
 Remove-Item -Force "$env:USERPROFILE\.avaclaw\gateway.cmd"
 ```
 

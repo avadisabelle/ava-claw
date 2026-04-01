@@ -320,7 +320,7 @@ describe("setupChannels", () => {
     catalogMocks.listChannelPluginCatalogEntries.mockReturnValue([
       {
         id: "msteams",
-        pluginId: "@avadisabelle/ava-claw-msteams-plugin",
+        pluginId: "ava-claw-msteams-plugin",
         meta: {
           id: "msteams",
           label: "Microsoft Teams",
@@ -329,7 +329,7 @@ describe("setupChannels", () => {
           blurb: "teams channel",
         },
         install: {
-          npmSpec: "@avadisabelle/ava-claw-msteams",
+          npmSpec: "ava-claw-msteams",
         },
       } satisfies ChannelPluginCatalogEntry,
     ]);
@@ -338,7 +338,7 @@ describe("setupChannels", () => {
         const registry = createEmptyPluginRegistry();
         if (channel === "msteams") {
           registry.channels.push({
-            pluginId: "@avadisabelle/ava-claw-msteams-plugin",
+            pluginId: "ava-claw-msteams-plugin",
             source: "test",
             plugin: {
               id: "msteams",
@@ -388,7 +388,7 @@ describe("setupChannels", () => {
         },
         plugins: {
           entries: {
-            "@avadisabelle/ava-claw-msteams-plugin": { enabled: true },
+            "ava-claw-msteams-plugin": { enabled: true },
           },
         },
       } as AvaClawConfig,
@@ -398,7 +398,7 @@ describe("setupChannels", () => {
     expect(loadOnboardingPluginRegistrySnapshotForChannel).toHaveBeenCalledWith(
       expect.objectContaining({
         channel: "msteams",
-        pluginId: "@avadisabelle/ava-claw-msteams-plugin",
+        pluginId: "ava-claw-msteams-plugin",
       }),
     );
     expect(multiselect).not.toHaveBeenCalled();

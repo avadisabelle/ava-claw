@@ -3,7 +3,7 @@ import fs from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const CORE_PACKAGE_NAMES = new Set(["@avadisabelle/ava-claw", "avaclaw"]);
+const CORE_PACKAGE_NAMES = new Set(["ava-claw", "avaclaw"]);
 
 function parsePackageName(raw: string): string | null {
   const parsed = JSON.parse(raw) as { name?: unknown };

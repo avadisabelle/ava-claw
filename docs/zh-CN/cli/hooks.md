@@ -220,7 +220,7 @@ avaclaw hooks install ./my-hook-pack
 avaclaw hooks install ./my-hook-pack.zip
 
 # NPM 包
-avaclaw hooks install @avadisabelle/ava-claw-my-hook-pack
+avaclaw hooks install ava-claw-my-hook-pack
 
 # 链接本地目录而不复制
 avaclaw hooks install -l ./my-hook-pack

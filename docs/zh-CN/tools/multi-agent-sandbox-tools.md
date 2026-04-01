@@ -240,7 +240,7 @@ agents.list[].sandbox.prune.* > agents.defaults.sandbox.prune.*
 - `group:automation`：`cron`、`gateway`
 - `group:messaging`：`message`
 - `group:nodes`：`nodes`
-- `group:avaclaw`：所有内置 Ava-Claw 工具（不包括提供商插件）
+- `group:avaclaw`：所有内置 AvaClaw 工具（不包括提供商插件）
 
 ### 提权模式
 

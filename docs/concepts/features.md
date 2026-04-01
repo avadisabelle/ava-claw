@@ -1,7 +1,7 @@
 ---
-summary: "Ava-Claw capabilities across channels, routing, media, and UX."
+summary: "AvaClaw capabilities across channels, routing, media, and UX."
 read_when:
-  - You want a full list of what Ava-Claw supports
+  - You want a full list of what AvaClaw supports
 title: "Features"
 ---
 

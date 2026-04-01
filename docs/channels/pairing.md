@@ -3,13 +3,13 @@ summary: "Pairing overview: approve who can DM you + which nodes can join"
 read_when:
   - Setting up DM access control
   - Pairing a new iOS/Android node
-  - Reviewing Ava-Claw security posture
+  - Reviewing AvaClaw security posture
 title: "Pairing"
 ---
 
 # Pairing
 
-“Pairing” is Ava-Claw’s explicit **owner approval** step.
+“Pairing” is AvaClaw’s explicit **owner approval** step.
 It is used in two places:
 
 1. **DM pairing** (who is allowed to talk to the bot)
@@ -65,7 +65,7 @@ If you use the `device-pair` plugin, you can do first-time device pairing entire
 
 1. In Telegram, message your bot: `/pair`
 2. The bot replies with two messages: an instruction message and a separate **setup code** message (easy to copy/paste in Telegram).
-3. On your phone, open the Ava-Claw iOS app → Settings → Gateway.
+3. On your phone, open the AvaClaw iOS app → Settings → Gateway.
 4. Paste the setup code and connect.
 5. Back in Telegram: `/pair approve`
 

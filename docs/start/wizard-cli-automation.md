@@ -1,5 +1,5 @@
 ---
-summary: "Scripted onboarding and agent setup for the Ava-Claw CLI"
+summary: "Scripted onboarding and agent setup for the AvaClaw CLI"
 read_when:
   - You are automating onboarding in scripts or CI
   - You need non-interactive examples for specific providers

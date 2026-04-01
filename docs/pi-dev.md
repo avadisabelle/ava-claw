@@ -8,7 +8,7 @@ read_when:
 
 # Pi Development Workflow
 
-This guide summarizes a sane workflow for working on the pi integration in Ava-Claw.
+This guide summarizes a sane workflow for working on the pi integration in AvaClaw.
 
 ## Type Checking and Linting
 
@@ -61,7 +61,7 @@ For tool call behavior, prompt for a `read` or `exec` action so you can see tool
 
 ## Clean Slate Reset
 
-State lives under the Ava-Claw state directory. Default is `~/.avaclaw`. If `AVACLAW_STATE_DIR` is set, use that directory instead.
+State lives under the AvaClaw state directory. Default is `~/.avaclaw`. If `AVACLAW_STATE_DIR` is set, use that directory instead.
 
 To reset everything:
 

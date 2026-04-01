@@ -1,14 +1,14 @@
 ---
 summary: "Voice Call plugin: outbound + inbound calls via Twilio/Telnyx/Plivo (plugin install + config + CLI)"
 read_when:
-  - You want to place an outbound voice call from Ava-Claw
+  - You want to place an outbound voice call from AvaClaw
   - You are configuring or developing the voice-call plugin
 title: "Voice Call Plugin"
 ---
 
 # Voice Call (plugin)
 
-Voice calls for Ava-Claw via a plugin. Supports outbound notifications and
+Voice calls for AvaClaw via a plugin. Supports outbound notifications and
 multi-turn conversations with inbound policies.
 
 Current providers:
@@ -36,7 +36,7 @@ If you use a remote Gateway, install/configure the plugin on the **machine runni
 ### Option A: install from npm (recommended)
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-voice-call
+avaclaw plugins install ava-claw-voice-call
 ```
 
 Restart the Gateway afterwards.
@@ -311,7 +311,7 @@ Auto-responses use the agent system. Tune with:
 ## CLI
 
 ```bash
-avaclaw voicecall call --to "+15555550123" --message "Hello from Ava-Claw"
+avaclaw voicecall call --to "+15555550123" --message "Hello from AvaClaw"
 avaclaw voicecall continue --call-id <id> --message "Any questions?"
 avaclaw voicecall speak --call-id <id> --message "One moment"
 avaclaw voicecall end --call-id <id>

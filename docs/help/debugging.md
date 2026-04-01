@@ -110,9 +110,9 @@ Tip: if a non‑dev gateway is already running (launchd/systemd), stop it first:
 avaclaw gateway stop
 ```
 
-## Raw stream logging (Ava-Claw)
+## Raw stream logging (AvaClaw)
 
-Ava-Claw can log the **raw assistant stream** before any filtering/formatting.
+AvaClaw can log the **raw assistant stream** before any filtering/formatting.
 This is the best way to see whether reasoning is arriving as plain text deltas
 (or as separate thinking blocks).
 

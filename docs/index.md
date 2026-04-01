@@ -1,22 +1,22 @@
 ---
-summary: "Ava-Claw is a multi-channel gateway for AI agents that runs on any OS."
+summary: "AvaClaw is a multi-channel gateway for AI agents that runs on any OS."
 read_when:
-  - Introducing Ava-Claw to newcomers
-title: "Ava-Claw"
+  - Introducing AvaClaw to newcomers
+title: "AvaClaw"
 ---
 
-# Ava-Claw 🦞
+# AvaClaw 🦞
 
 <p align="center">
     <img
         src="/assets/avaclaw-logo-text-dark.png"
-        alt="Ava-Claw"
+        alt="AvaClaw"
         width="500"
         class="dark:hidden"
     />
     <img
         src="/assets/avaclaw-logo-text.png"
-        alt="Ava-Claw"
+        alt="AvaClaw"
         width="500"
         class="hidden dark:block"
     />
@@ -31,7 +31,7 @@ title: "Ava-Claw"
 
 <Columns>
   <Card title="Get Started" href="/start/getting-started" icon="rocket">
-    Install Ava-Claw and bring up the Gateway in minutes.
+    Install AvaClaw and bring up the Gateway in minutes.
   </Card>
   <Card title="Run the Wizard" href="/start/wizard" icon="sparkles">
     Guided setup with `avaclaw onboard` and pairing flows.
@@ -41,9 +41,9 @@ title: "Ava-Claw"
   </Card>
 </Columns>
 
-## What is Ava-Claw?
+## What is AvaClaw?
 
-Ava-Claw is a **self-hosted gateway** that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage, and more — to AI coding agents like Pi. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
+AvaClaw is a **self-hosted gateway** that connects your favorite chat apps — WhatsApp, Telegram, Discord, iMessage, and more — to AI coding agents like Pi. You run a single Gateway process on your own machine (or a server), and it becomes the bridge between your messaging apps and an always-available AI assistant.
 
 **Who is it for?** Developers and power users who want a personal AI assistant they can message from anywhere — without giving up control of their data or relying on a hosted service.
 
@@ -96,7 +96,7 @@ The Gateway is the single source of truth for sessions, routing, and channel con
 ## Quick start
 
 <Steps>
-  <Step title="Install Ava-Claw">
+  <Step title="Install AvaClaw">
     ```bash
     npm install -g avaclaw@latest
     ```
@@ -124,14 +124,14 @@ Open the browser Control UI after the Gateway starts.
 - Remote access: [Web surfaces](/web) and [Tailscale](/gateway/tailscale)
 
 <p align="center">
-  <img src="/whatsapp-avaclaw.jpg" alt="Ava-Claw" width="420" />
+  <img src="/whatsapp-avaclaw.jpg" alt="AvaClaw" width="420" />
 </p>
 
 ## Configuration (optional)
 
-Config lives at `~/.avadisabelle/ava-claw.json`.
+Config lives at `~/.avaclaw/avaclaw.json`.
 
-- If you **do nothing**, Ava-Claw uses the bundled Pi binary in RPC mode with per-sender sessions.
+- If you **do nothing**, AvaClaw uses the bundled Pi binary in RPC mode with per-sender sessions.
 - If you want to lock it down, start with `channels.whatsapp.allowFrom` and (for groups) mention rules.
 
 Example:

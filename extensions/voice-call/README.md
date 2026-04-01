@@ -1,4 +1,4 @@
-# @avadisabelle/ava-claw-voice-call
+# ava-claw-voice-call
 
 Official Voice Call plugin for **AvaClaw**.
 
@@ -17,7 +17,7 @@ Plugin system: `https://docs.avaclaw.ai/plugin`
 ### Option A: install via AvaClaw (recommended)
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-voice-call
+avaclaw plugins install ava-claw-voice-call
 ```
 
 Restart the Gateway afterwards.

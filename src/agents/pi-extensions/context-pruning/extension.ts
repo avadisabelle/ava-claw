@@ -1,4 +1,8 @@
-import type { ContextEvent, ExtensionAPI, ExtensionContext } from "@avadisabelle/ava-pi-coding-agent";
+import type {
+  ContextEvent,
+  ExtensionAPI,
+  ExtensionContext,
+} from "@avadisabelle/ava-pi-coding-agent";
 import { pruneContextMessages } from "./pruner.js";
 import { getContextPruningRuntime } from "./runtime.js";
 

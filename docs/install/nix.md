@@ -1,5 +1,5 @@
 ---
-summary: "Install Ava-Claw declaratively with Nix"
+summary: "Install AvaClaw declaratively with Nix"
 read_when:
   - You want reproducible, rollback-able installs
   - You're already using Nix/NixOS/Home Manager
@@ -9,7 +9,7 @@ title: "Nix"
 
 # Nix Installation
 
-The recommended way to run Ava-Claw with Nix is via **[nix-avaclaw](https://github.com/avaclaw/nix-avaclaw)** — a batteries-included Home Manager module.
+The recommended way to run AvaClaw with Nix is via **[nix-avaclaw](https://github.com/avaclaw/nix-avaclaw)** — a batteries-included Home Manager module.
 
 ## Quick Start
 
@@ -47,7 +47,7 @@ Reference the nix-avaclaw README for module options.
 
 When `AVACLAW_NIX_MODE=1` is set (automatic with nix-avaclaw):
 
-Ava-Claw supports a **Nix mode** that makes configuration deterministic and disables auto-install flows.
+AvaClaw supports a **Nix mode** that makes configuration deterministic and disables auto-install flows.
 Enable it by exporting:
 
 ```bash
@@ -63,7 +63,7 @@ defaults write ai.avaclaw.mac avaclaw.nixMode -bool true
 
 ### Config + state paths
 
-Ava-Claw reads JSON5 config from `AVACLAW_CONFIG_PATH` and stores mutable data in `AVACLAW_STATE_DIR`.
+AvaClaw reads JSON5 config from `AVACLAW_CONFIG_PATH` and stores mutable data in `AVACLAW_STATE_DIR`.
 When needed, you can also set `AVACLAW_HOME` to control the base home directory used for internal path resolution.
 
 - `AVACLAW_HOME` (default precedence: `HOME` / `USERPROFILE` / `os.homedir()`)
@@ -84,7 +84,7 @@ stay out of the immutable store.
 The macOS packaging flow expects a stable Info.plist template at:
 
 ```
-apps/macos/Sources/Ava-Claw/Resources/Info.plist
+apps/macos/Sources/AvaClaw/Resources/Info.plist
 ```
 
 [`scripts/package-mac-app.sh`](https://github.com/avadisabelle/ava-claw/blob/main/scripts/package-mac-app.sh) copies this template into the app bundle and patches dynamic fields

@@ -15,7 +15,7 @@
     "url": "git+https://github.com/avadisabelle/ava-claw.git"
   },
   "bin": {
-    "ava-claw": "avaclaw.mjs"
+    "avaclaw": "avaclaw.mjs"
   },
   "directories": {
     "doc": "docs",

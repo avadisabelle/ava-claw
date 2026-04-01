@@ -18,7 +18,7 @@ Back to the main browser docs: [Browser](/tools/browser).
 
 ## Which Chrome profile is used?
 
-Ava-Claw controls a **dedicated Chrome profile** (named `avaclaw`, orange‑tinted UI). This is separate from your daily browser profile.
+AvaClaw controls a **dedicated Chrome profile** (named `avaclaw`, orange‑tinted UI). This is separate from your daily browser profile.
 
 For agent browser tool calls:
 

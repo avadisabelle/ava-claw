@@ -26,7 +26,7 @@ avaclaw doctor --deep
 Notes:
 
 - Interactive prompts (like keychain/OAuth fixes) only run when stdin is a TTY and `--non-interactive` is **not** set. Headless runs (cron, Telegram, no terminal) will skip prompts.
-- `--fix` (alias for `--repair`) writes a backup to `~/.avadisabelle/ava-claw.json.bak` and drops unknown config keys, listing each removal.
+- `--fix` (alias for `--repair`) writes a backup to `~/.avaclaw/avaclaw.json.bak` and drops unknown config keys, listing each removal.
 - State integrity checks now detect orphan transcript files in the sessions directory and can archive them as `.deleted.<timestamp>` to reclaim space safely.
 - Doctor also scans `~/.avaclaw/cron/jobs.json` (or `cron.store`) for legacy cron job shapes and can rewrite them in place before the scheduler has to auto-normalize them at runtime.
 - Doctor includes a memory-search readiness check and can recommend `avaclaw configure --section model` when embedding credentials are missing.

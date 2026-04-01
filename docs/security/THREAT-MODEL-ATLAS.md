@@ -1,4 +1,4 @@
-# Ava-Claw Threat Model v1.0
+# AvaClaw Threat Model v1.0
 
 ## MITRE ATLAS Framework
 
@@ -21,7 +21,7 @@ This threat model is built on [MITRE ATLAS](https://atlas.mitre.org/), the indus
 
 ### Contributing to This Threat Model
 
-This is a living document maintained by the Ava-Claw community. See [CONTRIBUTING-THREAT-MODEL.md](/security/CONTRIBUTING-THREAT-MODEL) for guidelines on contributing:
+This is a living document maintained by the AvaClaw community. See [CONTRIBUTING-THREAT-MODEL.md](/security/CONTRIBUTING-THREAT-MODEL) for guidelines on contributing:
 
 - Reporting new threats
 - Updating existing threats
@@ -34,18 +34,18 @@ This is a living document maintained by the Ava-Claw community. See [CONTRIBUTIN
 
 ### 1.1 Purpose
 
-This threat model documents adversarial threats to the Ava-Claw AI agent platform and ClawHub skill marketplace, using the MITRE ATLAS framework designed specifically for AI/ML systems.
+This threat model documents adversarial threats to the AvaClaw AI agent platform and ClawHub skill marketplace, using the MITRE ATLAS framework designed specifically for AI/ML systems.
 
 ### 1.2 Scope
 
-| Component              | Included | Notes                                            |
-| ---------------------- | -------- | ------------------------------------------------ |
-| Ava-Claw Agent Runtime | Yes      | Core agent execution, tool calls, sessions       |
-| Gateway                | Yes      | Authentication, routing, channel integration     |
-| Channel Integrations   | Yes      | WhatsApp, Telegram, Discord, Signal, Slack, etc. |
-| ClawHub Marketplace    | Yes      | Skill publishing, moderation, distribution       |
-| MCP Servers            | Yes      | External tool providers                          |
-| User Devices           | Partial  | Mobile apps, desktop clients                     |
+| Component             | Included | Notes                                            |
+| --------------------- | -------- | ------------------------------------------------ |
+| AvaClaw Agent Runtime | Yes      | Core agent execution, tool calls, sessions       |
+| Gateway               | Yes      | Authentication, routing, channel integration     |
+| Channel Integrations  | Yes      | WhatsApp, Telegram, Discord, Signal, Slack, etc. |
+| ClawHub Marketplace   | Yes      | Skill publishing, moderation, distribution       |
+| MCP Servers           | Yes      | External tool providers                          |
+| User Devices          | Partial  | Mobile apps, desktop clients                     |
 
 ### 1.3 Out of Scope
 
@@ -144,7 +144,7 @@ Nothing is explicitly out of scope for this threat model.
 | Attribute               | Value                                                                |
 | ----------------------- | -------------------------------------------------------------------- |
 | **ATLAS ID**            | AML.T0006 - Active Scanning                                          |
-| **Description**         | Attacker scans for exposed Ava-Claw gateway endpoints                |
+| **Description**         | Attacker scans for exposed AvaClaw gateway endpoints                 |
 | **Attack Vector**       | Network scanning, shodan queries, DNS enumeration                    |
 | **Affected Components** | Gateway, exposed API endpoints                                       |
 | **Current Mitigations** | Tailscale auth option, bind to loopback by default                   |
@@ -560,7 +560,7 @@ T-EXEC-002 → T-EXFIL-001 → External exfiltration
 
 ### 7.1 ATLAS Technique Mapping
 
-| ATLAS ID      | Technique Name                 | Ava-Claw Threats                                                 |
+| ATLAS ID      | Technique Name                 | AvaClaw Threats                                                  |
 | ------------- | ------------------------------ | ---------------------------------------------------------------- |
 | AML.T0006     | Active Scanning                | T-RECON-001, T-RECON-002                                         |
 | AML.T0009     | Collection                     | T-EXFIL-001, T-EXFIL-002, T-EXFIL-003                            |
@@ -591,11 +591,11 @@ T-EXEC-002 → T-EXFIL-001 → External exfiltration
 | Term                 | Definition                                                |
 | -------------------- | --------------------------------------------------------- |
 | **ATLAS**            | MITRE's Adversarial Threat Landscape for AI Systems       |
-| **ClawHub**          | Ava-Claw's skill marketplace                              |
-| **Gateway**          | Ava-Claw's message routing and authentication layer       |
+| **ClawHub**          | AvaClaw's skill marketplace                               |
+| **Gateway**          | AvaClaw's message routing and authentication layer        |
 | **MCP**              | Model Context Protocol - tool provider interface          |
 | **Prompt Injection** | Attack where malicious instructions are embedded in input |
-| **Skill**            | Downloadable extension for Ava-Claw agents                |
+| **Skill**            | Downloadable extension for AvaClaw agents                 |
 | **SSRF**             | Server-Side Request Forgery                               |
 
 ---

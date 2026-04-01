@@ -8,7 +8,7 @@ title: "Plugin Agent Tools"
 
 # Plugin agent tools
 
-Ava-Claw plugins can register **agent tools** (JSON‑schema functions) that are exposed
+AvaClaw plugins can register **agent tools** (JSON‑schema functions) that are exposed
 to the LLM during agent runs. Tools can be **required** (always available) or
 **optional** (opt‑in).
 

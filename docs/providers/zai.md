@@ -1,7 +1,7 @@
 ---
-summary: "Use Z.AI (GLM models) with Ava-Claw"
+summary: "Use Z.AI (GLM models) with AvaClaw"
 read_when:
-  - You want Z.AI / GLM models in Ava-Claw
+  - You want Z.AI / GLM models in AvaClaw
   - You need a simple ZAI_API_KEY setup
 title: "Z.AI"
 ---
@@ -9,7 +9,7 @@ title: "Z.AI"
 # Z.AI
 
 Z.AI is the API platform for **GLM** models. It provides REST APIs for GLM and uses API keys
-for authentication. Create your API key in the Z.AI console. Ava-Claw uses the `zai` provider
+for authentication. Create your API key in the Z.AI console. AvaClaw uses the `zai` provider
 with a Z.AI API key.
 
 ## CLI setup

@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-llm-task",
+  "name": "ava-claw-llm-task",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw JSON-only LLM task plugin",
@@ -8,7 +8,7 @@
     "@sinclair/typebox": "0.34.48",
     "ajv": "^8.18.0"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

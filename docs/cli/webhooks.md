@@ -1,7 +1,7 @@
 ---
 summary: "CLI reference for `avaclaw webhooks` (webhook helpers + Gmail Pub/Sub)"
 read_when:
-  - You want to wire Gmail Pub/Sub events into Ava-Claw
+  - You want to wire Gmail Pub/Sub events into AvaClaw
   - You want webhook helper commands
 title: "webhooks"
 ---

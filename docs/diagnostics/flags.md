@@ -57,7 +57,7 @@ AVACLAW_DIAGNOSTICS=0
 Flags emit logs into the standard diagnostics log file. By default:
 
 ```
-/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log
+/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log
 ```
 
 If you set `logging.file`, use that path instead. Logs are JSONL (one JSON object per line). Redaction still applies based on `logging.redactSensitive`.
@@ -67,13 +67,13 @@ If you set `logging.file`, use that path instead. Logs are JSONL (one JSON objec
 Pick the latest log file:
 
 ```bash
-ls -t /tmp/avadisabelle/ava-claw-*.log | head -n 1
+ls -t /tmp/avadisabelle/avaclaw-*.log | head -n 1
 ```
 
 Filter for Telegram HTTP diagnostics:
 
 ```bash
-rg "telegram http error" /tmp/avadisabelle/ava-claw-*.log
+rg "telegram http error" /tmp/avadisabelle/avaclaw-*.log
 ```
 
 Or tail while reproducing:

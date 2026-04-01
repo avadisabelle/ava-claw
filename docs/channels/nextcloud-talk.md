@@ -16,7 +16,7 @@ Nextcloud Talk ships as a plugin and is not bundled with the core install.
 Install via CLI (npm registry):
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-nextcloud-talk
+avaclaw plugins install ava-claw-nextcloud-talk
 ```
 
 Local checkout (when running from a git repo):
@@ -26,7 +26,7 @@ avaclaw plugins install ./extensions/nextcloud-talk
 ```
 
 If you choose Nextcloud Talk during configure/onboarding and a git checkout is detected,
-Ava-Claw will offer the local install path automatically.
+AvaClaw will offer the local install path automatically.
 
 Details: [Plugins](/tools/plugin)
 
@@ -36,11 +36,11 @@ Details: [Plugins](/tools/plugin)
 2. On your Nextcloud server, create a bot:
 
    ```bash
-   ./occ talk:bot:install "Ava-Claw" "<shared-secret>" "<webhook-url>" --feature reaction
+   ./occ talk:bot:install "AvaClaw" "<shared-secret>" "<webhook-url>" --feature reaction
    ```
 
 3. Enable the bot in the target room settings.
-4. Configure Ava-Claw:
+4. Configure AvaClaw:
    - Config: `channels.nextcloud-talk.baseUrl` + `channels.nextcloud-talk.botSecret`
    - Or env: `NEXTCLOUD_TALK_BOT_SECRET` (default account only)
 5. Restart the gateway (or finish onboarding).

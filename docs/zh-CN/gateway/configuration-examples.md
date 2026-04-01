@@ -1,9 +1,9 @@
 ---
 read_when:
-  - 学习如何配置 Ava-Claw
+  - 学习如何配置 AvaClaw
   - 寻找配置示例
-  - 首次设置 Ava-Claw
-summary: 符合模式的常见 Ava-Claw 设置配置示例
+  - 首次设置 AvaClaw
+summary: 符合模式的常见 AvaClaw 设置配置示例
 title: 配置示例
 x-i18n:
   generated_at: "2026-02-03T07:48:39Z"
@@ -29,7 +29,7 @@ x-i18n:
 }
 ```
 
-保存到 `~/.avadisabelle/ava-claw.json`，你就可以从该号码私信机器人了。
+保存到 `~/.avaclaw/avaclaw.json`，你就可以从该号码私信机器人了。
 
 ### 推荐的入门配置
 
@@ -96,7 +96,7 @@ x-i18n:
   // 日志
   logging: {
     level: "info",
-    file: "/tmp/avadisabelle/ava-claw.log",
+    file: "/tmp/avadisabelle/avaclaw.log",
     consoleLevel: "info",
     consoleStyle: "pretty",
     redactSensitive: "tools",

@@ -39,7 +39,7 @@ Defaults:
 
 ## API key
 
-Set `OPENAI_API_KEY`, or configure it in `~/.avadisabelle/ava-claw.json`:
+Set `OPENAI_API_KEY`, or configure it in `~/.avaclaw/avaclaw.json`:
 
 ```json5
 {

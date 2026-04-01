@@ -1,15 +1,15 @@
 ---
 title: Fly.io
-description: Deploy Ava-Claw on Fly.io
-summary: "Step-by-step Fly.io deployment for Ava-Claw with persistent storage and HTTPS"
+description: Deploy AvaClaw on Fly.io
+summary: "Step-by-step Fly.io deployment for AvaClaw with persistent storage and HTTPS"
 read_when:
-  - Deploying Ava-Claw on Fly.io
+  - Deploying AvaClaw on Fly.io
   - Setting up Fly volumes, secrets, and first-run config
 ---
 
 # Fly.io Deployment
 
-**Goal:** Ava-Claw Gateway running on a [Fly.io](https://fly.io) machine with persistent storage, automatic HTTPS, and Discord/channel access.
+**Goal:** AvaClaw Gateway running on a [Fly.io](https://fly.io) machine with persistent storage, automatic HTTPS, and Discord/channel access.
 
 ## What you need
 

@@ -18,10 +18,15 @@ export function resolveIsNixMode(env: NodeJS.ProcessEnv = process.env): boolean 
 export const isNixMode = resolveIsNixMode();
 
 // Support historical (and occasionally misspelled) legacy state dirs.
-const LEGACY_STATE_DIRNAMES = [".clawdbot", ".moldbot", ".moltbot"] as const;
+const LEGACY_STATE_DIRNAMES = [".clawdbot", ".moldbot", ".moltbot", ".openclaw"] as const;
 const NEW_STATE_DIRNAME = ".avaclaw";
 const CONFIG_FILENAME = "avaclaw.json";
-const LEGACY_CONFIG_FILENAMES = ["clawdbot.json", "moldbot.json", "moltbot.json"] as const;
+const LEGACY_CONFIG_FILENAMES = [
+  "clawdbot.json",
+  "moldbot.json",
+  "moltbot.json",
+  "openclaw.json",
+] as const;
 
 function resolveDefaultHomeDir(): string {
   return resolveRequiredHomeDir(process.env, os.homedir);
@@ -101,7 +106,7 @@ export const STATE_DIR = resolveStateDir();
 /**
  * Config file path (JSON5).
  * Can be overridden via AVACLAW_CONFIG_PATH.
- * Default: ~/.avadisabelle/ava-claw.json (or $AVACLAW_STATE_DIR/avaclaw.json)
+ * Default: ~/.avaclaw/avaclaw.json (or $AVACLAW_STATE_DIR/avaclaw.json)
  */
 export function resolveCanonicalConfigPath(
   env: NodeJS.ProcessEnv = process.env,

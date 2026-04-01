@@ -1,7 +1,7 @@
 ---
 summary: "LINE Messaging API plugin setup, config, and usage"
 read_when:
-  - You want to connect Ava-Claw to LINE
+  - You want to connect AvaClaw to LINE
   - You need LINE webhook + credential setup
   - You want LINE-specific message options
 title: LINE
@@ -9,7 +9,7 @@ title: LINE
 
 # LINE (plugin)
 
-LINE connects to Ava-Claw via the LINE Messaging API. The plugin runs as a webhook
+LINE connects to AvaClaw via the LINE Messaging API. The plugin runs as a webhook
 receiver on the gateway and uses your channel access token + channel secret for
 authentication.
 
@@ -22,7 +22,7 @@ are not supported.
 Install the LINE plugin:
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-line
+avaclaw plugins install ava-claw-line
 ```
 
 Local checkout (when running from a git repo):
@@ -50,7 +50,7 @@ If you need a custom path, set `channels.line.webhookPath` or
 
 Security note:
 
-- LINE signature verification is body-dependent (HMAC over the raw body), so Ava-Claw applies strict pre-auth body limits and timeout before verification.
+- LINE signature verification is body-dependent (HMAC over the raw body), so AvaClaw applies strict pre-auth body limits and timeout before verification.
 
 ## Configure
 

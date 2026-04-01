@@ -11,7 +11,7 @@ Manage Docker-based sandbox containers for isolated agent execution.
 
 ## Overview
 
-Ava-Claw can run agents in isolated Docker containers for security. The `sandbox` commands help you manage these containers, especially after updates or configuration changes.
+AvaClaw can run agents in isolated Docker containers for security. The `sandbox` commands help you manage these containers, especially after updates or configuration changes.
 
 ## Commands
 
@@ -121,7 +121,7 @@ Gateway’s container naming and avoids mismatches when scope/session keys chang
 
 ## Configuration
 
-Sandbox settings live in `~/.avadisabelle/ava-claw.json` under `agents.defaults.sandbox` (per-agent overrides go in `agents.list[].sandbox`):
+Sandbox settings live in `~/.avaclaw/avaclaw.json` under `agents.defaults.sandbox` (per-agent overrides go in `agents.list[].sandbox`):
 
 ```jsonc
 {

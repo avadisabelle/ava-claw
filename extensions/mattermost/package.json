@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-mattermost",
+  "name": "ava-claw-mattermost",
   "version": "2026.3.14",
   "description": "AvaClaw Mattermost channel plugin",
   "type": "module",
@@ -7,7 +7,7 @@
     "ws": "^8.19.0",
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -21,7 +21,7 @@
       "order": 65
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-mattermost",
+      "npmSpec": "ava-claw-mattermost",
       "localPath": "extensions/mattermost",
       "defaultChoice": "npm"
     }

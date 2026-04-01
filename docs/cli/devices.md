@@ -42,7 +42,7 @@ avaclaw devices clear --yes --pending --json
 
 ### `avaclaw devices approve [requestId] [--latest]`
 
-Approve a pending device pairing request. If `requestId` is omitted, Ava-Claw
+Approve a pending device pairing request. If `requestId` is omitted, AvaClaw
 automatically approves the most recent pending request.
 
 ```

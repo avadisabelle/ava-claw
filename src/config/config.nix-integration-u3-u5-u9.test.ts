@@ -70,7 +70,7 @@ describe("Nix integration (U3, U5, U9)", () => {
       ).toBe(path.join(path.resolve(customHome), ".avaclaw"));
     });
 
-    it("CONFIG_PATH defaults to AVACLAW_HOME/.avadisabelle/ava-claw.json", () => {
+    it("CONFIG_PATH defaults to AVACLAW_HOME/.avaclaw/avaclaw.json", () => {
       const customHome = path.join(path.sep, "custom", "home");
       expect(
         resolveConfigPathCandidate(
@@ -83,7 +83,7 @@ describe("Nix integration (U3, U5, U9)", () => {
       ).toBe(path.join(path.resolve(customHome), ".avaclaw", "avaclaw.json"));
     });
 
-    it("CONFIG_PATH defaults to ~/.avadisabelle/ava-claw.json when env not set", () => {
+    it("CONFIG_PATH defaults to ~/.avaclaw/avaclaw.json when env not set", () => {
       expect(
         resolveConfigPathCandidate(
           envWith({ AVACLAW_CONFIG_PATH: undefined, AVACLAW_STATE_DIR: undefined }),

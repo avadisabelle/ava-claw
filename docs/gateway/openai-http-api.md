@@ -7,7 +7,7 @@ title: "OpenAI Chat Completions"
 
 # OpenAI Chat Completions (HTTP)
 
-Ava-Claw’s Gateway can serve a small OpenAI-compatible Chat Completions endpoint.
+AvaClaw’s Gateway can serve a small OpenAI-compatible Chat Completions endpoint.
 
 This endpoint is **disabled by default**. Enable it in config first.
 
@@ -35,7 +35,7 @@ Treat this endpoint as a **full operator-access** surface for the gateway instan
 - HTTP bearer auth here is not a narrow per-user scope model.
 - A valid Gateway token/password for this endpoint should be treated like an owner/operator credential.
 - Requests run through the same control-plane agent path as trusted operator actions.
-- There is no separate non-owner/per-user tool boundary on this endpoint; once a caller passes Gateway auth here, Ava-Claw treats that caller as a trusted operator for this gateway.
+- There is no separate non-owner/per-user tool boundary on this endpoint; once a caller passes Gateway auth here, AvaClaw treats that caller as a trusted operator for this gateway.
 - If the target agent policy allows sensitive tools, this endpoint can use them.
 - Keep this endpoint on loopback/tailnet/private ingress only; do not expose it directly to the public internet.
 
@@ -48,7 +48,7 @@ No custom headers required: encode the agent id in the OpenAI `model` field:
 - `model: "avaclaw:<agentId>"` (example: `"avaclaw:main"`, `"avaclaw:beta"`)
 - `model: "agent:<agentId>"` (alias)
 
-Or target a specific Ava-Claw agent by header:
+Or target a specific AvaClaw agent by header:
 
 - `x-avaclaw-agent-id: <agentId>` (default: `main`)
 

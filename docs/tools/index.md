@@ -1,14 +1,14 @@
 ---
-summary: "Agent tool surface for Ava-Claw (browser, canvas, nodes, message, cron) replacing legacy `avaclaw-*` skills"
+summary: "Agent tool surface for AvaClaw (browser, canvas, nodes, message, cron) replacing legacy `avaclaw-*` skills"
 read_when:
   - Adding or modifying agent tools
   - Retiring or changing `avaclaw-*` skills
 title: "Tools"
 ---
 
-# Tools (Ava-Claw)
+# Tools (AvaClaw)
 
-Ava-Claw exposes **first-class agent tools** for browser, canvas, nodes, and cron.
+AvaClaw exposes **first-class agent tools** for browser, canvas, nodes, and cron.
 These replace the old `avaclaw-*` skills: the tools are typed, no shelling,
 and the agent should rely on them directly.
 
@@ -27,7 +27,7 @@ Notes:
 
 - Matching is case-insensitive.
 - `*` wildcards are supported (`"*"` means all tools).
-- If `tools.allow` only references unknown or unloaded plugin tool names, Ava-Claw logs a warning and ignores the allowlist so core tools stay available.
+- If `tools.allow` only references unknown or unloaded plugin tool names, AvaClaw logs a warning and ignores the allowlist so core tools stay available.
 
 ## Tool profiles (base allowlist)
 
@@ -151,7 +151,7 @@ Available groups:
 - `group:automation`: `cron`, `gateway`
 - `group:messaging`: `message`
 - `group:nodes`: `nodes`
-- `group:avaclaw`: all built-in Ava-Claw tools (excludes provider plugins)
+- `group:avaclaw`: all built-in AvaClaw tools (excludes provider plugins)
 
 Example (allow only file tools + browser):
 
@@ -227,7 +227,7 @@ Notes:
 
 ### `loop-detection` (tool-call loop guardrails)
 
-Ava-Claw tracks recent tool-call history and blocks or warns when it detects repetitive no-progress loops.
+AvaClaw tracks recent tool-call history and blocks or warns when it detects repetitive no-progress loops.
 Enable with `tools.loopDetection.enabled: true` (default is `false`).
 
 ```json5
@@ -291,7 +291,7 @@ Notes:
 
 ### `browser`
 
-Control the dedicated Ava-Claw-managed browser.
+Control the dedicated AvaClaw-managed browser.
 
 Core actions:
 
@@ -316,7 +316,7 @@ Common parameters:
   Notes:
 - Requires `browser.enabled=true` (default is `true`; set `false` to disable).
 - All actions accept optional `profile` parameter for multi-instance support.
-- Omit `profile` for the safe default: isolated Ava-Claw-managed browser (`avaclaw`).
+- Omit `profile` for the safe default: isolated AvaClaw-managed browser (`avaclaw`).
 - Use `profile="user"` for the real local host browser when existing logins/cookies matter and the user is present to click/approve any attach prompt.
 - Use `profile="chrome-relay"` only for the Chrome extension / toolbar-button attach flow.
 - `profile="user"` and `profile="chrome-relay"` are host-only; do not combine them with sandbox/node targets.
@@ -496,7 +496,7 @@ Notes:
   - Supports one-shot mode (`mode: "run"`) and persistent thread-bound mode (`mode: "session"` with `thread: true`).
   - If `thread: true` and `mode` is omitted, mode defaults to `session`.
   - `mode: "session"` requires `thread: true`.
-  - If `runTimeoutSeconds` is omitted, Ava-Claw uses `agents.defaults.subagents.runTimeoutSeconds` when set; otherwise timeout defaults to `0` (no timeout).
+  - If `runTimeoutSeconds` is omitted, AvaClaw uses `agents.defaults.subagents.runTimeoutSeconds` when set; otherwise timeout defaults to `0` (no timeout).
   - Discord thread-bound flows depend on `session.threadBindings.*` and `channels.discord.threadBindings.*`.
   - Reply format includes `Status`, `Result`, and compact stats.
   - `Result` is the assistant completion text; if missing, the latest `toolResult` is used as fallback.
@@ -508,7 +508,7 @@ Notes:
 - ACP `streamTo: "parent"` responses may include `streamLogPath` (session-scoped `*.acp-stream.jsonl`) for tailing progress history.
 - `sessions_send` runs a reply‑back ping‑pong (reply `REPLY_SKIP` to stop; max turns via `session.agentToAgent.maxPingPongTurns`, 0–5).
 - After the ping‑pong, the target agent runs an **announce step**; reply `ANNOUNCE_SKIP` to suppress the announcement.
-- Sandbox clamp: when the current session is sandboxed and `agents.defaults.sandbox.sessionToolsVisibility: "spawned"`, Ava-Claw clamps `tools.sessions.visibility` to `tree`.
+- Sandbox clamp: when the current session is sandboxed and `agents.defaults.sandbox.sessionToolsVisibility: "spawned"`, AvaClaw clamps `tools.sessions.visibility` to `tree`.
 
 ### `agents_list`
 

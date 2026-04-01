@@ -1,19 +1,19 @@
 ---
-summary: "Ava-Claw on Oracle Cloud (Always Free ARM)"
+summary: "AvaClaw on Oracle Cloud (Always Free ARM)"
 read_when:
-  - Setting up Ava-Claw on Oracle Cloud
-  - Looking for low-cost VPS hosting for Ava-Claw
-  - Want 24/7 Ava-Claw on a small server
+  - Setting up AvaClaw on Oracle Cloud
+  - Looking for low-cost VPS hosting for AvaClaw
+  - Want 24/7 AvaClaw on a small server
 title: "Oracle Cloud"
 ---
 
-# Ava-Claw on Oracle Cloud (OCI)
+# AvaClaw on Oracle Cloud (OCI)
 
 ## Goal
 
-Run a persistent Ava-Claw Gateway on Oracle Cloud's **Always Free** ARM tier.
+Run a persistent AvaClaw Gateway on Oracle Cloud's **Always Free** ARM tier.
 
-Oracle’s free tier can be a great fit for Ava-Claw (especially if you already have an OCI account), but it comes with tradeoffs:
+Oracle’s free tier can be a great fit for AvaClaw (especially if you already have an OCI account), but it comes with tradeoffs:
 
 - ARM architecture (most things work, but some binaries may be x86-only)
 - Capacity and signup can be finicky
@@ -96,7 +96,7 @@ tailscale status
 
 **From now on, connect via Tailscale:** `ssh ubuntu@avaclaw` (or use the Tailscale IP).
 
-## 5) Install Ava-Claw
+## 5) Install AvaClaw
 
 ```bash
 curl -fsSL https://avaclaw.ai/install.sh | bash

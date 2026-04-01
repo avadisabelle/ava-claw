@@ -9,7 +9,7 @@ title: "Discovery and Transports"
 
 # Discovery & transports
 
-Ava-Claw has two distinct problems that look similar on the surface:
+AvaClaw has two distinct problems that look similar on the surface:
 
 1. **Operator remote control**: the macOS menu bar app controlling a gateway running elsewhere.
 2. **Node pairing**: iOS/Android (and future nodes) finding a gateway and pairing securely.
@@ -78,7 +78,7 @@ Security notes:
 Disable/override:
 
 - `AVACLAW_DISABLE_BONJOUR=1` disables advertising.
-- `gateway.bind` in `~/.avadisabelle/ava-claw.json` controls the Gateway bind mode.
+- `gateway.bind` in `~/.avaclaw/avaclaw.json` controls the Gateway bind mode.
 - `AVACLAW_SSH_PORT` overrides the SSH port advertised in TXT (defaults to 22).
 - `AVACLAW_TAILNET_DNS` publishes a `tailnetDns` hint (MagicDNS).
 - `AVACLAW_CLI_PATH` overrides the advertised CLI path.

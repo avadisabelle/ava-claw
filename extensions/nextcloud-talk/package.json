@@ -1,12 +1,12 @@
 {
-  "name": "@avadisabelle/ava-claw-nextcloud-talk",
+  "name": "ava-claw-nextcloud-talk",
   "version": "2026.3.14",
   "description": "AvaClaw Nextcloud Talk channel plugin",
   "type": "module",
   "dependencies": {
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -25,7 +25,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-nextcloud-talk",
+      "npmSpec": "ava-claw-nextcloud-talk",
       "localPath": "extensions/nextcloud-talk",
       "defaultChoice": "npm"
     }

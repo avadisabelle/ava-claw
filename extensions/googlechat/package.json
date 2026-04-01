@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-googlechat",
+  "name": "ava-claw-googlechat",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Google Chat channel plugin",
@@ -8,14 +8,14 @@
     "google-auth-library": "^10.6.1"
   },
   "peerDependencies": {
-    "@avadisabelle/ava-claw": ">=2026.3.11"
+    "ava-claw": ">=2026.3.11"
   },
   "peerDependenciesMeta": {
     "ava-claw": {
       "optional": true
     }
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -34,7 +34,7 @@
       "order": 55
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-googlechat",
+      "npmSpec": "ava-claw-googlechat",
       "localPath": "extensions/googlechat",
       "defaultChoice": "npm"
     },

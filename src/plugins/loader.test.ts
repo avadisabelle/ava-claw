@@ -545,7 +545,7 @@ describe("loadAvaClawPlugins", () => {
   it("preserves package.json metadata for bundled memory plugins", () => {
     const registry = loadBundledMemoryPluginRegistry({
       packageMeta: {
-        name: "@avadisabelle/ava-claw-memory-core",
+        name: "ava-claw-memory-core",
         version: "1.2.3",
         description: "Memory plugin package",
       },

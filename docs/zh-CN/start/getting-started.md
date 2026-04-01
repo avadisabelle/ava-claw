@@ -166,7 +166,7 @@ avaclaw pairing approve whatsapp <code>
 
 ## 从源代码（开发）
 
-如果你正在开发 Ava-Claw 本身，从源代码运行：
+如果你正在开发 AvaClaw 本身，从源代码运行：
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
@@ -190,7 +190,7 @@ node avaclaw.mjs gateway --port 18789 --verbose
 在新终端中，发送测试消息：
 
 ```bash
-avaclaw message send --target +15555550123 --message "Hello from Ava-Claw"
+avaclaw message send --target +15555550123 --message "Hello from AvaClaw"
 ```
 
 如果 `avaclaw health` 显示"未配置认证"，回到向导设置 OAuth/密钥认证——没有它智能体将无法响应。

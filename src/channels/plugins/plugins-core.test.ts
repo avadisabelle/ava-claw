@@ -112,7 +112,7 @@ describe("channel plugin registry", () => {
 describe("channel plugin catalog", () => {
   it("includes Microsoft Teams", () => {
     const entry = getChannelPluginCatalogEntry("msteams");
-    expect(entry?.install.npmSpec).toBe("@avadisabelle/ava-claw-msteams");
+    expect(entry?.install.npmSpec).toBe("ava-claw-msteams");
     expect(entry?.meta.aliases).toContain("teams");
   });
 
@@ -129,7 +129,7 @@ describe("channel plugin catalog", () => {
       JSON.stringify({
         entries: [
           {
-            name: "@avadisabelle/ava-claw-demo-channel",
+            name: "ava-claw-demo-channel",
             avaclaw: {
               channel: {
                 id: "demo-channel",
@@ -140,7 +140,7 @@ describe("channel plugin catalog", () => {
                 order: 999,
               },
               install: {
-                npmSpec: "@avadisabelle/ava-claw-demo-channel",
+                npmSpec: "ava-claw-demo-channel",
               },
             },
           },
@@ -206,7 +206,7 @@ describe("channel plugin catalog", () => {
       JSON.stringify({
         entries: [
           {
-            name: "@avadisabelle/ava-claw-env-demo-channel",
+            name: "ava-claw-env-demo-channel",
             avaclaw: {
               channel: {
                 id: "env-demo-channel",
@@ -217,7 +217,7 @@ describe("channel plugin catalog", () => {
                 order: 1000,
               },
               install: {
-                npmSpec: "@avadisabelle/ava-claw-env-demo-channel",
+                npmSpec: "ava-claw-env-demo-channel",
               },
             },
           },
@@ -245,7 +245,7 @@ describe("channel plugin catalog", () => {
       JSON.stringify({
         entries: [
           {
-            name: "@avadisabelle/ava-claw-default-env-demo",
+            name: "ava-claw-default-env-demo",
             avaclaw: {
               channel: {
                 id: "default-env-demo",
@@ -255,7 +255,7 @@ describe("channel plugin catalog", () => {
                 blurb: "Default env demo entry",
               },
               install: {
-                npmSpec: "@avadisabelle/ava-claw-default-env-demo",
+                npmSpec: "ava-claw-default-env-demo",
               },
             },
           },

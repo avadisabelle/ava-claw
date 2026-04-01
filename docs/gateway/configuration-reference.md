@@ -1,7 +1,7 @@
 ---
 title: "Configuration Reference"
-description: "Complete field-by-field reference for ~/.avadisabelle/ava-claw.json"
-summary: "Complete reference for every Ava-Claw config key, defaults, and channel settings"
+description: "Complete field-by-field reference for ~/.avaclaw/avaclaw.json"
+summary: "Complete reference for every AvaClaw config key, defaults, and channel settings"
 read_when:
   - You need exact field-level config semantics or defaults
   - You are validating channel, model, gateway, or tool config blocks
@@ -9,9 +9,9 @@ read_when:
 
 # Configuration Reference
 
-Every field available in `~/.avadisabelle/ava-claw.json`. For a task-oriented overview, see [Configuration](/gateway/configuration).
+Every field available in `~/.avaclaw/avaclaw.json`. For a task-oriented overview, see [Configuration](/gateway/configuration).
 
-Config format is **JSON5** (comments + trailing commas allowed). All fields are optional — Ava-Claw uses safe defaults when omitted.
+Config format is **JSON5** (comments + trailing commas allowed). All fields are optional — AvaClaw uses safe defaults when omitted.
 
 ---
 
@@ -320,7 +320,7 @@ WhatsApp runs through the gateway's web channel (Baileys Web). It starts automat
 - `channels.discord.ui.components.accentColor` sets the accent color for Discord components v2 containers.
 - `channels.discord.voice` enables Discord voice channel conversations and optional auto-join + TTS overrides.
 - `channels.discord.voice.daveEncryption` and `channels.discord.voice.decryptionFailureTolerance` pass through to `@discordjs/voice` DAVE options (`true` and `24` by default).
-- Ava-Claw additionally attempts voice receive recovery by leaving/rejoining a voice session after repeated decrypt failures.
+- AvaClaw additionally attempts voice receive recovery by leaving/rejoining a voice session after repeated decrypt failures.
 - `channels.discord.streaming` is the canonical stream mode key. Legacy `streamMode` and boolean `streaming` values are auto-migrated.
 - `channels.discord.autoPresence` maps runtime availability to bot presence (healthy => online, degraded => idle, exhausted => dnd) and allows optional status text overrides.
 - `channels.discord.dangerouslyAllowNameMatching` re-enables mutable name/tag matching (break-glass compatibility mode).
@@ -441,7 +441,7 @@ WhatsApp runs through the gateway's web channel (Baileys Web). It starts automat
 
 ### Mattermost
 
-Mattermost ships as a plugin: `avaclaw plugins install @avadisabelle/ava-claw-mattermost`.
+Mattermost ships as a plugin: `avaclaw plugins install ava-claw-mattermost`.
 
 ```json5
 {
@@ -472,7 +472,7 @@ Chat modes: `oncall` (respond on @-mention, default), `onmessage` (every message
 When Mattermost native commands are enabled:
 
 - `commands.callbackPath` must be a path (for example `/api/channels/mattermost/command`), not a full URL.
-- `commands.callbackUrl` must resolve to the Ava-Claw gateway endpoint and be reachable from the Mattermost server.
+- `commands.callbackUrl` must resolve to the AvaClaw gateway endpoint and be reachable from the Mattermost server.
 - For private/tailnet/internal callback hosts, Mattermost may require
   `ServiceSettings.AllowedUntrustedInternalConnections` to include the callback host/domain.
   Use host/domain values, not full URLs.
@@ -528,7 +528,7 @@ BlueBubbles is the recommended iMessage path (plugin-backed, configured under `c
 
 ### iMessage
 
-Ava-Claw spawns `imsg rpc` (JSON-RPC over stdio). No daemon or port required.
+AvaClaw spawns `imsg rpc` (JSON-RPC over stdio). No daemon or port required.
 
 ```json5
 {
@@ -644,7 +644,7 @@ Run multiple accounts per channel (each with its own `accountId`):
 - Env tokens only apply to the **default** account.
 - Base channel settings apply to all accounts unless overridden per account.
 - Use `bindings[].match.accountId` to route each account to a different agent.
-- If you add a non-default account via `avaclaw channels add` (or channel onboarding) while still on a single-account top-level channel config, Ava-Claw moves account-scoped top-level single-account values into `channels.<channel>.accounts.default` first so the original account keeps working.
+- If you add a non-default account via `avaclaw channels add` (or channel onboarding) while still on a single-account top-level channel config, AvaClaw moves account-scoped top-level single-account values into `channels.<channel>.accounts.default` first so the original account keeps working.
 - Existing channel-only bindings (no `accountId`) keep matching the default account; account-scoped bindings remain optional.
 - `avaclaw doctor --fix` also repairs mixed shapes by moving account-scoped top-level single-account values into `accounts.default` when named accounts exist but `default` is missing.
 
@@ -770,7 +770,7 @@ Default: `~/.avaclaw/workspace`.
 
 ### `agents.defaults.repoRoot`
 
-Optional repository root shown in the system prompt's Runtime line. If unset, Ava-Claw auto-detects by walking upward from the workspace.
+Optional repository root shown in the system prompt's Runtime line. If unset, AvaClaw auto-detects by walking upward from the workspace.
 
 ```json5
 {
@@ -904,7 +904,7 @@ Time format in system prompt. Default: `auto` (OS preference).
   - If omitted, the PDF tool falls back to `imageModel`, then to best-effort provider defaults.
 - `pdfMaxBytesMb`: default PDF size limit for the `pdf` tool when `maxBytesMb` is not passed at call time.
 - `pdfMaxPages`: default maximum pages considered by extraction fallback mode in the `pdf` tool.
-- `model.primary`: format `provider/model` (e.g. `anthropic/claude-opus-4-6`). If you omit the provider, Ava-Claw assumes `anthropic` (deprecated).
+- `model.primary`: format `provider/model` (e.g. `anthropic/claude-opus-4-6`). If you omit the provider, AvaClaw assumes `anthropic` (deprecated).
 - `models`: the configured model catalog and allowlist for `/model`. Each entry can include `alias` (shortcut) and `params` (provider-specific, for example `temperature`, `maxTokens`, `cacheRetention`, `context1m`).
 - `params` merge precedence (config): `agents.defaults.models["provider/model"].params` is the base, then `agents.list[].params` (matching agent id) overrides by key.
 - Config writers that mutate these fields (for example `/models set`, `/models set-image`, and fallback add/remove commands) save canonical object form and preserve existing fallback lists when possible.
@@ -1024,7 +1024,7 @@ Periodic heartbeat runs.
 ```
 
 - `mode`: `default` or `safeguard` (chunked summarization for long histories). See [Compaction](/concepts/compaction).
-- `timeoutSeconds`: maximum seconds allowed for a single compaction operation before Ava-Claw aborts it. Default: `900`.
+- `timeoutSeconds`: maximum seconds allowed for a single compaction operation before AvaClaw aborts it. Default: `900`.
 - `identifierPolicy`: `strict` (default), `off`, or `custom`. `strict` prepends built-in opaque identifier retention guidance during compaction summarization.
 - `identifierInstructions`: optional custom identifier-preservation text used when `identifierPolicy=custom`.
 - `postCompactionSections`: optional AGENTS.md H2/H3 section names to re-inject after compaction. Defaults to `["Session Startup", "Red Lines"]`; set `[]` to disable reinjection. When unset or explicitly set to that default pair, older `Every Session`/`Safety` headings are also accepted as a legacy fallback.
@@ -1222,7 +1222,7 @@ Optional **Docker sandboxing** for the embedded agent. See [Sandboxing](/gateway
 **`docker.binds`** mounts additional host directories; global and per-agent binds are merged.
 
 **Sandboxed browser** (`sandbox.browser.enabled`): Chromium + CDP in a container. noVNC URL injected into system prompt. Does not require `browser.enabled` in `avaclaw.json`.
-noVNC observer access uses VNC auth by default and Ava-Claw emits a short-lived token URL (instead of exposing the password in the shared URL).
+noVNC observer access uses VNC auth by default and AvaClaw emits a short-lived token URL (instead of exposing the password in the shared URL).
 
 - `allowHostControl: false` (default) blocks sandboxed sessions from targeting the host browser.
 - `network` defaults to `avaclaw-sandbox-browser` (dedicated bridge network). Set to `bridge` only when you explicitly want global bridge connectivity.
@@ -1362,7 +1362,7 @@ Run multiple isolated agents inside one Gateway. See [Multi-Agent](/concepts/mul
 
 Within each tier, the first matching `bindings` entry wins.
 
-For `type: "acp"` entries, Ava-Claw resolves by exact conversation identity (`match.channel` + account + `match.peer.id`) and does not use the route binding tier order above.
+For `type: "acp"` entries, AvaClaw resolves by exact conversation identity (`match.channel` + account + `match.peer.id`) and does not use the route binding tier order above.
 
 ### Per-agent access profiles
 
@@ -1521,7 +1521,7 @@ See [Multi-Agent Sandbox & Tools](/tools/multi-agent-sandbox-tools) for preceden
 - **`reset`**: primary reset policy. `daily` resets at `atHour` local time; `idle` resets after `idleMinutes`. When both configured, whichever expires first wins.
 - **`resetByType`**: per-type overrides (`direct`, `group`, `thread`). Legacy `dm` accepted as alias for `direct`.
 - **`parentForkMaxTokens`**: max parent-session `totalTokens` allowed when creating a forked thread session (default `100000`).
-  - If parent `totalTokens` is above this value, Ava-Claw starts a fresh thread session instead of inheriting parent transcript history.
+  - If parent `totalTokens` is above this value, AvaClaw starts a fresh thread session instead of inheriting parent transcript history.
   - Set `0` to disable this guard and always allow parent forking.
 - **`mainKey`**: legacy field. Runtime now always uses `"main"` for the main direct-chat bucket.
 - **`sendPolicy`**: match by `channel`, `chatType` (`direct|group|channel`, with legacy `dm` alias), `keyPrefix`, or `rawKeyPrefix`. First deny wins.
@@ -1648,7 +1648,7 @@ Batches rapid text-only messages from the same sender into a single agent turn. 
 - `modelOverrides` is enabled by default; `modelOverrides.allowProvider` defaults to `false` (opt-in).
 - API keys fall back to `ELEVENLABS_API_KEY`/`XI_API_KEY` and `OPENAI_API_KEY`.
 - `openai.baseUrl` overrides the OpenAI TTS endpoint. Resolution order is config, then `OPENAI_TTS_BASE_URL`, then `https://api.openai.com/v1`.
-- When `openai.baseUrl` points to a non-OpenAI endpoint, Ava-Claw treats it as an OpenAI-compatible TTS server and relaxes model/voice validation.
+- When `openai.baseUrl` points to a non-OpenAI endpoint, AvaClaw treats it as an OpenAI-compatible TTS server and relaxes model/voice validation.
 
 ---
 
@@ -1984,7 +1984,7 @@ Notes:
 
 ## Custom providers and base URLs
 
-Ava-Claw uses the pi-coding-agent model catalog. Add custom providers via `models.providers` in config or `~/.avaclaw/agents/<agentId>/agent/models.json`.
+AvaClaw uses the pi-coding-agent model catalog. Add custom providers via `models.providers` in config or `~/.avaclaw/agents/<agentId>/agent/models.json`.
 
 ```json5
 {
@@ -2036,7 +2036,7 @@ Ava-Claw uses the pi-coding-agent model catalog. Add custom providers via `model
 - `models.providers.*.baseUrl`: upstream API base URL.
 - `models.providers.*.headers`: extra static headers for proxy/tenant routing.
 - `models.providers.*.models`: explicit provider model catalog entries.
-- `models.providers.*.models.*.compat.supportsDeveloperRole`: optional compatibility hint. For `api: "openai-completions"` with a non-empty non-native `baseUrl` (host not `api.openai.com`), Ava-Claw forces this to `false` at runtime. Empty/omitted `baseUrl` keeps default OpenAI behavior.
+- `models.providers.*.models.*.compat.supportsDeveloperRole`: optional compatibility hint. For `api: "openai-completions"` with a non-empty non-native `baseUrl` (host not `api.openai.com`), AvaClaw forces this to `false` at runtime. Empty/omitted `baseUrl` keeps default OpenAI behavior.
 - `models.bedrockDiscovery`: Bedrock auto-discovery settings root.
 - `models.bedrockDiscovery.enabled`: turn discovery polling on/off.
 - `models.bedrockDiscovery.region`: AWS region for discovery.
@@ -2323,14 +2323,14 @@ See [Local Models](/gateway/local-models). TL;DR: run MiniMax M2.5 via LM Studio
 ```
 
 - Loaded from `~/.avaclaw/extensions`, `<workspace>/.avaclaw/extensions`, plus `plugins.load.paths`.
-- Discovery accepts native Ava-Claw plugins plus compatible Codex bundles and Claude bundles, including manifestless Claude default-layout bundles.
+- Discovery accepts native AvaClaw plugins plus compatible Codex bundles and Claude bundles, including manifestless Claude default-layout bundles.
 - **Config changes require a gateway restart.**
 - `allow`: optional allowlist (only listed plugins load). `deny` wins.
 - `plugins.entries.<id>.apiKey`: plugin-level API key convenience field (when supported by the plugin).
 - `plugins.entries.<id>.env`: plugin-scoped env var map.
 - `plugins.entries.<id>.hooks.allowPromptInjection`: when `false`, core blocks `before_prompt_build` and ignores prompt-mutating fields from legacy `before_agent_start`, while preserving legacy `modelOverride` and `providerOverride`. Applies to native plugin hooks and supported bundle-provided hook directories.
-- `plugins.entries.<id>.config`: plugin-defined config object (validated by native Ava-Claw plugin schema when available).
-- Enabled Claude bundle plugins can also contribute embedded Pi defaults from `settings.json`; Ava-Claw applies those as sanitized agent settings, not as raw Ava-Claw config patches.
+- `plugins.entries.<id>.config`: plugin-defined config object (validated by native AvaClaw plugin schema when available).
+- Enabled Claude bundle plugins can also contribute embedded Pi defaults from `settings.json`; AvaClaw applies those as sanitized agent settings, not as raw AvaClaw config patches.
 - `plugins.slots.memory`: pick the active memory plugin id, or `"none"` to disable memory plugins.
 - `plugins.slots.contextEngine`: pick the active context engine plugin id; defaults to `"legacy"` unless you install and select another engine.
 - `plugins.installs`: CLI-managed install metadata used by `avaclaw plugins update`.
@@ -2393,7 +2393,7 @@ See [Plugins](/tools/plugin).
   ui: {
     seamColor: "#FF4500",
     assistant: {
-      name: "Ava-Claw",
+      name: "AvaClaw",
       avatar: "CB", // emoji, short text, image URL, or data URI
     },
   },
@@ -2821,7 +2821,7 @@ Notes:
 {
   logging: {
     level: "info",
-    file: "/tmp/avadisabelle/ava-claw.log",
+    file: "/tmp/avadisabelle/avaclaw.log",
     consoleLevel: "info",
     consoleStyle: "pretty", // pretty | compact | json
     redactSensitive: "tools", // off | tools
@@ -2830,7 +2830,7 @@ Notes:
 }
 ```
 
-- Default log file: `/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log`.
+- Default log file: `/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log`.
 - Set `logging.file` for a stable path.
 - `consoleLevel` bumps to `debug` when `--verbose`.
 
@@ -2850,7 +2850,7 @@ Notes:
 
 - `cli.banner.taglineMode` controls banner tagline style:
   - `"random"` (default): rotating funny/seasonal taglines.
-  - `"default"`: fixed neutral tagline (`All your chats, one Ava-Claw.`).
+  - `"default"`: fixed neutral tagline (`All your chats, one AvaClaw.`).
   - `"off"`: no tagline text (banner title/version still shown).
 - To hide the entire banner (not just taglines), set env `AVACLAW_HIDE_BANNER=1`.
 
@@ -2988,7 +2988,7 @@ Template placeholders expanded in `tools.media.models[].args`:
 Split config into multiple files:
 
 ```json5
-// ~/.avadisabelle/ava-claw.json
+// ~/.avaclaw/avaclaw.json
 {
   gateway: { port: 18789 },
   agents: { $include: "./agents.json5" },

@@ -173,8 +173,8 @@ export function collectReleasePackageMetadataErrors(pkg: PackageJson): string[] 
   );
   const errors: string[] = [];
 
-  if (pkg.name !== "@avadisabelle/ava-claw") {
-    errors.push(`package.json name must be "@avadisabelle/ava-claw"; found "${pkg.name ?? ""}".`);
+  if (pkg.name !== "ava-claw") {
+    errors.push(`package.json name must be "ava-claw"; found "${pkg.name ?? ""}".`);
   }
   if (!pkg.description?.trim()) {
     errors.push("package.json description must be non-empty.");
@@ -189,9 +189,9 @@ export function collectReleasePackageMetadataErrors(pkg: PackageJson): string[] 
       }.`,
     );
   }
-  if (pkg.bin?.["ava-claw"] !== "avaclaw.mjs") {
+  if (pkg.bin?.["avaclaw"] !== "avaclaw.mjs") {
     errors.push(
-      `package.json bin["ava-claw"] must be "avaclaw.mjs"; found "${pkg.bin?.["ava-claw"] ?? ""}".`,
+      `package.json bin["avaclaw"] must be "avaclaw.mjs"; found "${pkg.bin?.["avaclaw"] ?? ""}".`,
     );
   }
   if (pkg.peerDependencies?.["node-llama-cpp"] !== "3.16.2") {

@@ -7,7 +7,7 @@ read_when:
 
 # BOOT.md
 
-<!-- Startup tasks for ava-claw hooks (enable hooks.internal.enabled).
+<!-- Startup tasks for avaclaw hooks (enable hooks.internal.enabled).
      If a task sends a message, use the message tool and then reply NO_REPLY.
 
      Example tasks:

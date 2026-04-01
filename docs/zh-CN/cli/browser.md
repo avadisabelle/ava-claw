@@ -16,7 +16,7 @@ x-i18n:
 
 # `avaclaw browser`
 
-管理 Ava-Claw 的浏览器控制服务器并运行浏览器操作（标签页、快照、截图、导航、点击、输入）。
+管理 AvaClaw 的浏览器控制服务器并运行浏览器操作（标签页、快照、截图、导航、点击、输入）。
 
 相关：
 
@@ -44,7 +44,7 @@ avaclaw browser --browser-profile avaclaw snapshot
 
 配置文件是命名的浏览器路由配置。实际上：
 
-- `avaclaw`：启动/附加到专用的 Ava-Claw 管理的 Chrome 实例（隔离的用户数据目录）。
+- `avaclaw`：启动/附加到专用的 AvaClaw 管理的 Chrome 实例（隔离的用户数据目录）。
 - `chrome`：通过 Chrome 扩展中继控制你现有的 Chrome 标签页。
 
 ```bash

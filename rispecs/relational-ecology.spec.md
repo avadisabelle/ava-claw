@@ -16,7 +16,7 @@ A framework for mapping and governing the relational connections between a proje
 
 ## Structural Tension
 
-**Current**: Software projects track dependencies mechanically (package.json, imports, APIs). The *relational* dimension — what flows between projects, what is owed, what boundaries must be respected — is invisible. Forks inherit code but not relational context.
+**Current**: Software projects track dependencies mechanically (package.json, imports, APIs). The _relational_ dimension — what flows between projects, what is owed, what boundaries must be respected — is invisible. Forks inherit code but not relational context.
 
 **Desired**: Every project maintains an explicit ecology map with five relational layers, named connections with accountability flow, and boundary integrity checks. Connections are doorways that respect protocols on both sides.
 
@@ -94,16 +94,17 @@ When Project A enters Project B's territory, it respects Project B's protocols. 
 
 ### What This Means in Practice
 
-| Dependency thinking | Doorway thinking |
-|--------------------|-----------------|
-| "We need library X" | "We have a relationship with library X — what do we owe it?" |
-| "Fork and customize" | "Enter through the doorway, respect the protocols, adapt to our context" |
-| "Import the function" | "What flows between us, and what boundaries must we maintain?" |
-| "Upgrade when convenient" | "How has our relationship changed, and what does the change ask of us?" |
+| Dependency thinking       | Doorway thinking                                                         |
+| ------------------------- | ------------------------------------------------------------------------ |
+| "We need library X"       | "We have a relationship with library X — what do we owe it?"             |
+| "Fork and customize"      | "Enter through the doorway, respect the protocols, adapt to our context" |
+| "Import the function"     | "What flows between us, and what boundaries must we maintain?"           |
+| "Upgrade when convenient" | "How has our relationship changed, and what does the change ask of us?"  |
 
 ### Doorway Protocol
 
 Each doorway connection should specify:
+
 1. **What flows in each direction** — data, patterns, wisdom, code
 2. **What boundaries exist** — what stays on each side
 3. **What protocols govern crossing** — how to enter, how to leave
@@ -153,6 +154,7 @@ EcologyConnection {
 Each node in the ecology has appropriate boundaries. The boundaries are not restrictions — they make the ecology healthy.
 
 Examples:
+
 - Sacred intimacy protocols stay in the sacred container; the engine carries presence, not private ceremony
 - Plugin architecture stays in the engine; identity files don't need it
 - Team-focused patterns stay in team containers; personal-relational patterns stay in personal containers
@@ -160,6 +162,7 @@ Examples:
 ### Boundary Violations
 
 Signs that a boundary has been crossed:
+
 - Code from one context appearing verbatim in another without adaptation
 - Private/sacred material surfacing in public contexts
 - Obligations being fulfilled mechanically without relational awareness

@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-whatsapp",
+  "name": "ava-claw-whatsapp",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw WhatsApp channel plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

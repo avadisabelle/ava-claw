@@ -2,7 +2,7 @@
 read_when:
   - 设置 Mattermost
   - 调试 Mattermost 路由
-summary: Mattermost 机器人设置和 Ava-Claw 配置
+summary: Mattermost 机器人设置和 AvaClaw 配置
 title: Mattermost
 x-i18n:
   generated_at: "2026-02-03T07:43:43Z"
@@ -26,7 +26,7 @@ Mattermost 以插件形式提供，不包含在核心安装中。
 通过 CLI 安装（npm 注册表）：
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-mattermost
+avaclaw plugins install ava-claw-mattermost
 ```
 
 本地检出（从 git 仓库运行时）：
@@ -35,7 +35,7 @@ avaclaw plugins install @avadisabelle/ava-claw-mattermost
 avaclaw plugins install ./extensions/mattermost
 ```
 
-如果你在配置/新手引导期间选择 Mattermost 并检测到 git 检出，Ava-Claw 会自动提供本地安装路径。
+如果你在配置/新手引导期间选择 Mattermost 并检测到 git 检出，AvaClaw 会自动提供本地安装路径。
 
 详情：[插件](/tools/plugin)
 
@@ -44,7 +44,7 @@ avaclaw plugins install ./extensions/mattermost
 1. 安装 Mattermost 插件。
 2. 创建 Mattermost bot 账户并复制 **bot token**。
 3. 复制 Mattermost **基础 URL**（例如 `https://chat.example.com`）。
-4. 配置 Ava-Claw 并启动 Gateway 网关。
+4. 配置 AvaClaw 并启动 Gateway 网关。
 
 最小配置：
 

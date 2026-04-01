@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-matrix",
+  "name": "ava-claw-matrix",
   "version": "2026.3.14",
   "description": "AvaClaw Matrix channel plugin",
   "type": "module",
@@ -11,7 +11,7 @@
     "music-metadata": "^11.12.3",
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -26,7 +26,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-matrix",
+      "npmSpec": "ava-claw-matrix",
       "localPath": "extensions/matrix",
       "defaultChoice": "npm"
     },

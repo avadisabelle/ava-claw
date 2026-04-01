@@ -8,7 +8,7 @@ title: "Skills"
 
 # Skills (macOS)
 
-The macOS app surfaces Ava-Claw skills via the gateway; it does not parse skills locally.
+The macOS app surfaces AvaClaw skills via the gateway; it does not parse skills locally.
 
 ## Data source
 
@@ -25,7 +25,7 @@ The macOS app surfaces Ava-Claw skills via the gateway; it does not parse skills
 
 ## Env/API keys
 
-- The app stores keys in `~/.avadisabelle/ava-claw.json` under `skills.entries.<skillKey>`.
+- The app stores keys in `~/.avaclaw/avaclaw.json` under `skills.entries.<skillKey>`.
 - `skills.update` patches `enabled`, `apiKey`, and `env`.
 
 ## Remote mode

@@ -1,4 +1,4 @@
-# @avadisabelle/ava-claw-nostr
+# ava-claw-nostr
 
 Nostr DM channel plugin for AvaClaw using NIP-04 encrypted direct messages.
 
@@ -13,7 +13,7 @@ This extension adds Nostr as a messaging channel to AvaClaw. It enables your bot
 ## Installation
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-nostr
+avaclaw plugins install ava-claw-nostr
 ```
 
 ## Quick Setup

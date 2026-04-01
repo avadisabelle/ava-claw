@@ -1,9 +1,9 @@
 {
-  "name": "@avadisabelle/ava-claw-discord",
+  "name": "ava-claw-discord",
   "version": "2026.3.14",
   "description": "AvaClaw Discord channel plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

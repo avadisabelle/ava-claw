@@ -294,8 +294,8 @@
 ## Release Auth
 
 - Core `avaclaw` publish uses GitHub trusted publishing; do not use `NPM_TOKEN` or the plugin OTP flow for core releases.
-- Separate `@avadisabelle/ava-claw-*` plugin publishes use a different maintainer-only auth flow.
-- Plugin scope: only publish already-on-npm `@avadisabelle/ava-claw-*` plugins. Bundled disk-tree-only plugins stay out.
+- Separate `ava-claw-*` plugin publishes use a different maintainer-only auth flow.
+- Plugin scope: only publish already-on-npm `ava-claw-*` plugins. Bundled disk-tree-only plugins stay out.
 - Maintainers: private 1Password item names, tmux rules, plugin publish helpers, and local mac signing/notary setup live in the private [maintainer release docs](https://github.com/avaclaw/maintainers/blob/main/release/README.md).
 
 ## Changelog Release Notes

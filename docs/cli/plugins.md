@@ -30,10 +30,10 @@ avaclaw plugins update <id>
 avaclaw plugins update --all
 ```
 
-Bundled plugins ship with Ava-Claw but start disabled. Use `plugins enable` to
+Bundled plugins ship with AvaClaw but start disabled. Use `plugins enable` to
 activate them.
 
-Native Ava-Claw plugins must ship `avaclaw.plugin.json` with an inline JSON
+Native AvaClaw plugins must ship `avaclaw.plugin.json` with an inline JSON
 Schema (`configSchema`, even if empty). Compatible bundles use their own bundle
 manifests instead.
 
@@ -55,19 +55,19 @@ Npm specs are **registry-only** (package name + optional **exact version** or
 installs run with `--ignore-scripts` for safety.
 
 Bare specs and `@latest` stay on the stable track. If npm resolves either of
-those to a prerelease, Ava-Claw stops and asks you to opt in explicitly with a
+those to a prerelease, AvaClaw stops and asks you to opt in explicitly with a
 prerelease tag such as `@beta`/`@rc` or an exact prerelease version such as
 `@1.2.3-beta.4`.
 
-If a bare install spec matches a bundled plugin id (for example `diffs`), Ava-Claw
+If a bare install spec matches a bundled plugin id (for example `diffs`), AvaClaw
 installs the bundled plugin directly. To install an npm package with the same
 name, use an explicit scoped spec (for example `@scope/diffs`).
 
 Supported archives: `.zip`, `.tgz`, `.tar.gz`, `.tar`.
 
-For local paths and archives, Ava-Claw auto-detects:
+For local paths and archives, AvaClaw auto-detects:
 
-- native Ava-Claw plugins (`avaclaw.plugin.json`)
+- native AvaClaw plugins (`avaclaw.plugin.json`)
 - Codex-compatible bundles (`.codex-plugin/plugin.json`)
 - Claude-compatible bundles (`.claude-plugin/plugin.json` or the default Claude
   component layout)
@@ -117,5 +117,5 @@ avaclaw plugins update <id> --dry-run
 Updates only apply to plugins installed from npm (tracked in `plugins.installs`).
 
 When a stored integrity hash exists and the fetched artifact hash changes,
-Ava-Claw prints a warning and asks for confirmation before proceeding. Use
+AvaClaw prints a warning and asks for confirmation before proceeding. Use
 global `--yes` to bypass prompts in CI/non-interactive runs.

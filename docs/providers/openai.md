@@ -1,7 +1,7 @@
 ---
-summary: "Use OpenAI via API keys or Codex subscription in Ava-Claw"
+summary: "Use OpenAI via API keys or Codex subscription in AvaClaw"
 read_when:
-  - You want to use OpenAI models in Ava-Claw
+  - You want to use OpenAI models in AvaClaw
   - You want Codex subscription auth instead of API keys
 title: "OpenAI"
 ---
@@ -10,7 +10,7 @@ title: "OpenAI"
 
 OpenAI provides developer APIs for GPT models. Codex supports **ChatGPT sign-in** for subscription
 access or **API key** sign-in for usage-based access. Codex cloud requires ChatGPT sign-in.
-OpenAI explicitly supports subscription OAuth usage in external tools/workflows like Ava-Claw.
+OpenAI explicitly supports subscription OAuth usage in external tools/workflows like AvaClaw.
 
 ## Option A: OpenAI API key (OpenAI Platform)
 
@@ -35,13 +35,13 @@ avaclaw onboard --openai-api-key "$OPENAI_API_KEY"
 ```
 
 OpenAI's current API model docs list `gpt-5.4` and `gpt-5.4-pro` for direct
-OpenAI API usage. Ava-Claw forwards both through the `openai/*` Responses path.
-Ava-Claw intentionally suppresses the stale `openai/gpt-5.3-codex-spark` row,
+OpenAI API usage. AvaClaw forwards both through the `openai/*` Responses path.
+AvaClaw intentionally suppresses the stale `openai/gpt-5.3-codex-spark` row,
 because direct OpenAI API calls reject it in live traffic.
 
-Ava-Claw does **not** expose `openai/gpt-5.3-codex-spark` on the direct OpenAI
+AvaClaw does **not** expose `openai/gpt-5.3-codex-spark` on the direct OpenAI
 API path. `pi-ai` still ships a built-in row for that model, but live OpenAI API
-requests currently reject it. Spark is treated as Codex-only in Ava-Claw.
+requests currently reject it. Spark is treated as Codex-only in AvaClaw.
 
 ## Option B: OpenAI Code (Codex) subscription
 
@@ -66,24 +66,24 @@ avaclaw models auth login --provider openai-codex
 }
 ```
 
-OpenAI's current Codex docs list `gpt-5.4` as the current Codex model. Ava-Claw
+OpenAI's current Codex docs list `gpt-5.4` as the current Codex model. AvaClaw
 maps that to `openai-codex/gpt-5.4` for ChatGPT/Codex OAuth usage.
 
-If your Codex account is entitled to Codex Spark, Ava-Claw also supports:
+If your Codex account is entitled to Codex Spark, AvaClaw also supports:
 
 - `openai-codex/gpt-5.3-codex-spark`
 
-Ava-Claw treats Codex Spark as Codex-only. It does not expose a direct
+AvaClaw treats Codex Spark as Codex-only. It does not expose a direct
 `openai/gpt-5.3-codex-spark` API-key path.
 
-Ava-Claw also preserves `openai-codex/gpt-5.3-codex-spark` when `pi-ai`
+AvaClaw also preserves `openai-codex/gpt-5.3-codex-spark` when `pi-ai`
 discovers it. Treat it as entitlement-dependent and experimental: Codex Spark is
 separate from GPT-5.4 `/fast`, and availability depends on the signed-in Codex /
 ChatGPT account.
 
 ### Transport default
 
-Ava-Claw uses `pi-ai` for model streaming. For both `openai/*` and
+AvaClaw uses `pi-ai` for model streaming. For both `openai/*` and
 `openai-codex/*`, default transport is `"auto"` (WebSocket-first, then SSE
 fallback).
 
@@ -93,7 +93,7 @@ You can set `agents.defaults.models.<provider/model>.params.transport`:
 - `"websocket"`: force WebSocket
 - `"auto"`: try WebSocket, then fall back to SSE
 
-For `openai/*` (Responses API), Ava-Claw also enables WebSocket warm-up by
+For `openai/*` (Responses API), AvaClaw also enables WebSocket warm-up by
 default (`openaiWsWarmup: true`) when WebSocket transport is used.
 
 Related OpenAI docs:
@@ -120,7 +120,7 @@ Related OpenAI docs:
 
 ### OpenAI WebSocket warm-up
 
-OpenAI docs describe warm-up as optional. Ava-Claw enables it by default for
+OpenAI docs describe warm-up as optional. AvaClaw enables it by default for
 `openai/*` to reduce first-turn latency when using WebSocket transport.
 
 ### Disable warm-up
@@ -162,7 +162,7 @@ OpenAI docs describe warm-up as optional. Ava-Claw enables it by default for
 ### OpenAI priority processing
 
 OpenAI's API exposes priority processing via `service_tier=priority`. In
-Ava-Claw, set `agents.defaults.models["openai/<model>"].params.serviceTier` to
+AvaClaw, set `agents.defaults.models["openai/<model>"].params.serviceTier` to
 pass that field through on direct `openai/*` Responses requests.
 
 ```json5
@@ -185,13 +185,13 @@ Supported values are `auto`, `default`, `flex`, and `priority`.
 
 ### OpenAI fast mode
 
-Ava-Claw exposes a shared fast-mode toggle for both `openai/*` and
+AvaClaw exposes a shared fast-mode toggle for both `openai/*` and
 `openai-codex/*` sessions:
 
 - Chat/UI: `/fast status|on|off`
 - Config: `agents.defaults.models["<provider>/<model>"].params.fastMode`
 
-When fast mode is enabled, Ava-Claw applies a low-latency OpenAI profile:
+When fast mode is enabled, AvaClaw applies a low-latency OpenAI profile:
 
 - `reasoning.effort = "low"` when the payload does not already specify reasoning
 - `text.verbosity = "low"` when the payload does not already specify verbosity
@@ -226,7 +226,7 @@ returns the session to the configured default.
 ### OpenAI Responses server-side compaction
 
 For direct OpenAI Responses models (`openai/*` using `api: "openai-responses"` with
-`baseUrl` on `api.openai.com`), Ava-Claw now auto-enables OpenAI server-side
+`baseUrl` on `api.openai.com`), AvaClaw now auto-enables OpenAI server-side
 compaction payload hints:
 
 - Forces `store: true` (unless model compat sets `supportsStore: false`)

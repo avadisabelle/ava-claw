@@ -1,6 +1,6 @@
 # 🌄 West — Living & Embodying
 
-*Where plans become practice*
+_Where plans become practice_
 
 ---
 
@@ -28,7 +28,7 @@ Example: `260321-agent-system-integration-log.md`
 
 Before placing anything here, ask:
 
-> *Am I embodying the intention, or just executing the plan? What is the work teaching me?*
+> _Am I embodying the intention, or just executing the plan? What is the work teaching me?_
 
 ## Connection to Fleet
 

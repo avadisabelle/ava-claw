@@ -34,7 +34,7 @@ function createIoForHome(home: string, env: NodeJS.ProcessEnv = {} as NodeJS.Pro
 }
 
 describe("config io paths", () => {
-  it("uses ~/.avadisabelle/ava-claw.json when config exists", async () => {
+  it("uses ~/.avaclaw/avaclaw.json when config exists", async () => {
     await withTempHome(async (home) => {
       const configPath = await writeConfig(home, ".avaclaw", 19001);
       const io = createIoForHome(home);
@@ -43,7 +43,7 @@ describe("config io paths", () => {
     });
   });
 
-  it("defaults to ~/.avadisabelle/ava-claw.json when config is missing", async () => {
+  it("defaults to ~/.avaclaw/avaclaw.json when config is missing", async () => {
     await withTempHome(async (home) => {
       const io = createIoForHome(home);
       expect(io.configPath).toBe(path.join(home, ".avaclaw", "avaclaw.json"));

@@ -29,7 +29,7 @@ spec:
             - sh
             - -c
             - |
-              cp /config/avaclaw.json /home/node/.avadisabelle/ava-claw.json
+              cp /config/avaclaw.json /home/node/.avaclaw/avaclaw.json
               mkdir -p /home/node/.avaclaw/workspace
               cp /config/AGENTS.md /home/node/.avaclaw/workspace/AGENTS.md
           securityContext:

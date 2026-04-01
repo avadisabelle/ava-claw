@@ -58,7 +58,7 @@ avaclaw agents set-identity --workspace ~/.avaclaw/workspace --from-identity
 显式覆盖字段：
 
 ```bash
-avaclaw agents set-identity --agent main --name "Ava-Claw" --emoji "🦞" --avatar avatars/avaclaw.png
+avaclaw agents set-identity --agent main --name "AvaClaw" --emoji "🦞" --avatar avatars/avaclaw.png
 ```
 
 配置示例：
@@ -70,7 +70,7 @@ avaclaw agents set-identity --agent main --name "Ava-Claw" --emoji "🦞" --avat
       {
         id: "main",
         identity: {
-          name: "Ava-Claw",
+          name: "AvaClaw",
           theme: "space lobster",
           emoji: "🦞",
           avatar: "avatars/avaclaw.png",

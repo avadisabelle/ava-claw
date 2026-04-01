@@ -95,7 +95,7 @@ Prefer `pnpm` for builds from source. Bun is optional for running TypeScript dir
 
 ```bash
 git clone https://github.com/avadisabelle/ava-claw.git
-cd avaclaw
+cd ava-claw
 
 pnpm install
 pnpm ui:build # auto-installs UI deps on first run
@@ -317,7 +317,7 @@ Runbook: [iOS connect](https://docs.avaclaw.ai/platforms/ios).
 
 ## Configuration
 
-Minimal `~/.avadisabelle/ava-claw.json` (model + defaults):
+Minimal `~/.avaclaw/avaclaw.json` (model + defaults):
 
 ```json5
 {

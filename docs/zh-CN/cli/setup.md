@@ -15,7 +15,7 @@ x-i18n:
 
 # `avaclaw setup`
 
-初始化 `~/.avadisabelle/ava-claw.json` 和智能体工作区。
+初始化 `~/.avaclaw/avaclaw.json` 和智能体工作区。
 
 相关内容：
 

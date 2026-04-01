@@ -1,5 +1,5 @@
 ---
-summary: "What the Ava-Claw system prompt contains and how it is assembled"
+summary: "What the AvaClaw system prompt contains and how it is assembled"
 read_when:
   - Editing system prompt text, tools list, or time/heartbeat sections
   - Changing workspace bootstrap or skills injection behavior
@@ -8,9 +8,9 @@ title: "System Prompt"
 
 # System Prompt
 
-Ava-Claw builds a custom system prompt for every agent run. The prompt is **Ava-Claw-owned** and does not use the pi-coding-agent default prompt.
+AvaClaw builds a custom system prompt for every agent run. The prompt is **AvaClaw-owned** and does not use the pi-coding-agent default prompt.
 
-The prompt is assembled by Ava-Claw and injected into each agent run.
+The prompt is assembled by AvaClaw and injected into each agent run.
 
 ## Structure
 
@@ -19,9 +19,9 @@ The prompt is intentionally compact and uses fixed sections:
 - **Tooling**: current tool list + short descriptions.
 - **Safety**: short guardrail reminder to avoid power-seeking behavior or bypassing oversight.
 - **Skills** (when available): tells the model how to load skill instructions on demand.
-- **Ava-Claw Self-Update**: how to run `config.apply` and `update.run`.
+- **AvaClaw Self-Update**: how to run `config.apply` and `update.run`.
 - **Workspace**: working directory (`agents.defaults.workspace`).
-- **Documentation**: local path to Ava-Claw docs (repo or npm package) and when to read them.
+- **Documentation**: local path to AvaClaw docs (repo or npm package) and when to read them.
 - **Workspace Files (injected)**: indicates bootstrap files are included below.
 - **Sandbox** (when enabled): indicates sandboxed runtime, sandbox paths, and whether elevated exec is available.
 - **Current Date & Time**: user-local time, timezone, and time format.
@@ -34,11 +34,11 @@ Safety guardrails in the system prompt are advisory. They guide model behavior b
 
 ## Prompt modes
 
-Ava-Claw can render smaller system prompts for sub-agents. The runtime sets a
+AvaClaw can render smaller system prompts for sub-agents. The runtime sets a
 `promptMode` for each run (not a user-facing config):
 
 - `full` (default): includes all sections above.
-- `minimal`: used for sub-agents; omits **Skills**, **Memory Recall**, **Ava-Claw
+- `minimal`: used for sub-agents; omits **Skills**, **Memory Recall**, **AvaClaw
   Self-Update**, **Model Aliases**, **User Identity**, **Reply Tags**,
   **Messaging**, **Silent Replies**, and **Heartbeats**. Tooling, **Safety**,
   Workspace, Sandbox, Current Date & Time (when known), Runtime, and injected
@@ -74,7 +74,7 @@ Large files are truncated with a marker. The max per-file size is controlled by
 `agents.defaults.bootstrapMaxChars` (default: 20000). Total injected bootstrap
 content across files is capped by `agents.defaults.bootstrapTotalMaxChars`
 (default: 150000). Missing files inject a short missing-file marker. When truncation
-occurs, Ava-Claw can inject a warning block in Project Context; control this with
+occurs, AvaClaw can inject a warning block in Project Context; control this with
 `agents.defaults.bootstrapPromptTruncationWarning` (`off`, `once`, `always`;
 default: `once`).
 
@@ -104,7 +104,7 @@ See [Date & Time](/date-time) for full behavior details.
 
 ## Skills
 
-When eligible skills exist, Ava-Claw injects a compact **available skills list**
+When eligible skills exist, AvaClaw injects a compact **available skills list**
 (`formatSkillsForPrompt`) that includes the **file path** for each skill. The
 prompt instructs the model to use `read` to load the SKILL.md at the listed
 location (workspace, managed, or bundled). If no skills are eligible, the
@@ -125,8 +125,8 @@ This keeps the base prompt small while still enabling targeted skill usage.
 ## Documentation
 
 When available, the system prompt includes a **Documentation** section that points to the
-local Ava-Claw docs directory (either `docs/` in the repo workspace or the bundled npm
+local AvaClaw docs directory (either `docs/` in the repo workspace or the bundled npm
 package docs) and also notes the public mirror, source repo, community Discord, and
 ClawHub ([https://clawhub.com](https://clawhub.com)) for skills discovery. The prompt instructs the model to consult local docs first
-for Ava-Claw behavior, commands, configuration, or architecture, and to run
+for AvaClaw behavior, commands, configuration, or architecture, and to run
 `avaclaw status` itself when possible (asking the user only when it lacks access).

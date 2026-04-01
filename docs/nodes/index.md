@@ -57,9 +57,9 @@ forwards `exec` calls to the **node host** when `host=node` is selected.
 Approval note:
 
 - Approval-backed node runs bind exact request context.
-- For direct shell/runtime file executions, Ava-Claw also best-effort binds one concrete local
+- For direct shell/runtime file executions, AvaClaw also best-effort binds one concrete local
   file operand and denies the run if that file changes before execution.
-- If Ava-Claw cannot identify exactly one concrete local file for an interpreter/runtime command,
+- If AvaClaw cannot identify exactly one concrete local file for an interpreter/runtime command,
   approval-backed execution is denied instead of pretending full runtime coverage. Use sandboxing,
   separate hosts, or an explicit trusted allowlist/full workflow for broader interpreter semantics.
 
@@ -266,7 +266,7 @@ Android nodes can expose `sms.send` when the user grants **SMS** permission and 
 Low-level invoke:
 
 ```bash
-avaclaw nodes invoke --node <idOrNameOrIp> --command sms.send --params '{"to":"+15555550123","message":"Hello from Ava-Claw"}'
+avaclaw nodes invoke --node <idOrNameOrIp> --command sms.send --params '{"to":"+15555550123","message":"Hello from AvaClaw"}'
 ```
 
 Notes:
@@ -358,7 +358,7 @@ Nodes may include a `permissions` map in `node.list` / `node.describe`, keyed by
 
 ## Headless node host (cross-platform)
 
-Ava-Claw can run a **headless node host** (no UI) that connects to the Gateway
+AvaClaw can run a **headless node host** (no UI) that connects to the Gateway
 WebSocket and exposes `system.run` / `system.which`. This is useful on Linux/Windows
 or for running a minimal node alongside a server.
 

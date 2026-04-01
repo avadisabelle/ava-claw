@@ -1,8 +1,8 @@
 ---
 read_when:
-  - 你正在将 Ava-Claw 迁移到新的笔记本电脑/服务器
+  - 你正在将 AvaClaw 迁移到新的笔记本电脑/服务器
   - 你想保留会话、认证和渠道登录（WhatsApp 等）
-summary: 将 Ava-Claw 安装从一台机器迁移到另一台
+summary: 将 AvaClaw 安装从一台机器迁移到另一台
 title: 迁移指南
 x-i18n:
   generated_at: "2026-02-03T07:49:55Z"
@@ -13,9 +13,9 @@ x-i18n:
   workflow: 15
 ---
 
-# 将 Ava-Claw 迁移到新机器
+# 将 AvaClaw 迁移到新机器
 
-本指南将 Ava-Claw Gateway 网关从一台机器迁移到另一台，**无需重新进行新手引导**。
+本指南将 AvaClaw Gateway 网关从一台机器迁移到另一台，**无需重新进行新手引导**。
 
 迁移在概念上很简单：
 
@@ -94,7 +94,7 @@ tar -czf avaclaw-workspace.tgz .avaclaw/workspace
 
 如果你有多个配置文件/状态目录（例如 `~/.avaclaw-main`、`~/.avaclaw-work`），分别归档每个。
 
-### 步骤 1 — 在新机器上安装 Ava-Claw
+### 步骤 1 — 在新机器上安装 AvaClaw
 
 在**新**机器上，安装 CLI（如果需要还有 Node）：
 
@@ -196,4 +196,4 @@ avaclaw doctor
 
 - [Doctor](/gateway/doctor)
 - [Gateway 网关故障排除](/gateway/troubleshooting)
-- [Ava-Claw 在哪里存储数据？](/help/faq#where-does-avaclaw-store-its-data)
+- [AvaClaw 在哪里存储数据？](/help/faq#where-does-avaclaw-store-its-data)

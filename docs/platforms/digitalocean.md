@@ -1,16 +1,16 @@
 ---
-summary: "Ava-Claw on DigitalOcean (simple paid VPS option)"
+summary: "AvaClaw on DigitalOcean (simple paid VPS option)"
 read_when:
-  - Setting up Ava-Claw on DigitalOcean
-  - Looking for cheap VPS hosting for Ava-Claw
+  - Setting up AvaClaw on DigitalOcean
+  - Looking for cheap VPS hosting for AvaClaw
 title: "DigitalOcean"
 ---
 
-# Ava-Claw on DigitalOcean
+# AvaClaw on DigitalOcean
 
 ## Goal
 
-Run a persistent Ava-Claw Gateway on DigitalOcean for **$6/month** (or $4/mo with reserved pricing).
+Run a persistent AvaClaw Gateway on DigitalOcean for **$6/month** (or $4/mo with reserved pricing).
 
 If you want a $0/month option and don’t mind ARM + provider-specific setup, see the [Oracle Cloud guide](/platforms/oracle).
 
@@ -60,7 +60,7 @@ Use a clean base image (Ubuntu 24.04 LTS). Avoid third-party Marketplace 1-click
 ssh root@YOUR_DROPLET_IP
 ```
 
-## 3) Install Ava-Claw
+## 3) Install AvaClaw
 
 ```bash
 # Update system
@@ -70,7 +70,7 @@ apt update && apt upgrade -y
 curl -fsSL https://deb.nodesource.com/setup_24.x | bash -
 apt install -y nodejs
 
-# Install Ava-Claw
+# Install AvaClaw
 curl -fsSL https://avaclaw.ai/install.sh | bash
 
 # Verify

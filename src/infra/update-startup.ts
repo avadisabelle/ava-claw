@@ -265,7 +265,7 @@ async function runAutoUpdateCommand(params: {
     }
   }
   if (argv.length === 0) {
-    argv.push("ava-claw", ...baseArgs);
+    argv.push("avaclaw", ...baseArgs);
   }
 
   try {

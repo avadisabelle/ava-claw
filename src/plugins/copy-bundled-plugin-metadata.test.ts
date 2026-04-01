@@ -51,7 +51,7 @@ describe("copyBundledPluginMetadata", () => {
       skills: ["./skills"],
     });
     writeJson(path.join(pluginDir, "package.json"), {
-      name: "@avadisabelle/ava-claw-acpx",
+      name: "ava-claw-acpx",
       avaclaw: { extensions: ["./index.ts"] },
     });
 
@@ -111,7 +111,7 @@ describe("copyBundledPluginMetadata", () => {
       skills: ["node_modules/@tloncorp/tlon-skill"],
     });
     writeJson(path.join(pluginDir, "package.json"), {
-      name: "@avadisabelle/ava-claw-tlon",
+      name: "ava-claw-tlon",
       avaclaw: { extensions: ["./index.ts"] },
     });
     const staleNodeModulesSkillDir = path.join(
@@ -162,7 +162,7 @@ describe("copyBundledPluginMetadata", () => {
       skills: ["node_modules/@tloncorp/tlon-skill"],
     });
     writeJson(path.join(pluginDir, "package.json"), {
-      name: "@avadisabelle/ava-claw-tlon",
+      name: "ava-claw-tlon",
       avaclaw: { extensions: ["./index.ts"] },
     });
     const staleBundledSkillDir = path.join(
@@ -221,7 +221,7 @@ describe("copyBundledPluginMetadata", () => {
       skills: ["./bundled-skills/@scope/skill"],
     });
     writeJson(path.join(repoRoot, "dist", "extensions", "removed-plugin", "package.json"), {
-      name: "@avadisabelle/ava-claw-removed-plugin",
+      name: "ava-claw-removed-plugin",
     });
     fs.mkdirSync(path.join(repoRoot, "extensions"), { recursive: true });
 

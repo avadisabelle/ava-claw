@@ -16,7 +16,7 @@ x-i18n:
 
 # 日志
 
-Ava-Claw 在两个地方记录日志：
+AvaClaw 在两个地方记录日志：
 
 - **文件日志**（JSON 行）由 Gateway 网关写入。
 - **控制台输出**显示在终端和控制 UI 中。
@@ -27,11 +27,11 @@ Ava-Claw 在两个地方记录日志：
 
 默认情况下，Gateway 网关在以下位置写入滚动日志文件：
 
-`/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log`
+`/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log`
 
 日期使用 Gateway 网关主机的本地时区。
 
-你可以在 `~/.avadisabelle/ava-claw.json` 中覆盖此设置：
+你可以在 `~/.avaclaw/avaclaw.json` 中覆盖此设置：
 
 ```json
 {
@@ -103,13 +103,13 @@ avaclaw channels logs --channel whatsapp
 
 ## 配置日志
 
-所有日志配置都在 `~/.avadisabelle/ava-claw.json` 的 `logging` 下。
+所有日志配置都在 `~/.avaclaw/avaclaw.json` 的 `logging` 下。
 
 ```json
 {
   "logging": {
     "level": "info",
-    "file": "/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log",
+    "file": "/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log",
     "consoleLevel": "info",
     "consoleStyle": "pretty",
     "redactSensitive": "tools",
@@ -152,7 +152,7 @@ avaclaw channels logs --channel whatsapp
 
 - **OpenTelemetry（OTel）**：追踪、指标和日志的数据模型 + SDK。
 - **OTLP**：用于将 OTel 数据导出到收集器/后端的线路协议。
-- Ava-Claw 目前通过 **OTLP/HTTP（protobuf）** 导出。
+- AvaClaw 目前通过 **OTLP/HTTP（protobuf）** 导出。
 
 ### 导出的信号
 

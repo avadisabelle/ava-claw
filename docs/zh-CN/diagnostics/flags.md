@@ -64,7 +64,7 @@ AVACLAW_DIAGNOSTICS=0
 标志将日志输出到标准诊断日志文件。默认位置：
 
 ```
-/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log
+/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log
 ```
 
 如果你设置了 `logging.file`，则使用该路径。日志为 JSONL 格式（每行一个 JSON 对象）。脱敏仍然根据 `logging.redactSensitive` 应用。
@@ -74,13 +74,13 @@ AVACLAW_DIAGNOSTICS=0
 选择最新的日志文件：
 
 ```bash
-ls -t /tmp/avadisabelle/ava-claw-*.log | head -n 1
+ls -t /tmp/avadisabelle/avaclaw-*.log | head -n 1
 ```
 
 过滤 Telegram HTTP 诊断：
 
 ```bash
-rg "telegram http error" /tmp/avadisabelle/ava-claw-*.log
+rg "telegram http error" /tmp/avadisabelle/avaclaw-*.log
 ```
 
 或在复现时使用 tail：

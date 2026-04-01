@@ -32,7 +32,7 @@ Trust model note:
 - Exec approvals reduce accidental execution risk, but are not a per-user auth boundary.
 - Approved node-host runs bind canonical execution context: canonical cwd, exact argv, env
   binding when present, and pinned executable path when applicable.
-- For shell scripts and direct interpreter/runtime file invocations, Ava-Claw also tries to bind
+- For shell scripts and direct interpreter/runtime file invocations, AvaClaw also tries to bind
   one concrete local file operand. If that bound file changes after approval but before execution,
   the run is denied instead of executing drifted content.
 - This file binding is intentionally best-effort, not a complete semantic model of every
@@ -274,7 +274,7 @@ Approval-backed interpreter/runtime runs are intentionally conservative:
   file snapshot.
 - Common package-manager wrapper forms that still resolve to one direct local file (for example
   `pnpm exec`, `pnpm node`, `npm exec`, `npx`) are unwrapped before binding.
-- If Ava-Claw cannot identify exactly one concrete local file for an interpreter/runtime command
+- If AvaClaw cannot identify exactly one concrete local file for an interpreter/runtime command
   (for example package scripts, eval forms, runtime-specific loader chains, or ambiguous multi-file
   forms), approval-backed execution is denied instead of claiming semantic coverage it does not
   have.
@@ -338,7 +338,7 @@ Discord and Telegram can also act as explicit exec approval clients with channel
 - Discord: `channels.discord.execApprovals.*`
 - Telegram: `channels.telegram.execApprovals.*`
 
-These clients are opt-in. If a channel does not have exec approvals enabled, Ava-Claw does not treat
+These clients are opt-in. If a channel does not have exec approvals enabled, AvaClaw does not treat
 that channel as an approval surface just because the conversation happened there.
 
 Shared behavior:
@@ -350,7 +350,7 @@ Shared behavior:
 
 Telegram defaults to approver DMs (`target: "dm"`). You can switch to `channel` or `both` when you
 want approval prompts to appear in the originating Telegram chat/topic as well. For Telegram forum
-topics, Ava-Claw preserves the topic for the approval prompt and the post-approval follow-up.
+topics, AvaClaw preserves the topic for the approval prompt and the post-approval follow-up.
 
 See:
 

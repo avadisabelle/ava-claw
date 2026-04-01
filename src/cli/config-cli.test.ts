@@ -434,12 +434,12 @@ describe("config cli", () => {
     it("handles config file path with home directory", async () => {
       const resolved: AvaClawConfig = { gateway: { port: 18789 } };
       const snapshot = buildSnapshot({ resolved, config: resolved });
-      snapshot.path = "/home/user/.avadisabelle/ava-claw.json";
+      snapshot.path = "/home/user/.avaclaw/avaclaw.json";
       mockReadConfigFileSnapshot.mockResolvedValueOnce(snapshot);
 
       await runConfigCommand(["config", "file"]);
 
-      expect(mockLog).toHaveBeenCalledWith("/home/user/.avadisabelle/ava-claw.json");
+      expect(mockLog).toHaveBeenCalledWith("/home/user/.avaclaw/avaclaw.json");
     });
   });
 });

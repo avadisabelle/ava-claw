@@ -1,8 +1,8 @@
 ---
-summary: "Use OpenRouter's unified API to access many models in Ava-Claw"
+summary: "Use OpenRouter's unified API to access many models in AvaClaw"
 read_when:
   - You want a single API key for many LLMs
-  - You want to run models via OpenRouter in Ava-Claw
+  - You want to run models via OpenRouter in AvaClaw
 title: "OpenRouter"
 ---
 

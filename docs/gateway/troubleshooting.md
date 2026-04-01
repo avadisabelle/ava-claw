@@ -169,7 +169,7 @@ Look for:
 
 Common signatures:
 
-- `Gateway start blocked: set gateway.mode=local` → local gateway mode is not enabled. Fix: set `gateway.mode="local"` in your config (or run `avaclaw configure`). If you are running Ava-Claw via Podman using the dedicated `avaclaw` user, the config lives at `~avaclaw/.avadisabelle/ava-claw.json`.
+- `Gateway start blocked: set gateway.mode=local` → local gateway mode is not enabled. Fix: set `gateway.mode="local"` in your config (or run `avaclaw configure`). If you are running AvaClaw via Podman using the dedicated `avaclaw` user, the config lives at `~avaclaw/.avaclaw/avaclaw.json`.
 - `refusing to bind gateway ... without auth` → non-loopback bind without token/password.
 - `another gateway instance is already listening` / `EADDRINUSE` → port conflict.
 

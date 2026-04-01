@@ -1,9 +1,9 @@
 ---
-summary: "Schema-accurate configuration examples for common Ava-Claw setups"
+summary: "Schema-accurate configuration examples for common AvaClaw setups"
 read_when:
-  - Learning how to configure Ava-Claw
+  - Learning how to configure AvaClaw
   - Looking for configuration examples
-  - Setting up Ava-Claw for the first time
+  - Setting up AvaClaw for the first time
 title: "Configuration Examples"
 ---
 
@@ -22,7 +22,7 @@ Examples below are aligned with the current config schema. For the exhaustive re
 }
 ```
 
-Save to `~/.avadisabelle/ava-claw.json` and you can DM the bot from that number.
+Save to `~/.avaclaw/avaclaw.json` and you can DM the bot from that number.
 
 ### Recommended starter
 
@@ -93,7 +93,7 @@ Save to `~/.avadisabelle/ava-claw.json` and you can DM the bot from that number.
   // Logging
   logging: {
     level: "info",
-    file: "/tmp/avadisabelle/ava-claw.log",
+    file: "/tmp/avadisabelle/avaclaw.log",
     consoleLevel: "info",
     consoleStyle: "pretty",
     redactSensitive: "tools",

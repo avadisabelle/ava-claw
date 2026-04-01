@@ -1,5 +1,5 @@
 ---
-summary: "Fix Chrome/Brave/Edge/Chromium CDP startup issues for Ava-Claw browser control on Linux"
+summary: "Fix Chrome/Brave/Edge/Chromium CDP startup issues for AvaClaw browser control on Linux"
 read_when: "Browser control fails on Linux, especially with snap Chromium"
 title: "Browser Troubleshooting"
 ---
@@ -8,7 +8,7 @@ title: "Browser Troubleshooting"
 
 ## Problem: "Failed to start Chrome CDP on port 18800"
 
-Ava-Claw's browser control server fails to launch Chrome/Brave/Edge/Chromium with the error:
+AvaClaw's browser control server fails to launch Chrome/Brave/Edge/Chromium with the error:
 
 ```
 {"error":"Error: Failed to start Chrome CDP on port 18800 for profile \"avaclaw\"."}
@@ -16,7 +16,7 @@ Ava-Claw's browser control server fails to launch Chrome/Brave/Edge/Chromium wit
 
 ### Root Cause
 
-On Ubuntu (and many Linux distros), the default Chromium installation is a **snap package**. Snap's AppArmor confinement interferes with how Ava-Claw spawns and monitors the browser process.
+On Ubuntu (and many Linux distros), the default Chromium installation is a **snap package**. Snap's AppArmor confinement interferes with how AvaClaw spawns and monitors the browser process.
 
 The `apt install chromium` command installs a stub package that redirects to snap:
 
@@ -37,7 +37,7 @@ sudo dpkg -i google-chrome-stable_current_amd64.deb
 sudo apt --fix-broken install -y  # if there are dependency errors
 ```
 
-Then update your Ava-Claw config (`~/.avadisabelle/ava-claw.json`):
+Then update your AvaClaw config (`~/.avaclaw/avaclaw.json`):
 
 ```json
 {
@@ -52,7 +52,7 @@ Then update your Ava-Claw config (`~/.avadisabelle/ava-claw.json`):
 
 ### Solution 2: Use Snap Chromium with Attach-Only Mode
 
-If you must use snap Chromium, configure Ava-Claw to attach to a manually-started browser:
+If you must use snap Chromium, configure AvaClaw to attach to a manually-started browser:
 
 1. Update config:
 
@@ -81,7 +81,7 @@ chromium-browser --headless --no-sandbox --disable-gpu \
 ```ini
 # ~/.config/systemd/user/avaclaw-browser.service
 [Unit]
-Description=Ava-Claw Browser (Chrome CDP)
+Description=AvaClaw Browser (Chrome CDP)
 After=network.target
 
 [Service]
@@ -123,7 +123,7 @@ curl -s http://127.0.0.1:18791/tabs
 
 ### Problem: "Chrome extension relay is running, but no tab is connected"
 
-You're using an extension relay profile. It expects the Ava-Claw
+You're using an extension relay profile. It expects the AvaClaw
 browser extension to be attached to a live tab.
 
 Fix options:
@@ -131,7 +131,7 @@ Fix options:
 1. **Use the managed browser:** `avaclaw browser start --browser-profile avaclaw`
    (or set `browser.defaultProfile: "avaclaw"`).
 2. **Use the extension relay:** install the extension, open a tab, and click the
-   Ava-Claw extension icon to attach it.
+   AvaClaw extension icon to attach it.
 
 Notes:
 

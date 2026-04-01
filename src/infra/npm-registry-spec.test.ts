@@ -10,18 +10,18 @@ import {
 
 describe("npm registry spec validation", () => {
   it("accepts bare package names, exact versions, and dist-tags", () => {
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call")).toBeNull();
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@1.2.3")).toBeNull();
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@1.2.3-beta.4")).toBeNull();
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@latest")).toBeNull();
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@beta")).toBeNull();
+    expect(validateRegistryNpmSpec("ava-claw-voice-call")).toBeNull();
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@1.2.3")).toBeNull();
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@1.2.3-beta.4")).toBeNull();
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@latest")).toBeNull();
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@beta")).toBeNull();
   });
 
   it("rejects semver ranges", () => {
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@^1.2.3")).toContain(
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@^1.2.3")).toContain(
       "exact version or dist-tag",
     );
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@~1.2.3")).toContain(
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@~1.2.3")).toContain(
       "exact version or dist-tag",
     );
   });
@@ -31,33 +31,31 @@ describe("npm registry spec validation", () => {
     expect(validateRegistryNpmSpec("git+ssh://github.com/avadisabelle/ava-claw")).toContain(
       "URLs are not allowed",
     );
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@")).toContain(
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@")).toContain(
       "missing version/tag after @",
     );
-    expect(validateRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@../beta")).toContain(
-      "invalid version/tag",
-    );
+    expect(validateRegistryNpmSpec("ava-claw-voice-call@../beta")).toContain("invalid version/tag");
   });
 });
 
 describe("npm registry spec parsing helpers", () => {
   it("parses bare, tag, and exact prerelease specs", () => {
-    expect(parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call")).toEqual({
-      name: "@avadisabelle/ava-claw-voice-call",
-      raw: "@avadisabelle/ava-claw-voice-call",
+    expect(parseRegistryNpmSpec("ava-claw-voice-call")).toEqual({
+      name: "ava-claw-voice-call",
+      raw: "ava-claw-voice-call",
       selectorKind: "none",
       selectorIsPrerelease: false,
     });
-    expect(parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@beta")).toEqual({
-      name: "@avadisabelle/ava-claw-voice-call",
-      raw: "@avadisabelle/ava-claw-voice-call@beta",
+    expect(parseRegistryNpmSpec("ava-claw-voice-call@beta")).toEqual({
+      name: "ava-claw-voice-call",
+      raw: "ava-claw-voice-call@beta",
       selector: "beta",
       selectorKind: "tag",
       selectorIsPrerelease: false,
     });
-    expect(parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@1.2.3-beta.1")).toEqual({
-      name: "@avadisabelle/ava-claw-voice-call",
-      raw: "@avadisabelle/ava-claw-voice-call@1.2.3-beta.1",
+    expect(parseRegistryNpmSpec("ava-claw-voice-call@1.2.3-beta.1")).toEqual({
+      name: "ava-claw-voice-call",
+      raw: "ava-claw-voice-call@1.2.3-beta.1",
       selector: "1.2.3-beta.1",
       selectorKind: "exact-version",
       selectorIsPrerelease: true,
@@ -74,7 +72,7 @@ describe("npm registry spec parsing helpers", () => {
 
 describe("npm prerelease resolution policy", () => {
   it("blocks prerelease resolutions for bare specs", () => {
-    const spec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call");
+    const spec = parseRegistryNpmSpec("ava-claw-voice-call");
     expect(spec).not.toBeNull();
     expect(
       isPrereleaseResolutionAllowed({
@@ -85,7 +83,7 @@ describe("npm prerelease resolution policy", () => {
   });
 
   it("blocks prerelease resolutions for latest", () => {
-    const spec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@latest");
+    const spec = parseRegistryNpmSpec("ava-claw-voice-call@latest");
     expect(spec).not.toBeNull();
     expect(
       isPrereleaseResolutionAllowed({
@@ -96,8 +94,8 @@ describe("npm prerelease resolution policy", () => {
   });
 
   it("allows prerelease resolutions when the user explicitly opted in", () => {
-    const tagSpec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@beta");
-    const versionSpec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@1.2.3-beta.1");
+    const tagSpec = parseRegistryNpmSpec("ava-claw-voice-call@beta");
+    const versionSpec = parseRegistryNpmSpec("ava-claw-voice-call@1.2.3-beta.1");
 
     expect(tagSpec).not.toBeNull();
     expect(versionSpec).not.toBeNull();
@@ -116,8 +114,8 @@ describe("npm prerelease resolution policy", () => {
   });
 
   it("allows stable resolutions even for bare and latest specs", () => {
-    const bareSpec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call");
-    const latestSpec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@latest");
+    const bareSpec = parseRegistryNpmSpec("ava-claw-voice-call");
+    const latestSpec = parseRegistryNpmSpec("ava-claw-voice-call@latest");
 
     expect(bareSpec).not.toBeNull();
     expect(latestSpec).not.toBeNull();
@@ -136,8 +134,8 @@ describe("npm prerelease resolution policy", () => {
   });
 
   it("formats prerelease resolution guidance based on selector intent", () => {
-    const bareSpec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call");
-    const tagSpec = parseRegistryNpmSpec("@avadisabelle/ava-claw-voice-call@beta");
+    const bareSpec = parseRegistryNpmSpec("ava-claw-voice-call");
+    const tagSpec = parseRegistryNpmSpec("ava-claw-voice-call@beta");
 
     expect(bareSpec).not.toBeNull();
     expect(tagSpec).not.toBeNull();
@@ -146,7 +144,7 @@ describe("npm prerelease resolution policy", () => {
         spec: bareSpec!,
         resolvedVersion: "1.2.3-beta.1",
       }),
-    ).toContain(`Use "@avadisabelle/ava-claw-voice-call@beta"`);
+    ).toContain(`Use "ava-claw-voice-call@beta"`);
     expect(
       formatPrereleaseResolutionError({
         spec: tagSpec!,

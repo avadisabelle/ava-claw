@@ -14,12 +14,12 @@ title: 飞书
 
 ## 内置插件
 
-当前版本的 Ava-Claw 已内置 Feishu 插件，因此通常不需要单独安装。
+当前版本的 AvaClaw 已内置 Feishu 插件，因此通常不需要单独安装。
 
 如果你使用的是较旧版本，或是没有内置 Feishu 的自定义安装，可手动安装：
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-feishu
+avaclaw plugins install ava-claw-feishu
 ```
 
 ---
@@ -30,7 +30,7 @@ avaclaw plugins install @avadisabelle/ava-claw-feishu
 
 ### 方式一：通过安装向导添加（推荐）
 
-如果您刚安装完 Ava-Claw，可以直接运行向导，根据提示添加飞书：
+如果您刚安装完 AvaClaw，可以直接运行向导，根据提示添加飞书：
 
 ```bash
 avaclaw onboard
@@ -167,7 +167,7 @@ Lark（国际版）请使用 https://open.larksuite.com/app，并在配置中设
 
 ---
 
-## 第二步：配置 Ava-Claw
+## 第二步：配置 AvaClaw
 
 ### 通过向导配置（推荐）
 
@@ -181,7 +181,7 @@ avaclaw channels add
 
 ### 通过配置文件配置
 
-编辑 `~/.avadisabelle/ava-claw.json`：
+编辑 `~/.avaclaw/avaclaw.json`：
 
 ```json5
 {
@@ -439,7 +439,7 @@ avaclaw pairing list feishu
 | `/reset`  | 重置对话会话   |
 | `/model`  | 查看/切换模型  |
 
-飞书机器人菜单建议直接在飞书开放平台的机器人能力页面配置。Ava-Claw 当前支持接收 `application.bot.menu_v6` 事件，并把点击事件转换成普通文本命令（例如 `/menu <eventKey>`）继续走现有消息路由，但不通过渠道配置自动创建或同步菜单。
+飞书机器人菜单建议直接在飞书开放平台的机器人能力页面配置。AvaClaw 当前支持接收 `application.bot.menu_v6` 事件，并把点击事件转换成普通文本命令（例如 `/menu <eventKey>`）继续走现有消息路由，但不通过渠道配置自动创建或同步菜单。
 
 ## 网关管理命令
 
@@ -544,7 +544,7 @@ avaclaw pairing list feishu
 
 ### 交互式卡片
 
-Ava-Claw 默认会在需要时发送 Markdown 卡片；如果你需要完整的 Feishu 原生交互式卡片，也可以显式发送原始 `card` payload。
+AvaClaw 默认会在需要时发送 Markdown 卡片；如果你需要完整的 Feishu 原生交互式卡片，也可以显式发送原始 `card` payload。
 
 - 默认路径：文本自动渲染或 Markdown 卡片
 - 显式卡片：通过消息动作的 `card` 参数发送原始交互卡片

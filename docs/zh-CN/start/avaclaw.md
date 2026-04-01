@@ -2,7 +2,7 @@
 read_when:
   - 新手引导新助手实例时
   - 审查安全/权限影响时
-summary: 将 Ava-Claw 作为个人助手运行的端到端指南，包含安全注意事项
+summary: 将 AvaClaw 作为个人助手运行的端到端指南，包含安全注意事项
 title: 个人助手设置
 x-i18n:
   generated_at: "2026-02-03T07:54:35Z"
@@ -13,9 +13,9 @@ x-i18n:
   workflow: 15
 ---
 
-# 使用 Ava-Claw 构建个人助手
+# 使用 AvaClaw 构建个人助手
 
-Ava-Claw 是 **Pi** 智能体的 WhatsApp + Telegram + Discord + iMessage Gateway 网关。插件可添加 Mattermost。本指南是"个人助手"设置：一个专用的 WhatsApp 号码，表现得像你的常驻智能体。
+AvaClaw 是 **Pi** 智能体的 WhatsApp + Telegram + Discord + iMessage Gateway 网关。插件可添加 Mattermost。本指南是"个人助手"设置：一个专用的 WhatsApp 号码，表现得像你的常驻智能体。
 
 ## ⚠️ 安全第一
 
@@ -34,7 +34,7 @@ Ava-Claw 是 **Pi** 智能体的 WhatsApp + Telegram + Discord + iMessage Gatewa
 ## 先决条件
 
 - Node **22+**
-- Ava-Claw 在 PATH 中可用（推荐：全局安装）
+- AvaClaw 在 PATH 中可用（推荐：全局安装）
 - 助手的第二个手机号码（SIM/eSIM/预付费）
 
 ```bash
@@ -72,7 +72,7 @@ pnpm link --global
                               └─────────────────┘
 ```
 
-如果你将个人 WhatsApp 关联到 Ava-Claw，发给你的每条消息都会变成"智能体输入"。这通常不是你想要的。
+如果你将个人 WhatsApp 关联到 AvaClaw，发给你的每条消息都会变成"智能体输入"。这通常不是你想要的。
 
 ## 5 分钟快速开始
 
@@ -88,7 +88,7 @@ avaclaw channels login
 avaclaw gateway --port 18789
 ```
 
-3. 在 `~/.avadisabelle/ava-claw.json` 中放置最小配置：
+3. 在 `~/.avaclaw/avaclaw.json` 中放置最小配置：
 
 ```json5
 {
@@ -102,11 +102,11 @@ avaclaw gateway --port 18789
 
 ## 给智能体一个工作区（AGENTS）
 
-Ava-Claw 从其工作区目录读取操作指令和"记忆"。
+AvaClaw 从其工作区目录读取操作指令和"记忆"。
 
-默认情况下，Ava-Claw 使用 `~/.avaclaw/workspace` 作为智能体工作区，并会在设置/首次智能体运行时自动创建它（加上起始的 `AGENTS.md`、`SOUL.md`、`TOOLS.md`、`IDENTITY.md`、`USER.md`）。`BOOTSTRAP.md` 仅在工作区是全新的时候创建（删除后不应再出现）。
+默认情况下，AvaClaw 使用 `~/.avaclaw/workspace` 作为智能体工作区，并会在设置/首次智能体运行时自动创建它（加上起始的 `AGENTS.md`、`SOUL.md`、`TOOLS.md`、`IDENTITY.md`、`USER.md`）。`BOOTSTRAP.md` 仅在工作区是全新的时候创建（删除后不应再出现）。
 
-提示：将此文件夹视为 Ava-Claw 的"记忆"，并将其设为 git 仓库（最好是私有的），这样你的 `AGENTS.md` + 记忆文件就有了备份。如果安装了 git，全新的工作区会自动初始化。
+提示：将此文件夹视为 AvaClaw 的"记忆"，并将其设为 git 仓库（最好是私有的），这样你的 `AGENTS.md` + 记忆文件就有了备份。如果安装了 git，全新的工作区会自动初始化。
 
 ```bash
 avaclaw setup
@@ -137,7 +137,7 @@ avaclaw setup
 
 ## 将其变成"助手"的配置
 
-Ava-Claw 默认为良好的助手设置，但你通常需要调整：
+AvaClaw 默认为良好的助手设置，但你通常需要调整：
 
 - `SOUL.md` 中的人设/指令
 - 思考默认值（如果需要）
@@ -190,13 +190,13 @@ Ava-Claw 默认为良好的助手设置，但你通常需要调整：
 
 ## 心跳（主动模式）
 
-默认情况下，Ava-Claw 每 30 分钟运行一次心跳，提示词为：
+默认情况下，AvaClaw 每 30 分钟运行一次心跳，提示词为：
 `Read HEARTBEAT.md if it exists (workspace context). Follow it strictly. Do not infer or repeat old tasks from prior chats. If nothing needs attention, reply HEARTBEAT_OK.`
 设置 `agents.defaults.heartbeat.every: "0m"` 来禁用。
 
-- 如果 `HEARTBEAT.md` 存在但实际上是空的（只有空行和 markdown 标题如 `# Heading`），Ava-Claw 会跳过心跳运行以节省 API 调用。
+- 如果 `HEARTBEAT.md` 存在但实际上是空的（只有空行和 markdown 标题如 `# Heading`），AvaClaw 会跳过心跳运行以节省 API 调用。
 - 如果文件不存在，心跳仍然运行，模型决定做什么。
-- 如果智能体回复 `HEARTBEAT_OK`（可选带有短填充；参见 `agents.defaults.heartbeat.ackMaxChars`），Ava-Claw 会为该心跳抑制出站投递。
+- 如果智能体回复 `HEARTBEAT_OK`（可选带有短填充；参见 `agents.defaults.heartbeat.ackMaxChars`），AvaClaw 会为该心跳抑制出站投递。
 - 心跳运行完整的智能体轮次 — 更短的间隔会消耗更多 token。
 
 ```json5
@@ -222,7 +222,7 @@ Ava-Claw 默认为良好的助手设置，但你通常需要调整：
 MEDIA:https://example.com/screenshot.png
 ```
 
-Ava-Claw 会提取这些并将它们作为媒体与文本一起发送。
+AvaClaw 会提取这些并将它们作为媒体与文本一起发送。
 
 ## 运维检查清单
 
@@ -240,7 +240,7 @@ avaclaw health --json   # Gateway 网关健康快照（WS）
 - WebChat：[WebChat](/web/webchat)
 - Gateway 网关运维：[Gateway 网关运行手册](/gateway)
 - 定时任务 + 唤醒：[定时任务](/automation/cron-jobs)
-- macOS 菜单栏配套应用：[Ava-Claw macOS 应用](/platforms/macos)
+- macOS 菜单栏配套应用：[AvaClaw macOS 应用](/platforms/macos)
 - iOS 节点应用：[iOS 应用](/platforms/ios)
 - Android 节点应用：[Android 应用](/platforms/android)
 - Windows 状态：[Windows (WSL2)](/platforms/windows)

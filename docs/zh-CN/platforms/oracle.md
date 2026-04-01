@@ -1,9 +1,9 @@
 ---
 read_when:
-  - 在 Oracle Cloud 上设置 Ava-Claw
-  - 寻找 Ava-Claw 的低成本 VPS 托管
-  - 想要在小型服务器上 24/7 运行 Ava-Claw
-summary: 在 Oracle Cloud 上运行 Ava-Claw（Always Free ARM）
+  - 在 Oracle Cloud 上设置 AvaClaw
+  - 寻找 AvaClaw 的低成本 VPS 托管
+  - 想要在小型服务器上 24/7 运行 AvaClaw
+summary: 在 Oracle Cloud 上运行 AvaClaw（Always Free ARM）
 title: Oracle Cloud
 x-i18n:
   generated_at: "2026-02-03T07:53:25Z"
@@ -14,13 +14,13 @@ x-i18n:
   workflow: 15
 ---
 
-# 在 Oracle Cloud（OCI）上运行 Ava-Claw
+# 在 Oracle Cloud（OCI）上运行 AvaClaw
 
 ## 目标
 
-在 Oracle Cloud 的 **Always Free** ARM 层上运行持久化的 Ava-Claw Gateway 网关。
+在 Oracle Cloud 的 **Always Free** ARM 层上运行持久化的 AvaClaw Gateway 网关。
 
-Oracle 的免费层非常适合 Ava-Claw（特别是如果你已经有 OCI 账户），但有一些权衡：
+Oracle 的免费层非常适合 AvaClaw（特别是如果你已经有 OCI 账户），但有一些权衡：
 
 - ARM 架构（大多数东西都能工作，但某些二进制文件可能仅支持 x86）
 - 容量和注册可能比较麻烦
@@ -103,7 +103,7 @@ tailscale status
 
 **从现在开始，通过 Tailscale 连接：** `ssh ubuntu@avaclaw`（或使用 Tailscale IP）。
 
-## 5) 安装 Ava-Claw
+## 5) 安装 AvaClaw
 
 ```bash
 curl -fsSL https://avaclaw.ai/install.sh | bash

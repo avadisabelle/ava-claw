@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-feishu",
+  "name": "ava-claw-feishu",
   "version": "2026.3.14",
   "description": "AvaClaw Feishu/Lark channel plugin (community maintained by @m1heng)",
   "type": "module",
@@ -9,7 +9,7 @@
     "https-proxy-agent": "^8.0.0",
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ],
@@ -27,7 +27,7 @@
       "quickstartAllowFrom": true
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-feishu",
+      "npmSpec": "ava-claw-feishu",
       "localPath": "extensions/feishu",
       "defaultChoice": "npm"
     }

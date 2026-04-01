@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-voice-call",
+  "name": "ava-claw-voice-call",
   "version": "2026.3.14",
   "description": "AvaClaw voice-call plugin",
   "type": "module",
@@ -9,7 +9,7 @@
     "ws": "^8.19.0",
     "zod": "^4.3.6"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

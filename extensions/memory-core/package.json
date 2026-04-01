@@ -1,18 +1,18 @@
 {
-  "name": "@avadisabelle/ava-claw-memory-core",
+  "name": "ava-claw-memory-core",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw core memory search plugin",
   "type": "module",
   "peerDependencies": {
-    "@avadisabelle/ava-claw": ">=2026.3.11"
+    "ava-claw": ">=2026.3.11"
   },
   "peerDependenciesMeta": {
     "ava-claw": {
       "optional": true
     }
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

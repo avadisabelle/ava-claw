@@ -1,10 +1,10 @@
 {
-  "name": "@avadisabelle/ava-claw-mistral-provider",
+  "name": "ava-claw-mistral-provider",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Mistral provider plugin",
   "type": "module",
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

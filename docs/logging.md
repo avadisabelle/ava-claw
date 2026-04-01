@@ -9,7 +9,7 @@ title: "Logging"
 
 # Logging
 
-Ava-Claw logs in two places:
+AvaClaw logs in two places:
 
 - **File logs** (JSON lines) written by the Gateway.
 - **Console output** shown in terminals and the Control UI.
@@ -21,11 +21,11 @@ levels and formats.
 
 By default, the Gateway writes a rolling log file under:
 
-`/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log`
+`/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log`
 
 The date uses the gateway host's local timezone.
 
-You can override this in `~/.avadisabelle/ava-claw.json`:
+You can override this in `~/.avaclaw/avaclaw.json`:
 
 ```json
 {
@@ -98,13 +98,13 @@ Console formatting is controlled by `logging.consoleStyle`.
 
 ## Configuring logging
 
-All logging configuration lives under `logging` in `~/.avadisabelle/ava-claw.json`.
+All logging configuration lives under `logging` in `~/.avaclaw/avaclaw.json`.
 
 ```json
 {
   "logging": {
     "level": "info",
-    "file": "/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log",
+    "file": "/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log",
     "consoleLevel": "info",
     "consoleStyle": "pretty",
     "redactSensitive": "tools",
@@ -152,7 +152,7 @@ diagnostics + the exporter plugin are enabled.
 
 - **OpenTelemetry (OTel)**: the data model + SDKs for traces, metrics, and logs.
 - **OTLP**: the wire protocol used to export OTel data to a collector/backend.
-- Ava-Claw exports via **OTLP/HTTP (protobuf)** today.
+- AvaClaw exports via **OTLP/HTTP (protobuf)** today.
 
 ### Signals exported
 

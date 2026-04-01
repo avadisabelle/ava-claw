@@ -157,9 +157,9 @@ describe("shortenHomePath", () => {
     vi.stubEnv("AVACLAW_HOME", "/srv/avaclaw-home");
     vi.stubEnv("HOME", "/home/other");
 
-    expect(
-      shortenHomePath(`${path.resolve("/srv/avaclaw-home")}/.avadisabelle/ava-claw.json`),
-    ).toBe("$AVACLAW_HOME/.avadisabelle/ava-claw.json");
+    expect(shortenHomePath(`${path.resolve("/srv/avaclaw-home")}/.avaclaw/avaclaw.json`)).toBe(
+      "$AVACLAW_HOME/.avaclaw/avaclaw.json",
+    );
 
     vi.unstubAllEnvs();
   });
@@ -171,10 +171,8 @@ describe("shortenHomeInString", () => {
     vi.stubEnv("HOME", "/home/other");
 
     expect(
-      shortenHomeInString(
-        `config: ${path.resolve("/srv/avaclaw-home")}/.avadisabelle/ava-claw.json`,
-      ),
-    ).toBe("config: $AVACLAW_HOME/.avadisabelle/ava-claw.json");
+      shortenHomeInString(`config: ${path.resolve("/srv/avaclaw-home")}/.avaclaw/avaclaw.json`),
+    ).toBe("config: $AVACLAW_HOME/.avaclaw/avaclaw.json");
 
     vi.unstubAllEnvs();
   });

@@ -17,7 +17,7 @@ x-i18n:
 
 面向用户的概览（CLI + Control UI + 配置），请参阅 [/logging](/logging)。
 
-Ava-Claw 有两个日志"界面"：
+AvaClaw 有两个日志"界面"：
 
 - **控制台输出**（你在终端 / Debug UI 中看到的内容）。
 - **文件日志**（JSON 行）由 Gateway 网关日志记录器写入。
@@ -26,7 +26,7 @@ Ava-Claw 有两个日志"界面"：
 
 - 默认滚动日志文件位于 `/tmp/avaclaw/` 下（每天一个文件）：`avaclaw-YYYY-MM-DD.log`
   - 日期使用 Gateway 网关主机的本地时区。
-- 日志文件路径和级别可以通过 `~/.avadisabelle/ava-claw.json` 配置：
+- 日志文件路径和级别可以通过 `~/.avaclaw/avaclaw.json` 配置：
   - `logging.file`
   - `logging.level`
 

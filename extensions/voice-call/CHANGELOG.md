@@ -109,7 +109,7 @@
 
 ### Highlights
 
-- First public release of the @avadisabelle/ava-claw-voice-call plugin.
+- First public release of the ava-claw-voice-call plugin.
 
 ### Features
 

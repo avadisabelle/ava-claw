@@ -11,7 +11,7 @@ export type CommandRunner = (
   options: { timeoutMs: number; cwd?: string; env?: NodeJS.ProcessEnv },
 ) => Promise<{ stdout: string; stderr: string; code: number | null }>;
 
-const PRIMARY_PACKAGE_NAME = "@avadisabelle/ava-claw";
+const PRIMARY_PACKAGE_NAME = "ava-claw";
 const ALL_PACKAGE_NAMES = [PRIMARY_PACKAGE_NAME] as const;
 const GLOBAL_RENAME_PREFIX = ".";
 export const AVACLAW_MAIN_PACKAGE_SPEC = "github:avadisabelle/ava-claw#main";

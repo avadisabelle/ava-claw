@@ -1,5 +1,5 @@
 {
-  "name": "@avadisabelle/ava-claw-diagnostics-otel",
+  "name": "ava-claw-diagnostics-otel",
   "version": "2026.3.14",
   "description": "AvaClaw diagnostics OpenTelemetry exporter",
   "type": "module",
@@ -16,7 +16,7 @@
     "@opentelemetry/sdk-trace-base": "^2.6.0",
     "@opentelemetry/semantic-conventions": "^1.40.0"
   },
-  "ava-claw": {
+  "avaclaw": {
     "extensions": [
       "./index.ts"
     ]

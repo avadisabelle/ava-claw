@@ -198,7 +198,7 @@ Npm specs are **registry-only** (package name + optional **exact version** or
 installs run with `--ignore-scripts` for safety.
 
 Bare specs and `@latest` stay on the stable track. If npm resolves either of
-those to a prerelease, Ava-Claw stops and asks you to opt in explicitly with a
+those to a prerelease, AvaClaw stops and asks you to opt in explicitly with a
 prerelease tag such as `@beta`/`@rc` or an exact prerelease version.
 
 **What it does:**
@@ -224,7 +224,7 @@ avaclaw hooks install ./my-hook-pack
 avaclaw hooks install ./my-hook-pack.zip
 
 # NPM package
-avaclaw hooks install @avadisabelle/ava-claw-my-hook-pack
+avaclaw hooks install ava-claw-my-hook-pack
 
 # Link a local directory without copying
 avaclaw hooks install -l ./my-hook-pack
@@ -245,7 +245,7 @@ Update installed hook packs (npm installs only).
 - `--dry-run`: Show what would change without writing
 
 When a stored integrity hash exists and the fetched artifact hash changes,
-Ava-Claw prints a warning and asks for confirmation before proceeding. Use
+AvaClaw prints a warning and asks for confirmation before proceeding. Use
 global `--yes` to bypass prompts in CI/non-interactive runs.
 
 ## Bundled Hooks

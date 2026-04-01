@@ -1,5 +1,5 @@
 ---
-summary: "Ava-Claw plugins/extensions: discovery, config, and safety"
+summary: "AvaClaw plugins/extensions: discovery, config, and safety"
 read_when:
   - Adding or modifying plugins/extensions
   - Documenting plugin install or load rules
@@ -13,14 +13,14 @@ title: "Plugins"
 
 A plugin is either:
 
-- a native **Ava-Claw plugin** (`avaclaw.plugin.json` + runtime module), or
+- a native **AvaClaw plugin** (`avaclaw.plugin.json` + runtime module), or
 - a compatible **bundle** (`.codex-plugin/plugin.json` or `.claude-plugin/plugin.json`)
 
-Both show up under `avaclaw plugins`, but only native Ava-Claw plugins execute
+Both show up under `avaclaw plugins`, but only native AvaClaw plugins execute
 runtime code in-process.
 
 Most of the time, you’ll use plugins when you want a feature that’s not built
-into core Ava-Claw yet (or you want to keep optional features out of your main
+into core AvaClaw yet (or you want to keep optional features out of your main
 install).
 
 Fast path:
@@ -34,14 +34,14 @@ avaclaw plugins list
 2. Install an official plugin (example: Voice Call):
 
 ```bash
-avaclaw plugins install @avadisabelle/ava-claw-voice-call
+avaclaw plugins install ava-claw-voice-call
 ```
 
 Npm specs are **registry-only** (package name + optional **exact version** or
 **dist-tag**). Git/URL/file specs and semver ranges are rejected.
 
 Bare specs and `@latest` stay on the stable track. If npm resolves either of
-those to a prerelease, Ava-Claw stops and asks you to opt in explicitly with a
+those to a prerelease, AvaClaw stops and asks you to opt in explicitly with a
 prerelease tag such as `@beta`/`@rc` or an exact prerelease version.
 
 3. Restart the Gateway, then configure under `plugins.entries.<id>.config`.
@@ -59,21 +59,21 @@ avaclaw plugins install ./my-bundle.tgz
 
 ## Architecture
 
-Ava-Claw's plugin system has four layers:
+AvaClaw's plugin system has four layers:
 
 1. **Manifest + discovery**
-   Ava-Claw finds candidate plugins from configured paths, workspace roots,
+   AvaClaw finds candidate plugins from configured paths, workspace roots,
    global extension roots, and bundled extensions. Discovery reads native
    `avaclaw.plugin.json` manifests plus supported bundle manifests first.
 2. **Enablement + validation**
    Core decides whether a discovered plugin is enabled, disabled, blocked, or
    selected for an exclusive slot such as memory.
 3. **Runtime loading**
-   Native Ava-Claw plugins are loaded in-process via jiti and register
+   Native AvaClaw plugins are loaded in-process via jiti and register
    capabilities into a central registry. Compatible bundles are normalized into
    registry records without importing runtime code.
 4. **Surface consumption**
-   The rest of Ava-Claw reads the registry to expose tools, channels, provider
+   The rest of AvaClaw reads the registry to expose tools, channels, provider
    setup, hooks, HTTP routes, CLI commands, and services.
 
 The important design boundary:
@@ -82,12 +82,12 @@ The important design boundary:
   without executing plugin code
 - native runtime behavior comes from the plugin module's `register(api)` path
 
-That split lets Ava-Claw validate config, explain missing/disabled plugins, and
+That split lets AvaClaw validate config, explain missing/disabled plugins, and
 build UI/schema hints before the full runtime is active.
 
 ## Compatible bundles
 
-Ava-Claw also recognizes two compatible external bundle layouts:
+AvaClaw also recognizes two compatible external bundle layouts:
 
 - Codex-style bundles: `.codex-plugin/plugin.json`
 - Claude-style bundles: `.claude-plugin/plugin.json` or the default Claude
@@ -100,17 +100,17 @@ They are shown in the plugin list as `format=bundle`, with a subtype of
 See [Plugin bundles](/plugins/bundles) for the exact detection rules, mapping
 behavior, and current support matrix.
 
-Today, Ava-Claw treats these as **capability packs**, not native runtime
+Today, AvaClaw treats these as **capability packs**, not native runtime
 plugins:
 
 - supported now: bundled `skills`
 - supported now: Claude `commands/` markdown roots, mapped into the normal
-  Ava-Claw skill loader
+  AvaClaw skill loader
 - supported now: Claude bundle `settings.json` defaults for embedded Pi agent
   settings (with shell override keys sanitized)
 - supported now: Cursor `.cursor/commands/*.md` roots, mapped into the normal
-  Ava-Claw skill loader
-- supported now: Codex bundle hook directories that use the Ava-Claw hook-pack
+  AvaClaw skill loader
+- supported now: Codex bundle hook directories that use the AvaClaw hook-pack
   layout (`HOOK.md` + `handler.ts`/`handler.js`)
 - detected but not wired yet: other declared bundle capabilities such as
   agents, Claude hook automation, Cursor rules/hooks/MCP metadata, MCP/app/LSP
@@ -121,14 +121,14 @@ skills, Claude command-skills, Claude bundle settings defaults, and compatible
 Codex hook directories load when the bundle is enabled, but bundle runtime code
 is not executed in-process.
 
-Bundle hook support is limited to the normal Ava-Claw hook directory format
+Bundle hook support is limited to the normal AvaClaw hook directory format
 (`HOOK.md` plus `handler.ts`/`handler.js` under the declared hook roots).
 Vendor-specific shell/JSON hook runtimes, including Claude `hooks.json`, are
 only detected today and are not executed directly.
 
 ## Execution model
 
-Native Ava-Claw plugins run **in-process** with the Gateway. They are not
+Native AvaClaw plugins run **in-process** with the Gateway. They are not
 sandboxed. A loaded native plugin has the same process-level trust boundary as
 core code.
 
@@ -137,9 +137,9 @@ Implications:
 - a native plugin can register tools, network handlers, hooks, and services
 - a native plugin bug can crash or destabilize the gateway
 - a malicious native plugin is equivalent to arbitrary code execution inside
-  the Ava-Claw process
+  the AvaClaw process
 
-Compatible bundles are safer by default because Ava-Claw currently treats them
+Compatible bundles are safer by default because AvaClaw currently treats them
 as metadata/content packs. In current releases, that mostly means bundled
 skills.
 
@@ -155,15 +155,15 @@ Important trust note:
 
 ## Available plugins (official)
 
-- Microsoft Teams is plugin-only as of 2026.1.15; install `@avadisabelle/ava-claw-msteams` if you use Teams.
+- Microsoft Teams is plugin-only as of 2026.1.15; install `ava-claw-msteams` if you use Teams.
 - Memory (Core) — bundled memory search plugin (enabled by default via `plugins.slots.memory`)
 - Memory (LanceDB) — bundled long-term memory plugin (auto-recall/capture; set `plugins.slots.memory = "memory-lancedb"`)
-- [Voice Call](/plugins/voice-call) — `@avadisabelle/ava-claw-voice-call`
-- [Zalo Personal](/plugins/zalouser) — `@avadisabelle/ava-claw-zalouser`
-- [Matrix](/channels/matrix) — `@avadisabelle/ava-claw-matrix`
-- [Nostr](/channels/nostr) — `@avadisabelle/ava-claw-nostr`
-- [Zalo](/channels/zalo) — `@avadisabelle/ava-claw-zalo`
-- [Microsoft Teams](/channels/msteams) — `@avadisabelle/ava-claw-msteams`
+- [Voice Call](/plugins/voice-call) — `ava-claw-voice-call`
+- [Zalo Personal](/plugins/zalouser) — `ava-claw-zalouser`
+- [Matrix](/channels/matrix) — `ava-claw-matrix`
+- [Nostr](/channels/nostr) — `ava-claw-nostr`
+- [Zalo](/channels/zalo) — `ava-claw-zalo`
+- [Microsoft Teams](/channels/msteams) — `ava-claw-msteams`
 - Anthropic provider runtime — bundled as `anthropic` (enabled by default)
 - BytePlus provider catalog — bundled as `byteplus` (enabled by default)
 - Cloudflare AI Gateway provider catalog — bundled as `cloudflare-ai-gateway` (enabled by default)
@@ -195,11 +195,11 @@ Important trust note:
 - Z.AI provider runtime — bundled as `zai` (enabled by default)
 - Copilot Proxy (provider auth) — local VS Code Copilot Proxy bridge; distinct from built-in `github-copilot` device login (bundled, disabled by default)
 
-Native Ava-Claw plugins are **TypeScript modules** loaded at runtime via jiti.
+Native AvaClaw plugins are **TypeScript modules** loaded at runtime via jiti.
 **Config validation does not execute plugin code**; it uses the plugin manifest
 and JSON Schema instead. See [Plugin manifest](/plugins/manifest).
 
-Native Ava-Claw plugins can register:
+Native AvaClaw plugins can register:
 
 - Gateway RPC methods
 - Gateway HTTP routes
@@ -213,7 +213,7 @@ Native Ava-Claw plugins can register:
 - **Skills** (by listing `skills` directories in the plugin manifest)
 - **Auto-reply commands** (execute without invoking the AI agent)
 
-Native Ava-Claw plugins run **in‑process** with the Gateway, so treat them as trusted code.
+Native AvaClaw plugins run **in‑process** with the Gateway, so treat them as trusted code.
 Tool authoring guide: [Plugin agent tools](/plugins/agent-tools).
 
 ## Provider runtime hooks
@@ -223,19 +223,19 @@ Provider plugins now have two layers:
 - config-time hooks: `catalog` / legacy `discovery`
 - runtime hooks: `resolveDynamicModel`, `prepareDynamicModel`, `normalizeResolvedModel`, `capabilities`, `prepareExtraParams`, `wrapStreamFn`, `isCacheTtlEligible`, `prepareRuntimeAuth`, `resolveUsageAuth`, `fetchUsageSnapshot`
 
-Ava-Claw still owns the generic agent loop, failover, transcript handling, and
+AvaClaw still owns the generic agent loop, failover, transcript handling, and
 tool policy. These hooks are the seam for provider-specific behavior without
 needing a whole custom inference transport.
 
 ### Hook order
 
-For model/provider plugins, Ava-Claw uses hooks in this rough order:
+For model/provider plugins, AvaClaw uses hooks in this rough order:
 
 1. `catalog`
    Publish provider config into `models.providers` during `models.json`
    generation.
 2. built-in/discovered model lookup
-   Ava-Claw tries the normal registry/catalog path first.
+   AvaClaw tries the normal registry/catalog path first.
 3. `resolveDynamicModel`
    Sync fallback for provider-owned model ids that are not in the local
    registry yet.
@@ -292,7 +292,7 @@ Rule of thumb:
 
 If the provider needs a fully custom wire protocol or custom request executor,
 that is a different class of extension. These hooks are for provider behavior
-that still runs on Ava-Claw's normal inference loop.
+that still runs on AvaClaw's normal inference loop.
 
 ### Provider Example
 
@@ -359,7 +359,7 @@ api.registerProvider({
   `openai-completions` -> `openai-responses` normalization.
 - OpenRouter uses `catalog` plus `resolveDynamicModel` and
   `prepareDynamicModel` because the provider is pass-through and may expose new
-  model ids before Ava-Claw's static catalog updates.
+  model ids before AvaClaw's static catalog updates.
 - GitHub Copilot uses `catalog`, `resolveDynamicModel`, and
   `capabilities` plus `prepareRuntimeAuth` and `fetchUsageSnapshot` because it
   needs model fallback behavior, Claude transcript quirks, a GitHub token ->
@@ -397,7 +397,7 @@ api.registerProvider({
 
 ## Load pipeline
 
-At startup, Ava-Claw does roughly this:
+At startup, AvaClaw does roughly this:
 
 1. discover candidate plugin roots
 2. read native or compatible bundle manifests and package metadata
@@ -415,7 +415,7 @@ ownership looks suspicious for non-bundled plugins.
 
 ### Manifest-first behavior
 
-The manifest is the control-plane source of truth. Ava-Claw uses it to:
+The manifest is the control-plane source of truth. AvaClaw uses it to:
 
 - identify the plugin
 - discover declared channels/skills/config schema or bundle capabilities
@@ -428,7 +428,7 @@ actual behavior such as hooks, tools, commands, or provider flows.
 
 ### What the loader caches
 
-Ava-Claw keeps short in-process caches for:
+AvaClaw keeps short in-process caches for:
 
 - discovery results
 - manifest registry data
@@ -443,7 +443,7 @@ Plugins can access selected core helpers via `api.runtime`. For telephony TTS:
 
 ```ts
 const result = await api.runtime.tts.textToSpeechTelephony({
-  text: "Hello from Ava-Claw",
+  text: "Hello from AvaClaw",
   cfg: api.config,
 });
 ```
@@ -541,7 +541,7 @@ authoring plugins:
 Provider plugins can define model catalogs for inference with
 `registerProvider({ catalog: { run(...) { ... } } })`.
 
-`catalog.run(...)` returns the same shape Ava-Claw writes into
+`catalog.run(...)` returns the same shape AvaClaw writes into
 `models.providers`:
 
 - `{ provider }` for one provider entry
@@ -550,7 +550,7 @@ Provider plugins can define model catalogs for inference with
 Use `catalog` when the plugin owns provider-specific model ids, base URL
 defaults, or auth-gated model metadata.
 
-`catalog.order` controls when a plugin's catalog merges relative to Ava-Claw's
+`catalog.order` controls when a plugin's catalog merges relative to AvaClaw's
 built-in implicit providers:
 
 - `simple`: plain API-key or env-driven providers
@@ -564,7 +564,7 @@ built-in provider entry with the same provider id.
 Compatibility:
 
 - `discovery` still works as a legacy alias
-- if both `catalog` and `discovery` are registered, Ava-Claw uses `catalog`
+- if both `catalog` and `discovery` are registered, AvaClaw uses `catalog`
 
 Compatibility note:
 
@@ -616,7 +616,7 @@ Performance note:
 
 ## Discovery & precedence
 
-Ava-Claw scans, in order:
+AvaClaw scans, in order:
 
 1. Config paths
 
@@ -632,7 +632,7 @@ Ava-Claw scans, in order:
 - `~/.avaclaw/extensions/*.ts`
 - `~/.avaclaw/extensions/*/index.ts`
 
-4. Bundled extensions (shipped with Ava-Claw; mixed default-on/default-off)
+4. Bundled extensions (shipped with AvaClaw; mixed default-on/default-off)
 
 - `<avaclaw>/extensions/*`
 
@@ -680,14 +680,14 @@ become production gateway code.
 
 Hardening notes:
 
-- If `plugins.allow` is empty and non-bundled plugins are discoverable, Ava-Claw logs a startup warning with plugin ids and sources.
-- Candidate paths are safety-checked before discovery admission. Ava-Claw blocks candidates when:
+- If `plugins.allow` is empty and non-bundled plugins are discoverable, AvaClaw logs a startup warning with plugin ids and sources.
+- Candidate paths are safety-checked before discovery admission. AvaClaw blocks candidates when:
   - extension entry resolves outside plugin root (including symlink/path traversal escapes),
   - plugin root/source path is world-writable,
   - path ownership is suspicious for non-bundled plugins (POSIX owner is neither current uid nor root).
 - Loaded non-bundled plugins without install/load-path provenance emit a warning so you can pin trust (`plugins.allow`) or install tracking (`plugins.installs`).
 
-Each native Ava-Claw plugin must include a `avaclaw.plugin.json` file in its
+Each native AvaClaw plugin must include a `avaclaw.plugin.json` file in its
 root. If a path points at a file, the plugin root is the file's directory and
 must contain the manifest.
 
@@ -764,7 +764,7 @@ Example:
 
 ```json
 {
-  "name": "@avadisabelle/ava-claw-nextcloud-talk",
+  "name": "ava-claw-nextcloud-talk",
   "avaclaw": {
     "extensions": ["./index.ts"],
     "channel": {
@@ -778,7 +778,7 @@ Example:
       "aliases": ["nc-talk", "nc"]
     },
     "install": {
-      "npmSpec": "@avadisabelle/ava-claw-nextcloud-talk",
+      "npmSpec": "ava-claw-nextcloud-talk",
       "localPath": "extensions/nextcloud-talk",
       "defaultChoice": "npm"
     }
@@ -786,7 +786,7 @@ Example:
 }
 ```
 
-Ava-Claw can also merge **external channel catalogs** (for example, an MPM
+AvaClaw can also merge **external channel catalogs** (for example, an MPM
 registry export). Drop a JSON file at one of:
 
 - `~/.avaclaw/mpm/plugins.json`
@@ -804,7 +804,7 @@ Default plugin ids:
 - Package packs: `package.json` `name`
 - Standalone file: file base name (`~/.../voice-call.ts` → `voice-call`)
 
-If a plugin exports `id`, Ava-Claw uses it but warns when it doesn’t match the
+If a plugin exports `id`, AvaClaw uses it but warns when it doesn’t match the
 configured id.
 
 ## Registry model
@@ -869,7 +869,7 @@ Validation rules (strict):
   the channel id.
 - Native plugin config is validated using the JSON Schema embedded in
   `avaclaw.plugin.json` (`configSchema`).
-- Compatible bundles currently do not expose native Ava-Claw config schemas.
+- Compatible bundles currently do not expose native AvaClaw config schemas.
 - If a plugin is disabled, its config is preserved and a **warning** is emitted.
 
 ### Disabled vs missing vs invalid
@@ -880,7 +880,7 @@ These states are intentionally different:
 - **missing**: config references a plugin id that discovery did not find
 - **invalid**: plugin exists, but its config does not match the declared schema
 
-Ava-Claw preserves config for disabled plugins so toggling them back on is not
+AvaClaw preserves config for disabled plugins so toggling them back on is not
 destructive.
 
 ## Plugin slots (exclusive categories)
@@ -921,7 +921,7 @@ pipeline rather than just add memory search or hooks.
 
 The Control UI uses `config.schema` (JSON Schema + `uiHints`) to render better forms.
 
-Ava-Claw augments `uiHints` at runtime based on discovered plugins:
+AvaClaw augments `uiHints` at runtime based on discovered plugins:
 
 - Adds per-plugin labels for `plugins.entries.<id>` / `.enabled` / `.config`
 - Merges optional plugin-provided config field hints under:
@@ -960,8 +960,8 @@ avaclaw plugins install ./extensions/voice-call # relative path ok
 avaclaw plugins install ./plugin.tgz           # install from a local tarball
 avaclaw plugins install ./plugin.zip           # install from a local zip
 avaclaw plugins install -l ./extensions/voice-call # link (no copy) for dev
-avaclaw plugins install @avadisabelle/ava-claw-voice-call # install from npm
-avaclaw plugins install @avadisabelle/ava-claw-voice-call --pin # store exact resolved name@version
+avaclaw plugins install ava-claw-voice-call # install from npm
+avaclaw plugins install ava-claw-voice-call --pin # store exact resolved name@version
 avaclaw plugins update <id>
 avaclaw plugins update --all
 avaclaw plugins enable <id>
@@ -974,7 +974,7 @@ Verbose list/info output also shows bundle subtype (`codex` or `claude`) plus
 detected bundle capabilities.
 
 `plugins update` only works for npm installs tracked under `plugins.installs`.
-If stored integrity metadata changes between updates, Ava-Claw warns and asks for confirmation (use global `--yes` to bypass prompts).
+If stored integrity metadata changes between updates, AvaClaw warns and asks for confirmation (use global `--yes` to bypass prompts).
 
 Plugins may also register their own top‑level commands (example: `avaclaw voicecall`).
 
@@ -1085,7 +1085,7 @@ Important hooks for prompt construction:
 Core-enforced hook policy:
 
 - Operators can disable prompt mutation hooks per plugin via `plugins.entries.<id>.hooks.allowPromptInjection: false`.
-- When disabled, Ava-Claw blocks `before_prompt_build` and ignores prompt-mutating fields returned from legacy `before_agent_start` while preserving legacy `modelOverride` and `providerOverride`.
+- When disabled, AvaClaw blocks `before_prompt_build` and ignores prompt-mutating fields returned from legacy `before_agent_start` while preserving legacy `modelOverride` and `providerOverride`.
 
 `before_prompt_build` result fields:
 
@@ -1114,7 +1114,7 @@ Migration guidance:
 ## Provider plugins (model auth)
 
 Plugins can register **model providers** so users can run OAuth or API-key
-setup inside Ava-Claw, surface provider setup in onboarding/model-pickers, and
+setup inside AvaClaw, surface provider setup in onboarding/model-pickers, and
 contribute implicit provider discovery.
 
 Provider plugins are the modular extension seam for model-provider setup. They
@@ -1216,9 +1216,9 @@ entry in model selection:
 - `methodId`
 
 When a provider has multiple auth methods, the wizard can either point at one
-explicit method or let Ava-Claw synthesize per-method choices.
+explicit method or let AvaClaw synthesize per-method choices.
 
-Ava-Claw validates provider wizard metadata when the plugin registers:
+AvaClaw validates provider wizard metadata when the plugin registers:
 
 - duplicate or blank auth-method ids are rejected
 - wizard metadata is ignored when the provider has no auth methods
@@ -1589,7 +1589,7 @@ Command handler context:
 - `isAuthorizedSender`: Whether the sender is an authorized user
 - `args`: Arguments passed after the command (if `acceptsArgs: true`)
 - `commandBody`: The full command text
-- `config`: The current Ava-Claw config
+- `config`: The current AvaClaw config
 
 Command options:
 
@@ -1654,7 +1654,7 @@ it’s present in your workspace/managed skills locations.
 Recommended packaging:
 
 - Main package: `avaclaw` (this repo)
-- Plugins: separate npm packages under `@avadisabelle/ava-claw-*` (example: `@avadisabelle/ava-claw-voice-call`)
+- Plugins: separate npm packages under `ava-claw-*` (example: `ava-claw-voice-call`)
 
 Publishing contract:
 

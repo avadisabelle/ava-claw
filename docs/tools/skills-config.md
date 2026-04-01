@@ -8,7 +8,7 @@ title: "Skills Config"
 
 # Skills Config
 
-All skills-related configuration lives under `skills` in `~/.avadisabelle/ava-claw.json`.
+All skills-related configuration lives under `skills` in `~/.avaclaw/avaclaw.json`.
 
 ```json5
 {

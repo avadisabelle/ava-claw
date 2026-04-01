@@ -1,5 +1,5 @@
 ---
-summary: "Model providers (LLMs) supported by Ava-Claw"
+summary: "Model providers (LLMs) supported by AvaClaw"
 read_when:
   - You want to choose a model provider
   - You want quick setup examples for LLM auth + model selection
@@ -8,7 +8,7 @@ title: "Model Provider Quickstart"
 
 # Model Providers
 
-Ava-Claw can use many LLM providers. Pick one, authenticate, then set the default
+AvaClaw can use many LLM providers. Pick one, authenticate, then set the default
 model as `provider/model`.
 
 ## Quick start (two steps)

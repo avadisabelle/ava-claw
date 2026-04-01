@@ -9,12 +9,12 @@ title: "Security"
 
 > [!WARNING]
 > **Personal assistant trust model:** this guidance assumes one trusted operator boundary per gateway (single-user/personal assistant model).
-> Ava-Claw is **not** a hostile multi-tenant security boundary for multiple adversarial users sharing one agent/gateway.
+> AvaClaw is **not** a hostile multi-tenant security boundary for multiple adversarial users sharing one agent/gateway.
 > If you need mixed-trust or adversarial-user operation, split trust boundaries (separate gateway + credentials, ideally separate OS users/hosts).
 
 ## Scope first: personal assistant security model
 
-Ava-Claw security guidance assumes a **personal assistant** deployment: one trusted operator boundary, potentially many agents.
+AvaClaw security guidance assumes a **personal assistant** deployment: one trusted operator boundary, potentially many agents.
 
 - Supported security posture: one user/trust boundary per gateway (prefer one OS user/host/VPS per boundary).
 - Not a supported security boundary: one shared gateway/agent used by mutually untrusted or adversarial users.
@@ -38,7 +38,7 @@ avaclaw security audit --json
 
 It flags common footguns (Gateway auth exposure, browser control exposure, elevated allowlists, filesystem permissions).
 
-Ava-Claw is both a product and an experiment: you’re wiring frontier-model behavior into real messaging surfaces and real tools. **There is no “perfectly secure” setup.** The goal is to be deliberate about:
+AvaClaw is both a product and an experiment: you’re wiring frontier-model behavior into real messaging surfaces and real tools. **There is no “perfectly secure” setup.** The goal is to be deliberate about:
 
 - who can talk to your bot
 - where the bot is allowed to act
@@ -48,14 +48,14 @@ Start with the smallest access that still works, then widen it as you gain confi
 
 ## Deployment assumption (important)
 
-Ava-Claw assumes the host and config boundary are trusted:
+AvaClaw assumes the host and config boundary are trusted:
 
 - If someone can modify Gateway host state/config (`~/.avaclaw`, including `avaclaw.json`), treat them as a trusted operator.
 - Running one Gateway for multiple mutually untrusted/adversarial operators is **not a recommended setup**.
 - For mixed-trust teams, split trust boundaries with separate gateways (or at minimum separate OS users/hosts).
-- Ava-Claw can run multiple gateway instances on one machine, but recommended operations favor clean trust-boundary separation.
+- AvaClaw can run multiple gateway instances on one machine, but recommended operations favor clean trust-boundary separation.
 - Recommended default: one user per machine/host (or VPS), one gateway for that user, and one or more agents in that gateway.
-- If multiple users want Ava-Claw, use one VPS/host per user.
+- If multiple users want AvaClaw, use one VPS/host per user.
 
 ### Practical consequence (operator trust boundary)
 
@@ -69,7 +69,7 @@ Inside one Gateway instance, authenticated operator access is a trusted control-
 
 ## Personal assistant model (not a multi-tenant bus)
 
-Ava-Claw is designed as a personal assistant security model: one trusted operator boundary, potentially many agents.
+AvaClaw is designed as a personal assistant security model: one trusted operator boundary, potentially many agents.
 
 - If several people can message one tool-enabled agent, each of them can steer that same permission set.
 - Per-user session/memory isolation helps privacy, but does not convert a shared agent into per-user host authorization.
@@ -193,7 +193,7 @@ If more than one person can DM your bot:
 - **Runtime expectation drift** (for example `tools.exec.host="sandbox"` while sandbox mode is off, which runs directly on the gateway host).
 - **Model hygiene** (warn when configured models look legacy; not a hard block).
 
-If you run `--deep`, Ava-Claw also attempts a best-effort live Gateway probe.
+If you run `--deep`, AvaClaw also attempts a best-effort live Gateway probe.
 
 ## Credential storage map
 
@@ -227,8 +227,8 @@ High-signal `checkId` values you will most likely see in real deployments (not e
 
 | `checkId`                                          | Severity      | Why it matters                                                                       | Primary fix key/path                                                                              | Auto-fix |
 | -------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- | -------- |
-| `fs.state_dir.perms_world_writable`                | critical      | Other users/processes can modify full Ava-Claw state                                 | filesystem perms on `~/.avaclaw`                                                                  | yes      |
-| `fs.config.perms_writable`                         | critical      | Others can change auth/tool policy/config                                            | filesystem perms on `~/.avadisabelle/ava-claw.json`                                               | yes      |
+| `fs.state_dir.perms_world_writable`                | critical      | Other users/processes can modify full AvaClaw state                                  | filesystem perms on `~/.avaclaw`                                                                  | yes      |
+| `fs.config.perms_writable`                         | critical      | Others can change auth/tool policy/config                                            | filesystem perms on `~/.avaclaw/avaclaw.json`                                                     | yes      |
 | `fs.config.perms_world_readable`                   | critical      | Config can expose tokens/settings                                                    | filesystem perms on config file                                                                   | yes      |
 | `gateway.bind_no_auth`                             | critical      | Remote bind without shared secret                                                    | `gateway.bind`, `gateway.auth.*`                                                                  | no       |
 | `gateway.loopback_no_auth`                         | critical      | Reverse-proxied loopback may become unauthenticated                                  | `gateway.auth.*`, proxy setup                                                                     | no       |
@@ -291,7 +291,7 @@ aggregates:
 - `hooks.mappings[<index>].allowUnsafeExternalContent=true`
 - `tools.exec.applyPatch.workspaceOnly=false`
 
-Complete `dangerous*` / `dangerously*` config keys defined in Ava-Claw config
+Complete `dangerous*` / `dangerously*` config keys defined in AvaClaw config
 schema:
 
 - `gateway.controlUi.dangerouslyAllowHostHeaderOriginFallback`
@@ -351,8 +351,8 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 ## HSTS and origin notes
 
-- Ava-Claw gateway is local/loopback first. If you terminate TLS at a reverse proxy, set HSTS on the proxy-facing HTTPS domain there.
-- If the gateway itself terminates HTTPS, you can set `gateway.http.securityHeaders.strictTransportSecurity` to emit the HSTS header from Ava-Claw responses.
+- AvaClaw gateway is local/loopback first. If you terminate TLS at a reverse proxy, set HSTS on the proxy-facing HTTPS domain there.
+- If the gateway itself terminates HTTPS, you can set `gateway.http.securityHeaders.strictTransportSecurity` to emit the HSTS header from AvaClaw responses.
 - Detailed deployment guidance is in [Trusted Proxy Auth](/gateway/trusted-proxy-auth#tls-termination-and-hsts).
 - For non-loopback Control UI deployments, `gateway.controlUi.allowedOrigins` is required by default.
 - `gateway.controlUi.dangerouslyAllowHostHeaderOriginFallback=true` enables Host-header origin fallback mode; treat it as a dangerous operator-selected policy.
@@ -360,7 +360,7 @@ proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
 
 ## Local session logs live on disk
 
-Ava-Claw stores session transcripts on disk under `~/.avaclaw/agents/<agentId>/sessions/*.jsonl`.
+AvaClaw stores session transcripts on disk under `~/.avaclaw/agents/<agentId>/sessions/*.jsonl`.
 This is required for session continuity and (optionally) session memory indexing, but it also means
 **any process/user with filesystem access can read those logs**. Treat disk access as the trust
 boundary and lock down permissions on `~/.avaclaw` (see the audit section below). If you need
@@ -372,12 +372,12 @@ If a macOS node is paired, the Gateway can invoke `system.run` on that node. Thi
 
 - Requires node pairing (approval + token).
 - Controlled on the Mac via **Settings → Exec approvals** (security + ask + allowlist).
-- Approval mode binds exact request context and, when possible, one concrete local script/file operand. If Ava-Claw cannot identify exactly one direct local file for an interpreter/runtime command, approval-backed execution is denied rather than promising full semantic coverage.
+- Approval mode binds exact request context and, when possible, one concrete local script/file operand. If AvaClaw cannot identify exactly one direct local file for an interpreter/runtime command, approval-backed execution is denied rather than promising full semantic coverage.
 - If you don’t want remote execution, set security to **deny** and remove node pairing for that Mac.
 
 ## Dynamic skills (watcher / remote nodes)
 
-Ava-Claw can refresh the skills list mid-session:
+AvaClaw can refresh the skills list mid-session:
 
 - **Skills watcher**: changes to `SKILL.md` can update the skills snapshot on the next agent turn.
 - **Remote nodes**: connecting a macOS node can make macOS-only skills eligible (based on bin probing).
@@ -403,7 +403,7 @@ People who message you can:
 
 Most failures here are not fancy exploits — they’re “someone messaged the bot and the bot did what they asked.”
 
-Ava-Claw’s stance:
+AvaClaw’s stance:
 
 - **Identity first:** decide who can talk to the bot (DM pairing / allowlists / explicit “open”).
 - **Scope next:** decide where the bot is allowed to act (group allowlists + mention gating, tools, sandboxing, device permissions).
@@ -448,7 +448,7 @@ Plugins run **in-process** with the Gateway. Treat them as trusted code:
 - Restart the Gateway after plugin changes.
 - If you install plugins from npm (`avaclaw plugins install <npm-spec>`), treat it like running untrusted code:
   - The install path is `~/.avaclaw/extensions/<pluginId>/` (or `$AVACLAW_STATE_DIR/extensions/<pluginId>/`).
-  - Ava-Claw uses `npm pack` and then runs `npm install --omit=dev` in that directory (npm lifecycle scripts can execute code during install).
+  - AvaClaw uses `npm pack` and then runs `npm install --omit=dev` in that directory (npm lifecycle scripts can execute code during install).
   - Prefer pinned, exact versions (`@scope/pkg@1.2.3`), and inspect the unpacked code on disk before enabling.
 
 Details: [Plugins](/tools/plugin)
@@ -473,7 +473,7 @@ Details + files on disk: [Pairing](/channels/pairing)
 
 ## DM session isolation (multi-user mode)
 
-By default, Ava-Claw routes **all DMs into the main session** so your assistant has continuity across devices and channels. If **multiple people** can DM the bot (open DMs or a multi-person allowlist), consider isolating DM sessions:
+By default, AvaClaw routes **all DMs into the main session** so your assistant has continuity across devices and channels. If **multiple people** can DM the bot (open DMs or a multi-person allowlist), consider isolating DM sessions:
 
 ```json5
 {
@@ -497,7 +497,7 @@ If you run multiple accounts on the same channel, use `per-account-channel-peer`
 
 ## Allowlists (DM + groups) — terminology
 
-Ava-Claw has two separate “who can trigger me?” layers:
+AvaClaw has two separate “who can trigger me?” layers:
 
 - **DM allowlist** (`allowFrom` / `channels.discord.allowFrom` / `channels.slack.allowFrom`; legacy: `channels.discord.dm.allowFrom`, `channels.slack.dm.allowFrom`): who is allowed to talk to the bot in direct messages.
   - When `dmPolicy="pairing"`, approvals are written to the account-scoped pairing allowlist store under `~/.avaclaw/credentials/` (`<channel>-allowFrom.json` for default account, `<channel>-<accountId>-allowFrom.json` for non-default accounts), merged with config allowlists.
@@ -535,7 +535,7 @@ Red flags to treat as untrusted:
 
 ## Unsafe external content bypass flags
 
-Ava-Claw includes explicit bypass flags that disable external-content safety wrapping:
+AvaClaw includes explicit bypass flags that disable external-content safety wrapping:
 
 - `hooks.mappings[].allowUnsafeExternalContent`
 - `hooks.gmail.allowUnsafeExternalContent`
@@ -605,7 +605,7 @@ Guidance:
 
 Keep config + state private on the gateway host:
 
-- `~/.avadisabelle/ava-claw.json`: `600` (user read/write only)
+- `~/.avaclaw/avaclaw.json`: `600` (user read/write only)
 - `~/.avaclaw`: `700` (user only)
 
 `avaclaw doctor` can warn and offer to tighten these permissions.
@@ -640,7 +640,7 @@ Rules of thumb:
 
 ### 0.4.1) Docker port publishing + UFW (`DOCKER-USER`)
 
-If you run Ava-Claw with Docker on a VPS, remember that published container ports
+If you run AvaClaw with Docker on a VPS, remember that published container ports
 (`-p HOST:CONTAINER` or Compose `ports:`) are routed through Docker's forwarding
 chains, not only host `INPUT` rules.
 
@@ -785,9 +785,9 @@ Rotation checklist (token/password):
 
 ### 0.6) Tailscale Serve identity headers
 
-When `gateway.auth.allowTailscale` is `true` (default for Serve), Ava-Claw
+When `gateway.auth.allowTailscale` is `true` (default for Serve), AvaClaw
 accepts Tailscale Serve identity headers (`tailscale-user-login`) for Control
-UI/WebSocket authentication. Ava-Claw verifies the identity by resolving the
+UI/WebSocket authentication. AvaClaw verifies the identity by resolving the
 `x-forwarded-for` address through the local Tailscale daemon (`tailscale whois`)
 and matching it to the header. This only triggers for requests that hit loopback
 and include `x-forwarded-for`, `x-forwarded-proto`, and `x-forwarded-host` as
@@ -813,7 +813,7 @@ you terminate TLS or proxy in front of the gateway, disable
 Trusted proxies:
 
 - If you terminate TLS in front of the Gateway, set `gateway.trustedProxies` to your proxy IPs.
-- Ava-Claw will trust `x-forwarded-for` (or `x-real-ip`) from those IPs to determine the client IP for local pairing checks and HTTP auth/local checks.
+- AvaClaw will trust `x-forwarded-for` (or `x-real-ip`) from those IPs to determine the client IP for local pairing checks and HTTP auth/local checks.
 - Ensure your proxy **overwrites** `x-forwarded-for` and blocks direct access to the Gateway port.
 
 See [Tailscale](/gateway/tailscale) and [Web overview](/web).
@@ -991,13 +991,13 @@ access those accounts and data. Treat browser profiles as **sensitive state**:
 - Disable browser sync/password managers in the agent profile if possible (reduces blast radius).
 - For remote gateways, assume “browser control” is equivalent to “operator access” to whatever that profile can reach.
 - Keep the Gateway and node hosts tailnet-only; avoid exposing relay/control ports to LAN or public Internet.
-- The Chrome extension relay’s CDP endpoint is auth-gated; only Ava-Claw clients can connect.
+- The Chrome extension relay’s CDP endpoint is auth-gated; only AvaClaw clients can connect.
 - Disable browser proxy routing when you don’t need it (`gateway.nodes.browser.mode="off"`).
 - Chrome extension relay mode is **not** “safer”; it can take over your existing Chrome tabs. Assume it can act as you in whatever that tab/profile can reach.
 
 ### Browser SSRF policy (trusted-network default)
 
-Ava-Claw’s browser network policy defaults to the trusted-operator model: private/internal destinations are allowed unless you explicitly disable them.
+AvaClaw’s browser network policy defaults to the trusted-operator model: private/internal destinations are allowed unless you explicitly disable them.
 
 - Default: `browser.ssrfPolicy.dangerouslyAllowPrivateNetwork: true` (implicit when unset).
 - Legacy alias: `browser.ssrfPolicy.allowPrivateNetwork` is still accepted for compatibility.
@@ -1086,7 +1086,7 @@ Common use cases:
           scope: "agent",
           workspaceAccess: "none",
         },
-        // Session tools can reveal sensitive data from transcripts. By default Ava-Claw limits these tools
+        // Session tools can reveal sensitive data from transcripts. By default AvaClaw limits these tools
         // to the current session + spawned subagent sessions, but you can clamp further if needed.
         // See `tools.sessions.visibility` in the configuration reference.
         tools: {
@@ -1154,14 +1154,14 @@ If your AI does something bad:
 
 ### Audit
 
-1. Check Gateway logs: `/tmp/avadisabelle/ava-claw-YYYY-MM-DD.log` (or `logging.file`).
+1. Check Gateway logs: `/tmp/avadisabelle/avaclaw-YYYY-MM-DD.log` (or `logging.file`).
 2. Review the relevant transcript(s): `~/.avaclaw/agents/<agentId>/sessions/*.jsonl`.
 3. Review recent config changes (anything that could have widened access: `gateway.bind`, `gateway.auth`, dm/group policies, `tools.elevated`, plugin changes).
 4. Re-run `avaclaw security audit --deep` and confirm critical findings are resolved.
 
 ### Collect for a report
 
-- Timestamp, gateway host OS + Ava-Claw version
+- Timestamp, gateway host OS + AvaClaw version
 - The session transcript(s) + a short log tail (after redacting)
 - What the attacker sent + what the agent did
 - Whether the Gateway was exposed beyond loopback (LAN/Tailscale Funnel/Serve)
@@ -1201,7 +1201,7 @@ Commit the updated `.secrets.baseline` once it reflects the intended state.
 
 ## Reporting Security Issues
 
-Found a vulnerability in Ava-Claw? Please report responsibly:
+Found a vulnerability in AvaClaw? Please report responsibly:
 
 1. Email: [security@avaclaw.ai](mailto:security@avaclaw.ai)
 2. Don't post publicly until fixed

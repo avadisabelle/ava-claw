@@ -1,7 +1,7 @@
 ---
 summary: "Gateway runtime on macOS (external launchd service)"
 read_when:
-  - Packaging Ava-Claw.app
+  - Packaging AvaClaw.app
   - Debugging the macOS gateway launchd service
   - Installing the gateway CLI for macOS
 title: "Gateway on macOS"
@@ -9,7 +9,7 @@ title: "Gateway on macOS"
 
 # Gateway on macOS (external launchd)
 
-Ava-Claw.app no longer bundles Node/Bun or the Gateway runtime. The macOS app
+AvaClaw.app no longer bundles Node/Bun or the Gateway runtime. The macOS app
 expects an **external** `avaclaw` CLI install, does not spawn the Gateway as a
 child process, and manages a per‑user launchd service to keep the Gateway
 running (or attaches to an existing local Gateway if one is already running).
@@ -42,14 +42,14 @@ Manager:
 
 Behavior:
 
-- “Ava-Claw Active” enables/disables the LaunchAgent.
+- “AvaClaw Active” enables/disables the LaunchAgent.
 - App quit does **not** stop the gateway (launchd keeps it alive).
 - If a Gateway is already running on the configured port, the app attaches to
   it instead of starting a new one.
 
 Logging:
 
-- launchd stdout/err: `/tmp/avadisabelle/ava-claw-gateway.log`
+- launchd stdout/err: `/tmp/avadisabelle/avaclaw-gateway.log`
 
 ## Version compatibility
 

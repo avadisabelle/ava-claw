@@ -1,5 +1,5 @@
 ---
-summary: "Optional Docker-based setup and onboarding for Ava-Claw"
+summary: "Optional Docker-based setup and onboarding for AvaClaw"
 read_when:
   - You want a containerized gateway instead of local installs
   - You are validating the Docker flow
@@ -12,13 +12,13 @@ Docker is **optional**. Use it only if you want a containerized gateway or to va
 
 ## Is Docker right for me?
 
-- **Yes**: you want an isolated, throwaway gateway environment or to run Ava-Claw on a host without local installs.
+- **Yes**: you want an isolated, throwaway gateway environment or to run AvaClaw on a host without local installs.
 - **No**: you’re running on your own machine and just want the fastest dev loop. Use the normal install flow instead.
 - **Sandboxing note**: agent sandboxing uses Docker too, but it does **not** require the full gateway to run in Docker. See [Sandboxing](/gateway/sandboxing).
 
 This guide covers:
 
-- Containerized Gateway (full Ava-Claw in Docker)
+- Containerized Gateway (full AvaClaw in Docker)
 - Per-session Agent Sandbox (host gateway + Docker-isolated agent tools)
 
 Sandboxing details: [Sandboxing](/gateway/sandboxing)
@@ -176,8 +176,8 @@ and points at the pinned multi-arch manifest list for that tag):
 - `org.opencontainers.image.url=https://avaclaw.ai`
 - `org.opencontainers.image.documentation=https://docs.avaclaw.ai/install/docker`
 - `org.opencontainers.image.licenses=MIT`
-- `org.opencontainers.image.title=Ava-Claw`
-- `org.opencontainers.image.description=Ava-Claw gateway and CLI runtime container image`
+- `org.opencontainers.image.title=AvaClaw`
+- `org.opencontainers.image.description=AvaClaw gateway and CLI runtime container image`
 - `org.opencontainers.image.revision=<git-sha>`
 - `org.opencontainers.image.version=<tag-or-main>`
 - `org.opencontainers.image.created=<rfc3339 timestamp>`
@@ -482,7 +482,7 @@ Aliases: `/health` and `/ready`.
 managed channels are still disconnected after grace or disconnect later.
 
 The Docker image includes a built-in `HEALTHCHECK` that pings `/healthz` in the
-background. In plain terms: Docker keeps checking if Ava-Claw is still
+background. In plain terms: Docker keeps checking if AvaClaw is still
 responsive. If checks keep failing, Docker marks the container as `unhealthy`,
 and orchestration systems (Docker Compose restart policy, Swarm, Kubernetes,
 etc.) can automatically restart or replace it.
@@ -540,7 +540,7 @@ docker compose run --rm avaclaw-cli devices list --url ws://127.0.0.1:18789
 
 - **Persistent host data:** Docker Compose bind-mounts `AVACLAW_CONFIG_DIR` to `/home/node/.avaclaw` and `AVACLAW_WORKSPACE_DIR` to `/home/node/.avaclaw/workspace`, so those paths survive container replacement.
 - **Ephemeral sandbox tmpfs:** when `agents.defaults.sandbox` is enabled, the sandbox containers use `tmpfs` for `/tmp`, `/var/tmp`, and `/run`. Those mounts are separate from the top-level Compose stack and disappear with the sandbox container.
-- **Disk growth hotspots:** watch `media/`, `agents/<agentId>/sessions/sessions.json`, transcript JSONL files, `cron/runs/*.jsonl`, and rolling file logs under `/tmp/avaclaw/` (or your configured `logging.file`). If you also run the macOS app outside Docker, its service logs are separate again: `~/.avaclaw/logs/gateway.log`, `~/.avaclaw/logs/gateway.err.log`, and `/tmp/avadisabelle/ava-claw-gateway.log`.
+- **Disk growth hotspots:** watch `media/`, `agents/<agentId>/sessions/sessions.json`, transcript JSONL files, `cron/runs/*.jsonl`, and rolling file logs under `/tmp/avaclaw/` (or your configured `logging.file`). If you also run the macOS app outside Docker, its service logs are separate again: `~/.avaclaw/logs/gateway.log`, `~/.avaclaw/logs/gateway.err.log`, and `/tmp/avadisabelle/avaclaw-gateway.log`.
 
 ## Agent Sandbox (host gateway + Docker tools)
 
@@ -598,7 +598,7 @@ If you plan to install packages in `setupCommand`, note:
 - Break-glass override: `agents.defaults.sandbox.docker.dangerouslyAllowContainerNamespaceJoin: true`.
 - `readOnlyRoot: true` blocks package installs.
 - `user` must be root for `apt-get` (omit `user` or set `user: "0:0"`).
-  Ava-Claw auto-recreates containers when `setupCommand` (or docker config) changes
+  AvaClaw auto-recreates containers when `setupCommand` (or docker config) changes
   unless the container was **recently used** (within ~5 minutes). Hot containers
   log a warning with the exact `avaclaw sandbox recreate ...` command.
 
@@ -718,7 +718,7 @@ Notes:
 - No full desktop environment (GNOME) is needed; Xvfb provides the display.
 - Browser containers default to a dedicated Docker network (`avaclaw-sandbox-browser`) instead of global `bridge`.
 - Optional `agents.defaults.sandbox.browser.cdpSourceRange` restricts container-edge CDP ingress by CIDR (for example `172.21.0.1/32`).
-- noVNC observer access is password-protected by default; Ava-Claw provides a short-lived observer token URL that serves a local bootstrap page and keeps the password in URL fragment (instead of URL query).
+- noVNC observer access is password-protected by default; AvaClaw provides a short-lived observer token URL that serves a local bootstrap page and keeps the password in URL fragment (instead of URL query).
 - Browser container startup defaults are conservative for shared/container workloads, including:
   - `--remote-debugging-address=127.0.0.1`
   - `--remote-debugging-port=<derived from AVACLAW_BROWSER_CDP_PORT>`
@@ -837,7 +837,7 @@ Example:
 - Container not running: it will auto-create per session on demand.
 - Permission errors in sandbox: set `docker.user` to a UID:GID that matches your
   mounted workspace ownership (or chown the workspace folder).
-- Custom tools not found: Ava-Claw runs commands with `sh -lc` (login shell), which
+- Custom tools not found: AvaClaw runs commands with `sh -lc` (login shell), which
   sources `/etc/profile` and may reset PATH. Set `docker.env.PATH` to prepend your
   custom tool paths (e.g., `/custom/bin:/usr/local/share/npm-global/bin`), or add
   a script under `/etc/profile.d/` in your Dockerfile.
