@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-memory-core",
+  "name": "memory-core",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw core memory search plugin",

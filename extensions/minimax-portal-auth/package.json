@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-minimax-portal-auth",
+  "name": "minimax-portal-auth",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw MiniMax Portal OAuth provider plugin",

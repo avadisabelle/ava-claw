@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-diagnostics-otel",
+  "name": "diagnostics-otel",
   "version": "2026.3.14",
   "description": "AvaClaw diagnostics OpenTelemetry exporter",
   "type": "module",

@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-memory-lancedb",
+  "name": "memory-lancedb",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw LanceDB-backed long-term memory plugin with auto-recall/capture",

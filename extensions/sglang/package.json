@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-sglang-provider",
+  "name": "sglang",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw SGLang provider plugin",

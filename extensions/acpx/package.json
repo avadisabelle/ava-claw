@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-acpx",
+  "name": "acpx",
   "version": "2026.3.14",
   "description": "AvaClaw ACP runtime backend via acpx",
   "type": "module",

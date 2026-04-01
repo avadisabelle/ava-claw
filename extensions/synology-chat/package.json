@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-synology-chat",
+  "name": "synology-chat",
   "version": "2026.3.14",
   "description": "Synology Chat channel plugin for AvaClaw",
   "type": "module",

@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-openai-provider",
+  "name": "openai",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw OpenAI provider plugin",

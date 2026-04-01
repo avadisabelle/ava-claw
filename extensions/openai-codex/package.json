@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-openai-codex-provider",
+  "name": "openai-codex",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw OpenAI Codex provider plugin",

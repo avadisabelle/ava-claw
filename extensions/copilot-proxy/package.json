@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-copilot-proxy",
+  "name": "copilot-proxy",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Copilot Proxy provider plugin",

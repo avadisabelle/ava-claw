@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-openrouter-provider",
+  "name": "openrouter",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw OpenRouter provider plugin",

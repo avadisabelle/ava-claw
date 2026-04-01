@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-cloudflare-ai-gateway-provider",
+  "name": "cloudflare-ai-gateway",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Cloudflare AI Gateway provider plugin",

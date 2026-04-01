@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-nextcloud-talk",
+  "name": "nextcloud-talk",
   "version": "2026.3.14",
   "description": "AvaClaw Nextcloud Talk channel plugin",
   "type": "module",

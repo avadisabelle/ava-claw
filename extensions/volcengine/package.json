@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-volcengine-provider",
+  "name": "volcengine",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Volcengine provider plugin",

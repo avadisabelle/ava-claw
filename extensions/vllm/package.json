@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-vllm-provider",
+  "name": "vllm",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw vLLM provider plugin",

@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-msteams",
+  "name": "msteams",
   "version": "2026.3.14",
   "description": "AvaClaw Microsoft Teams channel plugin",
   "type": "module",

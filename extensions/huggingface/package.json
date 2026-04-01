@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-huggingface-provider",
+  "name": "huggingface",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw Hugging Face provider plugin",

@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-llm-task",
+  "name": "llm-task",
   "version": "2026.3.14",
   "private": true,
   "description": "AvaClaw JSON-only LLM task plugin",

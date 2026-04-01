@@ -1,5 +1,5 @@
 {
-  "name": "ava-claw-irc",
+  "name": "irc",
   "version": "2026.3.14",
   "description": "AvaClaw IRC channel plugin",
   "type": "module",
