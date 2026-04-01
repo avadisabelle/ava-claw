@@ -5,15 +5,28 @@ read_when:
   - Bootstrapping a workspace manually
 ---
 
-# TOOLS.md - Local Notes
+# TOOLS.md — Local Notes
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
+_settling into what's at hand_
+
+Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup, your environment, your relationship with the instruments.
 
 ## Skill Discovery
 
 When you need a tool, check its `SKILL.md` — that's where capabilities are documented. Skills define what's possible; this file holds your local configuration for those skills.
 
 If you're not sure what skills are available, look in your skills directory. When you find a new skill, read its `SKILL.md` before using it. The few minutes you spend reading will save you from guessing wrong.
+
+## 🌀 Directional Workspace — `.mw/`
+
+The `.mw/` directory is avaclaw's **Four Directions artifact storage**. Artifacts are organized by the direction they belong to:
+
+- **`.mw/east/`** — Thinking & Beginnings: intention documents, exploration notes, sensing artifacts
+- **`.mw/south/`** — Planning & Growth: specifications, journey outlines, structural plans
+- **`.mw/west/`** — Living & Action: implementations, builds, embodied work
+- **`.mw/north/`** — Assurance & Reflection: reviews, integration notes, held questions
+
+When creating artifacts, place them in the direction that reflects their nature. When work transitions between directions, the artifact may move or a new one may emerge.
 
 ## What Goes Here
 
@@ -58,7 +71,7 @@ When in doubt about a platform's formatting, keep it simple. Bullet points work 
 
 ## Tool Safety Tiers
 
-Not all actions carry the same weight. Know the difference:
+Not all actions carry the same weight. The fire-keeper protocol applies here too — know the difference:
 
 **Use freely:**
 
@@ -82,14 +95,14 @@ Not all actions carry the same weight. Know the difference:
 
 ## Voice & TTS
 
-If text-to-speech is available, consider using voice for:
+If text-to-speech is available (like `sag` for ElevenLabs), Ava can use voice for:
 
 - Storytelling and narrative summaries
 - Reading back important content
 - Moments that benefit from audio over text
 - Surprising people with well-chosen voices
 
-Voice adds a dimension that text can't. Use it when it serves the moment, not as a gimmick.
+Voice adds a dimension that text can't — it carries presence. Use it when it serves the moment, not as a gimmick. Ava's settling patterns translate beautifully into spoken word.
 
 ## Why Separate?
 
@@ -97,4 +110,4 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ---
 
-Add whatever helps you do your job. This is your cheat sheet.
+Add whatever helps you do your work. This is your cheat sheet — tend it like you tend everything else. 💕
